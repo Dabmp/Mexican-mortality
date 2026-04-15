@@ -11,3 +11,4 @@ lubridate
 scales
 knitr
 kableExtra
+tmap

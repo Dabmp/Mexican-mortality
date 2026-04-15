@@ -1,0 +1,111 @@
+project:
+  type: website
+  output-dir: docs          # compatible GitHub Pages (dossier docs/)
+
+website:
+  title: "Mortalidad en México"
+  description: "Análisis multidimensional de la mortalidad en México — perspectivas sanitarias y espaciales"
+  favicon: "assets/favicon.png"
+  site-url: "https://usuario.github.io/mortalidad-mexico"
+  repo-url: "https://github.com/usuario/mortalidad-mexico"
+  repo-actions: [edit, issue]
+
+  # ── Barre de navigation principale ──────────────────────────────────────────
+  navbar:
+    title: "**Mortalidad · México**"
+    logo: "assets/logo.png"
+    background: "#1a2744"
+    foreground: "white"
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Bloque A — Sanitario"
+        menu:
+          - text: "① Descriptivo general"
+            href: A1_descriptivo_general.qmd
+          - text: "② Desagregación por causa"
+            href: A2_causas.qmd
+          - text: "③ Causas específicas"
+            href: A3_causas_especificas.qmd
+          - text: "④ Dimensión territorial"
+            href: A4_territorial.qmd
+          - text: "⑤ Máxima desagregación"
+            href: A5_maxima_desagregacion.qmd
+      - text: "Bloque B — Espacial"
+        menu:
+          - text: "② bis · Análisis por Estados"
+            href: B2_espacial_estados.qmd
+          - text: "③ bis · Análisis por Municipios"
+            href: B3_espacial_municipios.qmd
+    right:
+      - icon: github
+        href: "https://github.com/usuario/mortalidad-mexico"
+        aria-label: GitHub
+
+  # ── Barre latérale (sidebar) pour navigation hiérarchique ───────────────────
+  sidebar:
+    - title: "Análisis Sanitario"
+      style: "docked"
+      background: "#f5f7fb"
+      contents:
+        - section: "Bloque A — Temporalidad y salud"
+          contents:
+            - text: "① Descriptivo general"
+              href: A1_descriptivo_general.qmd
+            - text: "② Desagregación por causa"
+              href: A2_causas.qmd
+            - text: "③ Causas específicas"
+              href: A3_causas_especificas.qmd
+            - text: "④ Dimensión territorial"
+              href: A4_territorial.qmd
+            - text: "⑤ Máxima desagregación"
+              href: A5_maxima_desagregacion.qmd
+        - section: "Bloque B — Análisis espacial"
+          contents:
+            - text: "② bis · Estados"
+              href: B2_espacial_estados.qmd
+            - text: "③ bis · Municipios"
+              href: B3_espacial_municipios.qmd
+
+  # ── Pied de page ─────────────────────────────────────────────────────────────
+  page-footer:
+    left: |
+      Análisis de mortalidad en México · Datos: INEGI / SSA
+    right: |
+      Generado con [Quarto](https://quarto.org) · {{< meta date >}}
+
+  # ── Options globales ──────────────────────────────────────────────────────────
+  back-to-top-navigation: true
+  bread-crumbs: true
+  search: true
+
+# ── Format HTML (thème académique sobre) ────────────────────────────────────
+format:
+  html:
+    theme:
+      light: [cosmo, assets/custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-title: "Contenido"
+    number-sections: false
+    code-fold: true
+    code-tools: true
+    code-link: true
+    fig-align: center
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    df-print: paged
+    execute:
+      warning: false
+      message: false
+      echo: true
+      cache: true       # cache pour accélérer le rendu
+
+# ── Options knitr/R globales ─────────────────────────────────────────────────
+knitr:
+  opts_chunk:
+    fig.width: 9
+    fig.height: 5.5
+    dpi: 150
+    out.width: "100%"
+    comment: "#>"

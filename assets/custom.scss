@@ -1,0 +1,108 @@
+/*-- assets/custom.scss ---------------------------------------------------
+   Thème sobre, orienté publication académique
+   Palette : bleu nuit · blanc cassé · accents teal
+--------------------------------------------------------------------------*/
+
+/*-- Polices Google Fonts (chargées dans index.qmd via include-in-header) --*/
+$font-family-sans-serif:      'Source Sans 3', sans-serif;
+$headings-font-family:        'Playfair Display', serif;
+$font-family-monospace:       'JetBrains Mono', monospace;
+
+/*-- Palette de couleurs ---------------------------------------------------*/
+$primary:        #1a2744;   // bleu nuit (header, liens)
+$secondary:      #2a7a8c;   // teal (accents, titres de section)
+$accent:         #e84855;   // rouge mexicain (callouts, emphase)
+$light-bg:       #f5f7fb;   // fond des sidebars
+$body-bg:        #ffffff;
+$body-color:     #2c2c2c;
+$headings-color: #1a2744;
+
+/*-- Typographie -----------------------------------------------------------*/
+$font-size-base:   1rem;
+$line-height-base: 1.75;
+$h1-font-size:     2rem;
+$h2-font-size:     1.55rem;
+$h3-font-size:     1.25rem;
+
+/*-- Liens ----------------------------------------------------------------*/
+$link-color:            $secondary;
+$link-hover-color:      $primary;
+$link-decoration:       none;
+$link-hover-decoration: underline;
+
+/*-- Code -----------------------------------------------------------------*/
+$code-bg:    #f0f4f8;
+$code-color: #d63384;
+
+/*-- Styles personnalisés -------------------------------------------------*/
+
+// Ligne décorative sous les titres h2
+h2 {
+  border-bottom: 2px solid $secondary;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+// Callout académique personnalisé
+.callout-note {
+  border-left-color: $secondary !important;
+}
+.callout-tip {
+  border-left-color: #2a9d6e !important;
+}
+.callout-warning {
+  border-left-color: $accent !important;
+}
+
+// Navigation bread-crumbs
+.quarto-breadcrumbs {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+// Sidebar sobre
+.sidebar-navigation {
+  background-color: $light-bg;
+  font-size: 0.92rem;
+}
+
+// Numéros de niveau dans la sidebar
+.sidebar-item-text {
+  font-weight: 400;
+}
+
+// Panel tabset — onglets plus visibles
+.panel-tabset .nav-tabs .nav-link.active {
+  border-top: 3px solid $secondary;
+  font-weight: 600;
+}
+
+// Tableaux
+table {
+  font-size: 0.9rem;
+}
+thead {
+  background-color: $light-bg;
+}
+
+// Footer sobre
+.nav-footer {
+  border-top: 1px solid #dee2e6;
+  font-size: 0.82rem;
+  color: #6c757d;
+}
+
+// Badge de niveau (utilisé dans les pages)
+.badge-nivel {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background-color: $secondary;
+  color: white;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+  font-family: $font-family-sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

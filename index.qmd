@@ -19,10 +19,12 @@ format:
 # ── Packages globaux ─────────────────────────────────────────────────
 # Ce chunk est exécuté une fois et ses objets sont disponibles
 # si cache=TRUE est activé dans _quarto.yml
+# install.packages("tmap")
 library(tidyverse)
 library(scales)
 library(knitr)
 library(kableExtra)
+library(tmap)
 
 # ── Palette cohérente sur tout le site ──────────────────────────────
 palette_sexo  <- c("Hombre" = "#1a2744", "Mujer" = "#e84855",

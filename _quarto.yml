@@ -45,7 +45,7 @@ website:
 
   # ── Barre latérale (sidebar) pour navigation hiérarchique ───────────────────
   sidebar:
-    - title: "Análisis Sanitario"
+    - title: "Análisis epidemiologico"
       style: "docked"
       background: "#f5f7fb"
       contents:

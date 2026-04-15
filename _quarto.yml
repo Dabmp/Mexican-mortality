@@ -6,9 +6,10 @@ website:
   title: "Mortalidad en México"
   description: "Análisis multidimensional de la mortalidad en México — perspectivas sanitarias y espaciales"
   favicon: "assets/favicon.png"
-  site-url: "https://usuario.github.io/mortalidad-mexico"
-  repo-url: "https://github.com/usuario/mortalidad-mexico"
-  repo-actions: [edit, issue]
+  # site-url: "https://dabmp.github.io/mortalidad-mexico"
+  # repo-url: "https://github.com/dabmp/mortalidad-mexico"
+  # repo-actions: [edit, issue]
+
 
   # ── Barre de navigation principale ──────────────────────────────────────────
   navbar:
@@ -39,7 +40,7 @@ website:
             href: B3_espacial_municipios.qmd
     right:
       - icon: github
-        href: "https://github.com/usuario/mortalidad-mexico"
+        href: "https://github.com/dabmp/mortalidad-mexico"
         aria-label: GitHub
 
   # ── Barre latérale (sidebar) pour navigation hiérarchique ───────────────────
@@ -95,13 +96,20 @@ format:
     fig-cap-location: bottom
     tbl-cap-location: top
     df-print: paged
-    execute:
-      warning: false
-      message: false
-      echo: true
-      cache: true       # cache pour accélérer le rendu
+    # execute:
+    #   warning: false
+    #   message: false
+    #   echo: true
+    #   cache: true       # cache pour accélérer le rendu
 
-# ── Options knitr/R globales ─────────────────────────────────────────────────
+# ── Exécution R (niveau racine, pas sous format) ─────────────────────
+execute:
+  warning: false
+  message: false
+  echo: true
+  cache: true
+
+# ── Options knitr/R globales ─────────────────────────────────────────
 knitr:
   opts_chunk:
     fig.width: 9
@@ -109,3 +117,11 @@ knitr:
     dpi: 150
     out.width: "100%"
     comment: "#>"
+# ── Options knitr/R globales ─────────────────────────────────────────────────
+# knitr:
+#   opts_chunk:
+#     fig.width: 9
+#     fig.height: 5.5
+#     dpi: 150
+#     out.width: "100%"
+#     comment: "#>"

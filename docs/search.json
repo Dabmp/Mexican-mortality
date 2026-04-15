@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud). La arquitectura analítica se organiza en dos bloques complementarios :\n\n\n🏥 Bloque A — Análisis sanitario\nProgresión por desagregación de variables : tendencias globales → causas → estados → municipios.\n\n\n🗺️ Bloque B — Análisis espacial\nCartografía multi-escala : distribución por estados, hotspots municipales, gradientes regionales."
+  },
+  {
+    "objectID": "index.html#mortalidad-en-méxico",
+    "href": "index.html#mortalidad-en-méxico",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud). La arquitectura analítica se organiza en dos bloques complementarios :\n\n\n🏥 Bloque A — Análisis sanitario\nProgresión por desagregación de variables : tendencias globales → causas → estados → municipios.\n\n\n🗺️ Bloque B — Análisis espacial\nCartografía multi-escala : distribución por estados, hotspots municipales, gradientes regionales."
+  },
+  {
+    "objectID": "index.html#estructura-del-sitio",
+    "href": "index.html#estructura-del-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Estructura del sitio",
+    "text": "Estructura del sitio\n\nBloque A Análisis Sanitario y Temporal\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n①\n\nyear, sex\n\nTendencias globales\n→\n\n\n②\n\nyear, sex, cause\n\nTransiciones epidemiológicas\n→\n\n\n③\n\nyear, sex, cause_specific\n\nRefinamiento por causa específica\n→\n\n\n④\n\nyear, sex, state, cause\n\nDisparidades regionales\n→\n\n\n⑤\n\nyear, sex, state, cause_specific\n\nArticulación salud-territorio\n→\n\n\n\nBloque B Análisis Espacial\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n② bis\n\nstate, year, cause\n\nDistribución espacial, clusters\n→\n\n\n③ bis\n\nmunicipality, year, cause\n\nHeterogeneidad intra-estatal\n→"
+  },
+  {
+    "objectID": "index.html#síntesis-preliminar",
+    "href": "index.html#síntesis-preliminar",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Síntesis preliminar",
+    "text": "Síntesis preliminar\n\nCódigo# Agrégation nationale\nmort_nacional &lt;- mort |&gt;\n  group_by(year, sex) |&gt;\n  summarise(deaths = sum(deaths), .groups = \"drop\")\n\nggplot(mort_nacional, aes(x = year, y = deaths / 1000,\n                           color = sex, group = sex)) +\n  geom_line(linewidth = 1.1) +\n  geom_point(size = 2.2) +\n  scale_color_manual(values = palette_sexo) +\n  scale_x_continuous(breaks = seq(2000, 2022, 4)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title   = \"Mortalidad total en México\",\n    subtitle = \"Número de defunciones por sexo, 2000–2022 (datos simulados)\",\n    x = NULL, y = \"Defunciones (miles)\", color = \"Sexo\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title    = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle = element_text(color = \"#6c757d\"),\n    legend.position = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\nEvolución de la mortalidad total por sexo (2000–2022)\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nNota sobre los datos\nLos valores presentados en este sitio son simulados con fines demostrativos. Pour l’analyse réelle, remplacez le chunk setup-global par : mort &lt;- read_csv(\"data/mortalidad_mexico.csv\"). Les sources recommandées sont INEGI (SINAIS) et la DGE de la SSA."
+  },
+  {
+    "objectID": "index.html#cómo-navegar-este-sitio",
+    "href": "index.html#cómo-navegar-este-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Cómo navegar este sitio",
+    "text": "Cómo navegar este sitio\nExisten dos modalidades de lectura :\n\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\n\nLectura temática — ir directamente al Bloque B para la perspectiva espacial, o saltar a cualquier nivel según la pregunta de investigación.\n\nLos enlaces → página siguiente al final de cada página permiten avanzar de forma guiada."
+  }
+]

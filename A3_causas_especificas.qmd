@@ -1,0 +1,103 @@
+---
+title: "③ Causas específicas de muerte"
+subtitle: "Bloque A · Nivel 3 — Refinamiento analítico por causa específica (CIE-10)"
+date: today
+lang: es
+---
+
+<span class="badge-nivel">Bloque A · Nivel 3</span>
+**Variables** : `year` · `sex` · `cause_specific`
+
+## Introducción
+
+La desagregación hacia **causas específicas** (código a 3–4 dígitos CIE-10) permite
+identificar patrones imposibles de detectar a nivel de grandes grupos.
+Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2,
+cirrosis hepática, homicidios y accidentes de tránsito.
+
+---
+
+```{r setup-a3, include=FALSE}
+library(tidyverse); library(scales)
+
+palette_sexo <- c("Hombre"="#1a2744","Mujer"="#e84855","Total"="#2a7a8c")
+
+set.seed(99)
+cause_specific_list <- c(
+  "Cardiopatía isquémica", "Insuficiencia cardíaca", "EVC",
+  "Cáncer de mama", "Cáncer cervical", "Cáncer de próstata", "Cáncer de pulmón",
+  "Diabetes tipo 2", "Complicaciones DM", "Cirrosis hepática",
+  "Neumonía", "EPOC", "COVID-19",
+  "Accidentes de tránsito", "Homicidios", "Suicidios"
+)
+
+mort_spec <- expand.grid(
+  year           = 2000:2022,
+  sex            = c("Hombre","Mujer"),
+  cause_specific = cause_specific_list,
+  stringsAsFactors = FALSE
+) |> mutate(
+  deaths = rpois(n(), lambda = 100 + 15*(year-2000) +
+                   ifelse(sex=="Hombre",40,0) +
+                   case_when(
+                     cause_specific %in% c("Cardiopatía isquémica","Diabetes tipo 2") ~ 300,
+                     cause_specific %in% c("Homicidios","Accidentes de tránsito")     ~ 200,
+                     TRUE ~ 50
+                   ))
+)
+```
+
+## Evolución por causa específica
+
+::: {.panel-tabset}
+
+#### Top 10 causas (2022)
+
+```{r fig-top10-causas}
+mort_spec |>
+  filter(year==2022) |>
+  group_by(cause_specific) |>
+  summarise(deaths=sum(deaths)) |>
+  slice_max(deaths, n=10) |>
+  mutate(cause_specific=reorder(cause_specific, deaths)) |>
+  ggplot(aes(x=cause_specific, y=deaths/1000)) +
+  geom_col(fill="#1a2744", alpha=0.85) + coord_flip() +
+  scale_y_continuous(labels=label_comma(suffix=" k")) +
+  labs(title="Top 10 causas específicas de mortalidad (2022)",
+       x=NULL, y="Defunciones (miles)") +
+  theme_minimal(base_size=12) +
+  theme(plot.title=element_text(face="bold",color="#1a2744"),panel.grid.minor=element_blank())
+```
+
+#### Tendencias por sexo
+
+```{r fig-trends-spec, fig.height=8}
+top_causes <- mort_spec |> filter(year==2022) |>
+  group_by(cause_specific) |> summarise(d=sum(deaths)) |>
+  slice_max(d,n=6) |> pull(cause_specific)
+
+mort_spec |> filter(cause_specific %in% top_causes) |>
+  group_by(year, sex, cause_specific) |>
+  summarise(deaths=sum(deaths),.groups="drop") |>
+  ggplot(aes(x=year, y=deaths/1000, color=sex, group=sex)) +
+  geom_line(linewidth=0.9) +
+  facet_wrap(~str_wrap(cause_specific,18), scales="free_y", ncol=3) +
+  scale_color_manual(values=palette_sexo) +
+  scale_x_continuous(breaks=c(2000,2010,2022)) +
+  labs(x=NULL, y="Defunciones (miles)", color="Sexo",
+       title="Tendencias por causa específica y sexo") +
+  theme_minimal(base_size=11) +
+  theme(legend.position="bottom",plot.title=element_text(face="bold",color="#1a2744"),
+        strip.text=element_text(face="bold",size=9),panel.grid.minor=element_blank())
+```
+
+:::
+
+---
+
+## Navigation
+
+::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
+[← ② Causas](A2_causas.qmd){.btn .btn-outline-secondary}
+[→ ④ Dimensión territorial](A4_territorial.qmd){.btn .btn-primary}
+:::

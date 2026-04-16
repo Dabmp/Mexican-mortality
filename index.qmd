@@ -40,36 +40,36 @@ palette_causa <- c(
 
 # ── Données simulées (à remplacer par vos fichiers réels) ────────────
 # Remplacez par : mort <- read_csv("data/mortalidad_mexico.csv")
-set.seed(42)
-years <- 2000:2022
-
-mort <- expand.grid(
-  year  = years,
-  sex   = c("Hombre", "Mujer"),
-  state = c("Ciudad de México", "Jalisco", "Nuevo León",
-            "Veracruz", "Chiapas", "Oaxaca",
-            "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-  cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-            "Diabetes mellitus", "Enfermedades respiratorias",
-            "Causas externas", "Otras")
-) |>
-  mutate(
-    deaths = rpois(n(), lambda = 500 +
-                    40 * (year - 2000) +
-                    ifelse(sex == "Hombre", 120, 0) +
-                    case_when(
-                      cause == "Diabetes mellitus"             ~ 200,
-                      cause == "Enfermedades cardiovasculares" ~ 300,
-                      cause == "Tumores malignos"              ~ 150,
-                      TRUE ~ 50
-                    ) +
-                    case_when(
-                      state == "Ciudad de México" ~ 400,
-                      state == "Chiapas"          ~ -100,
-                      TRUE ~ 0
-                    )),
-    rate = deaths / runif(n(), 100000, 2000000) * 100000
-  )
+# set.seed(42)
+# years <- 2000:2022
+# 
+# mort <- expand.grid(
+#   year  = years,
+#   sex   = c("Hombre", "Mujer"),
+#   state = c("Ciudad de México", "Jalisco", "Nuevo León",
+#             "Veracruz", "Chiapas", "Oaxaca",
+#             "Guanajuato", "Michoacán", "Puebla", "Sonora"),
+#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
+#             "Diabetes mellitus", "Enfermedades respiratorias",
+#             "Causas externas", "Otras")
+# ) |>
+#   mutate(
+#     deaths = rpois(n(), lambda = 500 +
+#                     40 * (year - 2000) +
+#                     ifelse(sex == "Hombre", 120, 0) +
+#                     case_when(
+#                       cause == "Diabetes mellitus"             ~ 200,
+#                       cause == "Enfermedades cardiovasculares" ~ 300,
+#                       cause == "Tumores malignos"              ~ 150,
+#                       TRUE ~ 50
+#                     ) +
+#                     case_when(
+#                       state == "Ciudad de México" ~ 400,
+#                       state == "Chiapas"          ~ -100,
+#                       TRUE ~ 0
+#                     )),
+#     rate = deaths / runif(n(), 100000, 2000000) * 100000
+#   )
 
 # Sauvegarder pour réutilisation inter-pages (via params ou readRDS)
 # saveRDS(mort, "data/mort_simulated.rds")
@@ -88,7 +88,7 @@ La arquitectura analítica se organiza en **dos bloques complementarios** :
 :::{style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;"}
 
 :::{style="flex:1; min-width:260px; background:rgba(255,255,255,0.1); border-radius:8px; padding:1.2rem;"}
-**🏥 Bloque A — Análisis sanitario**  
+**🏥 Bloque A — Análisis epidemiologico**  
 Progresión por desagregación de variables :
 tendencias globales → causas → estados → municipios.
 :::

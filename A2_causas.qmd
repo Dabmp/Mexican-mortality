@@ -226,8 +226,12 @@ mort_causa |>
 ```
 
 :::
----
-## Causes de décès std
+<!-- --- -->
+<!-- ## Causes de décès std -->
+
+<!-- ### Standardized death rates (SDR) par cause, sexe et année -->
+
+<!-- ::: {.panel-tabset} -->
 
 #### Evolution des causes de décès (std rate)
 
@@ -259,7 +263,7 @@ ggplot(SDR, aes(x = factor(year), y = SDR, fill = libelles_cause)) +
 ```
 #### Top 5 des causes de décès (std rate)
 
-```{r fig-stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
+```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
 #--------------------------Identifier les 5 principales causes de décès par année-----------------------------
 top_5_causes_year <- SDR %>%
   group_by(year, sex) %>%
@@ -304,6 +308,8 @@ ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +
 
 
 ```
+
+<!-- ::: -->
 ---
 
 ## Différences de genre dans les patterns causaux

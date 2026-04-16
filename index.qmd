@@ -15,7 +15,7 @@ format:
     page-layout: full
 ---
 
-```{r setup-global, include=FALSE}
+```{r setup-global, include=FALSE, cache=FALSE}
 # ── Packages globaux ─────────────────────────────────────────────────
 # Ce chunk est exécuté une fois et ses objets sont disponibles
 # si cache=TRUE est activé dans _quarto.yml
@@ -40,36 +40,36 @@ palette_causa <- c(
 
 # ── Données simulées (à remplacer par vos fichiers réels) ────────────
 # Remplacez par : mort <- read_csv("data/mortalidad_mexico.csv")
-# set.seed(42)
-# years <- 2000:2022
-# 
-# mort <- expand.grid(
-#   year  = years,
-#   sex   = c("Hombre", "Mujer"),
-#   state = c("Ciudad de México", "Jalisco", "Nuevo León",
-#             "Veracruz", "Chiapas", "Oaxaca",
-#             "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-#             "Diabetes mellitus", "Enfermedades respiratorias",
-#             "Causas externas", "Otras")
-# ) |>
-#   mutate(
-#     deaths = rpois(n(), lambda = 500 +
-#                     40 * (year - 2000) +
-#                     ifelse(sex == "Hombre", 120, 0) +
-#                     case_when(
-#                       cause == "Diabetes mellitus"             ~ 200,
-#                       cause == "Enfermedades cardiovasculares" ~ 300,
-#                       cause == "Tumores malignos"              ~ 150,
-#                       TRUE ~ 50
-#                     ) +
-#                     case_when(
-#                       state == "Ciudad de México" ~ 400,
-#                       state == "Chiapas"          ~ -100,
-#                       TRUE ~ 0
-#                     )),
-#     rate = deaths / runif(n(), 100000, 2000000) * 100000
-#   )
+set.seed(42)
+years <- 2000:2022
+
+mort <- expand.grid(
+  year  = years,
+  sex   = c("Hombre", "Mujer"),
+  state = c("Ciudad de México", "Jalisco", "Nuevo León",
+            "Veracruz", "Chiapas", "Oaxaca",
+            "Guanajuato", "Michoacán", "Puebla", "Sonora"),
+  cause = c("Enfermedades cardiovasculares", "Tumores malignos",
+            "Diabetes mellitus", "Enfermedades respiratorias",
+            "Causas externas", "Otras")
+) |>
+  mutate(
+    deaths = rpois(n(), lambda = 500 +
+                    40 * (year - 2000) +
+                    ifelse(sex == "Hombre", 120, 0) +
+                    case_when(
+                      cause == "Diabetes mellitus"             ~ 200,
+                      cause == "Enfermedades cardiovasculares" ~ 300,
+                      cause == "Tumores malignos"              ~ 150,
+                      TRUE ~ 50
+                    ) +
+                    case_when(
+                      state == "Ciudad de México" ~ 400,
+                      state == "Chiapas"          ~ -100,
+                      TRUE ~ 0
+                    )),
+    rate = deaths / runif(n(), 100000, 2000000) * 100000
+  )
 
 # Sauvegarder pour réutilisation inter-pages (via params ou readRDS)
 # saveRDS(mort, "data/mort_simulated.rds")

@@ -22,9 +22,9 @@ website:
         href: index.qmd
       - text: "Bloque A — Analisis de la evolucion de la mortalidad (2000-2024)"
         menu:
-          - text: "① Descriptivo general"
+          - text: "1- Descriptivo general"
             href: A1_descriptivo_general.qmd
-          - text: "② Desagregación por causa"
+          - text: "2- Desagregación por causa"
             href: A2_causas.qmd
           - text: "③ Causas específicas"
             href: A3_causas_especificas.qmd
@@ -51,9 +51,9 @@ website:
       contents:
         - section: "Bloque A — Spatio-temporalidad"
           contents:
-            - text: "① Descriptivo general"
+            - text: "1- Descriptivo general"
               href: A1_descriptivo_general.qmd
-            - text: "② Desagregación por causa"
+            - text: "2- Desagregación por causa"
               href: A2_causas.qmd
             - text: "③ Causas específicas"
               href: A3_causas_especificas.qmd
@@ -107,7 +107,7 @@ execute:
   warning: false
   message: false
   echo: true
-  cache: true
+  cache: false
 
 # ── Options knitr/R globales ─────────────────────────────────────────
 knitr:

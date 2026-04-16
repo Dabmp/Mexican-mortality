@@ -33,13 +33,13 @@ brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas te
 
 ```{r setup-n2, include=FALSE}
 load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/Std/National/year sex cap/rateyrsxcap.rda")
-mort <- tx_bruts_by_cause_year |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
 library(tidyverse)
 library(scales)
 library(knitr)
 library(kableExtra)
 library(ggrepel)
 library(patchwork)   # composition de graphiques
+mort <- tx_bruts_by_cause_year |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
 
 # ── Palette cohérente (définie dans index.qmd, reproduite ici) ───────
 palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")

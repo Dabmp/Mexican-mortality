@@ -236,6 +236,7 @@ mort_causa |>
 #### Evolution des causes de décès (std rate)
 
 ```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
+ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/Std/National/year sex cap/SDR.rda")
 SDR <- SDR %>%
   mutate(
     cause = as.character(CAPITULO),

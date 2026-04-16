@@ -1,6 +1,6 @@
 ---
-title: "② Desagregación por causa de muerte"
-subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2022"
+title: "2- Desagregación por causa de muerte"
+subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2024"
 date: today
 date-format: "MMMM YYYY"
 lang: es
@@ -32,6 +32,8 @@ brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas te
 ---
 
 ```{r setup-n2, include=FALSE}
+load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/Std/National/year sex cap/rateyrsxcap.rda")
+mort <- tx_bruts_by_cause_year |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
 library(tidyverse)
 library(scales)
 library(knitr)
@@ -40,49 +42,85 @@ library(ggrepel)
 library(patchwork)   # composition de graphiques
 
 # ── Palette cohérente (définie dans index.qmd, reproduite ici) ───────
-palette_sexo <- c("Hombre" = "#1a2744", "Mujer" = "#e84855",
-                  "Total"  = "#2a7a8c")
+palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
-palette_causa <- c(
-  "Enfermedades cardiovasculares" = "#1a2744",
-  "Tumores malignos"              = "#e84855",
-  "Diabetes mellitus"             = "#2a7a8c",
-  "Enfermedades respiratorias"    = "#f4a261",
-  "Causas externas"               = "#6c757d",
-  "Otras"                         = "#adb5bd"
+
+#-------------------------plot SMR ------------------------------
+
+libelles_cause <- c(
+  "01" = "1 - Certain infectious and parasitic diseases",
+  "02" = "2 - Tumors (neoplasms)",
+  "03" = "3 - Diseases of the blood and immune system",
+  "04" = "4 - Endocrine, nutritional, and metabolic diseases",
+  "05" = "5 - Mental and behavioral disorders",
+  "06" = "6 - Diseases of the nervous system",
+  "07" = "7 - Diseases of the eye and adnexa",
+  "08" = "8 - Diseases of the ear and mastoid process",
+  "09" = "9 - Diseases of the circulatory system",
+  "10" = "10 - Diseases of the respiratory system",
+  "11" = "11 - Diseases of the digestive system",
+  "12" = "12 - Diseases of the skin and subcutaneous tissue",
+  "13" = "13 - Diseases of the musculoskeletal system and connective tissue",
+  "14" = "14 - Diseases of the genitourinary system",
+  "15" = "15 - Pregnancy, childbirth, and the puerperium",
+  "16" = "16 - Conditions originating in the perinatal period",
+  "17" = "17 - Congenital malformations and chromosomal abnormalities",
+  "18" = "18 - Symptoms, signs, and abnormal clinical and laboratory findings",
+  "20" = "20 - External causes of morbidity and mortality",
+  "22" = "22 - COVID-19"
 )
-
+# palette_causa <- c(
+#   "Enfermedades cardiovasculares" = "#1a2744",
+#   "Tumores malignos"              = "#e84855",
+#   "Diabetes mellitus"             = "#2a7a8c",
+#   "Enfermedades respiratorias"    = "#f4a261",
+#   "Causas externas"               = "#6c757d",
+#   "Otras"                         = "#adb5bd"
+# )
+cols_20 <- c(
+  "#F88080FF", 
+  "#60A040FF",   # muted green
+  "#9060A0FF",   # muted purple
+  "#D08040FF",   # muted brown‑orange
+  "#50A0C0FF",   # muted teal
+  "#B05090FF",   # muted magenta
+  "#409070FF",   # muted forest green
+  "#808080FF" ,  # medium gray (for baseline / total)
+  "#C89028FF", "#11500FFF", "#304898FF", "#604838FF",
+  "#E8B828FF", "#F03838FF", "#783838FF", "#B83838FF",
+  "#4078B8FF", "#282858FF", "#F85559FF", "#A8C0F8FF"
+)
 # ── Données (remplacer par readRDS("data/mort_simulated.rds")) ────────
-set.seed(42)
-years <- 2000:2022
+# set.seed(42)
+# years <- 2000:2022
 
-mort <- expand.grid(
-  year  = years,
-  sex   = c("Hombre", "Mujer"),
-  state = c("Ciudad de México", "Jalisco", "Nuevo León",
-            "Veracruz", "Chiapas", "Oaxaca",
-            "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-  cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-            "Diabetes mellitus", "Enfermedades respiratorias",
-            "Causas externas", "Otras")
-) |>
-  mutate(
-    deaths = rpois(n(), lambda = 500 +
-                    40 * (year - 2000) +
-                    ifelse(sex == "Hombre", 120, 0) +
-                    case_when(
-                      cause == "Diabetes mellitus"             ~ 200,
-                      cause == "Enfermedades cardiovasculares" ~ 300,
-                      cause == "Tumores malignos"              ~ 150,
-                      TRUE ~ 50
-                    ) +
-                    case_when(
-                      state == "Ciudad de México" ~ 400,
-                      state == "Chiapas"          ~ -100,
-                      TRUE ~ 0
-                    )),
-    rate = deaths / runif(n(), 100000, 2000000) * 100000
-  )
+# mort <- expand.grid(
+#   year  = years,
+#   sex   = c("Hombre", "Mujer"),
+#   state = c("Ciudad de México", "Jalisco", "Nuevo León",
+#             "Veracruz", "Chiapas", "Oaxaca",
+#             "Guanajuato", "Michoacán", "Puebla", "Sonora"),
+#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
+#             "Diabetes mellitus", "Enfermedades respiratorias",
+#             "Causas externas", "Otras")
+# ) |>
+#   mutate(
+#     deaths = rpois(n(), lambda = 500 +
+#                     40 * (year - 2000) +
+#                     ifelse(sex == "Hombre", 120, 0) +
+#                     case_when(
+#                       cause == "Diabetes mellitus"             ~ 200,
+#                       cause == "Enfermedades cardiovasculares" ~ 300,
+#                       cause == "Tumores malignos"              ~ 150,
+#                       TRUE ~ 50
+#                     ) +
+#                     case_when(
+#                       state == "Ciudad de México" ~ 400,
+#                       state == "Chiapas"          ~ -100,
+#                       TRUE ~ 0
+#                     )),
+#     rate = deaths / runif(n(), 100000, 2000000) * 100000
+#   )
 
 # ── Agrégations utiles ────────────────────────────────────────────────
 # Par année × cause
@@ -102,7 +140,8 @@ mort_causa_pct <- mort_causa |>
   ungroup()
 
 # Dernière année disponible
-last_year <- max(years)
+last_year <- max(mort$year)
+class(year)  
 ```
 
 ## Vue d'ensemble : composition de la mortalité
@@ -113,16 +152,16 @@ last_year <- max(years)
 
 #### Aire empilée (%)
 
-```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 2000–2022 (%)"}
+```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 2000–2024 (%)"}
 ggplot(mort_causa_pct,
        aes(x = year, y = pct, fill = cause)) +
   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) +
-  scale_fill_manual(values = palette_causa) +
+  scale_fill_manual(values = cols_20) +
   scale_x_continuous(breaks = seq(2000, 2022, 4)) +
   scale_y_continuous(labels = label_percent(scale = 1)) +
   labs(
     title    = "Composición de la mortalidad por grupo de causa",
-    subtitle = "Proporción anual de defunciones, México 2000–2022",
+    subtitle = "Proporción anual de defunciones, México 2000–2024",
     x = NULL, y = "% defunciones", fill = NULL
   ) +
   theme_minimal(base_size = 13) +
@@ -150,13 +189,13 @@ ggplot(mort_causa,
     size  = 3, nudge_x = 0.8, segment.color = "grey60",
     show.legend = FALSE
   ) +
-  scale_color_manual(values = palette_causa) +
-  scale_x_continuous(breaks = seq(2000, 2022, 4),
+  scale_color_manual(values = cols_20) +
+  scale_x_continuous(breaks = seq(2000, 2023, 4),
                      limits = c(2000, 2025)) +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
   labs(
     title    = "Evolución absoluta de la mortalidad por causa",
-    subtitle = "Número de defunciones (miles), México 2000–2022",
+    subtitle = "Número de defunciones (miles), México 2000–2023",
     x = NULL, y = "Defunciones (miles)", color = NULL
   ) +
   theme_minimal(base_size = 13) +
@@ -168,17 +207,18 @@ ggplot(mort_causa,
   )
 ```
 
+
 #### Tableau résumé
 
 ```{r tabla-causa-anio}
 mort_causa |>
-  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2022)) |>
+  filter(year %in% c(2000, 2005, 2010, 2015, 2020, 2023)) |>
   pivot_wider(names_from = year, values_from = deaths) |>
-  arrange(desc(`2022`)) |>
+  arrange(desc(`2023`)) |>
   mutate(across(where(is.numeric), ~ format(.x, big.mark = ","))) |>
   kable(
     caption = "Defunciones por causa de muerte, años seleccionados",
-    col.names = c("Causa", "2000", "2005", "2010", "2015", "2019", "2022")
+    col.names = c("Causa", "2000", "2005", "2010", "2015", "2019", "2023")
   ) |>
   kable_styling(bootstrap_options = c("striped", "hover"),
                 full_width = FALSE) |>
@@ -186,14 +226,91 @@ mort_causa |>
 ```
 
 :::
+---
+## Causes de décès std
 
+#### Evolution des causes de décès (std rate)
+
+```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
+SDR <- SDR %>%
+  mutate(
+    cause = as.character(CAPITULO),
+    libelles_cause = libelles_cause[cause]  # Map codes to names
+    # label_sex = label_sex[sex]
+  )
+# install.packages("paletteer")
+library(paletteer)
+
+ggplot(SDR, aes(x = factor(year), y = SDR, fill = libelles_cause)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ sex, labeller = label_both) +
+  # scale_fill_paletteer_d("palettetown::carvanha") +
+  scale_fill_manual(values = cols_20[1:length(unique(SDR$libelles_cause))]) +
+  
+  labs(
+    title = "Standardized causes of death (2000-2023)",
+    x = "Years",
+    y = "Standardized rate",
+    fill = "Causes of death"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+#### Top 5 des causes de décès (std rate)
+
+```{r fig-stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
+#--------------------------Identifier les 5 principales causes de décès par année-----------------------------
+top_5_causes_year <- SDR %>%
+  group_by(year, sex) %>%
+  slice_max(SDR, n = 5) %>%
+  ungroup() %>%
+  arrange(year, desc(SDR))
+
+top_5_causes_year <- top_5_causes_year %>%
+  mutate(
+    capitulo = as.character(CAPITULO),
+    cause_name = libelles_cause[CAPITULO],  # Map codes to names
+    # label_sex = label_sex[sex]
+     sex_label  = case_when(
+      sex == 1 ~ "Men",
+      sex == 2 ~ "Women")
+  )
+
+#-------------------------------------------------------
+cols_7 <- c(
+  "#C89028FF", "#10580FFF", "#304898FF", "#783838FF",
+  "#A8C0F8FF", "#F03838FF", "grey80", 
+  "#4078B8FF", "#282858FF", "#F85559FF"
+)
+
+# label_sex <- c("1" = "Men", "2"= "Women")
+#-------------------------------------------------------
+
+ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ sex_label) +
+  # scale_fill_paletteer_d("palettetown::carvanha") +
+  scale_fill_manual(values = cols_7[1:length(unique(SDR$libelles_cause))]) +
+  
+  labs(
+    title = "Top 5 standardized causes of death (2000-2023)",
+    x = "Years",
+    y = "Standardized rate",
+    fill = "Causes of death"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
 ---
 
 ## Différences de genre dans les patterns causaux
 
 ::: {.panel-tabset}
 
-#### Hommes vs Femmes (2022)
+#### Hommes vs Femmes (2023)
 
 ```{r fig-sex-causa-barras, fig.cap="Mortalité par cause et sexe, dernière année disponible"}
 mort_causa_sex |>
@@ -253,14 +370,14 @@ mort_causa_sex |>
 
 #### Tendencias por sexo
 
-```{r fig-tendencias-sexo, fig.height=7, fig.cap="Tendencias por causa y sexo, 2000–2022"}
+```{r fig-tendencias-sexo, fig.height=7, fig.cap="Tendencias por causa y sexo, 2000–2023"}
 ggplot(mort_causa_sex,
        aes(x = year, y = deaths / 1000,
            color = sex, group = sex)) +
   geom_line(linewidth = 0.9) +
   facet_wrap(~ str_wrap(cause, 20), scales = "free_y", ncol = 3) +
   scale_color_manual(values = palette_sexo) +
-  scale_x_continuous(breaks = c(2000, 2010, 2022)) +
+  scale_x_continuous(breaks = c(2000, 2010, 2023)) +
   scale_y_continuous(labels = label_comma(suffix = "k")) +
   labs(
     title  = "Evolución de la mortalidad por causa y sexo",
@@ -294,7 +411,7 @@ ihh <- mort_causa_pct |>
 ggplot(ihh, aes(x = year, y = ihh)) +
   geom_line(color = "#2a7a8c", linewidth = 1.2) +
   geom_point(color = "#2a7a8c", size = 3) +
-  scale_x_continuous(breaks = seq(2000, 2022, 4)) +
+  scale_x_continuous(breaks = seq(2000, 2023, 4)) +
   labs(
     title    = "Índice de concentración de la mortalidad por causa (IHH)",
     subtitle = "Valores más altos indican mayor concentración en pocas causas",

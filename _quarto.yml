@@ -20,7 +20,7 @@ website:
     left:
       - text: "Inicio"
         href: index.qmd
-      - text: "Bloque A — Sanitario"
+      - text: "Bloque A — Analisis de la evolucion de la mortalidad (2000-2024)"
         menu:
           - text: "① Descriptivo general"
             href: A1_descriptivo_general.qmd
@@ -32,11 +32,11 @@ website:
             href: A4_territorial.qmd
           - text: "⑤ Máxima desagregación"
             href: A5_maxima_desagregacion.qmd
-      - text: "Bloque B — Espacial"
+      - text: "Bloque B — Disparidades regionales - Variaciones geograficas y espaciales"
         menu:
-          - text: "② bis · Análisis por Estados"
+          - text: "1- Análisis por Estados"
             href: B2_espacial_estados.qmd
-          - text: "③ bis · Análisis por Municipios"
+          - text: "2- Análisis por Municipios"
             href: B3_espacial_municipios.qmd
     right:
       - icon: github
@@ -49,7 +49,7 @@ website:
       style: "docked"
       background: "#f5f7fb"
       contents:
-        - section: "Bloque A — Temporalidad y salud"
+        - section: "Bloque A — Spatio-temporalidad"
           contents:
             - text: "① Descriptivo general"
               href: A1_descriptivo_general.qmd

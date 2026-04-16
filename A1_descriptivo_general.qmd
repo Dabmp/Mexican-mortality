@@ -1,6 +1,6 @@
 ---
-title: "① Análisis descriptivo general"
-subtitle: "Bloque A · Nivel 1 — Tendencias globales de mortalidad, 2000–2022"
+title: "1- Análisis descriptivo general"
+subtitle: "Bloque A · Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
 date: today
 lang: es
 ---
@@ -11,31 +11,35 @@ lang: es
 ## Introducción
 
 Este nivel constituye la **puerta de entrada** al análisis. Se examinan las
-tendencias brutas de mortalidad en México sin desagregar por causa ni territorio,
+tendencias brutas de mortalidad en México sin desagregacion (por causa ni territorio),
 con el objetivo de identificar patrones macro y puntos de inflexión temporales.
 
 ---
 
 ```{r setup-a1, include=FALSE}
+ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/Std/National/year and sex/SDR.rda")
+library(dplyr)
+mort <- SDR |>   mutate(year = as.integer(year))
+
 library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
-palette_sexo <- c("Hombre" = "#1a2744", "Mujer" = "#e84855", "Total" = "#2a7a8c")
+palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
-set.seed(42)
-mort <- expand.grid(
-  year  = 2000:2022,
-  sex   = c("Hombre", "Mujer"),
-  state = c("Ciudad de México", "Jalisco", "Nuevo León", "Veracruz",
-            "Chiapas", "Oaxaca", "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-  cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-            "Diabetes mellitus", "Enfermedades respiratorias", "Causas externas", "Otras")
-) |> mutate(
-  deaths = rpois(n(), lambda = 500 + 40*(year-2000) + ifelse(sex=="Hombre",120,0)),
-  rate   = deaths / runif(n(), 1e5, 2e6) * 1e5
-)
+# set.seed(42)
+# mort <- expand.grid(
+#   year  = 2000:2022,
+#   sex   = c("Hombre", "Mujer"),
+#   state = c("Ciudad de México", "Jalisco", "Nuevo León", "Veracruz",
+#             "Chiapas", "Oaxaca", "Guanajuato", "Michoacán", "Puebla", "Sonora"),
+#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
+#             "Diabetes mellitus", "Enfermedades respiratorias", "Causas externas", "Otras")
+# ) |> mutate(
+#   deaths = rpois(n(), lambda = 500 + 40*(year-2000) + ifelse(sex=="Hombre",120,0)),
+#   rate   = deaths / runif(n(), 1e5, 2e6) * 1e5
+# )
 
-mort_yr_sex <- mort |> group_by(year, sex) |> summarise(deaths=sum(deaths), .groups="drop")
-mort_yr     <- mort |> group_by(year)      |> summarise(deaths=sum(deaths), .groups="drop") |>
+mort_yr_sex <- mort |> group_by(year, sex) |> summarise(deaths=sum(n_death), .groups="drop")
+mort_yr     <- mort |> group_by(year)      |> summarise(deaths=sum(n_death), .groups="drop") |>
                mutate(sex = "Total")
 mort_global <- bind_rows(mort_yr_sex, mort_yr)
 ```
@@ -46,13 +50,13 @@ mort_global <- bind_rows(mort_yr_sex, mort_yr)
 
 #### Serie temporal
 
-```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2022)"}
+```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}
 ggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +
   geom_line(linewidth=1.1) + geom_point(size=2.2) +
   scale_color_manual(values=palette_sexo) +
-  scale_x_continuous(breaks=seq(2000,2022,4)) +
+  scale_x_continuous(breaks=seq(2000,2024,4)) +
   scale_y_continuous(labels=label_comma(suffix=" k")) +
-  labs(title="Mortalidad total en México", subtitle="Defunciones por sexo, 2000–2022",
+  labs(title="Mortalidad total en México", subtitle="Defunciones por sexo, 2000–2024",
        x=NULL, y="Defunciones (miles)", color="Sexo") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), legend.position="bottom",
@@ -66,9 +70,9 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
   ggplot(aes(x=year, y=growth)) +
   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
   geom_hline(yintercept=0, color="#1a2744") +
-  scale_x_continuous(breaks=seq(2001,2022,3)) +
+  scale_x_continuous(breaks=seq(2001,2024,4)) +
   labs(title="Tasa de crecimiento anual de la mortalidad",
-       x=NULL, y="Variación anual (%)") +
+       x="Year", y="Variación anual (%)") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
 ```

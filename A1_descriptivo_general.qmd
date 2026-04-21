@@ -17,9 +17,10 @@ con el objetivo de identificar patrones macro y puntos de inflexión temporales.
 ---
 
 ```{r setup-a1, include=FALSE}
- load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/Std/National/year and sex/SDR.rda")
+ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
+
 library(dplyr)
-mort <- SDR |>   mutate(year = as.integer(year))
+mort <- asmr_nac |>   mutate(year = as.integer(year))
 
 library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
@@ -54,10 +55,11 @@ mort_global <- bind_rows(mort_yr_sex, mort_yr)
 ggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +
   geom_line(linewidth=1.1) + geom_point(size=2.2) +
   scale_color_manual(values=palette_sexo) +
-  scale_x_continuous(breaks=seq(2000,2024,4)) +
+  scale_x_continuous(breaks=seq(1990,2024,4)) +
   scale_y_continuous(labels=label_comma(suffix=" k")) +
-  labs(title="Mortalidad total en México", subtitle="Defunciones por sexo, 2000–2024",
-       x=NULL, y="Defunciones (miles)", color="Sexo") +
+ labs(title="Total Mortality in Mexico", subtitle="Deaths by Sex, 1990–2024",
+
+x=NULL, y="Deaths (thousands)", color="Sex") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), legend.position="bottom",
         panel.grid.minor=element_blank())
@@ -70,9 +72,9 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
   ggplot(aes(x=year, y=growth)) +
   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
   geom_hline(yintercept=0, color="#1a2744") +
-  scale_x_continuous(breaks=seq(2001,2024,4)) +
-  labs(title="Tasa de crecimiento anual de la mortalidad",
-       x="Year", y="Variación anual (%)") +
+  scale_x_continuous(breaks=seq(1990,2024,4)) +
+ labs(title="Annual Mortality Growth Rate",
+  x="Year", y="Annual Change (%)") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
 ```

@@ -38,6 +38,7 @@ library(scales)
 library(knitr)
 library(kableExtra)
 library(ggrepel)
+options(ggrepel.max.overlaps = Inf)
 library(patchwork)   # composition de graphiques
 mort <- tx_bruts_by_cause_year |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
 
@@ -141,7 +142,7 @@ mort_causa_pct <- mort_causa |>
 
 # Dernière année disponible
 last_year <- max(mort$year)
-class(year)  
+# class(year)  
 ```
 
 ## Vue d'ensemble : composition de la mortalité
@@ -226,12 +227,12 @@ mort_causa |>
 ```
 
 :::
-<!-- --- -->
-<!-- ## Causes de décès std -->
+---
+## Causes de décès std
 
-<!-- ### Standardized death rates (SDR) par cause, sexe et année -->
+### Standardized death rates (SDR) par cause, sexe et année
 
-<!-- ::: {.panel-tabset} -->
+::: {.panel-tabset}
 
 #### Evolution des causes de décès (std rate)
 
@@ -310,12 +311,12 @@ ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +
 
 ```
 
-<!-- ::: -->
+:::
 ---
 
-## Différences de genre dans les patterns causaux
-
-::: {.panel-tabset}
+<!-- ## Différences de genre dans les patterns causaux -->
+  
+  ::: {.panel-tabset}
 
 #### Hommes vs Femmes (2023)
 
@@ -400,11 +401,11 @@ ggplot(mort_causa_sex,
 ```
 
 :::
-
----
-
+  
+  ---
+  
 ## Indicateurs de concentration
-
+  
 ```{r indice-concentracion}
 # Indice de Herfindahl-Hirschman (concentration causale)
 ihh <- mort_causa_pct |>

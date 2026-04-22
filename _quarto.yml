@@ -3,8 +3,8 @@ project:
   output-dir: docs          # compatible GitHub Pages (dossier docs/)
 
 website:
-  title: "Mortalidad en México"
-  description: "Análisis multidimensional de la mortalidad en México — perspectivas sanitarias y espaciales"
+  title: "Mortality in Mexico"
+  description:  "Multidimensional analysis of mortality in Mexico — health and spatial perspectives"
   favicon: "assets/favicon.png"
   # site-url: "https://dabmp.github.io/mortalidad-mexico"
   # repo-url: "https://github.com/dabmp/mortalidad-mexico"
@@ -20,13 +20,13 @@ website:
     left:
       - text: "Inicio"
         href: index.qmd
-      - text: "Bloque A — Analisis de la evolucion de la mortalidad (2000-2024)"
+      - text: "Bloque A — Evolution of mortality in Mexico (1990-2024)"
         menu:
-          - text: "1- Descriptivo general"
+          - text: "1- General description"
             href: A1_descriptivo_general.qmd
-          - text: "2- Desagregación por causa"
+          - text: "2- Disaggregation by cause"
             href: A2_causas.qmd
-          - text: "③ Causas específicas"
+          - text: "3- Specific causes"
             href: A3_causas_especificas.qmd
           - text: "④ Dimensión territorial"
             href: A4_territorial.qmd

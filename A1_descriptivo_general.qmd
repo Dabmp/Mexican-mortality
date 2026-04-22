@@ -2,7 +2,7 @@
 title: "1- Análisis descriptivo general"
 subtitle: "Bloque A · Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
 date: today
-lang: es
+lang: en
 ---
 
 <span class="badge-nivel">Bloque A · Nivel 1</span>

@@ -165,5 +165,49 @@
       "Bloc A — Spatio-temporalidad",
       "2- Disaggregation by cause"
     ]
+  },
+  {
+    "objectID": "A3_causas_especificas.html",
+    "href": "A3_causas_especificas.html",
+    "title": "③ Causas específicas de muerte",
+    "section": "",
+    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "A3_causas_especificas.html#introducción",
+    "href": "A3_causas_especificas.html#introducción",
+    "title": "③ Causas específicas de muerte",
+    "section": "Introducción",
+    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "A3_causas_especificas.html#evolución-por-causa-específica",
+    "href": "A3_causas_especificas.html#evolución-por-causa-específica",
+    "title": "③ Causas específicas de muerte",
+    "section": "Evolución por causa específica",
+    "text": "Evolución por causa específica\n\n\nTop 10 causas (2022)\nTendencias por sexo\n\n\n\n\nCodemort_spec |&gt;\n  filter(year==2022) |&gt;\n  group_by(cause_specific) |&gt;\n  summarise(deaths=sum(deaths)) |&gt;\n  slice_max(deaths, n=10) |&gt;\n  mutate(cause_specific=reorder(cause_specific, deaths)) |&gt;\n  ggplot(aes(x=cause_specific, y=deaths/1000)) +\n  geom_col(fill=\"#1a2744\", alpha=0.85) + coord_flip() +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n  labs(title=\"Top 10 causas específicas de mortalidad (2022)\",\n       x=NULL, y=\"Defunciones (miles)\") +\n  theme_minimal(base_size=12) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"),panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nCodetop_causes &lt;- mort_spec |&gt; filter(year==2022) |&gt;\n  group_by(cause_specific) |&gt; summarise(d=sum(deaths)) |&gt;\n  slice_max(d,n=6) |&gt; pull(cause_specific)\n\nmort_spec |&gt; filter(cause_specific %in% top_causes) |&gt;\n  group_by(year, sex, cause_specific) |&gt;\n  summarise(deaths=sum(deaths),.groups=\"drop\") |&gt;\n  ggplot(aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=0.9) +\n  facet_wrap(~str_wrap(cause_specific,18), scales=\"free_y\", ncol=3) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=c(2000,2010,2022)) +\n  labs(x=NULL, y=\"Defunciones (miles)\", color=\"Sexo\",\n       title=\"Tendencias por causa específica y sexo\") +\n  theme_minimal(base_size=11) +\n  theme(legend.position=\"bottom\",plot.title=element_text(face=\"bold\",color=\"#1a2744\"),\n        strip.text=element_text(face=\"bold\",size=9),panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "A3_causas_especificas.html#navigation",
+    "href": "A3_causas_especificas.html#navigation",
+    "title": "③ Causas específicas de muerte",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "③ Causas específicas"
+    ]
   }
 ]

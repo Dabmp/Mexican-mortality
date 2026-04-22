@@ -20,7 +20,7 @@ website:
     left:
       - text: "Inicio"
         href: index.qmd
-      - text: "Bloque A — Evolution of mortality in Mexico (1990-2024)"
+      - text: "Bloc A — Evolution of mortality in Mexico (1990-2024)"
         menu:
           - text: "1- General description"
             href: A1_descriptivo_general.qmd
@@ -32,12 +32,24 @@ website:
             href: A4_territorial.qmd
           - text: "⑤ Máxima desagregación"
             href: A5_maxima_desagregacion.qmd
-      - text: "Bloque B — Disparidades regionales - Variaciones geograficas y espaciales"
+      - text: "Bloc B — Regional disparities - Geographical and spatial variations"
         menu:
-          - text: "1- Análisis por Estados"
+          - text: " 1- Regional descriptition"
+            href: B1_Regional_description.qmd
+          - text: "2- Análisis por Estados"
             href: B2_espacial_estados.qmd
-          - text: "2- Análisis por Municipios"
+          - text: "3- Análisis por Municipios"
             href: B3_espacial_municipios.qmd
+      
+      - text: "Bloc C — Life expectancy"
+        menu:
+          - text: " 1- Regional descriptition"
+            href: C1_Regional_description.qmd
+          - text: "2- States"
+            href: C2_espacial_estados.qmd
+          - text: "3- Municipios"
+            href: C3_espacial_municipios.qmd
+      
     right:
       - icon: github
         href: "https://github.com/dabmp/mortalidad-mexico"
@@ -49,11 +61,11 @@ website:
       style: "docked"
       background: "#f5f7fb"
       contents:
-        - section: "Bloque A — Spatio-temporalidad"
+        - section: "Bloc A — Spatio-temporalidad"
           contents:
-            - text: "1- Descriptivo general"
+            - text: "1- General description"
               href: A1_descriptivo_general.qmd
-            - text: "2- Desagregación por causa"
+            - text: "2- Disaggregation by cause"
               href: A2_causas.qmd
             - text: "③ Causas específicas"
               href: A3_causas_especificas.qmd
@@ -61,19 +73,29 @@ website:
               href: A4_territorial.qmd
             - text: "⑤ Máxima desagregación"
               href: A5_maxima_desagregacion.qmd
-        - section: "Bloque B — Análisis espacial"
+        - section: "Bloc B — Análisis espacial"
           contents:
-            - text: "② bis · Estados"
+            - text: " 1- Regional descriptition"
+              href: B1_Regional_description.qmd
+            - text: "2- States"
               href: B2_espacial_estados.qmd
-            - text: "③ bis · Municipios"
+            - text: "3- Municipios"
               href: B3_espacial_municipios.qmd
+        - section: "Bloc C — Life expectancy"
+          contents:
+            - text: " 1- Regional descriptition"
+              href: C1_Regional_description.qmd
+            - text: "2- States"
+              href: C2_espacial_estados.qmd
+            - text: "3- Municipios"
+              href: C3_espacial_municipios.qmd
 
   # ── Pied de page ─────────────────────────────────────────────────────────────
   page-footer:
     left: |
-      Análisis de mortalidad en México · Datos: INEGI / SSA
+      Análisis de mortalidad en México · Datos: INEGI 
     right: |
-      Generado con [Quarto](https://quarto.org) · {{< meta date >}}
+      Generate by [Quarto](https://quarto.org) · {{< meta date >}}
 
   # ── Options globales ──────────────────────────────────────────────────────────
   back-to-top-navigation: true

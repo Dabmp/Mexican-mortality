@@ -1,38 +1,38 @@
 ---
-title: "2- Disaggregation by cause of death"
+  title: "2- Disaggregation by cause of death"
 subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 1990–2024"
 date: today
 date-format: "MMMM YYYY"
 lang: es
 ---
-
-<span class="badge-nivel">Bloque A · Nivel 2</span>
-**Variables** : `year` · `sex` · `cause`
+  
+  <span class="badge-nivel">Bloque A · Nivel 2</span>
+  **Variables** : `year` · `sex` · `cause`
 
 ---
-
-## Introducción analítica
-
-La incorporación de la **causa de muerte** como dimensión analítica permite identificar
+  
+  ## Introducción analítica
+  
+  La incorporación de la **causa de muerte** como dimensión analítica permite identificar
 las grandes **transiciones epidemiológicas** que caracterizan la evolución sanitaria
 de México durante las tres ultimas décadas.
 
 En este nivel se busca responder tres preguntas clave :
-
-1. ¿Qué enfermedades concentran la mayor carga de mortalidad ?
-2. ¿Cómo ha evolucionado la composición por causa en el tiempo ?
-3. ¿Existen diferencias de género en los patrones causales ?
-
-::: {.callout-tip}
+  
+  1. ¿Qué enfermedades concentran la mayor carga de mortalidad ?
+  2. ¿Cómo ha evolucionado la composición por causa en el tiempo ?
+  3. ¿Existen diferencias de género en los patrones causales ?
+  
+  ::: {.callout-tip}
 **Enlace con el nivel anterior**  
-El [Nivel ① — Descriptivo general](A1_descriptivo_general.qmd) establece las tendencias
+  El [Nivel ① — Descriptivo general](A1_descriptivo_general.qmd) establece las tendencias
 brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.
 :::
-
----
-
-```{r setup-n2, include=FALSE}
- load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/ratepopbycause.rda")
+  
+  ---
+  
+  ```{r setup-n2, include=FALSE}
+load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/ratepopbycause.rda")
 
 library(tidyverse)
 library(scales)
@@ -227,8 +227,8 @@ mort_causa |>
   filter(year %in% c(2000, 2005, 2010, 2015, 2020, 2024)) |>
   pivot_wider(names_from = year, values_from = deaths) |>
   arrange(desc(`2024`)) |>
-    mutate(cause = unname(cause_name[cause])) |>
-
+  mutate(cause = unname(cause_name[cause])) |>
+  
   mutate(across(where(is.numeric), ~ format(.x, big.mark = ","))) |>
   kable(
     caption = "Deaths by cause of death, selected years",
@@ -237,18 +237,18 @@ mort_causa |>
   kable_styling(bootstrap_options = c("striped", "hover"),
                 full_width = FALSE) |>
   row_spec(1, bold = TRUE, background = "#f0f4f8")
-  
 
-  
+
+
 ```
 
 :::
----
-## Causes de décès std
-
-### Standardized death rates (SDR) par cause, sexe et année
-
-::: {.panel-tabset}
+  ---
+  ## Causes de décès std
+  
+  ### Standardized death rates (SDR) par cause, sexe et année
+  
+  ::: {.panel-tabset}
 
 #### Evolution des causes de décès (std rate)
 
@@ -325,34 +325,101 @@ cols_7 <- c(
 ```
 
 :::
----
-
-<!-- ## Différences de genre dans les patterns causaux -->
+  ---
+  
+  <!-- ## Différences de genre dans les patterns causaux -->
   
   ::: {.panel-tabset}
 
 #### Hommes vs Femmes (2023)
 
 ```{r fig-sex-causa-barras, fig.cap="Mortalité par cause et sexe, dernière année disponible"}
+mort_causa_sex |>
+  filter(year == last_year) |>
+  mutate(cause = str_wrap(cause, 22)) |>
+  ggplot(aes(x = reorder(cause, deaths),
+             y = deaths / 1000, fill = sex)) +
+  geom_col(position = "dodge", width = 0.7, alpha = 0.9) +
+  coord_flip() +
+  scale_fill_manual(values = palette_sexo) +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(
+    title    = paste0("Mortalidad por causa y sexo (", last_year, ")"),
+    subtitle = "Número de defunciones (miles)",
+    x = NULL, y = "Defunciones (miles)", fill = "Sexo"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position  = "bottom",
+    plot.title       = element_text(face = "bold", color = "#1a2744"),
+    panel.grid.minor = element_blank()
+  )
 ```
 
 #### Ratio H/M par cause
 
 ```{r fig-ratio-hm}
+mort_causa_sex |>
+  filter(year == last_year) |>
+  pivot_wider(names_from = sex, values_from = deaths) |>
+  mutate(
+    ratio_hm = Hombre / Mujer,
+    cause     = str_wrap(cause, 22),
+    direction = if_else(ratio_hm > 1, "Exceso masculino", "Exceso femenino")
+  ) |>
+  ggplot(aes(x = reorder(cause, ratio_hm), y = ratio_hm,
+             fill = direction)) +
+  geom_col(width = 0.65, alpha = 0.9) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "#6c757d") +
+  coord_flip() +
+  scale_fill_manual(
+    values = c("Exceso masculino" = "#1a2744",
+               "Exceso femenino"  = "#e84855")
+  ) +
+  labs(
+    title    = "Ratio de mortalidad Hombre / Mujer por causa",
+    subtitle = paste0("Valores > 1 indican exceso masculino (", last_year, ")"),
+    x = NULL, y = "Ratio H/M", fill = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position  = "bottom",
+    plot.title       = element_text(face = "bold", color = "#1a2744"),
+    panel.grid.minor = element_blank()
+  )
 ```
 
 #### Tendencias por sexo
 
 ```{r fig-tendencias-sexo, fig.height=7, fig.cap="Tendencias por causa y sexo, 2000–2023"}
+ggplot(mort_causa_sex,
+       aes(x = year, y = deaths / 1000,
+           color = sex, group = sex)) +
+  geom_line(linewidth = 0.9) +
+  facet_wrap(~ str_wrap(cause, 20), scales = "free_y", ncol = 3) +
+  scale_color_manual(values = palette_sexo) +
+  scale_x_continuous(breaks = c(2000, 2010, 2023)) +
+  scale_y_continuous(labels = label_comma(suffix = "k")) +
+  labs(
+    title  = "Evolución de la mortalidad por causa y sexo",
+    x = NULL, y = "Defunciones (miles)", color = "Sexo"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position  = "bottom",
+    plot.title       = element_text(face = "bold", color = "#1a2744"),
+    strip.text       = element_text(size = 9, face = "bold"),
+    panel.grid.minor = element_blank()
+  )
 ```
 
 :::
   
   ---
   
-## Indicateurs de concentration
+  ## Indicateurs de concentration
   
-```{r indice-concentracion}
+  ```{r indice-concentracion}
 # Indice de Herfindahl-Hirschman (concentration causale)
 ihh <- mort_causa_pct |>
   group_by(year) |>
@@ -379,13 +446,13 @@ ggplot(ihh, aes(x = year, y = ihh)) +
 ```
 
 ---
-
-## Points clés de ce niveau
-
-::: {.callout-note icon="false"}
+  
+  ## Points clés de ce niveau
+  
+  ::: {.callout-note icon="false"}
 **Retenir de ce niveau ②**
-
-- La mortalité mexicaine est dominée par les maladies **cardiovasculaires** et le **diabète mellitus**, reflet de la transition épidémiologique avancée.
+  
+  - La mortalité mexicaine est dominée par les maladies **cardiovasculaires** et le **diabète sucré**, reflet de la transition épidémiologique avancée.
 - Les **causes externes** (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.
 - La dynamique temporelle montre une **diversification** progressive des causes, visible dans la baisse de l'IHH après 2010.
 :::

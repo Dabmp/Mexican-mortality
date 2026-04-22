@@ -1,7 +1,7 @@
 ---
 title: "2- Disaggregation by cause of death"
 subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 1990–2024"
-date: today
+date: "today"
 date-format: "MMMM YYYY"
 lang: en
 ---

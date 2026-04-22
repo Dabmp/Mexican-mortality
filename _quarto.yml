@@ -44,7 +44,7 @@ website:
       - text: "Bloc C — Life expectancy"
         menu:
           - text: " 1- Regional descriptition"
-            href: C1_Regional_description.qmd
+            href: C1_regional_description.qmd
           - text: "2- States"
             href: C2_espacial_estados.qmd
           - text: "3- Municipios"

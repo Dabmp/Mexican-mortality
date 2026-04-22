@@ -1,6 +1,6 @@
 ---
 title: "1- Análisis descriptivo general"
-subtitle: "Bloque A Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
+subtitle: "Bloc A Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
 ---
 
 <span class="badge-nivel">Bloc A  L1</span>

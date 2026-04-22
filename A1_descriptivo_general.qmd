@@ -116,7 +116,7 @@ x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
 
 #### Tasa de crecimiento
 
-```{r fig-crecimiento}
+```{r fig}
 # asmr_nac |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
 #   ggplot(aes(x=year, y=growth)) +
 #   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +

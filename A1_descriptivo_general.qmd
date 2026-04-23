@@ -1,6 +1,8 @@
 ---
 title: "1- Análisis descriptivo general"
 subtitle: "Bloc A Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
+date: today
+lang: en
 ---
 
 <span class="badge-nivel">Bloc A  L1</span>
@@ -12,7 +14,7 @@ Este nivel constituye la **puerta de entrada** al análisis. Se examinan las
 tendencias brutas de mortalidad en México sin desagregacion (por causa ni territorio),
 con el objetivo de identificar patrones macro y puntos de inflexión temporales.
 
----
+
 
 ```{r setup-a1, include=FALSE}
  load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
@@ -79,7 +81,7 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
 
 :::
 
----
+
 
 
 ## ASMR trend
@@ -125,8 +127,9 @@ x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
 #   theme_minimal(base_size=13) +
 #   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
 ```
+:::
 
----
+
 ## Navigation
 
 ::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}

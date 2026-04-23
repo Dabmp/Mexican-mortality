@@ -1,7 +1,7 @@
 ---
 title: "2- Disaggregation by cause of death"
 subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 1990–2024"
-date: "today"
+date: today
 date-format: "MMMM YYYY"
 lang: "en"
 ---
@@ -9,7 +9,7 @@ lang: "en"
 <span class="badge-nivel">Bloque A · Nivel 2</span>
 **Variables** : `year` · `sex` · `cause`
 
----
+
 
 ## Introducción analítica
 
@@ -29,7 +29,7 @@ El [Nivel ① — Descriptivo general](A1_descriptivo_general.qmd) establece las
 brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.
 :::
 
----
+
 
 ```{r setup-n2, include=FALSE}
  load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/ratepopbycause.rda")
@@ -243,7 +243,7 @@ mort_causa |>
 ```
 
 :::
----
+
 ## Causes de décès std
 
 ### Standardized death rates (SDR) par cause, sexe et année
@@ -325,11 +325,11 @@ cols_7 <- c(
 ```
 
 :::
----
+
 
 <!-- ## Différences de genre dans les patterns causaux -->
   
-  ::: {.panel-tabset}
+::: {.panel-tabset}
 
 #### Hommes vs Femmes (2023)
 
@@ -348,7 +348,7 @@ cols_7 <- c(
 
 :::
   
-  ---
+
   
 ## Indicateurs de concentration
   
@@ -378,7 +378,7 @@ ggplot(ihh, aes(x = year, y = ihh)) +
   )
 ```
 
----
+
 
 ## Points clés de ce niveau
 
@@ -390,7 +390,7 @@ ggplot(ihh, aes(x = year, y = ihh)) +
 - La dynamique temporelle montre une **diversification** progressive des causes, visible dans la baisse de l'IHH après 2010.
 :::
 
----
+
 
 ## Navigation
 

@@ -92,10 +92,8 @@ website:
 
   # ── Pied de page ─────────────────────────────────────────────────────────────
   page-footer:
-    left: |
-      Análisis de mortalidad en México · Datos: INEGI 
-    right: |
-      Generate by [Quarto](https://quarto.org) · {{< meta date >}}
+    left: "Análisis de mortalidad en México · Datos: INEGI"
+    right: "Generate by [Quarto](https://quarto.org) · {{< meta date >}}"
 
   # ── Options globales ──────────────────────────────────────────────────────────
   back-to-top-navigation: true
@@ -118,12 +116,6 @@ format:
     fig-cap-location: bottom
     tbl-cap-location: top
     df-print: paged
-    # execute:
-    #   warning: false
-    #   message: false
-    #   echo: true
-    #   cache: true       # cache pour accélérer le rendu
-
 # ── Exécution R (niveau racine, pas sous format) ─────────────────────
 execute:
   warning: false
@@ -139,11 +131,3 @@ knitr:
     dpi: 150
     out.width: "100%"
     comment: "#>"
-# ── Options knitr/R globales ─────────────────────────────────────────────────
-# knitr:
-#   opts_chunk:
-#     fig.width: 9
-#     fig.height: 5.5
-#     dpi: 150
-#     out.width: "100%"
-#     comment: "#>"

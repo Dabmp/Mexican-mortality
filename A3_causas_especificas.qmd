@@ -1,8 +1,7 @@
 ---
 title: "③ Causas específicas de muerte"
 subtitle: "Bloque A · Nivel 3 — Refinamiento analítico por causa específica (CIE-10)"
-date: today
-lang: es
+lang: en
 ---
 
 <span class="badge-nivel">Bloque A · Nivel 3</span>
@@ -15,7 +14,7 @@ identificar patrones imposibles de detectar a nivel de grandes grupos.
 Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2,
 cirrosis hepática, homicidios y accidentes de tránsito.
 
----
+
 
 ```{r setup-a3, include=FALSE}
 library(tidyverse); library(scales)
@@ -93,7 +92,7 @@ mort_spec |> filter(cause_specific %in% top_causes) |>
 
 :::
 
----
+
 
 ## Navigation
 

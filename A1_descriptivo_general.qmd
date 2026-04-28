@@ -86,9 +86,7 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
 
 ## ASMR trend
 
-Statistical measure in epidemiology used to compare disease death rates across populations with different age structures.
-
-ASMR Definition: Age-standardized mortality rate is used to compare death rates, particularly when comparing populations with different age structures.
+The Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.
 
 
 ::: {.panel-tabset}
@@ -114,18 +112,37 @@ x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
         panel.grid.minor=element_blank())
 ```
 
-#### Tasa de crecimiento
+#### Men ASMR change
 
 ```{r fig}
-# asmr_nac |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
-#   ggplot(aes(x=year, y=growth)) +
-#   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
-#   geom_hline(yintercept=0, color="#1a2744") +
-#   scale_x_continuous(breaks=seq(1990,2024,4)) +
-#  labs(title="Annual Mortality Growth Rate (asmr)",
-#   x="Year", y="Annual Change (%)") +
-#   theme_minimal(base_size=13) +
-#   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
+asmr_male <- asmr_nac|> filter(sex == 1)
+
+asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
+  ggplot(aes(x=year, y=growth)) +
+  geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
+  geom_hline(yintercept=0, color="#1a2744") +
+  scale_x_continuous(breaks=seq(1990,2024,4)) +
+ labs(title="Annual ASMR Growth Rate (male)",
+  x="Year", y="Annual Change (%)") +
+  theme_minimal(base_size=13) +
+  theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
+```
+
+#### Women ASMR change
+
+```{r fig}
+asmr_female <- asmr_nac |> filter(sex == 2)
+  
+
+asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
+  ggplot(aes(x=year, y=growth)) +
+  geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
+  geom_hline(yintercept=0, color="#1a2744") +
+  scale_x_continuous(breaks=seq(1990,2024,4)) +
+ labs(title="Annual ASMR Growth Rate (female)",
+  x="Year", y="Annual Change (%)") +
+  theme_minimal(base_size=13) +
+  theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
 ```
 :::
 

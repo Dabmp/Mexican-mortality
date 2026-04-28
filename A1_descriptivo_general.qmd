@@ -1,6 +1,6 @@
 ---
-title: "1- Análisis descriptivo general"
-subtitle: "Bloc A Nivel 1 — Tendencias globales de mortalidad, 2000–2024"
+title: "1- General descriptive analysis"
+subtitle: "Bloc A Nivel 1 — Global mortality trends, 2000–2024"
 date: today
 lang: en
 ---
@@ -8,12 +8,10 @@ lang: en
 <span class="badge-nivel">Bloc A  L1</span>
 **Variables** : `year` · `sex`
 
-## Introducción
+## Introduction
 
-Este nivel constituye la **puerta de entrada** al análisis. Se examinan las
-tendencias brutas de mortalidad en México sin desagregacion (por causa ni territorio),
-con el objetivo de identificar patrones macro y puntos de inflexión temporales.
-
+This section examines the  mortality trends in Mexico without disaggregation (by cause or territory),
+with the aim of identifying macro patterns and temporal inflection points.
 
 
 ```{r setup-a1, include=FALSE}
@@ -26,7 +24,6 @@ library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
 palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
-# set.seed(42)
 # mort <- expand.grid(
 #   year  = 2000:2022,
 #   sex   = c("Hombre", "Mujer"),
@@ -43,13 +40,19 @@ mort_yr_sex <- mort |> group_by(year, sex) |> summarise(deaths=sum(n_death), .gr
 mort_yr     <- mort |> group_by(year)      |> summarise(deaths=sum(n_death), .groups="drop") |>
                mutate(sex = "Total")
 mort_global <- bind_rows(mort_yr_sex, mort_yr)
+
+# ASMR
+asmr_male <- asmr_nac|> filter(sex == 1)
+
+asmr_female <- asmr_nac |> filter(sex == 2)
+
 ```
 
-## Tendencias globales
+## Global trends
 
 ::: {.panel-tabset}
 
-#### Serie temporal
+#### Temporal serie
 
 ```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}
 ggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +
@@ -65,7 +68,7 @@ x=NULL, y="Deaths (thousands)", color="Sex") +
         panel.grid.minor=element_blank())
 ```
 
-#### Tasa de crecimiento
+#### Growth rate
 
 ```{r fig-crecimiento}
 mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth)) |>
@@ -82,8 +85,6 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
 :::
 
 
-
-
 ## ASMR trend
 
 The Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.
@@ -91,12 +92,12 @@ The Age-standardized mortality rate (ASMR) is a statistical measure used in epid
 
 ::: {.panel-tabset}
 
-#### Temporal serie
-Trend Information: 
+#### Temporal serie for ASMR
+
 The results show consistent trends in age-standardized mortality from 1990 to 2024
 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.
 
-for certain diseases
+<!-- for certain diseases -->
 
 ```{r fig-ASMR, fig.cap="ASMR trend (1990–2024)"}
 ggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +
@@ -114,9 +115,7 @@ x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
 
 #### Men ASMR change
 
-```{r fig}
-asmr_male <- asmr_nac|> filter(sex == 1)
-
+```{r fig-men-change, fig.cap="ASMR men change"}
 asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
   ggplot(aes(x=year, y=growth)) +
   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
@@ -130,8 +129,7 @@ asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |
 
 #### Women ASMR change
 
-```{r fig}
-asmr_female <- asmr_nac |> filter(sex == 2)
+```{r fig-women-change, fig.cap="ASMR women change"}
   
 
 asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>

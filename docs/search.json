@@ -37,7 +37,7 @@
   {
     "objectID": "A1_descriptivo_general.html",
     "href": "A1_descriptivo_general.html",
-    "title": "1- Análisis descriptivo general",
+    "title": "1- General descriptive analysis",
     "section": "",
     "text": "Bloc A L1 Variables : year · sex",
     "crumbs": [
@@ -70,9 +70,9 @@
   {
     "objectID": "A1_descriptivo_general.html#asmr-trend",
     "href": "A1_descriptivo_general.html#asmr-trend",
-    "title": "1- Análisis descriptivo general",
+    "title": "1- General descriptive analysis",
     "section": "ASMR trend",
-    "text": "ASMR trend\nStatistical measure in epidemiology used to compare disease death rates across populations with different age structures.\nASMR Definition: Age-standardized mortality rate is used to compare death rates, particularly when comparing populations with different age structures.\n\n\nTemporal serie\nTasa de crecimiento\n\n\n\nTrend Information: The results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\nfor certain diseases\n\nCodeggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"ASMR trend in Mexico\", subtitle=\"ASMR per 100k inhabitants by Sex, 1990–2024\",\n\nx=NULL, y=\"ASMR per 100k inhabitants\", color=\"Sex\") +\n  theme_minimal(base_size=10) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\nCode# asmr_nac |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n#   ggplot(aes(x=year, y=growth)) +\n#   geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n#   geom_hline(yintercept=0, color=\"#1a2744\") +\n#   scale_x_continuous(breaks=seq(1990,2024,4)) +\n#  labs(title=\"Annual Mortality Growth Rate (asmr)\",\n#   x=\"Year\", y=\"Annual Change (%)\") +\n#   theme_minimal(base_size=13) +\n#   theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())",
+    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\n\nTemporal serie for ASMR\nMen ASMR change\nWomen ASMR change\n\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\nCodeggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"ASMR trend in Mexico\", subtitle=\"ASMR per 100k inhabitants by Sex, 1990–2024\",\n\nx=NULL, y=\"ASMR per 100k inhabitants\", color=\"Sex\") +\n  theme_minimal(base_size=10) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\nCodeasmr_male |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (male)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\nCodeasmr_female |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (female)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 5: ASMR women change",
     "crumbs": [
       "Bloc A — Spatio-temporalidad",
       "1- General description"
@@ -81,7 +81,7 @@
   {
     "objectID": "A1_descriptivo_general.html#navigation",
     "href": "A1_descriptivo_general.html#navigation",
-    "title": "1- Análisis descriptivo general",
+    "title": "1- General descriptive analysis",
     "section": "Navigation",
     "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
     "crumbs": [
@@ -208,6 +208,28 @@
     "crumbs": [
       "Bloc A — Spatio-temporalidad",
       "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "A1_descriptivo_general.html#introduction",
+    "href": "A1_descriptivo_general.html#introduction",
+    "title": "1- General descriptive analysis",
+    "section": "Introduction",
+    "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "A1_descriptivo_general.html#global-trends",
+    "href": "A1_descriptivo_general.html#global-trends",
+    "title": "1- General descriptive analysis",
+    "section": "Global trends",
+    "text": "Global trends\n\n\nTemporal serie\nGrowth rate\n\n\n\n\nCodeggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"Total Mortality in Mexico\", subtitle=\"Deaths by Sex, 1990–2024\",\n\nx=NULL, y=\"Deaths (thousands)\", color=\"Sex\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\nCodemort_yr |&gt; mutate(growth = (deaths/lag(deaths)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual Mortality Growth Rate\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Bloc A — Spatio-temporalidad",
+      "1- General description"
     ]
   }
 ]

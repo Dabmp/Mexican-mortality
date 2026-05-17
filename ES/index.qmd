@@ -11,34 +11,35 @@ sidebar: sidebar-es
 library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
 palette_sexo  <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
-palette_causa <- c(
-  "Enfermedades cardiovasculares" = "#1a2744",
-  "Tumores malignos"              = "#e84855",
-  "Diabetes mellitus"             = "#2a7a8c",
-  "Enfermedades respiratorias"    = "#f4a261",
-  "Causas externas"               = "#6c757d",
-  "Otras"                         = "#adb5bd"
-)
+# palette_causa <- c(
+#   "Enfermedades cardiovasculares" = "#1a2744",
+#   "Tumores malignos"              = "#e84855",
+#   "Diabetes mellitus"             = "#2a7a8c",
+#   "Enfermedades respiratorias"    = "#f4a261",
+#   "Causas externas"               = "#6c757d",
+#   "Otras"                         = "#adb5bd"
+# )
 
 # ── Datos reales — reemplazar ruta según entorno ─────────────────────
 # load("data/asmr_nac.rda")
-# mort <- asmr_nac |> mutate(year = as.integer(year))
+ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
+mort <- asmr_nac |> mutate(year = as.integer(year))
 
 # ── Datos simulados (demo) ───────────────────────────────────────────
-set.seed(42)
-mort <- expand.grid(
-  year  = 1990:2024,
-  sex   = c("1", "2")
-) |> mutate(
-  deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
-                   ifelse(sex == "1", 50000, 0) +
-                   ifelse(year %in% 2020:2021, 120000, 0)),
-  asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
-)
+# set.seed(42)
+# mort <- expand.grid(
+#   year  = 1990:2024,
+#   sex   = c("1", "2")
+# ) |> mutate(
+#   deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
+#                    ifelse(sex == "1", 50000, 0) +
+#                    ifelse(year %in% 2020:2021, 120000, 0)),
+#   asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
+# )
 
 mort_nacional <- mort |>
   group_by(year, sex) |>
-  summarise(deaths = sum(deaths), .groups = "drop")
+  summarise(deaths = sum(n_death), .groups = "drop")
 ```
 
 <!-- Hero banner -->

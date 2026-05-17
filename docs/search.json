@@ -1,0 +1,614 @@
+[
+  {
+    "objectID": "es/index.html",
+    "href": "es/index.html",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+  },
+  {
+    "objectID": "es/index.html#mortalidad-en-méxico",
+    "href": "es/index.html#mortalidad-en-méxico",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+  },
+  {
+    "objectID": "es/index.html#estructura-del-sitio",
+    "href": "es/index.html#estructura-del-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Estructura del sitio",
+    "text": "Estructura del sitio\nBloque A — Análisis sanitario y temporal\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n①\n\nyear, sex\n\nTendencias globales, ASMR\n→\n\n\n②\n\nyear, sex, cause\n\nTransiciones epidemiológicas\n→\n\n\n③\n\nyear, sex, cause_specific\n\nRefinamiento por causa CIE-10\n→\n\n\n④\n\nyear, sex, state, cause\n\nDisparidades regionales\n→\n\n\n⑤\n\nyear, sex, state, cause_specific\n\nArticulación salud-territorio\n→\n\n\nBloque B — Análisis espacial\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n①\n\nstate, cause\n\nDescripción regional\n→\n\n\n②\n\nstate, year, cause\n\nDistribución espacial, clústeres\n→\n\n\n③\n\nmunicipality, year, cause\n\nHeterogeneidad intra-estatal\n→\n\n\nBloque C — Esperanza de vida\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n①\n\nstate, sex\n\nPanorama nacional\n→\n\n\n②\n\nstate, year, sex\n\nEvolución por entidad\n→\n\n\n③\n\nmunicipality, sex\n\nHeterogeneidad municipal\n→"
+  },
+  {
+    "objectID": "es/index.html#síntesis-preliminar",
+    "href": "es/index.html#síntesis-preliminar",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Síntesis preliminar",
+    "text": "Síntesis preliminar\n\nCódigoggplot(mort_nacional,\n       aes(x = year, y = deaths / 1000, color = sex, group = sex)) +\n  geom_line(linewidth = 1.1) +\n  geom_point(size = 2) +\n  scale_color_manual(values = palette_sexo,\n                     labels = c(\"1\" = \"Hombres\", \"2\" = \"Mujeres\")) +\n  scale_x_continuous(breaks = seq(1990, 2024, 4)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title    = \"Mortalidad total en México\",\n    subtitle = \"Número de defunciones por sexo, 1990–2024\",\n    x = NULL, y = \"Defunciones (miles)\", color = \"Sexo\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    legend.position  = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\nFigura 1: Evolución de la mortalidad total por sexo (1990–2024)\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nNota sobre los datos\nLos valores presentados son simulados con fines demostrativos. Para el análisis real, reemplazar en el chunk setup-global por: load(\"data/asmr_nac.rda\"). Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA."
+  },
+  {
+    "objectID": "es/index.html#cómo-navegar-este-sitio",
+    "href": "es/index.html#cómo-navegar-este-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Cómo navegar este sitio",
+    "text": "Cómo navegar este sitio\n\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\n\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\n\nCambio de idioma — utilizar el menú 🇲🇽 Español / 🇬🇧 English en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ ① Descripción general"
+  },
+  {
+    "objectID": "es/C2_espacial_estados.html",
+    "href": "es/C2_espacial_estados.html",
+    "title": "C2_espacial_estados",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html",
+    "href": "es/B3_espacial_municipios.html",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "",
+    "text": "Bloque B · Nivel 3 bis Variables : municipality · year · cause"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#introducción",
+    "href": "es/B3_espacial_municipios.html#introducción",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "Introducción",
+    "text": "Introducción\nEl nivel municipal constituye la escala más fina del análisis espacial. Permite revelar :\n\nL’heterogeneidad intra-estatal : dos municipios del mismo estado pueden tener perfiles de mortalité radicalmente distintos.\nLa existencia de hotspots locales (focos de mortalidad elevada) a menudo invisibles en análisis estatales.\nEl papel de determinantes locales : urbanización, marginación, acceso a servicios.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nNota sobre confidencialidad\nPara municipios pequeños (&lt; 5 000 hab.), los datos de mortalidad pueden estar sujetos a restricciones de divulgación (INEGI). Aplicar técnicas de suavizado espacial (kriging, kernel density) en esos casos."
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
+    "href": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "1 · Cartographie à l’échelle municipale",
+    "text": "1 · Cartographie à l’échelle municipale\n\n\nTaux de mortalité total\nMortalité cardiovasculaire\nCauses externes\nHotspots / Coldspots\n\n\n\n\nCódigotm_shape(mun_grid) +\n  tm_polygons(col=\"rate_total\", title=\"Tasa / 100k hab.\",\n              palette=\"YlOrRd\", style=\"jenks\", n=5,\n              border.col=\"white\", border.alpha=0.5) +\n  tm_layout(main.title=\"Tasa de mortalidad total por municipio\",\n            main.title.size=1, legend.outside=TRUE, frame=FALSE) +\n  tm_scale_bar(position=c(\"left\",\"bottom\"))\n\n\n\nTaux de mortalité par municipio (données simulées)\n\n\n\n\n\n\nCódigotm_shape(mun_grid) +\n  tm_polygons(col=\"rate_cv\", title=\"Tasa CV / 100k\",\n              palette=\"Blues\", style=\"quantile\", n=5,\n              border.col=\"white\", border.alpha=0.5) +\n  tm_layout(main.title=\"Mortalidad cardiovascular por municipio\",\n            main.title.size=1, legend.outside=TRUE, frame=FALSE)\n\n\n\n\n\n\n\n\n\n\nCódigotm_shape(mun_grid) +\n  tm_polygons(col=\"rate_ext\", title=\"Tasa ext. / 100k\",\n              palette=\"Reds\", style=\"quantile\", n=5,\n              border.col=\"white\", border.alpha=0.5) +\n  tm_layout(main.title=\"Mortalidad por causas externas (violencia/accidentes)\",\n            main.title.size=1, legend.outside=TRUE, frame=FALSE)\n\n\n\n\n\n\n\n\n\n\nCódigotm_shape(mun_grid) +\n  tm_polygons(col=\"cluster\",\n              palette=c(\"Hotspot\"=\"#e84855\",\"Coldspot\"=\"#1a2744\",\n                        \"No significativo\"=\"#e0e0e0\"),\n              title=\"Clasificación espacial\",\n              border.col=\"white\", border.alpha=0.5) +\n  tm_layout(main.title=\"Detección de hotspots de mortalidad\",\n            main.title.size=1, legend.outside=TRUE, frame=FALSE)"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#relation-marginationmortalité",
+    "href": "es/B3_espacial_municipios.html#relation-marginationmortalité",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "2 · Relation margination–mortalité",
+    "text": "2 · Relation margination–mortalité\n\nCódigoggplot(mun_grid, aes(x=margination, y=rate_total, color=state)) +\n  geom_point(alpha=0.7, size=3) +\n  geom_smooth(aes(group=1), method=\"lm\", se=TRUE,\n              color=\"#1a2744\", fill=\"#1a2744\", alpha=0.15) +\n  scale_color_brewer(palette=\"Set2\") +\n  labs(title=\"Relación marginalidad–tasa de mortalidad\",\n       subtitle=\"Cada punto = un municipio\",\n       x=\"Índice de marginalidad (0=baja, 1=alta)\",\n       y=\"Tasa de mortalidad / 100 000 hab.\", color=\"Estado\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"),\n        plot.subtitle=element_text(color=\"#6c757d\"),\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigura 1"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
+    "href": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "3 · Note méthodologique — Détection de hotspots",
+    "text": "3 · Note méthodologique — Détection de hotspots\n\n\n\n\n\n\nNota\n\n\n\nMéthode recommandée en production\nLa détection de clusters locaux repose sur la statistique Gi* de Getis-Ord ou sur l’LISA (Local Indicators of Spatial Association) via spdep :\nlibrary(spdep)\n# Construire la matrice de poids spatiaux\nw    &lt;- poly2nb(mx_mun, queen = TRUE)\nwl   &lt;- nb2listw(w, style = \"W\")\n\n# LISA (Moran local)\nlm   &lt;- localmoran(mx_mun$rate_total, wl)\nmx_mun$local_I &lt;- lm[,1]\nmx_mun$p_value &lt;- lm[,5]\n\n# Classifier : HH, LL, HL, LH, ns\nmx_mun &lt;- mx_mun |&gt;\n  mutate(lisa_class = case_when(\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &gt; mean(rate_total) ~ \"HH (hotspot)\",\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &lt; mean(rate_total) ~ \"LL (coldspot)\",\n    p_value &lt; 0.05 & local_I &lt; 0 ~ \"Outlier spatial\",\n    TRUE ~ \"Non significatif\"\n  ))"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#navigation",
+    "href": "es/B3_espacial_municipios.html#navigation",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② bis · Estados ← Retour à l’accueil"
+  },
+  {
+    "objectID": "es/B1_Regional_description.html",
+    "href": "es/B1_Regional_description.html",
+    "title": "B1_Regional_description",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html",
+    "href": "es/A5_maxima_desagregacion.html",
+    "title": "⑤ Máxima desagregación",
+    "section": "",
+    "text": "Bloque A · Nivel 5 Variables : year · sex · state · cause_specific",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#introducción",
+    "href": "es/A5_maxima_desagregacion.html#introducción",
+    "title": "⑤ Máxima desagregación",
+    "section": "Introducción",
+    "text": "Introducción\nEste nivel constituye la máxima desagregación del Bloque A: combina las cuatro dimensiones analíticas (tiempo, sexo, territorio y causa específica CIE-10) para producir perfiles epidemiológicos estatal-causales de alta resolución.\nLa pregunta central es: ¿qué combinaciones estado × causa × sexo concentran la mayor carga de mortalidad evitable?\n\n\n\n\n\n\nTip\n\n\n\nUso recomendado\nEste nivel es el punto de entrada natural para priorizar intervenciones de salud pública a nivel estatal. Los resultados son complementados por el análisis espacial del Bloque B.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
+    "href": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
+    "title": "⑤ Máxima desagregación",
+    "section": "Perfiles estatales por causa específica",
+    "text": "Perfiles estatales por causa específica\n\n\nHeatmap estado × causa específica\nRanking estatal por causa\nBrecha de género por estado y causa\n\n\n\n\nCódigomort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 15),\n         state          = str_trunc(state, 16)) |&gt;\n  ggplot(aes(x = cause_specific, y = reorder(state, rate), fill = rate)) +\n  geom_tile(color = \"white\", linewidth = 0.4) +\n  scale_fill_distiller(palette = \"YlOrRd\", direction = 1,\n                       name = \"Tasa\\n/100k\") +\n  labs(\n    title    = paste0(\"Tasa de mortalidad por estado y causa específica (\", last_year, \")\"),\n    subtitle = \"Tasa estandarizada por 100 000 habitantes\",\n    x = NULL, y = NULL\n  ) +\n  theme_minimal(base_size = 11) +\n  theme(axis.text.x    = element_text(angle = 40, hjust = 1, size = 8),\n        plot.title      = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle   = element_text(color = \"#6c757d\"),\n        panel.grid      = element_blank())\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\nCódigotop_cause &lt;- mort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(cause_specific) |&gt;\n  summarise(total = sum(deaths)) |&gt;\n  slice_max(total, n = 6) |&gt;\n  pull(cause_specific)\n\nmort5 |&gt;\n  filter(year == last_year, cause_specific %in% top_cause) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 18)) |&gt;\n  ggplot(aes(x = rate, y = reorder(state, rate), fill = rate)) +\n  geom_col(alpha = 0.85) +\n  facet_wrap(~cause_specific, scales = \"free_x\", ncol = 3) +\n  scale_fill_distiller(palette = \"Blues\", direction = 1, guide = \"none\") +\n  labs(\n    title = \"Ranking estatal por las 6 principales causas específicas\",\n    x = \"Tasa / 100 000 hab.\", y = NULL\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title      = element_text(face = \"bold\", color = \"#1a2744\"),\n        strip.text      = element_text(face = \"bold\", size = 8),\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\nCódigomort5 |&gt;\n  filter(year == last_year, cause_specific %in% top_cause[1:4]) |&gt;\n  group_by(state, sex, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = sex, values_from = rate) |&gt;\n  mutate(ratio_hm = `1` / `2`,\n         cause_specific = str_wrap(cause_specific, 18)) |&gt;\n  ggplot(aes(x = ratio_hm, y = reorder(state, ratio_hm),\n             color = ratio_hm &gt; 1)) +\n  geom_point(size = 3) +\n  geom_vline(xintercept = 1, linetype = \"dashed\", color = \"grey50\") +\n  facet_wrap(~cause_specific, ncol = 2) +\n  scale_color_manual(values = c(\"TRUE\" = \"#1a2744\", \"FALSE\" = \"#e84855\"),\n                     labels = c(\"TRUE\" = \"H &gt; M\", \"FALSE\" = \"M &gt; H\")) +\n  labs(\n    title  = \"Ratio hombres/mujeres de la tasa de mortalidad por estado y causa\",\n    x = \"Ratio H/M (&gt; 1 = exceso masculino)\", y = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title      = element_text(face = \"bold\", color = \"#1a2744\"),\n        strip.text      = element_text(face = \"bold\"),\n        legend.position = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 3",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
+    "href": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
+    "title": "⑤ Máxima desagregación",
+    "section": "Tendencias temporales por estado y causa",
+    "text": "Tendencias temporales por estado y causa\n\nCódigostates_sel &lt;- c(\"Ciudad de México\", \"Jalisco\", \"Chiapas\", \"Nuevo León\")\n\nmort5 |&gt;\n  filter(state %in% states_sel, cause_specific %in% top_cause[1:3]) |&gt;\n  group_by(year, state, sex, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 14)) |&gt;\n  ggplot(aes(x = year, y = rate, color = sex, group = sex)) +\n  geom_line(linewidth = 0.9) +\n  facet_grid(state ~ cause_specific, scales = \"free_y\") +\n  scale_color_manual(values = palette_sexo,\n                     labels = c(\"1\" = \"Hombres\", \"2\" = \"Mujeres\")) +\n  scale_x_continuous(breaks = c(2000, 2010, 2020)) +\n  labs(\n    title    = \"Tendencias temporales: estado × causa específica × sexo\",\n    subtitle = \"Selección de 4 estados y 3 causas principales\",\n    x = NULL, y = \"Tasa / 100 000 hab.\", color = \"Sexo\"\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title      = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle   = element_text(color = \"#6c757d\"),\n        strip.text      = element_text(face = \"bold\", size = 8),\n        legend.position = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 4",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
+    "href": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
+    "title": "⑤ Máxima desagregación",
+    "section": "Tabla de síntesis",
+    "text": "Tabla de síntesis\n\nCódigomort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(\n    total_deaths = sum(deaths),\n    mean_rate    = round(mean(rate), 1),\n    .groups = \"drop\"\n  ) |&gt;\n  slice_max(total_deaths, n = 15) |&gt;\n  arrange(desc(total_deaths)) |&gt;\n  mutate(total_deaths = format(total_deaths, big.mark = \",\")) |&gt;\n  knitr::kable(\n    caption = paste(\"Top 15 combinaciones estado × causa por carga de mortalidad (\", last_year, \")\"),\n    col.names = c(\"Estado\", \"Causa específica\", \"Defunciones\", \"Tasa /100k\")\n  ) |&gt;\n  kableExtra::kable_styling(\n    bootstrap_options = c(\"striped\", \"hover\"),\n    full_width = FALSE\n  ) |&gt;\n  kableExtra::row_spec(1:3, bold = TRUE, background = \"#f0f4f8\")\n\n\nTop 15 combinaciones estado × causa por carga de mortalidad ( 2024 )\n\nEstado\nCausa específica\nDefunciones\nTasa /100k\n\n\n\nCiudad de México\nCOVID-19\n1,638\n47.2\n\n\nCiudad de México\nDiabetes tipo 2\n1,562\n77.3\n\n\nCiudad de México\nCardiopatía isquémica\n1,494\n12.8\n\n\nCiudad de México\nAccidentes de tránsito\n1,370\n15.2\n\n\nCiudad de México\nHomicidios\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nCiudad de México\nComplicaciones DM\n1,149\n8.8\n\n\nJalisco\nCardiopatía isquémica\n1,149\n11.1",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
+    "href": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
+    "title": "⑤ Máxima desagregación",
+    "section": "Puntos clave de este nivel",
+    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel ⑤\n\nLa combinación estado × causa × sexo revela concentraciones geográficas específicas que quedan ocultas en niveles de análisis más agregados.\nLa cardiopatía isquémica y la diabetes tipo 2 dominan en casi todos los estados, pero con intensidades muy distintas según la región.\nLas causas externas (homicidios, accidentes) presentan el ratio H/M más elevado y una concentración en estados del norte y noroeste.\nEste nivel es el punto de entrada para priorizar intervenciones de salud pública con máxima especificidad territorial.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#navegación",
+    "href": "es/A5_maxima_desagregacion.html#navegación",
+    "title": "⑤ Máxima desagregación",
+    "section": "Navegación",
+    "text": "Navegación\n\n← ④ Dimensión territorial → Bloque B · ① Descripción regional",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html",
+    "href": "es/A3_causas_especificas.html",
+    "title": "③ Causas específicas de muerte",
+    "section": "",
+    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#introducción",
+    "href": "es/A3_causas_especificas.html#introducción",
+    "title": "③ Causas específicas de muerte",
+    "section": "Introducción",
+    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#evolución-por-causa-específica",
+    "href": "es/A3_causas_especificas.html#evolución-por-causa-específica",
+    "title": "③ Causas específicas de muerte",
+    "section": "Evolución por causa específica",
+    "text": "Evolución por causa específica\n\n\nTop 10 causas (2022)\nTendencias por sexo\n\n\n\n\nCodemort_spec |&gt;\n  filter(year==2022) |&gt;\n  group_by(cause_specific) |&gt;\n  summarise(deaths=sum(deaths)) |&gt;\n  slice_max(deaths, n=10) |&gt;\n  mutate(cause_specific=reorder(cause_specific, deaths)) |&gt;\n  ggplot(aes(x=cause_specific, y=deaths/1000)) +\n  geom_col(fill=\"#1a2744\", alpha=0.85) + coord_flip() +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n  labs(title=\"Top 10 causas específicas de mortalidad (2022)\",\n       x=NULL, y=\"Defunciones (miles)\") +\n  theme_minimal(base_size=12) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"),panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nCodetop_causes &lt;- mort_spec |&gt; filter(year==2022) |&gt;\n  group_by(cause_specific) |&gt; summarise(d=sum(deaths)) |&gt;\n  slice_max(d,n=6) |&gt; pull(cause_specific)\n\nmort_spec |&gt; filter(cause_specific %in% top_causes) |&gt;\n  group_by(year, sex, cause_specific) |&gt;\n  summarise(deaths=sum(deaths),.groups=\"drop\") |&gt;\n  ggplot(aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=0.9) +\n  facet_wrap(~str_wrap(cause_specific,18), scales=\"free_y\", ncol=3) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=c(2000,2010,2022)) +\n  labs(x=NULL, y=\"Defunciones (miles)\", color=\"Sexo\",\n       title=\"Tendencias por causa específica y sexo\") +\n  theme_minimal(base_size=11) +\n  theme(legend.position=\"bottom\",plot.title=element_text(face=\"bold\",color=\"#1a2744\"),\n        strip.text=element_text(face=\"bold\",size=9),panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#navigation",
+    "href": "es/A3_causas_especificas.html#navigation",
+    "title": "③ Causas específicas de muerte",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "③ Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html",
+    "href": "es/A1_descriptivo_general.html",
+    "title": "1- General descriptive analysis",
+    "section": "",
+    "text": "Bloc A L1 Variables : year · sex",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "① Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#introduction",
+    "href": "es/A1_descriptivo_general.html#introduction",
+    "title": "1- General descriptive analysis",
+    "section": "Introduction",
+    "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "① Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#global-trends",
+    "href": "es/A1_descriptivo_general.html#global-trends",
+    "title": "1- General descriptive analysis",
+    "section": "Global trends",
+    "text": "Global trends\n\n\nTemporal serie\nGrowth rate\n\n\n\n\nCodeggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"Total Mortality in Mexico\", subtitle=\"Deaths by Sex, 1990–2024\",\n\nx=NULL, y=\"Deaths (thousands)\", color=\"Sex\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\nCodemort_yr |&gt; mutate(growth = (deaths/lag(deaths)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual Mortality Growth Rate\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "① Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#asmr-trend",
+    "href": "es/A1_descriptivo_general.html#asmr-trend",
+    "title": "1- General descriptive analysis",
+    "section": "ASMR trend",
+    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\n\nTemporal serie for ASMR\nMen ASMR change\nWomen ASMR change\n\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\nCodeggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"ASMR trend in Mexico\", subtitle=\"ASMR per 100k inhabitants by Sex, 1990–2024\",\n\nx=NULL, y=\"ASMR per 100k inhabitants\", color=\"Sex\") +\n  theme_minimal(base_size=10) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\nCodeasmr_male |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (male)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\nCodeasmr_female |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (female)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 5: ASMR women change",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "① Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#navigation",
+    "href": "es/A1_descriptivo_general.html#navigation",
+    "title": "1- General descriptive analysis",
+    "section": "Navigation",
+    "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "① Descripción general"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html",
+    "href": "en/A5_maximum_disaggregation.html",
+    "title": "⑤ Maximum disaggregation",
+    "section": "",
+    "text": "Block A · Level 5 Variables : year · sex · state · cause_specific",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#introduction",
+    "href": "en/A5_maximum_disaggregation.html#introduction",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Introduction",
+    "text": "Introduction\nThis level represents the maximum disaggregation of Block A: it combines all four analytical dimensions (time, sex, territory, and ICD-10 specific cause) to produce high-resolution state–cause epidemiological profiles.\nThe central question is: which state × cause × sex combinations concentrate the greatest burden of preventable mortality?\n\n\n\n\n\n\nTip\n\n\n\nRecommended use\nThis level is the natural starting point for prioritising public health interventions at the state level. Results are complemented by the spatial analysis in Block B.",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
+    "href": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
+    "title": "⑤ Maximum disaggregation",
+    "section": "State profiles by specific cause",
+    "text": "State profiles by specific cause\n\n\nHeatmap: state × specific cause\nState ranking by cause\nGender gap by state and cause\n\n\n\n\nCodemort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 15),\n         state          = str_trunc(state, 16)) |&gt;\n  ggplot(aes(x = cause_specific, y = reorder(state, rate), fill = rate)) +\n  geom_tile(color = \"white\", linewidth = 0.4) +\n  scale_fill_distiller(palette = \"YlOrRd\", direction = 1,\n                       name = \"Rate\\n/100k\") +\n  labs(\n    title    = paste0(\"Mortality rate by state and specific cause (\", last_year, \")\"),\n    subtitle = \"Age-standardised rate per 100 000 inhabitants\",\n    x = NULL, y = NULL\n  ) +\n  theme_minimal(base_size = 11) +\n  theme(axis.text.x    = element_text(angle = 40, hjust = 1, size = 8),\n        plot.title      = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle   = element_text(color = \"#6c757d\"),\n        panel.grid      = element_blank())\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\nCodetop_cause &lt;- mort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(cause_specific) |&gt;\n  summarise(total = sum(deaths)) |&gt;\n  slice_max(total, n = 6) |&gt;\n  pull(cause_specific)\n\nmort5 |&gt;\n  filter(year == last_year, cause_specific %in% top_cause) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 18)) |&gt;\n  ggplot(aes(x = rate, y = reorder(state, rate), fill = rate)) +\n  geom_col(alpha = 0.85) +\n  facet_wrap(~cause_specific, scales = \"free_x\", ncol = 3) +\n  scale_fill_distiller(palette = \"Blues\", direction = 1, guide = \"none\") +\n  labs(\n    title = \"State ranking for the 6 leading specific causes\",\n    x = \"Rate / 100 000 inh.\", y = NULL\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        strip.text       = element_text(face = \"bold\", size = 8),\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\nCodemort5 |&gt;\n  filter(year == last_year, cause_specific %in% top_cause[1:4]) |&gt;\n  group_by(state, sex, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = sex, values_from = rate) |&gt;\n  mutate(ratio_mf = `1` / `2`,\n         cause_specific = str_wrap(cause_specific, 18)) |&gt;\n  ggplot(aes(x = ratio_mf, y = reorder(state, ratio_mf),\n             color = ratio_mf &gt; 1)) +\n  geom_point(size = 3) +\n  geom_vline(xintercept = 1, linetype = \"dashed\", color = \"grey50\") +\n  facet_wrap(~cause_specific, ncol = 2) +\n  scale_color_manual(values = c(\"TRUE\" = \"#1a2744\", \"FALSE\" = \"#e84855\"),\n                     labels = c(\"TRUE\" = \"M &gt; F\", \"FALSE\" = \"F &gt; M\")) +\n  labs(\n    title  = \"Male/female mortality rate ratio by state and cause\",\n    x = \"M/F ratio (&gt; 1 = male excess)\", y = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        strip.text       = element_text(face = \"bold\"),\n        legend.position  = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigure 3",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
+    "href": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Temporal trends by state and cause",
+    "text": "Temporal trends by state and cause\n\nCodestates_sel &lt;- c(\"Mexico City\", \"Jalisco\", \"Chiapas\", \"Nuevo León\")\n\nmort5 |&gt;\n  filter(state %in% states_sel, cause_specific %in% top_cause[1:3]) |&gt;\n  group_by(year, state, sex, cause_specific) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause_specific = str_wrap(cause_specific, 14)) |&gt;\n  ggplot(aes(x = year, y = rate, color = sex, group = sex)) +\n  geom_line(linewidth = 0.9) +\n  facet_grid(state ~ cause_specific, scales = \"free_y\") +\n  scale_color_manual(values = palette_sex,\n                     labels = c(\"1\" = \"Men\", \"2\" = \"Women\")) +\n  scale_x_continuous(breaks = c(2000, 2010, 2020)) +\n  labs(\n    title    = \"Temporal trends: state × specific cause × sex\",\n    subtitle = \"Selection of 4 states and 3 leading causes\",\n    x = NULL, y = \"Rate / 100 000 inh.\", color = \"Sex\"\n  ) +\n  theme_minimal(base_size = 10) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle    = element_text(color = \"#6c757d\"),\n        strip.text       = element_text(face = \"bold\", size = 8),\n        legend.position  = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigure 4",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#summary-table",
+    "href": "en/A5_maximum_disaggregation.html#summary-table",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Summary table",
+    "text": "Summary table\n\nCodemort5 |&gt;\n  filter(year == last_year) |&gt;\n  group_by(state, cause_specific) |&gt;\n  summarise(\n    total_deaths = sum(deaths),\n    mean_rate    = round(mean(rate), 1),\n    .groups = \"drop\"\n  ) |&gt;\n  slice_max(total_deaths, n = 15) |&gt;\n  arrange(desc(total_deaths)) |&gt;\n  mutate(total_deaths = format(total_deaths, big.mark = \",\")) |&gt;\n  knitr::kable(\n    caption   = paste0(\"Top 15 state × cause combinations by mortality burden (\", last_year, \")\"),\n    col.names = c(\"State\", \"Specific cause\", \"Deaths\", \"Rate /100k\")\n  ) |&gt;\n  kableExtra::kable_styling(\n    bootstrap_options = c(\"striped\", \"hover\"), full_width = FALSE\n  ) |&gt;\n  kableExtra::row_spec(1:3, bold = TRUE, background = \"#f0f4f8\")\n\n\nTop 15 state × cause combinations by mortality burden (2024)\n\nState\nSpecific cause\nDeaths\nRate /100k\n\n\n\nMexico City\nCOVID-19\n1,638\n47.2\n\n\nMexico City\nType 2 diabetes\n1,562\n77.3\n\n\nMexico City\nIschemic heart disease\n1,494\n12.8\n\n\nMexico City\nRoad traffic accidents\n1,370\n15.2\n\n\nMexico City\nHomicides\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nJalisco\nIschemic heart disease\n1,149\n11.1\n\n\nMexico City\nDM complications\n1,149\n8.8",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#key-findings",
+    "href": "en/A5_maximum_disaggregation.html#key-findings",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Key findings",
+    "text": "Key findings\n\n\n\n\n\n\nNote\n\n\n\nKey takeaways from Level ⑤\n\nThe state × cause × sex combination reveals specific geographic concentrations that remain hidden at more aggregated levels of analysis.\n\nIschemic heart disease and type 2 diabetes dominate in almost every state, but with very different intensities depending on the region.\n\nExternal causes (homicides, accidents) show the highest M/F ratio and are concentrated in northern and north-western states.\nThis level provides the entry point for prioritising public health interventions with maximum territorial specificity.",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#navigation",
+    "href": "en/A5_maximum_disaggregation.html#navigation",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ④ Territorial dimension → Block B · ① Regional description",
+    "crumbs": [
+      "Block A — Temporal trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/index.html",
+    "href": "en/index.html",
+    "title": "Mortality Analysis in Mexico",
+    "section": "",
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+  },
+  {
+    "objectID": "en/index.html#mortality-in-mexico",
+    "href": "en/index.html#mortality-in-mexico",
+    "title": "Mortality Analysis in Mexico",
+    "section": "",
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+  },
+  {
+    "objectID": "en/index.html#site-structure",
+    "href": "en/index.html#site-structure",
+    "title": "Mortality Analysis in Mexico",
+    "section": "Site structure",
+    "text": "Site structure\nBlock A — Health and temporal analysis\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n①\n\nyear, sex\n\nGlobal trends, ASMR\n→\n\n\n②\n\nyear, sex, cause\n\nEpidemiological transitions\n→\n\n\n③\n\nyear, sex, cause_specific\n\nICD-10 specific cause breakdown\n→\n\n\n④\n\nyear, sex, state, cause\n\nRegional disparities\n→\n\n\n⑤\n\nyear, sex, state, cause_specific\n\nHealth-territory articulation\n→\n\n\nBlock B — Spatial analysis\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n①\n\nstate, cause\n\nRegional description\n→\n\n\n②\n\nstate, year, cause\n\nSpatial distribution, clusters\n→\n\n\n③\n\nmunicipality, year, cause\n\nIntra-state heterogeneity\n→\n\n\nBlock C — Life expectancy\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n①\n\nyear, sex\n\nNational overview\n→\n\n\n②\n\nstate, year, sex\n\nState-level trends\n→\n\n\n③\n\nmunicipality, sex\n\nMunicipal heterogeneity\n→"
+  },
+  {
+    "objectID": "en/index.html#preliminary-overview",
+    "href": "en/index.html#preliminary-overview",
+    "title": "Mortality Analysis in Mexico",
+    "section": "Preliminary overview",
+    "text": "Preliminary overview\n\nCodeggplot(mort_national,\n       aes(x = year, y = deaths / 1000, color = sex, group = sex)) +\n  geom_line(linewidth = 1.1) +\n  geom_point(size = 2) +\n  scale_color_manual(values = palette_sex,\n                     labels = c(\"1\" = \"Men\", \"2\" = \"Women\")) +\n  scale_x_continuous(breaks = seq(1990, 2024, 4)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title    = \"Total Mortality in Mexico\",\n    subtitle = \"Number of deaths by sex, 1990–2024\",\n    x = NULL, y = \"Deaths (thousands)\", color = \"Sex\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    legend.position  = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\nFigure 1: Total mortality trends by sex (1990–2024)\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote on data\nThe values presented here are simulated for demonstration purposes. For the real analysis, replace the setup-global-en chunk with: load(\"data/asmr_nac.rda\"). Recommended sources: INEGI (SINAIS) and the DGE of the SSA."
+  },
+  {
+    "objectID": "en/index.html#how-to-navigate-this-site",
+    "href": "en/index.html#how-to-navigate-this-site",
+    "title": "Mortality Analysis in Mexico",
+    "section": "How to navigate this site",
+    "text": "How to navigate this site\n\n\nProgressive reading — follow Block A from level ① to ⑤, gradually increasing analytical complexity.\n\nThematic reading — go directly to Block B (spatial perspective) or Block C (life expectancy) depending on your research question.\n\nLanguage switch — use the 🇲🇽 Español / 🇬🇧 English menu in the navigation bar to access equivalent content in Spanish.\n\n\n→ ① General description"
+  },
+  {
+    "objectID": "es/A2_causas.html",
+    "href": "es/A2_causas.html",
+    "title": "2- Disaggregation by cause of death",
+    "section": "",
+    "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#introducción-analítica",
+    "href": "es/A2_causas.html#introducción-analítica",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Introducción analítica",
+    "text": "Introducción analítica\nLa incorporación de la causa de muerte como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#vue-densemble-composition-de-la-mortalité",
+    "href": "es/A2_causas.html#vue-densemble-composition-de-la-mortalité",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Vue d’ensemble : composition de la mortalité",
+    "text": "Vue d’ensemble : composition de la mortalité\nÉvolution de la structure par cause\n\n\nAire empilée (%)\nLignes absolues\nTableau résumé\n\n\n\n\nCodelookup &lt;- data.frame(\n  cause = as.character(names(cause_name)),\n  cause_name = as.character(cause_name)\n)\n\nmort_causa_pct &lt;- mort_causa_pct %&gt;%\n  mutate(cause = as.character(cause)) %&gt;%\n  left_join(lookup, by = \"cause\")\n\n\nggplot(mort_causa_pct,\n       aes(x = year, y = pct, fill = cause_name)) +\n  geom_area(alpha = 0.88, color = \"white\", linewidth = 0.3) +\n  scale_fill_manual(values = cols_20) +\n  scale_x_continuous(breaks = seq(1998, 2022, 4)) +\n  scale_y_continuous(labels = label_percent(scale = 0.3)) +\n  labs(\n    title    = \"Composition of mortality by cause group\",\n    subtitle = \"Annual proportion of deaths, Mexico 1990–2024\",\n    x = NULL, y = \"% deaths\", fill = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position  = \"bottom\",\n    legend.key.size  = unit(0.2, \"cm\"),\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    panel.grid.minor = element_blank()\n  ) +\n  guides(fill = guide_legend(nrow = 2))\n\n\n\n\n\n\nFigure 1: Structure de la mortalité par cause, 1998–2024 (%)\n\n\n\n\n\n\n\nCodeggplot(mort_causa,\n       aes(x = year, y = deaths / 1000,\n           color = cause, group = cause)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 2, alpha = 0.8) +\n  geom_label_repel(\n    data  = mort_causa |&gt; filter(year == last_year),\n    aes(label = str_wrap(cause, 18)),\n    size  = 3, nudge_x = 0.8, segment.color = \"grey60\",\n    show.legend = FALSE\n  ) +\n  scale_color_manual(values = cols_20) +\n  scale_x_continuous(breaks = seq(1998,  2024, 4),\n                     limits = c(1998, 2025)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title    = \"Evolución absoluta de la mortalidad por causa\",\n    subtitle = \"Número de defunciones (miles), México 2000–2023\",\n    x = NULL, y = \"Defunciones (miles)\", color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position  = \"none\",\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\nFigure 2: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\nCodemort_causa |&gt;\n  filter(year %in% c(2000, 2005, 2010, 2015, 2020, 2024)) |&gt;\n  pivot_wider(names_from = year, values_from = deaths) |&gt;\n  arrange(desc(`2024`)) |&gt;\n    mutate(cause = unname(cause_name[cause])) |&gt;\n\n  mutate(across(where(is.numeric), ~ format(.x, big.mark = \",\"))) |&gt;\n  kable(\n    caption = \"Deaths by cause of death, selected years\",\n    col.names = c(\"Cause\", \"2000\", \"2005\", \"2010\", \"2015\", \"2019\", \"2024\")\n  ) |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\"),\n                full_width = FALSE) |&gt;\n  row_spec(1, bold = TRUE, background = \"#f0f4f8\")\n\n\nDeaths by cause of death, selected years\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n9 - Diseases of the circulatory system\n97,579\n112,189\n141,515\n166,773\n261,900\n224,876\n\n\n4 - Endocrine, nutritional, and metabolic diseases\n60,023\n81,393\n99,461\n114,619\n171,422\n126,955\n\n\n2 - Tumors (neoplasms)\n57,749\n66,480\n74,761\n85,165\n97,472\n102,306\n\n\n20 - External causes of morbidity and mortality\n51,744\n53,328\n73,072\n67,457\n81,013\n81,809\n\n\n11 - Diseases of the digestive system\n42,343\n47,801\n55,044\n62,949\n71,416\n74,464\n\n\n10 - Diseases of the respiratory system\n38,525\n43,452\n51,301\n55,381\n96,896\n68,708\n\n\n14 - Diseases of the genitourinary system\n11,950\n14,277\n17,350\n22,503\n26,918\n31,600\n\n\n1 - Certain infectious and parasitic diseases\n18,648\n18,273\n17,164\n16,222\n17,924\n23,242\n\n\n6 - Diseases of the nervous system\n7,444\n9,132\n10,436\n11,368\n12,992\n14,122\n\n\n16 - Conditions originating in the perinatal period\n19,465\n16,421\n14,340\n12,941\n10,054\n9,280\n\n\n18 - Symptoms, signs, and abnormal clinical and laboratory findings\n8,468\n9,281\n12,528\n10,787\n11,153\n9,251\n\n\n17 - Congenital malformations and chromosomal abnormalities\n9,569\n9,254\n9,137\n9,305\n8,020\n6,870\n\n\n12 - Diseases of the skin and subcutaneous tissue\n976\n1,032\n1,689\n2,850\n3,221\n5,606\n\n\n13 - Diseases of the musculoskeletal system and connective tissue\n2,711\n3,316\n5,025\n4,589\n5,505\n5,570\n\n\n3 - Diseases of the blood and immune system\n3,894\n4,453\n4,828\n4,735\n5,326\n4,969\n\n\n5 - Mental and behavioral disorders\n4,995\n4,500\n4,389\n5,282\n5,197\n4,927\n\n\n22 - COVID-19\nNA\nNA\nNA\nNA\n200,805\n1,359\n\n\n15 - Pregnancy, childbirth, and the puerperium\n1,316\n1,275\n1,031\n905\n1,172\n741\n\n\n8 - Diseases of the ear and mastoid process\n54\n44\n33\n38\n45\n50\n\n\n7 - Diseases of the eye and adnexa\n10\n8\n14\n16\n10\n13",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#causes-de-décès-std",
+    "href": "es/A2_causas.html#causes-de-décès-std",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Causes de décès std",
+    "text": "Causes de décès std\nStandardized death rates (SDR) par cause, sexe et année\n\n\nEvolution des causes de décès (std rate)\nTop 5 des causes de décès (std rate)\n\n\n\n\nCodeload(\"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda\")\n\nSDR &lt;- asmr_cause %&gt;%\n  filter(year&gt;1997)\n# install.packages(\"paletteer\")\nlibrary(paletteer)\n\nggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +\n  geom_bar(stat = \"identity\", position = \"stack\") +\n  facet_wrap(~ sex_lab) +\n  # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n  scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +\n  \n  labs(\n    title = \"Standardized causes of death (2000-2023)\",\n    x = \"Years\",\n    y = \"Standardized rate\",\n    fill = \"Causes of death\"\n  ) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\nFigure 3: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\nCode#--------------------------Identifier les 5 principales causes de décès par année-----------------------------\n# top_5_causes_year &lt;- SDR %&gt;%\n#   group_by(year, sex) %&gt;%\n#   slice_max(SDR, n = 5) %&gt;%\n#   ungroup() %&gt;%\n#   arrange(year, desc(SDR))\n# \n# top_5_causes_year &lt;- top_5_causes_year %&gt;%\n#   mutate(\n#     capitulo = as.character(CAPITULO),\n#     cause_name = libelles_cause[CAPITULO],  # Map codes to names\n#     # label_sex = label_sex[sex]\n#      sex_label  = case_when(\n#       sex == 1 ~ \"Men\",\n#       sex == 2 ~ \"Women\")\n#   )\n\n#-------------------------------------------------------\ncols_7 &lt;- c(\n  \"#C89028FF\", \"#10580FFF\", \"#304898FF\", \"#783838FF\",\n  \"#A8C0F8FF\", \"#F03838FF\", \"grey80\", \n  \"#4078B8FF\", \"#282858FF\", \"#F85559FF\"\n)\n\n# label_sex &lt;- c(\"1\" = \"Men\", \"2\"= \"Women\")\n#-------------------------------------------------------\n# \n# ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +\n#   geom_bar(stat = \"identity\", position = \"stack\") +\n#   facet_wrap(~ sex_label) +\n#   # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n#   scale_fill_manual(values = cols_7[1:length(unique(SDR$libelles_cause))]) +\n#   \n#   labs(\n#     title = \"Top 5 standardized causes of death (2000-2023)\",\n#     x = \"Years\",\n#     y = \"Standardized rate\",\n#     fill = \"Causes of death\"\n#   ) +\n#   theme_minimal() +\n#   theme(axis.text.x = element_text(angle = 45, hjust = 1))\n# \n\n\n\n\n\n\n\n\nHommes vs Femmes (2023)\nRatio H/M par cause\nTendencias por sexo",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#indicateurs-de-concentration",
+    "href": "es/A2_causas.html#indicateurs-de-concentration",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Indicateurs de concentration",
+    "text": "Indicateurs de concentration\n\nCode# Indice de Herfindahl-Hirschman (concentration causale)\nihh &lt;- mort_causa_pct |&gt;\n  group_by(year) |&gt;\n  summarise(ihh = sum((pct / 100)^2),\n            n_causas = n_distinct(cause),\n            causa_top = cause[which.max(pct)],\n            pct_top   = max(pct)) |&gt;\n  ungroup()\n\nggplot(ihh, aes(x = year, y = ihh)) +\n  geom_line(color = \"#2a7a8c\", linewidth = 1.2) +\n  geom_point(color = \"#2a7a8c\", size = 3) +\n  scale_x_continuous(breaks = seq(2000, 2023, 4)) +\n  labs(\n    title    = \"Índice de concentración de la mortalidad por causa (IHH)\",\n    subtitle = \"Valores más altos indican mayor concentración en pocas causas\",\n    x = NULL, y = \"Índice Herfindahl-Hirschman\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title    = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle = element_text(color = \"#6c757d\")\n  )",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#points-clés-de-ce-niveau",
+    "href": "es/A2_causas.html#points-clés-de-ce-niveau",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Points clés de ce niveau",
+    "text": "Points clés de ce niveau\n\n\n\n\n\n\nNote\n\n\n\nRetenir de ce niveau ②\n\nLa mortalité mexicaine est dominée par les maladies cardiovasculaires et le diabète mellitus, reflet de la transition épidémiologique avancée.\nLes causes externes (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.\nLa dynamique temporelle montre une diversification progressive des causes, visible dans la baisse de l’IHH après 2010.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#navigation",
+    "href": "es/A2_causas.html#navigation",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ① Descriptivo general → ③ Causas específicas",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "② Causas de muerte"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html",
+    "href": "es/A4_territorial.html",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "",
+    "text": "Bloque A · Nivel 4 Variables : year · sex · state · cause",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#introducción",
+    "href": "es/A4_territorial.html#introducción",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Introducción",
+    "text": "Introducción\nLa introducción del estado como variable de desagregación revela cómo las transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio. Se combinan aquí las dimensiones temporal, sanitaria y geográfica.\n\n\n\n\n\n\nTip\n\n\n\nPara un análisis explícitamente espacial, ver Bloque B — ② bis · Estados.",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#disparidades-inter-étatiques",
+    "href": "es/A4_territorial.html#disparidades-inter-étatiques",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Disparidades inter-étatiques",
+    "text": "Disparidades inter-étatiques\n\n\nHeatmap état × cause\nDispersión inter-estatal por causa\n\n\n\n\nCódigomort |&gt; filter(year==2022) |&gt;\n  group_by(state,cause) |&gt; summarise(rate=mean(rate),.groups=\"drop\") |&gt;\n  mutate(state=str_trunc(state,18), cause=str_wrap(cause,18)) |&gt;\n  ggplot(aes(x=cause, y=reorder(state,rate), fill=rate)) +\n  geom_tile(color=\"white\",linewidth=0.4) +\n  scale_fill_distiller(palette=\"Blues\",direction=1,name=\"Tasa\\n/100k\") +\n  labs(title=\"Tasa de mortalidad por estado y causa (2022)\",x=NULL,y=NULL) +\n  theme_minimal(base_size=11) +\n  theme(axis.text.x=element_text(angle=35,hjust=1),\n        plot.title=element_text(face=\"bold\",color=\"#1a2744\"))\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\nCódigomort |&gt; filter(year==2022) |&gt;\n  group_by(state,cause) |&gt; summarise(rate=mean(rate),.groups=\"drop\") |&gt;\n  mutate(cause=str_wrap(cause,20)) |&gt;\n  ggplot(aes(x=reorder(cause,rate,median), y=rate, fill=cause)) +\n  geom_boxplot(alpha=0.75, outlier.size=2) +\n  coord_flip() +\n  scale_fill_manual(values=palette_causa) +\n  labs(title=\"Dispersión inter-estatal de la tasa de mortalidad (2022)\",\n       x=NULL, y=\"Tasa / 100 000 hab.\") +\n  theme_minimal(base_size=12) + theme(legend.position=\"none\",\n        plot.title=element_text(face=\"bold\",color=\"#1a2744\"),panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigura 2",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#navigation",
+    "href": "es/A4_territorial.html#navigation",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ③ Causas específicas → ⑤ Máxima desagregación",
+    "crumbs": [
+      "Bloque A — Temporalidad",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/B1_regional.html",
+    "href": "es/B1_regional.html",
+    "title": "① Descripción regional",
+    "section": "",
+    "text": "Bloque B · Nivel 1 Variables : state · sex · cause"
+  },
+  {
+    "objectID": "es/B1_regional.html#introducción",
+    "href": "es/B1_regional.html#introducción",
+    "title": "① Descripción regional",
+    "section": "Introducción",
+    "text": "Introducción\nEl Bloque B aborda la dimensión espacial de la mortalidad en México. A diferencia del Bloque A —que analiza la evolución temporal—, aquí el foco es la distribución geográfica de la mortalidad entre entidades federativas.\nEste primer nivel establece el panorama regional sin desagregación temporal, respondiendo a la pregunta: ¿qué estados concentran la mayor carga de mortalidad y en qué causas?\n\n\n\n\n\n\nTip\n\n\n\nComplementariedad con el Bloque A\nEl Bloque A · Nivel ④ aborda la evolución temporal por estado. Este nivel B1 sirve como punto de entrada estrictamente geográfico."
+  },
+  {
+    "objectID": "es/B1_regional.html#panorama-nacional",
+    "href": "es/B1_regional.html#panorama-nacional",
+    "title": "① Descripción regional",
+    "section": "Panorama nacional",
+    "text": "Panorama nacional\n\n\nRanking de estados\nComposición por causa\nDispersión inter-estatal\nBrecha H/M por estado\n\n\n\n\nCódigomort_b1 |&gt;\n  group_by(state, cause) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  group_by(state) |&gt;\n  mutate(total = sum(rate)) |&gt;\n  ungroup() |&gt;\n  mutate(state = reorder(state, total)) |&gt;\n  ggplot(aes(x = rate, y = state, fill = cause)) +\n  geom_col(alpha = 0.88) +\n  scale_fill_manual(values = palette_causa) +\n  scale_x_continuous(labels = label_comma()) +\n  labs(\n    title    = \"Tasa de mortalidad total por estado y causa\",\n    subtitle = \"Suma de tasas estandarizadas por 100 000 hab.\",\n    x = \"Tasa acumulada / 100 000 hab.\", y = NULL, fill = \"Causa\"\n  ) +\n  theme_minimal(base_size = 11) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle    = element_text(color = \"#6c757d\"),\n        legend.position  = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\nCódigomort_b1 |&gt;\n  group_by(state, cause) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  group_by(state) |&gt;\n  mutate(pct   = rate / sum(rate) * 100,\n         total = sum(rate)) |&gt;\n  ungroup() |&gt;\n  mutate(state = reorder(state, total)) |&gt;\n  ggplot(aes(x = pct, y = state, fill = cause)) +\n  geom_col(alpha = 0.88) +\n  scale_fill_manual(values = palette_causa) +\n  scale_x_continuous(labels = label_percent(scale = 1)) +\n  labs(\n    title    = \"Composición de la mortalidad por causa según estado\",\n    subtitle = \"Proporción de cada causa en la mortalidad total estatal\",\n    x = \"% de defunciones\", y = NULL, fill = \"Causa\"\n  ) +\n  theme_minimal(base_size = 11) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle    = element_text(color = \"#6c757d\"),\n        legend.position  = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\nCódigomort_b1 |&gt;\n  group_by(state, cause) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  mutate(cause = str_wrap(cause, 18)) |&gt;\n  ggplot(aes(x = reorder(cause, rate, median), y = rate, fill = cause)) +\n  geom_boxplot(alpha = 0.75, outlier.size = 2) +\n  coord_flip() +\n  scale_fill_manual(values = palette_causa) +\n  labs(\n    title    = \"Dispersión inter-estatal de la tasa de mortalidad por causa\",\n    subtitle = \"Cada caja = distribución entre los 32 estados\",\n    x = NULL, y = \"Tasa / 100 000 hab.\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        plot.subtitle    = element_text(color = \"#6c757d\"),\n        legend.position  = \"none\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 3\n\n\n\n\n\n\n\nCódigomort_b1 |&gt;\n  group_by(state, sex) |&gt;\n  summarise(rate = mean(rate), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = sex, values_from = rate) |&gt;\n  mutate(ratio = `1` / `2`) |&gt;\n  ggplot(aes(x = ratio, y = reorder(state, ratio),\n             color = ratio &gt; 1.5)) +\n  geom_point(size = 3) +\n  geom_vline(xintercept = 1, linetype = \"dashed\", color = \"grey50\") +\n  scale_color_manual(values = c(\"FALSE\" = \"#2a7a8c\", \"TRUE\" = \"#e84855\"),\n                     labels = c(\"FALSE\" = \"Brecha moderada\", \"TRUE\" = \"Brecha elevada (&gt; 1.5)\")) +\n  labs(\n    title  = \"Ratio hombres/mujeres de la tasa de mortalidad por estado\",\n    x = \"Ratio H/M\", y = NULL, color = NULL\n  ) +\n  theme_minimal(base_size = 11) +\n  theme(plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n        legend.position  = \"bottom\",\n        panel.grid.minor = element_blank())\n\n\n\n\n\n\nFigura 4"
+  },
+  {
+    "objectID": "es/B1_regional.html#tabla-resumen",
+    "href": "es/B1_regional.html#tabla-resumen",
+    "title": "① Descripción regional",
+    "section": "Tabla resumen",
+    "text": "Tabla resumen\n\nCódigomort_b1 |&gt;\n  group_by(state) |&gt;\n  summarise(\n    total_rate   = round(sum(rate), 1),\n    top_cause    = cause[which.max(rate)],\n    ratio_hm     = round(\n      mean(rate[sex == \"1\"]) / mean(rate[sex == \"2\"]), 2\n    ),\n    .groups = \"drop\"\n  ) |&gt;\n  arrange(desc(total_rate)) |&gt;\n  kable(\n    caption   = \"Resumen de mortalidad por entidad federativa\",\n    col.names = c(\"Estado\", \"Tasa total /100k\", \"Causa principal\", \"Ratio H/M\")\n  ) |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\"), full_width = FALSE) |&gt;\n  row_spec(1:5, bold = TRUE, background = \"#f0f4f8\")\n\n\nResumen de mortalidad por entidad federativa\n\nEstado\nTasa total /100k\nCausa principal\nRatio H/M\n\n\n\nNuevo León\n2064.7\nEnf. cardiovasculares\n1.01\n\n\nJalisco\n2014.0\nEnf. cardiovasculares\n0.94\n\n\nGuanajuato\n1985.8\nEnf. cardiovasculares\n0.80\n\n\nCiudad de México\n1929.5\nEnf. cardiovasculares\n1.04\n\n\nCoahuila\n1879.0\nEnf. cardiovasculares\n1.33\n\n\nChihuahua\n1878.3\nEnf. cardiovasculares\n1.06\n\n\nMichoacán\n1848.9\nDiabetes mellitus\n0.99\n\n\nYucatán\n1831.5\nCausas externas\n1.21\n\n\nQuintana Roo\n1829.3\nDiabetes mellitus\n1.08\n\n\nTamaulipas\n1766.5\nDiabetes mellitus\n1.30\n\n\nBaja California Sur\n1757.2\nEnf. cardiovasculares\n1.33\n\n\nPuebla\n1747.0\nCausas externas\n0.84\n\n\nDurango\n1679.9\nDiabetes mellitus\n1.88\n\n\nQuerétaro\n1659.2\nEnf. cardiovasculares\n1.50\n\n\nMorelos\n1649.1\nCausas externas\n1.05\n\n\nCampeche\n1643.8\nEnf. cardiovasculares\n1.00\n\n\nSinaloa\n1635.5\nEnf. cardiovasculares\n0.96\n\n\nAguascalientes\n1634.1\nEnf. cardiovasculares\n0.90\n\n\nBaja California\n1625.4\nCausas externas\n1.60\n\n\nEstado de México\n1613.7\nDiabetes mellitus\n1.07\n\n\nGuerrero\n1581.3\nEnf. cardiovasculares\n1.23\n\n\nVeracruz\n1565.7\nEnf. cardiovasculares\n0.98\n\n\nNayarit\n1546.8\nEnf. cardiovasculares\n0.86\n\n\nSonora\n1505.5\nDiabetes mellitus\n1.21\n\n\nColima\n1501.6\nTumores malignos\n0.97\n\n\nZacatecas\n1486.4\nDiabetes mellitus\n1.00\n\n\nTabasco\n1479.8\nEnf. cardiovasculares\n1.07\n\n\nHidalgo\n1479.1\nEnf. cardiovasculares\n0.91\n\n\nTlaxcala\n1432.4\nEnf. cardiovasculares\n1.13\n\n\nOaxaca\n1402.9\nEnf. cardiovasculares\n0.80\n\n\nSan Luis Potosí\n1391.9\nOtras\n1.23\n\n\nChiapas\n1295.6\nEnf. cardiovasculares\n1.41"
+  },
+  {
+    "objectID": "es/B1_regional.html#puntos-clave-de-este-nivel",
+    "href": "es/B1_regional.html#puntos-clave-de-este-nivel",
+    "title": "① Descripción regional",
+    "section": "Puntos clave de este nivel",
+    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel B1\n\nExiste una heterogeneidad marcada entre entidades: las tasas de mortalidad varían considerablemente entre los estados con mayor y menor carga.\nLas enfermedades cardiovasculares y la diabetes son la causa dominante en la mayoría de los estados, con excepciones en estados con alta violencia.\nLa brecha de género es especialmente pronunciada en estados del norte, donde las causas externas pesan más en la mortalidad masculina."
+  },
+  {
+    "objectID": "es/B1_regional.html#navegación",
+    "href": "es/B1_regional.html#navegación",
+    "title": "① Descripción regional",
+    "section": "Navegación",
+    "text": "Navegación\n\n← ⑤ Máxima desagregación → B② Análisis espacial por estados"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html",
+    "href": "es/B2_espacial_estados.html",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "",
+    "text": "Bloque B · Nivel 2 bis Variables : state · year · cause"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#introducción-analítica",
+    "href": "es/B2_espacial_estados.html#introducción-analítica",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "Introducción analítica",
+    "text": "Introducción analítica\nEste módulo constituye el primer nivel de la rama espacial del análisis. A diferencia del Bloque A —que progresa temporalmente—, aquí el espacio es la variable organizadora principal.\nEl análisis por entidades federativas permite :\n\nIdentificar gradientes norte-sur, costa-interior en la mortalidad\nDetectar clusters espaciales (estados con perfiles similares)\nExaminar si las disparidades regionales se han atenuado o ampliado en el tiempo\n\n\n\n\n\n\n\nTip\n\n\n\nArticulación con el Bloque A\nEl Nivel ④ del Bloque A introduce el estado como variable de desagregación dentro de la lógica sanitaria. Aquí, la perspectiva se invierte : el territorio es el punto de partida, no la causa."
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#cartographie-choroplèthe-taux-de-mortalité",
+    "href": "es/B2_espacial_estados.html#cartographie-choroplèthe-taux-de-mortalité",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "1 · Cartographie choroplèthe — taux de mortalité",
+    "text": "1 · Cartographie choroplèthe — taux de mortalité\n\n\nTaux global\nCauses principales par état\nComparaison 2000 vs 2022\n\n\n\n\nCódigo# ── Note : remplacer mx_grid par mx_states (shp réel) ───────────────\ntm_shape(mx_grid) +\n  tm_polygons(\n    col           = \"mean_rate\",\n    title         = \"Taux / 100 000 hab.\",\n    palette       = \"Blues\",\n    style         = \"quantile\",\n    n             = 5,\n    border.col    = \"white\",\n    border.alpha  = 0.6,\n    textNA        = \"Sin dato\",\n    colorNA       = \"#f0f0f0\"\n  ) +\n  tm_text(\"state\", size = 0.45, col = \"grey20\") +\n  tm_layout(\n    main.title     = \"Tasa de mortalidad por Estado\",\n    main.title.size = 1,\n    legend.outside = TRUE,\n    frame          = FALSE,\n    bg.color       = \"white\"\n  ) +\n  tm_compass(position = c(\"right\", \"bottom\")) +\n  tm_scale_bar(position = c(\"left\", \"bottom\"))\n\n\n\nTaux de mortalité moyen par état (toutes causes, 2000–2022)\n\n\n\n\n\n\nCódigo# Cause dominante par état\ncause_dominante &lt;- mort_state_cause_last |&gt;\n  group_by(state) |&gt;\n  slice_max(rate_100k, n = 1) |&gt;\n  ungroup()\n\nmx_cause &lt;- mx_grid |&gt;\n  left_join(cause_dominante, by = \"state\") |&gt;\n  mutate(cause_short = case_when(\n    cause == \"Enfermedades cardiovasculares\" ~ \"Cardiovascular\",\n    cause == \"Diabetes mellitus\"             ~ \"Diabetes\",\n    cause == \"Tumores malignos\"              ~ \"Cáncer\",\n    cause == \"Causas externas\"               ~ \"Ext.\",\n    TRUE ~ \"Otras\"\n  ))\n\ntm_shape(mx_cause) +\n  tm_polygons(\n    col        = \"cause_short\",\n    title      = \"Causa principal\",\n    palette    = \"Set2\",\n    border.col = \"white\",\n    border.alpha = 0.6\n  ) +\n  tm_layout(\n    main.title      = \"Causa principal de mortalidad por Estado (2022)\",\n    main.title.size = 1,\n    legend.outside  = TRUE,\n    frame           = FALSE\n  )\n\n\n\nCause principale de mortalité par état (2022)\n\n\n\n\n\n\nCódigo# Résumé par état × année sélectionnée\nrate_comp &lt;- mort_state |&gt;\n  filter(year %in% c(2000, 2022)) |&gt;\n  group_by(state, year) |&gt;\n  summarise(rate_100k = mean(rate_100k), .groups = \"drop\")\n\nrate_wide &lt;- rate_comp |&gt;\n  pivot_wider(names_from = year, values_from = rate_100k,\n              names_prefix = \"rate_\") |&gt;\n  mutate(delta = rate_2022 - rate_2000)\n\nmx_delta &lt;- mx_grid |&gt;\n  left_join(rate_wide, by = \"state\")\n\ntm_shape(mx_delta) +\n  tm_polygons(\n    col          = \"delta\",\n    title        = \"Δ taux (2022 − 2000)\",\n    palette      = \"RdBu\",\n    midpoint     = 0,\n    style        = \"quantile\",\n    border.col   = \"white\",\n    border.alpha = 0.6\n  ) +\n  tm_layout(\n    main.title      = \"Cambio en la tasa de mortalidad (2022 vs 2000)\",\n    main.title.size = 1,\n    legend.outside  = TRUE,\n    frame           = FALSE\n  )\n\n\n\nÉvolution du taux de mortalité entre 2000 et 2022"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#analyse-des-gradients-régionaux",
+    "href": "es/B2_espacial_estados.html#analyse-des-gradients-régionaux",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "2 · Analyse des gradients régionaux",
+    "text": "2 · Analyse des gradients régionaux\n\nCódigomort_state |&gt;\n  filter(year == 2022, cause == \"Enfermedades cardiovasculares\") |&gt;\n  group_by(state, lat_rank) |&gt;\n  summarise(rate_100k = mean(rate_100k), .groups = \"drop\") |&gt;\n  ggplot(aes(x = lat_rank, y = rate_100k)) +\n  geom_point(color = \"#1a2744\", size = 3, alpha = 0.8) +\n  geom_smooth(method = \"loess\", se = TRUE,\n              color = \"#2a7a8c\", fill = \"#2a7a8c\", alpha = 0.2) +\n  geom_text(aes(label = state), size = 2.8, nudge_y = 3,\n            color = \"#6c757d\", check_overlap = TRUE) +\n  labs(\n    title    = \"Gradiente norte-sur : enfermedades cardiovasculares (2022)\",\n    subtitle = \"Eje X = posición relativa norte-sur (proxy de latitud)\",\n    x = \"Posición relativa (sur → norte)\",\n    y = \"Tasa de mortalidad / 100 000 hab.\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title    = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle = element_text(color = \"#6c757d\")\n  )\n\n\n\n\n\n\nFigura 1: Gradient du taux de mortalité selon la latitude (proxy)"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#typologies-régionales-clustering",
+    "href": "es/B2_espacial_estados.html#typologies-régionales-clustering",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "3 · Typologies régionales (clustering)",
+    "text": "3 · Typologies régionales (clustering)\n\nCódigo# ── Clustering k-means sur profil causal ─────────────────────────────\n# (en production : ajouter standardisation + Moran's I pour autocorrélation)\n\n# Matrice état × cause (taux 2022)\nmat_cluster &lt;- mort_state_cause_last |&gt;\n  select(state, cause, rate_100k) |&gt;\n  pivot_wider(names_from = cause, values_from = rate_100k,\n              values_fill = 0) |&gt;\n  column_to_rownames(\"state\") |&gt;\n  scale()\n\nset.seed(123)\nk &lt;- 4  # nombre de clusters (choisir via silhouette en pratique)\nkm &lt;- kmeans(mat_cluster, centers = k, nstart = 25)\n\nclusters_df &lt;- tibble(\n  state   = rownames(mat_cluster),\n  cluster = factor(km$cluster, labels = paste0(\"Cluster \", 1:k))\n)\n\n# Profils des clusters\nmort_state_cause_last |&gt;\n  left_join(clusters_df, by = \"state\") |&gt;\n  group_by(cluster, cause) |&gt;\n  summarise(rate_100k = mean(rate_100k), .groups = \"drop\") |&gt;\n  mutate(cause = str_wrap(cause, 20)) |&gt;\n  ggplot(aes(x = reorder(cause, rate_100k),\n             y = rate_100k, fill = cluster)) +\n  geom_col(position = \"dodge\", width = 0.7, alpha = 0.9) +\n  coord_flip() +\n  scale_fill_brewer(palette = \"Set2\") +\n  labs(\n    title    = \"Perfil de mortalidad por cluster de estados (2022)\",\n    subtitle = \"Clustering k-means (k=4) sobre tasa por 100 000 hab.\",\n    x = NULL, y = \"Tasa / 100 000 hab.\", fill = \"Cluster\"\n  ) +\n  theme_minimal(base_size = 12) +\n  theme(\n    legend.position  = \"bottom\",\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    panel.grid.minor = element_blank()\n  )\n\n\n\nProfil de mortalité par cluster d’états\n\n\n\n\nCódigo# Tableau des états par cluster\nclusters_df |&gt;\n  left_join(mort_state_total, by = \"state\") |&gt;\n  arrange(cluster, desc(mean_rate)) |&gt;\n  select(Cluster = cluster, Estado = state,\n         `Tasa media` = mean_rate) |&gt;\n  mutate(`Tasa media` = round(`Tasa media`, 1)) |&gt;\n  kable(caption = \"Asignación de estados por cluster de mortalidad\") |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\"),\n                full_width = FALSE) |&gt;\n  pack_rows(index = table(clusters_df$cluster))\n\n\nAsignación de estados por cluster de mortalidad\n\nCluster\nEstado\nTasa media\n\n\n\nCluster 1\n\n\nCluster 1\nNuevo León\n34.7\n\n\nCluster 1\nGuanajuato\n34.3\n\n\nCluster 1\nSan Luis Potosí\n33.7\n\n\nCluster 1\nYucatán\n32.9\n\n\nCluster 1\nZacatecas\n31.9\n\n\nCluster 1\nOaxaca\n28.9\n\n\nCluster 2\n\n\nCluster 2\nCampeche\n39.6\n\n\nCluster 3\n\n\nCluster 3\nAguascalientes\n32.7\n\n\nCluster 4\n\n\nCluster 4\nNayarit\n40.4\n\n\nCluster 4\nSinaloa\n39.9\n\n\nCluster 4\nMéxico\n39.3\n\n\nCluster 4\nTabasco\n37.3\n\n\nCluster 4\nBaja California\n37.2\n\n\nCluster 4\nHidalgo\n37.1\n\n\nCluster 4\nCoahuila\n37.0\n\n\nCluster 4\nChiapas\n36.4\n\n\nCluster 4\nColima\n36.3\n\n\nCluster 4\nPuebla\n36.2\n\n\nCluster 4\nCiudad de México\n35.9\n\n\nCluster 4\nTlaxcala\n35.2\n\n\nCluster 4\nQuerétaro\n35.1\n\n\nCluster 4\nGuerrero\n35.0\n\n\nCluster 4\nDurango\n34.4\n\n\nCluster 4\nChihuahua\n34.3\n\n\nCluster 4\nVeracruz\n32.6\n\n\nCluster 4\nQuintana Roo\n32.4\n\n\nCluster 4\nJalisco\n30.8\n\n\nCluster 4\nMichoacán\n30.7\n\n\nCluster 4\nMorelos\n30.4\n\n\nCluster 4\nTamaulipas\n29.5\n\n\nCluster 4\nBaja California Sur\n28.5\n\n\nCluster 4\nSonora\n27.9"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#indicateurs-de-dispersion-spatiale",
+    "href": "es/B2_espacial_estados.html#indicateurs-de-dispersion-spatiale",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "4 · Indicateurs de dispersion spatiale",
+    "text": "4 · Indicateurs de dispersion spatiale\n\nCódigo# Coefficient de variation inter-étatique par année\ncv_by_year &lt;- mort_state |&gt;\n  group_by(year, state) |&gt;\n  summarise(rate_100k = mean(rate_100k), .groups = \"drop\") |&gt;\n  group_by(year) |&gt;\n  summarise(\n    mean_rate = mean(rate_100k),\n    sd_rate   = sd(rate_100k),\n    cv        = sd_rate / mean_rate * 100,\n    range_    = max(rate_100k) - min(rate_100k)\n  )\n\np1 &lt;- ggplot(cv_by_year, aes(x = year, y = cv)) +\n  geom_line(color = \"#2a7a8c\", linewidth = 1.1) +\n  geom_point(size = 2.5, color = \"#2a7a8c\") +\n  labs(title = \"Coeficiente de variación inter-estatal\",\n       x = NULL, y = \"CV (%)\") +\n  theme_minimal(base_size = 12) +\n  theme(plot.title = element_text(face = \"bold\", color = \"#1a2744\"))\n\np2 &lt;- ggplot(cv_by_year, aes(x = year, y = range_)) +\n  geom_ribbon(aes(ymin = mean_rate - sd_rate,\n                  ymax = mean_rate + sd_rate),\n              fill = \"#2a7a8c\", alpha = 0.2) +\n  geom_line(aes(y = mean_rate), color = \"#1a2744\", linewidth = 1.1) +\n  labs(title = \"Media ± desv. estándar inter-estatal\",\n       x = NULL, y = \"Tasa / 100 000 hab.\") +\n  theme_minimal(base_size = 12) +\n  theme(plot.title = element_text(face = \"bold\", color = \"#1a2744\"))\n\n# patchwork : côte à côte\nlibrary(patchwork)\np1 | p2\n\n\n\nÉvolution de la dispersion inter-étatique de la mortalité\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nNote méthodologique — Autocorrélation spatiale\nEn production, il est recommandé de calculer l’indice de Moran (via spdep) pour tester l’autocorrélation spatiale des taux de mortalité. Un I de Moran significatif et positif confirmerait l’existence de clusters spatiaux.\n# Code indicatif (nécessite poids spatiaux)\n# library(spdep)\n# w  &lt;- poly2nb(mx_states, queen = TRUE)\n# wl &lt;- nb2listw(w)\n# moran.test(mx_states$mean_rate, wl)"
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#points-clés-de-ce-niveau",
+    "href": "es/B2_espacial_estados.html#points-clés-de-ce-niveau",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "Points clés de ce niveau",
+    "text": "Points clés de ce niveau\n\n\n\n\n\n\nNota\n\n\n\nRetenir de ce niveau ② bis\n\nLes disparités inter-étatiques sont significatives et persistent sur toute la période.\nUn gradient nord-sud est observable pour les maladies cardiovasculaires, cohérent avec les différentiels de développement économique.\nLe clustering k-means identifie 4 profils régionaux distincts qui correspondent approximativement aux grandes régions géo-économiques du Mexique."
+  },
+  {
+    "objectID": "es/B2_espacial_estados.html#navigation",
+    "href": "es/B2_espacial_estados.html#navigation",
+    "title": "② bis · Análisis espacial por Estados",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ④ Dimensión territorial (Bloque A) → ③ bis · Municipios"
+  },
+  {
+    "objectID": "es/C1_regional_description.html",
+    "href": "es/C1_regional_description.html",
+    "title": "C1_regional_description",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "es/C3_espacial_municipios.html",
+    "href": "es/C3_espacial_municipios.html",
+    "title": "C3_espacial_municipios",
+    "section": "",
+    "text": "Back to top"
+  }
+]

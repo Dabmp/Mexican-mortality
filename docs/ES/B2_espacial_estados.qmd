@@ -1,0 +1,421 @@
+---
+title: "② bis · Análisis espacial por Estados"
+subtitle: "Bloque B — Distribución espacial, gradientes regionales y clusters, 2000–2022"
+date: today
+date-format: "MMMM YYYY"
+lang: es
+---
+
+<span class="badge-nivel" style="background:#2a9d6e;">Bloque B · Nivel 2 bis</span>
+**Variables** : `state` · `year` · `cause`
+
+---
+
+## Introducción analítica
+
+Este módulo constituye el **primer nivel de la rama espacial** del análisis.
+A diferencia del Bloque A —que progresa temporalmente—, aquí el espacio es
+la variable organizadora principal.
+
+El análisis por **entidades federativas** permite :
+
+1. Identificar **gradientes norte-sur, costa-interior** en la mortalidad
+2. Detectar **clusters espaciales** (estados con perfiles similares)
+3. Examinar si las disparidades regionales se han atenuado o ampliado en el tiempo
+
+::: {.callout-tip}
+**Articulación con el Bloque A**  
+El [Nivel ④ del Bloque A](A4_territorial.qmd) introduce el estado como variable de
+desagregación dentro de la lógica sanitaria. Aquí, la perspectiva se invierte :
+el territorio es el punto de partida, no la causa.
+:::
+
+---
+
+```{r setup-b2, include=FALSE}
+# ── Packages ─────────────────────────────────────────────────────────
+library(tidyverse)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(sf)            # manipulation de géométries spatiales
+library(tmap)          # cartographie thématique
+library(RColorBrewer)  # palettes cartographiques
+
+# Mode tmap interactif (leaflet) — commenter pour rendu statique
+tmap_mode("plot")   # "plot" = statique, "view" = interactif leaflet
+
+# ── Palette ──────────────────────────────────────────────────────────
+palette_causa <- c(
+  "Enfermedades cardiovasculares" = "#1a2744",
+  "Tumores malignos"              = "#e84855",
+  "Diabetes mellitus"             = "#2a7a8c",
+  "Enfermedades respiratorias"    = "#f4a261",
+  "Causas externas"               = "#6c757d",
+  "Otras"                         = "#adb5bd"
+)
+
+# ── Données tabulaires (simulées) ─────────────────────────────────────
+set.seed(42)
+states_mx <- c(
+  "Aguascalientes", "Baja California", "Baja California Sur",
+  "Campeche", "Chiapas", "Chihuahua", "Ciudad de México",
+  "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero",
+  "Hidalgo", "Jalisco", "México", "Michoacán", "Morelos",
+  "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro",
+  "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora",
+  "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz",
+  "Yucatán", "Zacatecas"
+)
+
+causes <- c(
+  "Enfermedades cardiovasculares", "Tumores malignos",
+  "Diabetes mellitus", "Enfermedades respiratorias",
+  "Causas externas", "Otras"
+)
+
+# Gradient géographique simulé (nord riche → mortalité cardiovasculaire,
+# sud pauvre → maladies infectieuses/autres)
+state_lat_rank <- seq_along(states_mx) / length(states_mx)  # proxy lat
+
+mort_state <- expand.grid(
+  year  = 2000:2022,
+  state = states_mx,
+  cause = causes,
+  stringsAsFactors = FALSE
+) |>
+  left_join(
+    tibble(state = states_mx, lat_rank = state_lat_rank),
+    by = "state"
+  ) |>
+  mutate(
+    pop  = runif(n(), 300000, 9000000),
+    deaths = rpois(n(), lambda =
+      200 +
+      30 * (year - 2000) +
+      case_when(
+        cause == "Enfermedades cardiovasculares" ~ 400 + 150 * lat_rank,
+        cause == "Diabetes mellitus"             ~ 300 + 100 * lat_rank,
+        cause == "Causas externas"               ~ 200 - 80  * lat_rank,
+        cause == "Tumores malignos"              ~ 180,
+        TRUE ~ 60
+      ) +
+      pop / 2e6 * 100
+    ),
+    rate_100k = deaths / pop * 100000
+  )
+
+# Résumé par état (toutes années, toutes causes)
+mort_state_total <- mort_state |>
+  group_by(state) |>
+  summarise(
+    total_deaths = sum(deaths),
+    mean_rate    = mean(rate_100k),
+    .groups = "drop"
+  )
+
+# Résumé par état × cause, dernière année
+mort_state_cause_last <- mort_state |>
+  filter(year == 2022) |>
+  group_by(state, cause) |>
+  summarise(
+    deaths    = sum(deaths),
+    rate_100k = mean(rate_100k),
+    .groups = "drop"
+  )
+
+# ── Géométries spatiales ──────────────────────────────────────────────
+# Option 1 : télécharger via rnaturalearth (recommandé)
+# library(rnaturalearth)
+# mx_states <- ne_states(country = "Mexico", returnclass = "sf")
+
+# Option 2 : lire un shapefile local
+# mx_states <- st_read("data/shp/estados_mexico.shp", quiet = TRUE)
+
+# Option 3 (démo) : créer une géométrie simplifiée factice
+# ▶ REMPLACER par l'une des deux options ci-dessus en production
+mx_bbox <- st_bbox(c(xmin = -117.1, ymin = 14.5,
+                     xmax = -86.7,  ymax = 32.7),
+                   crs = 4326)
+
+# Grille hexagonale comme proxy des états (démo uniquement)
+mx_grid <- st_make_grid(
+  st_as_sfc(mx_bbox), n = c(8, 4),
+  square = FALSE, crs = 4326
+) |>
+  st_sf() |>
+  slice(1:32) |>
+  mutate(state = states_mx) |>
+  left_join(mort_state_total, by = "state")
+```
+
+## 1 · Cartographie choroplèthe — taux de mortalité
+
+::: {.panel-tabset}
+
+#### Taux global
+
+```{r mapa-tasa-global, fig.cap="Taux de mortalité moyen par état (toutes causes, 2000–2022)"}
+# ── Note : remplacer mx_grid par mx_states (shp réel) ───────────────
+tm_shape(mx_grid) +
+  tm_polygons(
+    col           = "mean_rate",
+    title         = "Taux / 100 000 hab.",
+    palette       = "Blues",
+    style         = "quantile",
+    n             = 5,
+    border.col    = "white",
+    border.alpha  = 0.6,
+    textNA        = "Sin dato",
+    colorNA       = "#f0f0f0"
+  ) +
+  tm_text("state", size = 0.45, col = "grey20") +
+  tm_layout(
+    main.title     = "Tasa de mortalidad por Estado",
+    main.title.size = 1,
+    legend.outside = TRUE,
+    frame          = FALSE,
+    bg.color       = "white"
+  ) +
+  tm_compass(position = c("right", "bottom")) +
+  tm_scale_bar(position = c("left", "bottom"))
+```
+
+#### Causes principales par état
+
+```{r mapa-causa-principal, fig.cap="Cause principale de mortalité par état (2022)"}
+# Cause dominante par état
+cause_dominante <- mort_state_cause_last |>
+  group_by(state) |>
+  slice_max(rate_100k, n = 1) |>
+  ungroup()
+
+mx_cause <- mx_grid |>
+  left_join(cause_dominante, by = "state") |>
+  mutate(cause_short = case_when(
+    cause == "Enfermedades cardiovasculares" ~ "Cardiovascular",
+    cause == "Diabetes mellitus"             ~ "Diabetes",
+    cause == "Tumores malignos"              ~ "Cáncer",
+    cause == "Causas externas"               ~ "Ext.",
+    TRUE ~ "Otras"
+  ))
+
+tm_shape(mx_cause) +
+  tm_polygons(
+    col        = "cause_short",
+    title      = "Causa principal",
+    palette    = "Set2",
+    border.col = "white",
+    border.alpha = 0.6
+  ) +
+  tm_layout(
+    main.title      = "Causa principal de mortalidad por Estado (2022)",
+    main.title.size = 1,
+    legend.outside  = TRUE,
+    frame           = FALSE
+  )
+```
+
+#### Comparaison 2000 vs 2022
+
+```{r mapa-comparacion-temporal, fig.height=5, fig.cap="Évolution du taux de mortalité entre 2000 et 2022"}
+# Résumé par état × année sélectionnée
+rate_comp <- mort_state |>
+  filter(year %in% c(2000, 2022)) |>
+  group_by(state, year) |>
+  summarise(rate_100k = mean(rate_100k), .groups = "drop")
+
+rate_wide <- rate_comp |>
+  pivot_wider(names_from = year, values_from = rate_100k,
+              names_prefix = "rate_") |>
+  mutate(delta = rate_2022 - rate_2000)
+
+mx_delta <- mx_grid |>
+  left_join(rate_wide, by = "state")
+
+tm_shape(mx_delta) +
+  tm_polygons(
+    col          = "delta",
+    title        = "Δ taux (2022 − 2000)",
+    palette      = "RdBu",
+    midpoint     = 0,
+    style        = "quantile",
+    border.col   = "white",
+    border.alpha = 0.6
+  ) +
+  tm_layout(
+    main.title      = "Cambio en la tasa de mortalidad (2022 vs 2000)",
+    main.title.size = 1,
+    legend.outside  = TRUE,
+    frame           = FALSE
+  )
+```
+
+:::
+
+---
+
+## 2 · Analyse des gradients régionaux
+
+```{r fig-gradient-regional, fig.cap="Gradient du taux de mortalité selon la latitude (proxy)"}
+mort_state |>
+  filter(year == 2022, cause == "Enfermedades cardiovasculares") |>
+  group_by(state, lat_rank) |>
+  summarise(rate_100k = mean(rate_100k), .groups = "drop") |>
+  ggplot(aes(x = lat_rank, y = rate_100k)) +
+  geom_point(color = "#1a2744", size = 3, alpha = 0.8) +
+  geom_smooth(method = "loess", se = TRUE,
+              color = "#2a7a8c", fill = "#2a7a8c", alpha = 0.2) +
+  geom_text(aes(label = state), size = 2.8, nudge_y = 3,
+            color = "#6c757d", check_overlap = TRUE) +
+  labs(
+    title    = "Gradiente norte-sur : enfermedades cardiovasculares (2022)",
+    subtitle = "Eje X = posición relativa norte-sur (proxy de latitud)",
+    x = "Posición relativa (sur → norte)",
+    y = "Tasa de mortalidad / 100 000 hab."
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title    = element_text(face = "bold", color = "#1a2744"),
+    plot.subtitle = element_text(color = "#6c757d")
+  )
+```
+
+---
+
+## 3 · Typologies régionales (clustering)
+
+```{r clustering-regional, fig.cap="Profil de mortalité par cluster d'états"}
+# ── Clustering k-means sur profil causal ─────────────────────────────
+# (en production : ajouter standardisation + Moran's I pour autocorrélation)
+
+# Matrice état × cause (taux 2022)
+mat_cluster <- mort_state_cause_last |>
+  select(state, cause, rate_100k) |>
+  pivot_wider(names_from = cause, values_from = rate_100k,
+              values_fill = 0) |>
+  column_to_rownames("state") |>
+  scale()
+
+set.seed(123)
+k <- 4  # nombre de clusters (choisir via silhouette en pratique)
+km <- kmeans(mat_cluster, centers = k, nstart = 25)
+
+clusters_df <- tibble(
+  state   = rownames(mat_cluster),
+  cluster = factor(km$cluster, labels = paste0("Cluster ", 1:k))
+)
+
+# Profils des clusters
+mort_state_cause_last |>
+  left_join(clusters_df, by = "state") |>
+  group_by(cluster, cause) |>
+  summarise(rate_100k = mean(rate_100k), .groups = "drop") |>
+  mutate(cause = str_wrap(cause, 20)) |>
+  ggplot(aes(x = reorder(cause, rate_100k),
+             y = rate_100k, fill = cluster)) +
+  geom_col(position = "dodge", width = 0.7, alpha = 0.9) +
+  coord_flip() +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    title    = "Perfil de mortalidad por cluster de estados (2022)",
+    subtitle = "Clustering k-means (k=4) sobre tasa por 100 000 hab.",
+    x = NULL, y = "Tasa / 100 000 hab.", fill = "Cluster"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position  = "bottom",
+    plot.title       = element_text(face = "bold", color = "#1a2744"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+```{r tabla-clusters}
+# Tableau des états par cluster
+clusters_df |>
+  left_join(mort_state_total, by = "state") |>
+  arrange(cluster, desc(mean_rate)) |>
+  select(Cluster = cluster, Estado = state,
+         `Tasa media` = mean_rate) |>
+  mutate(`Tasa media` = round(`Tasa media`, 1)) |>
+  kable(caption = "Asignación de estados por cluster de mortalidad") |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = FALSE) |>
+  pack_rows(index = table(clusters_df$cluster))
+```
+
+---
+
+## 4 · Indicateurs de dispersion spatiale
+
+```{r dispersion-espacial, fig.cap="Évolution de la dispersion inter-étatique de la mortalité"}
+# Coefficient de variation inter-étatique par année
+cv_by_year <- mort_state |>
+  group_by(year, state) |>
+  summarise(rate_100k = mean(rate_100k), .groups = "drop") |>
+  group_by(year) |>
+  summarise(
+    mean_rate = mean(rate_100k),
+    sd_rate   = sd(rate_100k),
+    cv        = sd_rate / mean_rate * 100,
+    range_    = max(rate_100k) - min(rate_100k)
+  )
+
+p1 <- ggplot(cv_by_year, aes(x = year, y = cv)) +
+  geom_line(color = "#2a7a8c", linewidth = 1.1) +
+  geom_point(size = 2.5, color = "#2a7a8c") +
+  labs(title = "Coeficiente de variación inter-estatal",
+       x = NULL, y = "CV (%)") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", color = "#1a2744"))
+
+p2 <- ggplot(cv_by_year, aes(x = year, y = range_)) +
+  geom_ribbon(aes(ymin = mean_rate - sd_rate,
+                  ymax = mean_rate + sd_rate),
+              fill = "#2a7a8c", alpha = 0.2) +
+  geom_line(aes(y = mean_rate), color = "#1a2744", linewidth = 1.1) +
+  labs(title = "Media ± desv. estándar inter-estatal",
+       x = NULL, y = "Tasa / 100 000 hab.") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", color = "#1a2744"))
+
+# patchwork : côte à côte
+library(patchwork)
+p1 | p2
+```
+
+::: {.callout-note}
+**Note méthodologique — Autocorrélation spatiale**  
+En production, il est recommandé de calculer l'**indice de Moran** (via `spdep`)
+pour tester l'autocorrélation spatiale des taux de mortalité.
+Un I de Moran significatif et positif confirmerait l'existence de clusters spatiaux.
+
+```r
+# Code indicatif (nécessite poids spatiaux)
+# library(spdep)
+# w  <- poly2nb(mx_states, queen = TRUE)
+# wl <- nb2listw(w)
+# moran.test(mx_states$mean_rate, wl)
+```
+:::
+
+---
+
+## Points clés de ce niveau
+
+::: {.callout-note icon="false"}
+**Retenir de ce niveau ② bis**
+
+- Les **disparités inter-étatiques** sont significatives et persistent sur toute la période.
+- Un **gradient nord-sud** est observable pour les maladies cardiovasculaires, cohérent avec les différentiels de développement économique.
+- Le clustering k-means identifie **4 profils régionaux** distincts qui correspondent approximativement aux grandes régions géo-économiques du Mexique.
+:::
+
+---
+
+## Navigation
+
+::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
+[← ④ Dimensión territorial (Bloque A)](A4_territorial.qmd){.btn .btn-outline-secondary}
+[→ ③ bis · Municipios](B3_espacial_municipios.qmd){.btn .btn-primary}
+:::

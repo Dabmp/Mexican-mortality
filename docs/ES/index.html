@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Análisis de la Mortalidad en México – Mortality in Mexico</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-49c9dac6fae8e09f4ca8bec003b153f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e579c3393cc4d4e8e3febf1937a5d21c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script><link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Source+Sans+3:wght@300;400;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+</head>
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title"><strong>Mortalidad · México</strong></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-español" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🇲🇽 Español</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-español">
+<li>
+    <a class="dropdown-item" href="../es/index.qmd">
+ <span class="dropdown-text">Inicio</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Bloque A — Evolución de la mortalidad</li>
+        <li>
+    <a class="dropdown-item" href="../es/A1_descriptivo_general.qmd">
+ <span class="dropdown-text">① Descripción general</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/A2_causas.qmd">
+ <span class="dropdown-text">② Desagregación por causa</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/A3_causas_especificas.qmd">
+ <span class="dropdown-text">③ Causas específicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/A4_territorial.qmd">
+ <span class="dropdown-text">④ Dimensión territorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/A5_maxima_desagregacion.qmd">
+ <span class="dropdown-text">⑤ Máxima desagregación</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Bloque B — Disparidades regionales</li>
+        <li>
+    <a class="dropdown-item" href="../es/B1_regional.qmd">
+ <span class="dropdown-text">① Descripción regional</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/B2_espacial_estados.qmd">
+ <span class="dropdown-text">② Análisis por Estados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/B3_espacial_municipios.qmd">
+ <span class="dropdown-text">③ Análisis por Municipios</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Bloque C — Esperanza de vida</li>
+        <li>
+    <a class="dropdown-item" href="../es/C1_esperanza_vida.qmd">
+ <span class="dropdown-text">① Descripción regional</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/C2_ev_estados.qmd">
+ <span class="dropdown-text">② Por Estados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../es/C3_ev_municipios.qmd">
+ <span class="dropdown-text">③ Por Municipios</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-english" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🇬🇧 English</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
+<li>
+    <a class="dropdown-item" href="../en/index.qmd">
+ <span class="dropdown-text">Home</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Block A — Mortality trends</li>
+        <li>
+    <a class="dropdown-item" href="../en/A1_descriptive_general.qmd">
+ <span class="dropdown-text">① General description</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/A2_causes.qmd">
+ <span class="dropdown-text">② Disaggregation by cause</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/A3_specific_causes.qmd">
+ <span class="dropdown-text">③ Specific causes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/A4_territorial.qmd">
+ <span class="dropdown-text">④ Territorial dimension</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/A5_maximum_disaggregation.qmd">
+ <span class="dropdown-text">⑤ Maximum disaggregation</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Block B — Regional disparities</li>
+        <li>
+    <a class="dropdown-item" href="../en/B1_regional.qmd">
+ <span class="dropdown-text">① Regional description</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/B2_spatial_states.qmd">
+ <span class="dropdown-text">② Analysis by State</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/B3_spatial_municipalities.qmd">
+ <span class="dropdown-text">③ Analysis by Municipality</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Block C — Life expectancy</li>
+        <li>
+    <a class="dropdown-item" href="../en/C1_life_expectancy.qmd">
+ <span class="dropdown-text">① Regional description</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/C2_le_states.qmd">
+ <span class="dropdown-text">② By State</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../en/C3_le_municipalities.qmd">
+ <span class="dropdown-text">③ By Municipality</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dabmp/mortalidad-mexico"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Análisis de la Mortalidad en México</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque A — Temporalidad</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/A1_descriptivo_general.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">① Descripción general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/A2_causas.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">② Causas de muerte</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/A3_causas_especificas.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">③ Causas específicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/A4_territorial.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">④ Dimensión territorial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/A5_maxima_desagregacion.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">⑤ Máxima desagregación</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque B — Análisis espacial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/B1_regional.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">① Descripción regional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/B2_espacial_estados.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">② Por Estados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/B3_espacial_municipios.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">③ Por Municipios</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bloque C — Esperanza de vida</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/C1_esperanza_vida.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">① Descripción regional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/C2_ev_estados.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">② Por Estados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../es/C3_ev_municipios.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">③ Por Municipios</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+<li><a href="#mortalidad-en-m%C3%A9xico" id="toc-mortalidad-en-méxico" class="nav-link active" data-scroll-target="#mortalidad-en-m%C3%A9xico">Mortalidad en México</a></li>
+  <li>
+<a href="#estructura-del-sitio" id="toc-estructura-del-sitio" class="nav-link" data-scroll-target="#estructura-del-sitio">Estructura del sitio</a>
+  <ul class="collapse">
+<li><a href="#bloque-a-an%C3%A1lisis-sanitario-y-temporal" id="toc-bloque-a-análisis-sanitario-y-temporal" class="nav-link" data-scroll-target="#bloque-a-an%C3%A1lisis-sanitario-y-temporal">Bloque A — Análisis sanitario y temporal</a></li>
+  <li><a href="#bloque-b-an%C3%A1lisis-espacial" id="toc-bloque-b-análisis-espacial" class="nav-link" data-scroll-target="#bloque-b-an%C3%A1lisis-espacial">Bloque B — Análisis espacial</a></li>
+  <li><a href="#bloque-c-esperanza-de-vida" id="toc-bloque-c-esperanza-de-vida" class="nav-link" data-scroll-target="#bloque-c-esperanza-de-vida">Bloque C — Esperanza de vida</a></li>
+  </ul>
+</li>
+  <li><a href="#s%C3%ADntesis-preliminar" id="toc-síntesis-preliminar" class="nav-link" data-scroll-target="#s%C3%ADntesis-preliminar">Síntesis preliminar</a></li>
+  <li><a href="#c%C3%B3mo-navegar-este-sitio" id="toc-cómo-navegar-este-sitio" class="nav-link" data-scroll-target="#c%C3%B3mo-navegar-este-sitio">Cómo navegar este sitio</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Análisis de la Mortalidad en México</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<p class="subtitle lead">Una aproximación multidimensional: temporalidad, causas y territorio</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">mayo 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header><!-- Hero banner --><div class="column-screen page-columns page-full" style="background: linear-gradient(135deg, #1a2744 0%, #2a7a8c 100%); padding: 4rem 2rem; margin-bottom: 2.5rem; color: white;">
+<section id="mortalidad-en-méxico" class="level2 column-body" style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;"><h2 style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;" class="anchored" data-anchor-id="mortalidad-en-méxico">Mortalidad en México</h2>
+<p>Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período <strong>1990–2024</strong>. La arquitectura analítica se organiza en <strong>tres bloques complementarios</strong>:</p>
+<div style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;">
+<div style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;">
+<p><strong>📈 Bloque A — Análisis epidemiológico</strong><br>
+Progresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.</p>
+</div>
+<div style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;">
+<p><strong>🗺️ Bloque B — Disparidades regionales</strong><br>
+Cartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.</p>
+</div>
+<div style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;">
+<p><strong>⏳ Bloque C — Esperanza de vida</strong><br>
+Evolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio.</p>
+</div>
+</div>
+</section>
+</div>
+<section id="estructura-del-sitio" class="level2"><h2 class="anchored" data-anchor-id="estructura-del-sitio">Estructura del sitio</h2>
+<section id="bloque-a-análisis-sanitario-y-temporal" class="level3"><h3 class="anchored" data-anchor-id="bloque-a-análisis-sanitario-y-temporal">Bloque A — Análisis sanitario y temporal</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Nivel</th>
+<th style="text-align: left;">Variables principales</th>
+<th style="text-align: left;">Objetivo analítico</th>
+<th style="text-align: center;">Página</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">①</td>
+<td style="text-align: left;">
+<code>year</code>, <code>sex</code>
+</td>
+<td style="text-align: left;">Tendencias globales, ASMR</td>
+<td style="text-align: center;"><a href="../ES/A1_descriptivo_general.html">→</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">②</td>
+<td style="text-align: left;">
+<code>year</code>, <code>sex</code>, <code>cause</code>
+</td>
+<td style="text-align: left;">Transiciones epidemiológicas</td>
+<td style="text-align: center;"><a href="../ES/A2_causas.html">→</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">③</td>
+<td style="text-align: left;">
+<code>year</code>, <code>sex</code>, <code>cause_specific</code>
+</td>
+<td style="text-align: left;">Refinamiento por causa CIE-10</td>
+<td style="text-align: center;"><a href="../ES/A3_causas_especificas.html">→</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">④</td>
+<td style="text-align: left;">
+<code>year</code>, <code>sex</code>, <code>state</code>, <code>cause</code>
+</td>
+<td style="text-align: left;">Disparidades regionales</td>
+<td style="text-align: center;"><a href="../ES/A4_territorial.html">→</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">⑤</td>
+<td style="text-align: left;">
+<code>year</code>, <code>sex</code>, <code>state</code>, <code>cause_specific</code>
+</td>
+<td style="text-align: left;">Articulación salud-territorio</td>
+<td style="text-align: center;"><a href="../ES/A5_maxima_desagregacion.html">→</a></td>
+</tr>
+</tbody>
+</table></section><section id="bloque-b-análisis-espacial" class="level3"><h3 class="anchored" data-anchor-id="bloque-b-análisis-espacial">Bloque B — Análisis espacial</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Nivel</th>
+<th style="text-align: left;">Variables principales</th>
+<th style="text-align: left;">Objetivo analítico</th>
+<th style="text-align: center;">Página</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">①</td>
+<td style="text-align: left;">
+<code>state</code>, <code>cause</code>
+</td>
+<td style="text-align: left;">Descripción regional</td>
+<td style="text-align: center;"><a href="../ES/B1_regional.html">→</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">②</td>
+<td style="text-align: left;">
+<code>state</code>, <code>year</code>, <code>cause</code>
+</td>
+<td style="text-align: left;">Distribución espacial, clústeres</td>
+<td style="text-align: center;"><a href="../ES/B2_espacial_estados.html">→</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">③</td>
+<td style="text-align: left;">
+<code>municipality</code>, <code>year</code>, <code>cause</code>
+</td>
+<td style="text-align: left;">Heterogeneidad intra-estatal</td>
+<td style="text-align: center;"><a href="../ES/B3_espacial_municipios.html">→</a></td>
+</tr>
+</tbody>
+</table></section><section id="bloque-c-esperanza-de-vida" class="level3"><h3 class="anchored" data-anchor-id="bloque-c-esperanza-de-vida">Bloque C — Esperanza de vida</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Nivel</th>
+<th style="text-align: left;">Variables principales</th>
+<th style="text-align: left;">Objetivo analítico</th>
+<th style="text-align: center;">Página</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">①</td>
+<td style="text-align: left;">
+<code>state</code>, <code>sex</code>
+</td>
+<td style="text-align: left;">Panorama nacional</td>
+<td style="text-align: center;"><a href="C1_esperanza_vida.qmd">→</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">②</td>
+<td style="text-align: left;">
+<code>state</code>, <code>year</code>, <code>sex</code>
+</td>
+<td style="text-align: left;">Evolución por entidad</td>
+<td style="text-align: center;"><a href="C2_ev_estados.qmd">→</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">③</td>
+<td style="text-align: left;">
+<code>municipality</code>, <code>sex</code>
+</td>
+<td style="text-align: left;">Heterogeneidad municipal</td>
+<td style="text-align: center;"><a href="C3_ev_municipios.qmd">→</a></td>
+</tr>
+</tbody>
+</table>
+<hr></section></section><section id="síntesis-preliminar" class="level2"><h2 class="anchored" data-anchor-id="síntesis-preliminar">Síntesis preliminar</h2>
+<div class="cell">
+<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mort_nacional</span>,</span>
+<span>       <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">deaths</span> <span class="op">/</span> <span class="fl">1000</span>, color <span class="op">=</span> <span class="va">sex</span>, group <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_color_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">palette_sexo</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span> <span class="op">=</span> <span class="st">"Hombres"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"Mujeres"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1990</span>, <span class="fl">2024</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">label_comma</span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">" k"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title    <span class="op">=</span> <span class="st">"Mortalidad total en México"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Número de defunciones por sexo, 1990–2024"</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"Defunciones (miles)"</span>, color <span class="op">=</span> <span class="st">"Sexo"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    plot.title       <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, color <span class="op">=</span> <span class="st">"#1a2744"</span><span class="op">)</span>,</span>
+<span>    plot.subtitle    <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#6c757d"</span><span class="op">)</span>,</span>
+<span>    legend.position  <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    panel.grid.minor <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div id="fig-resumen-nacional" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-resumen-nacional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-resumen-nacional-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resumen-nacional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Evolución de la mortalidad total por sexo (1990–2024)
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Nota sobre los datos</strong><br>
+Los valores presentados son <strong>simulados</strong> con fines demostrativos. Para el análisis real, reemplazar en el chunk <code>setup-global</code> por: <code>load("data/asmr_nac.rda")</code>. Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA.</p>
+</div>
+</div>
+<hr></section><section id="cómo-navegar-este-sitio" class="level2"><h2 class="anchored" data-anchor-id="cómo-navegar-este-sitio">Cómo navegar este sitio</h2>
+<ol type="1">
+<li>
+<strong>Lectura progresiva</strong> — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.</li>
+<li>
+<strong>Lectura temática</strong> — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.</li>
+<li>
+<strong>Cambio de idioma</strong> — utilizar el menú <strong>🇲🇽 Español / 🇬🇧 English</strong> en la barra de navegación para acceder al contenido equivalente en inglés.</li>
+</ol>
+<div style="display:flex; justify-content:flex-end; margin-top:2rem;">
+<p><a href="../ES/A1_descriptivo_general.html" class="btn btn-primary">→ ① Descripción general</a></p>
+</div>
+
+
+<!-- -->
+
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Análisis de la Mortalidad en México"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Una aproximación multidimensional: temporalidad, causas y territorio"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">date-format:</span><span class="co"> "MMMM YYYY"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="an">sidebar:</span><span class="co"> sidebar-es</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup-global, include=FALSE, cache=FALSE}</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(scales); <span class="fu">library</span>(knitr); <span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>palette_sexo  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#2a7a8c"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"#e84855"</span>, <span class="st">"Total"</span> <span class="ot">=</span> <span class="st">"grey40"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># palette_causa &lt;- c(</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Enfermedades cardiovasculares" = "#1a2744",</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Tumores malignos"              = "#e84855",</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Diabetes mellitus"             = "#2a7a8c",</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Enfermedades respiratorias"    = "#f4a261",</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Causas externas"               = "#6c757d",</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   "Otras"                         = "#adb5bd"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Datos reales — reemplazar ruta según entorno ─────────────────────</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># load("data/asmr_nac.rda")</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a> <span class="fu">load</span>(<span class="st">"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>mort <span class="ot">&lt;-</span> asmr_nac <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Datos simulados (demo) ───────────────────────────────────────────</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(42)</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># mort &lt;- expand.grid(</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   year  = 1990:2024,</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   sex   = c("1", "2")</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># ) |&gt; mutate(</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co">#   deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#                    ifelse(sex == "1", 50000, 0) +</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#                    ifelse(year %in% 2020:2021, 120000, 0)),</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#   asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>mort_nacional <span class="ot">&lt;-</span> mort <span class="sc">|&gt;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, sex) <span class="sc">|&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">deaths =</span> <span class="fu">sum</span>(n_death), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Hero banner --&gt;</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>::: {.column-screen style="background: linear-gradient(135deg, #1a2744 0%, #2a7a8c 100%); padding: 4rem 2rem; margin-bottom: 2.5rem; color: white;"}</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>::: {.column-body}</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mortalidad en México {style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;"}</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>el período **1990–2024**.</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>La arquitectura analítica se organiza en **tres bloques complementarios**:</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>:::{style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;"}</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>**📈 Bloque A — Análisis epidemiológico**  </span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>Progresión por desagregación de variables:</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>tendencias globales → causas → causas específicas → estados → municipios.</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>**🗺️ Bloque B — Disparidades regionales**  </span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>Cartografía multi-escala: distribución por estados,</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>hotspots municipales, gradientes regionales.</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>**⏳ Bloque C — Esperanza de vida**  </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>Evolución de la esperanza de vida al nacer y a distintas edades,</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>con desagregación por sexo, entidad y municipio.</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estructura del sitio</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bloque A — Análisis sanitario y temporal</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Nivel <span class="pp">|</span> Variables principales <span class="pp">|</span> Objetivo analítico <span class="pp">|</span> Página <span class="pp">|</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---:|:---|:---|:---:|</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ① <span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`sex`</span> <span class="pp">|</span> Tendencias globales, ASMR <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](A1_descriptivo_general.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ② <span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`sex`</span>, <span class="in">`cause`</span> <span class="pp">|</span> Transiciones epidemiológicas <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](A2_causas.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ③ <span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`sex`</span>, <span class="in">`cause_specific`</span> <span class="pp">|</span> Refinamiento por causa CIE-10 <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](A3_causas_especificas.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ④ <span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`sex`</span>, <span class="in">`state`</span>, <span class="in">`cause`</span> <span class="pp">|</span> Disparidades regionales <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](A4_territorial.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ⑤ <span class="pp">|</span> <span class="in">`year`</span>, <span class="in">`sex`</span>, <span class="in">`state`</span>, <span class="in">`cause_specific`</span> <span class="pp">|</span> Articulación salud-territorio <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](A5_maxima_desagregacion.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bloque B — Análisis espacial</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Nivel <span class="pp">|</span> Variables principales <span class="pp">|</span> Objetivo analítico <span class="pp">|</span> Página <span class="pp">|</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---:|:---|:---|:---:|</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ① <span class="pp">|</span> <span class="in">`state`</span>, <span class="in">`cause`</span> <span class="pp">|</span> Descripción regional <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](B1_regional.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ② <span class="pp">|</span> <span class="in">`state`</span>, <span class="in">`year`</span>, <span class="in">`cause`</span> <span class="pp">|</span> Distribución espacial, clústeres <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](B2_espacial_estados.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ③ <span class="pp">|</span> <span class="in">`municipality`</span>, <span class="in">`year`</span>, <span class="in">`cause`</span> <span class="pp">|</span> Heterogeneidad intra-estatal <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](B3_espacial_municipios.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bloque C — Esperanza de vida</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Nivel <span class="pp">|</span> Variables principales <span class="pp">|</span> Objetivo analítico <span class="pp">|</span> Página <span class="pp">|</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---:|:---|:---|:---:|</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ① <span class="pp">|</span> <span class="in">`state`</span>, <span class="in">`sex`</span> <span class="pp">|</span> Panorama nacional <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](C1_esperanza_vida.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ② <span class="pp">|</span> <span class="in">`state`</span>, <span class="in">`year`</span>, <span class="in">`sex`</span> <span class="pp">|</span> Evolución por entidad <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](C2_ev_estados.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> ③ <span class="pp">|</span> <span class="in">`municipality`</span>, <span class="in">`sex`</span> <span class="pp">|</span> Heterogeneidad municipal <span class="pp">|</span> <span class="co">[</span><span class="ot">→</span><span class="co">](C3_ev_municipios.qmd)</span> <span class="pp">|</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## Síntesis preliminar</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-resumen-nacional, fig.cap="Evolución de la mortalidad total por sexo (1990–2024)"}</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mort_nacional,</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> deaths <span class="sc">/</span> <span class="dv">1000</span>, <span class="at">color =</span> sex, <span class="at">group =</span> sex)) <span class="sc">+</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> palette_sexo,</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Hombres"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Mujeres"</span>)) <span class="sc">+</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2024</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">suffix =</span> <span class="st">" k"</span>)) <span class="sc">+</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">"Mortalidad total en México"</span>,</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Número de defunciones por sexo, 1990–2024"</span>,</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Defunciones (miles)"</span>, <span class="at">color =</span> <span class="st">"Sexo"</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title       =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"#1a2744"</span>),</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle    =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#6c757d"</span>),</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position  =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>**Nota sobre los datos**  </span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>Los valores presentados son **simulados** con fines demostrativos.</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>Para el análisis real, reemplazar en el chunk <span class="in">`setup-global`</span> por:</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="in">`load("data/asmr_nac.rda")`</span>.</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA.</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cómo navegar este sitio</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Lectura progresiva** — seguir el Bloque A del nivel ① al ⑤, aumentando</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>   gradualmente la complejidad analítica.</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Lectura temática** — ir directamente al Bloque B (perspectiva espacial)</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>   o al Bloque C (esperanza de vida) según la pregunta de investigación.</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Cambio de idioma** — utilizar el menú **🇲🇽 Español / 🇬🇧 English**</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>   en la barra de navegación para acceder al contenido equivalente en inglés.</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>::: {style="display:flex; justify-content:flex-end; margin-top:2rem;"}</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ ① Descripción general</span><span class="co">](A1_descriptivo_general.qmd)</span>{.btn .btn-primary}</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Análisis de mortalidad en México · Datos: INEGI / SSA</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generado con <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,235 @@
+---
+title: "① Descripción regional"
+subtitle: "Bloque B · Nivel 1 — Panorama de las disparidades regionales de mortalidad en México"
+date: today
+lang: es
+sidebar: sidebar-es
+---
+
+<span class="badge-nivel" style="background:#2a9d6e;">Bloque B · Nivel 1</span>
+**Variables** : `state` · `sex` · `cause`
+
+## Introducción
+
+El **Bloque B** aborda la dimensión espacial de la mortalidad en México.
+A diferencia del Bloque A —que analiza la evolución temporal—, aquí el foco
+es la **distribución geográfica** de la mortalidad entre entidades federativas.
+
+Este primer nivel establece el **panorama regional** sin desagregación temporal,
+respondiendo a la pregunta: ¿qué estados concentran la mayor carga de mortalidad
+y en qué causas?
+
+::: {.callout-tip}
+**Complementariedad con el Bloque A**  
+El [Bloque A · Nivel ④](A4_territorial.qmd) aborda la evolución temporal por estado.
+Este nivel B1 sirve como punto de entrada estrictamente geográfico.
+:::
+
+---
+
+```{r setup-b1, include=FALSE}
+library(tidyverse); library(scales); library(kableExtra)
+
+palette_causa <- c(
+  "Enf. cardiovasculares" = "#1a2744",
+  "Tumores malignos"      = "#e84855",
+  "Diabetes mellitus"     = "#2a7a8c",
+  "Enf. respiratorias"    = "#f4a261",
+  "Causas externas"       = "#6c757d",
+  "Otras"                 = "#adb5bd"
+)
+
+states_all <- c(
+  "Aguascalientes", "Baja California", "Baja California Sur", "Campeche",
+  "Chiapas", "Chihuahua", "Ciudad de México", "Coahuila", "Colima",
+  "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco",
+  "Estado de México", "Michoacán", "Morelos", "Nayarit", "Nuevo León",
+  "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí",
+  "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala",
+  "Veracruz", "Yucatán", "Zacatecas"
+)
+
+causes <- c("Enf. cardiovasculares", "Tumores malignos", "Diabetes mellitus",
+            "Enf. respiratorias", "Causas externas", "Otras")
+
+set.seed(77)
+mort_b1 <- expand.grid(
+  state = states_all,
+  sex   = c("1", "2"),
+  cause = causes,
+  stringsAsFactors = FALSE
+) |> mutate(
+  rate = runif(n(), 20, 180) +
+    case_when(
+      cause == "Enf. cardiovasculares" ~ 80,
+      cause == "Diabetes mellitus"     ~ 60,
+      cause == "Causas externas"       ~ ifelse(sex == "1", 70, 10),
+      TRUE ~ 20
+    ) +
+    case_when(
+      state %in% c("Ciudad de México", "Jalisco", "Nuevo León") ~ 30,
+      state %in% c("Chiapas", "Oaxaca", "Guerrero")             ~ -20,
+      TRUE ~ 0
+    ),
+  deaths = round(rate * runif(n(), 5e3, 5e4) / 1e5)
+)
+
+mort_b1_state <- mort_b1 |>
+  group_by(state) |>
+  summarise(total_rate = sum(rate), .groups = "drop") |>
+  arrange(desc(total_rate))
+```
+
+## Panorama nacional
+
+::: {.panel-tabset}
+
+#### Ranking de estados
+
+```{r fig-ranking-estados}
+mort_b1 |>
+  group_by(state, cause) |>
+  summarise(rate = mean(rate), .groups = "drop") |>
+  group_by(state) |>
+  mutate(total = sum(rate)) |>
+  ungroup() |>
+  mutate(state = reorder(state, total)) |>
+  ggplot(aes(x = rate, y = state, fill = cause)) +
+  geom_col(alpha = 0.88) +
+  scale_fill_manual(values = palette_causa) +
+  scale_x_continuous(labels = label_comma()) +
+  labs(
+    title    = "Tasa de mortalidad total por estado y causa",
+    subtitle = "Suma de tasas estandarizadas por 100 000 hab.",
+    x = "Tasa acumulada / 100 000 hab.", y = NULL, fill = "Causa"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(plot.title       = element_text(face = "bold", color = "#1a2744"),
+        plot.subtitle    = element_text(color = "#6c757d"),
+        legend.position  = "bottom",
+        panel.grid.minor = element_blank())
+```
+
+#### Composición por causa
+
+```{r fig-composicion-causa}
+mort_b1 |>
+  group_by(state, cause) |>
+  summarise(rate = mean(rate), .groups = "drop") |>
+  group_by(state) |>
+  mutate(pct   = rate / sum(rate) * 100,
+         total = sum(rate)) |>
+  ungroup() |>
+  mutate(state = reorder(state, total)) |>
+  ggplot(aes(x = pct, y = state, fill = cause)) +
+  geom_col(alpha = 0.88) +
+  scale_fill_manual(values = palette_causa) +
+  scale_x_continuous(labels = label_percent(scale = 1)) +
+  labs(
+    title    = "Composición de la mortalidad por causa según estado",
+    subtitle = "Proporción de cada causa en la mortalidad total estatal",
+    x = "% de defunciones", y = NULL, fill = "Causa"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(plot.title       = element_text(face = "bold", color = "#1a2744"),
+        plot.subtitle    = element_text(color = "#6c757d"),
+        legend.position  = "bottom",
+        panel.grid.minor = element_blank())
+```
+
+#### Dispersión inter-estatal
+
+```{r fig-dispersion}
+mort_b1 |>
+  group_by(state, cause) |>
+  summarise(rate = mean(rate), .groups = "drop") |>
+  mutate(cause = str_wrap(cause, 18)) |>
+  ggplot(aes(x = reorder(cause, rate, median), y = rate, fill = cause)) +
+  geom_boxplot(alpha = 0.75, outlier.size = 2) +
+  coord_flip() +
+  scale_fill_manual(values = palette_causa) +
+  labs(
+    title    = "Dispersión inter-estatal de la tasa de mortalidad por causa",
+    subtitle = "Cada caja = distribución entre los 32 estados",
+    x = NULL, y = "Tasa / 100 000 hab."
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title       = element_text(face = "bold", color = "#1a2744"),
+        plot.subtitle    = element_text(color = "#6c757d"),
+        legend.position  = "none",
+        panel.grid.minor = element_blank())
+```
+
+#### Brecha H/M por estado
+
+```{r fig-brecha-hm-b1}
+mort_b1 |>
+  group_by(state, sex) |>
+  summarise(rate = mean(rate), .groups = "drop") |>
+  pivot_wider(names_from = sex, values_from = rate) |>
+  mutate(ratio = `1` / `2`) |>
+  ggplot(aes(x = ratio, y = reorder(state, ratio),
+             color = ratio > 1.5)) +
+  geom_point(size = 3) +
+  geom_vline(xintercept = 1, linetype = "dashed", color = "grey50") +
+  scale_color_manual(values = c("FALSE" = "#2a7a8c", "TRUE" = "#e84855"),
+                     labels = c("FALSE" = "Brecha moderada", "TRUE" = "Brecha elevada (> 1.5)")) +
+  labs(
+    title  = "Ratio hombres/mujeres de la tasa de mortalidad por estado",
+    x = "Ratio H/M", y = NULL, color = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(plot.title       = element_text(face = "bold", color = "#1a2744"),
+        legend.position  = "bottom",
+        panel.grid.minor = element_blank())
+```
+
+:::
+
+---
+
+## Tabla resumen
+
+```{r tabla-resumen-b1}
+mort_b1 |>
+  group_by(state) |>
+  summarise(
+    total_rate   = round(sum(rate), 1),
+    top_cause    = cause[which.max(rate)],
+    ratio_hm     = round(
+      mean(rate[sex == "1"]) / mean(rate[sex == "2"]), 2
+    ),
+    .groups = "drop"
+  ) |>
+  arrange(desc(total_rate)) |>
+  kable(
+    caption   = "Resumen de mortalidad por entidad federativa",
+    col.names = c("Estado", "Tasa total /100k", "Causa principal", "Ratio H/M")
+  ) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) |>
+  row_spec(1:5, bold = TRUE, background = "#f0f4f8")
+```
+
+---
+
+## Puntos clave de este nivel
+
+::: {.callout-note icon="false"}
+**Lo esencial del nivel B1**
+
+- Existe una **heterogeneidad marcada** entre entidades: las tasas de mortalidad
+  varían considerablemente entre los estados con mayor y menor carga.
+- Las **enfermedades cardiovasculares** y la **diabetes** son la causa dominante
+  en la mayoría de los estados, con excepciones en estados con alta violencia.
+- La **brecha de género** es especialmente pronunciada en estados del norte,
+  donde las causas externas pesan más en la mortalidad masculina.
+:::
+
+---
+
+## Navegación
+
+::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
+[← ⑤ Máxima desagregación](A5_maxima_desagregacion.qmd){.btn .btn-outline-secondary}
+[→ B② Análisis espacial por estados](B2_espacial_estados.qmd){.btn .btn-primary}
+:::

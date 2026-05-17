@@ -82,19 +82,19 @@ mort <- expand.grid(
 ## Mortalidad en México {style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3);"}
 
 Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México
-a partir de registros administrativos (INEGI / Secretaría de Salud).
+a partir de registros administrativos de defunción entre 1990 y 2024 (INEGI).
 La arquitectura analítica se organiza en **dos bloques complementarios** :
 
 :::{style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;"}
 
 :::{style="flex:1; min-width:260px; background:rgba(255,255,255,0.1); border-radius:8px; padding:1.2rem;"}
-**🏥 Bloque A — Análisis epidemiologico**  
+**🏥 Bloque A (fase 1) — Análisis epidemiologico**  
 Progresión por desagregación de variables :
 tendencias globales → causas → estados → municipios.
 :::
 
 :::{style="flex:1; min-width:260px; background:rgba(255,255,255,0.1); border-radius:8px; padding:1.2rem;"}
-**🗺️ Bloque B — Análisis espacial**  
+**🗺️ Bloque B(fase2)1 — Análisis espacial**  
 Cartografía multi-escala : distribución por estados,
 hotspots municipales, gradientes regionales.
 :::
@@ -157,11 +157,11 @@ ggplot(mort_nacional, aes(x = year, y = deaths / 1000,
 ```
 
 ::: {.callout-note}
-**Nota sobre los datos**  
-Los valores presentados en este sitio son **simulados** con fines demostrativos.
-Pour l'analyse réelle, remplacez le chunk `setup-global` par :
-`mort <- read_csv("data/mortalidad_mexico.csv")`.
-Les sources recommandées sont INEGI (SINAIS) et la DGE de la SSA.
+<!-- **Nota sobre los datos**   -->
+<!-- Los valores presentados en este sitio son **simulados** con fines demostrativos. -->
+<!-- Pour l'analyse réelle, remplacez le chunk `setup-global` par : -->
+<!-- `mort <- read_csv("data/mortalidad_mexico.csv")`. -->
+<!-- Les sources recommandées sont INEGI (SINAIS) et la DGE de la SSA. -->
 :::
 
 ---
@@ -172,7 +172,7 @@ Existen dos modalidades de lectura :
 
 1. **Lectura progresiva** — seguir el Bloque A del nivel ① al ⑤, aumentando
    gradualmente la complejidad analítica.
-2. **Lectura temática** — ir directamente al Bloque B para la perspectiva espacial,
+2. **Lectura temática** — ir directamente al Bloque deseado (fase 1),
    o saltar a cualquier nivel según la pregunta de investigación.
 
 Los enlaces **→ página siguiente** al final de cada página permiten avanzar

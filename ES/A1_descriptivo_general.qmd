@@ -1,6 +1,6 @@
 ---
 title: "1- General descriptive analysis"
-subtitle: "Bloc A Nivel 1 — Global mortality trends, 2000–2024"
+subtitle: "Bloc A Level 1 — Global mortality trends, 2000–2024"
 date: today
 lang: en
 ---

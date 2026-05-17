@@ -1,0 +1,155 @@
+---
+title: "Análisis de la Mortalidad en México"
+subtitle: "Una aproximación multidimensional: temporalidad, causas y territorio"
+date: today
+date-format: "MMMM YYYY"
+lang: es
+sidebar: sidebar-es
+---
+
+```{r setup-global, include=FALSE, cache=FALSE}
+library(tidyverse); library(scales); library(knitr); library(kableExtra)
+
+palette_sexo  <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
+palette_causa <- c(
+  "Enfermedades cardiovasculares" = "#1a2744",
+  "Tumores malignos"              = "#e84855",
+  "Diabetes mellitus"             = "#2a7a8c",
+  "Enfermedades respiratorias"    = "#f4a261",
+  "Causas externas"               = "#6c757d",
+  "Otras"                         = "#adb5bd"
+)
+
+# ── Datos reales — reemplazar ruta según entorno ─────────────────────
+# load("data/asmr_nac.rda")
+# mort <- asmr_nac |> mutate(year = as.integer(year))
+
+# ── Datos simulados (demo) ───────────────────────────────────────────
+set.seed(42)
+mort <- expand.grid(
+  year  = 1990:2024,
+  sex   = c("1", "2")
+) |> mutate(
+  deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
+                   ifelse(sex == "1", 50000, 0) +
+                   ifelse(year %in% 2020:2021, 120000, 0)),
+  asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
+)
+
+mort_nacional <- mort |>
+  group_by(year, sex) |>
+  summarise(deaths = sum(deaths), .groups = "drop")
+```
+
+<!-- Hero banner -->
+::: {.column-screen style="background: linear-gradient(135deg, #1a2744 0%, #2a7a8c 100%); padding: 4rem 2rem; margin-bottom: 2.5rem; color: white;"}
+::: {.column-body}
+
+## Mortalidad en México {style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;"}
+
+Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México
+a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo
+el período **1990–2024**.
+La arquitectura analítica se organiza en **tres bloques complementarios**:
+
+:::{style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;"}
+
+:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}
+**📈 Bloque A — Análisis epidemiológico**  
+Progresión por desagregación de variables:
+tendencias globales → causas → causas específicas → estados → municipios.
+:::
+
+:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}
+**🗺️ Bloque B — Disparidades regionales**  
+Cartografía multi-escala: distribución por estados,
+hotspots municipales, gradientes regionales.
+:::
+
+:::{style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;"}
+**⏳ Bloque C — Esperanza de vida**  
+Evolución de la esperanza de vida al nacer y a distintas edades,
+con desagregación por sexo, entidad y municipio.
+:::
+
+:::
+:::
+:::
+
+## Estructura del sitio
+
+### Bloque A — Análisis sanitario y temporal
+
+| Nivel | Variables principales | Objetivo analítico | Página |
+|:---:|:---|:---|:---:|
+| ① | `year`, `sex` | Tendencias globales, ASMR | [→](A1_descriptivo_general.qmd) |
+| ② | `year`, `sex`, `cause` | Transiciones epidemiológicas | [→](A2_causas.qmd) |
+| ③ | `year`, `sex`, `cause_specific` | Refinamiento por causa CIE-10 | [→](A3_causas_especificas.qmd) |
+| ④ | `year`, `sex`, `state`, `cause` | Disparidades regionales | [→](A4_territorial.qmd) |
+| ⑤ | `year`, `sex`, `state`, `cause_specific` | Articulación salud-territorio | [→](A5_maxima_desagregacion.qmd) |
+
+### Bloque B — Análisis espacial
+
+| Nivel | Variables principales | Objetivo analítico | Página |
+|:---:|:---|:---|:---:|
+| ① | `state`, `cause` | Descripción regional | [→](B1_regional.qmd) |
+| ② | `state`, `year`, `cause` | Distribución espacial, clústeres | [→](B2_espacial_estados.qmd) |
+| ③ | `municipality`, `year`, `cause` | Heterogeneidad intra-estatal | [→](B3_espacial_municipios.qmd) |
+
+### Bloque C — Esperanza de vida
+
+| Nivel | Variables principales | Objetivo analítico | Página |
+|:---:|:---|:---|:---:|
+| ① | `state`, `sex` | Panorama nacional | [→](C1_esperanza_vida.qmd) |
+| ② | `state`, `year`, `sex` | Evolución por entidad | [→](C2_ev_estados.qmd) |
+| ③ | `municipality`, `sex` | Heterogeneidad municipal | [→](C3_ev_municipios.qmd) |
+
+---
+
+## Síntesis preliminar
+
+```{r fig-resumen-nacional, fig.cap="Evolución de la mortalidad total por sexo (1990–2024)"}
+ggplot(mort_nacional,
+       aes(x = year, y = deaths / 1000, color = sex, group = sex)) +
+  geom_line(linewidth = 1.1) +
+  geom_point(size = 2) +
+  scale_color_manual(values = palette_sexo,
+                     labels = c("1" = "Hombres", "2" = "Mujeres")) +
+  scale_x_continuous(breaks = seq(1990, 2024, 4)) +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(
+    title    = "Mortalidad total en México",
+    subtitle = "Número de defunciones por sexo, 1990–2024",
+    x = NULL, y = "Defunciones (miles)", color = "Sexo"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title       = element_text(face = "bold", color = "#1a2744"),
+    plot.subtitle    = element_text(color = "#6c757d"),
+    legend.position  = "bottom",
+    panel.grid.minor = element_blank()
+  )
+```
+
+::: {.callout-note}
+**Nota sobre los datos**  
+Los valores presentados son **simulados** con fines demostrativos.
+Para el análisis real, reemplazar en el chunk `setup-global` por:
+`load("data/asmr_nac.rda")`.
+Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA.
+:::
+
+---
+
+## Cómo navegar este sitio
+
+1. **Lectura progresiva** — seguir el Bloque A del nivel ① al ⑤, aumentando
+   gradualmente la complejidad analítica.
+2. **Lectura temática** — ir directamente al Bloque B (perspectiva espacial)
+   o al Bloque C (esperanza de vida) según la pregunta de investigación.
+3. **Cambio de idioma** — utilizar el menú **🇲🇽 Español / 🇬🇧 English**
+   en la barra de navegación para acceder al contenido equivalente en inglés.
+
+::: {style="display:flex; justify-content:flex-end; margin-top:2rem;"}
+[→ ① Descripción general](A1_descriptivo_general.qmd){.btn .btn-primary}
+:::

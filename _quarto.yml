@@ -1,113 +1,174 @@
 project:
   type: website
-  output-dir: docs          # compatible GitHub Pages (dossier docs/)
+  output-dir: docs
 
 website:
   title: "Mortality in Mexico"
-  description:  "Multidimensional analysis of mortality in Mexico — health and spatial perspectives"
+  description: "Multidimensional analysis of mortality in Mexico — health and spatial perspectives"
   favicon: "assets/favicon.png"
-  # site-url: "https://dabmp.github.io/mortalidad-mexico"
-  # repo-url: "https://github.com/dabmp/mortalidad-mexico"
-  # repo-actions: [edit, issue]
 
-
-  # ── Barre de navigation principale ──────────────────────────────────────────
   navbar:
     title: "**Mortalidad · México**"
-    logo: "assets/logo.png"
     background: "#1a2744"
     foreground: "white"
     left:
-      - text: "Inicio"
-        href: index.qmd
-      - text: "Bloc A — Evolution of mortality in Mexico (1990-2024)"
+      # ── Español ──────────────────────────────────────────────────────
+      - text: "🇲🇽 Español"
         menu:
-          - text: "1- General description"
-            href: A1_descriptivo_general.qmd
-          - text: "2- Disaggregation by cause"
-            href: A2_causas.qmd
-          - text: "3- Specific causes"
-            href: A3_causas_especificas.qmd
+          - text: "Inicio"
+            href: es/index.qmd
+          - text: "---"
+          - text: "Bloque A — Evolución de la mortalidad"
+          - text: "① Descripción general"
+            href: es/A1_descriptivo_general.qmd
+          - text: "② Desagregación por causa"
+            href: es/A2_causas.qmd
+          - text: "③ Causas específicas"
+            href: es/A3_causas_especificas.qmd
           - text: "④ Dimensión territorial"
-            href: A4_territorial.qmd
+            href: es/A4_territorial.qmd
           - text: "⑤ Máxima desagregación"
-            href: A5_maxima_desagregacion.qmd
-      - text: "Bloc B — Regional disparities - Geographical and spatial variations"
+            href: es/A5_maxima_desagregacion.qmd
+          - text: "---"
+          - text: "Bloque B — Disparidades regionales"
+          - text: "① Descripción regional"
+            href: es/B1_regional.qmd
+          - text: "② Análisis por Estados"
+            href: es/B2_espacial_estados.qmd
+          - text: "③ Análisis por Municipios"
+            href: es/B3_espacial_municipios.qmd
+          - text: "---"
+          - text: "Bloque C — Esperanza de vida"
+          - text: "① Descripción regional"
+            href: es/C1_esperanza_vida.qmd
+          - text: "② Por Estados"
+            href: es/C2_ev_estados.qmd
+          - text: "③ Por Municipios"
+            href: es/C3_ev_municipios.qmd
+
+      # ── English ───────────────────────────────────────────────────────
+      - text: "🇬🇧 English"
         menu:
-          - text: " 1- Regional descriptition"
-            href: B1_Regional_description.qmd
-          - text: "2- Análisis por Estados"
-            href: B2_espacial_estados.qmd
-          - text: "3- Análisis por Municipios"
-            href: B3_espacial_municipios.qmd
-      
-      - text: "Bloc C — Life expectancy"
-        menu:
-          - text: " 1- Regional descriptition"
-            href: C1_regional_description.qmd
-          - text: "2- States"
-            href: C2_espacial_estados.qmd
-          - text: "3- Municipios"
-            href: C3_espacial_municipios.qmd
-      
+          - text: "Home"
+            href: en/index.qmd
+          - text: "---"
+          - text: "Block A — Mortality trends"
+          - text: "① General description"
+            href: en/A1_descriptive_general.qmd
+          - text: "② Disaggregation by cause"
+            href: en/A2_causes.qmd
+          - text: "③ Specific causes"
+            href: en/A3_specific_causes.qmd
+          - text: "④ Territorial dimension"
+            href: en/A4_territorial.qmd
+          - text: "⑤ Maximum disaggregation"
+            href: en/A5_maximum_disaggregation.qmd
+          - text: "---"
+          - text: "Block B — Regional disparities"
+          - text: "① Regional description"
+            href: en/B1_regional.qmd
+          - text: "② Analysis by State"
+            href: en/B2_spatial_states.qmd
+          - text: "③ Analysis by Municipality"
+            href: en/B3_spatial_municipalities.qmd
+          - text: "---"
+          - text: "Block C — Life expectancy"
+          - text: "① Regional description"
+            href: en/C1_life_expectancy.qmd
+          - text: "② By State"
+            href: en/C2_le_states.qmd
+          - text: "③ By Municipality"
+            href: en/C3_le_municipalities.qmd
+
     right:
       - icon: github
         href: "https://github.com/dabmp/mortalidad-mexico"
         aria-label: GitHub
 
-  # ── Barre latérale (sidebar) pour navigation hiérarchique ───────────────────
+  # ── Sidebar bilingue (sidebar par dossier) ────────────────────────────────
   sidebar:
-    - title: "Análisis epidemiologico"
+    - id: sidebar-es
+      title: "Análisis · ES"
       style: "docked"
       background: "#f5f7fb"
       contents:
-        - section: "Bloc A — Spatio-temporalidad"
+        - section: "Bloque A — Temporalidad"
           contents:
-            - text: "1- General description"
-              href: A1_descriptivo_general.qmd
-            - text: "2- Disaggregation by cause"
-              href: A2_causas.qmd
+            - text: "① Descripción general"
+              href: es/A1_descriptivo_general.qmd
+            - text: "② Causas de muerte"
+              href: es/A2_causas.qmd
             - text: "③ Causas específicas"
-              href: A3_causas_especificas.qmd
+              href: es/A3_causas_especificas.qmd
             - text: "④ Dimensión territorial"
-              href: A4_territorial.qmd
+              href: es/A4_territorial.qmd
             - text: "⑤ Máxima desagregación"
-              href: A5_maxima_desagregacion.qmd
-        - section: "Bloc B — Análisis espacial"
+              href: es/A5_maxima_desagregacion.qmd
+        - section: "Bloque B — Análisis espacial"
           contents:
-            - text: " 1- Regional descriptition"
-              href: B1_Regional_description.qmd
-            - text: "2- States"
-              href: B2_espacial_estados.qmd
-            - text: "3- Municipios"
-              href: B3_espacial_municipios.qmd
-        - section: "Bloc C — Life expectancy"
+            - text: "① Descripción regional"
+              href: es/B1_regional.qmd
+            - text: "② Por Estados"
+              href: es/B2_espacial_estados.qmd
+            - text: "③ Por Municipios"
+              href: es/B3_espacial_municipios.qmd
+        - section: "Bloque C — Esperanza de vida"
           contents:
-            - text: " 1- Regional descriptition"
-              href: C1_regional_description.qmd
-            - text: "2- States"
-              href: C2_espacial_estados.qmd
-            - text: "3- Municipios"
-              href: C3_espacial_municipios.qmd
+            - text: "① Descripción regional"
+              href: es/C1_esperanza_vida.qmd
+            - text: "② Por Estados"
+              href: es/C2_ev_estados.qmd
+            - text: "③ Por Municipios"
+              href: es/C3_ev_municipios.qmd
 
-  # ── Pied de page ─────────────────────────────────────────────────────────────
+    - id: sidebar-en
+      title: "Analysis · EN"
+      style: "docked"
+      background: "#f5f7fb"
+      contents:
+        - section: "Block A — Temporal trends"
+          contents:
+            - text: "① General description"
+              href: en/A1_descriptive_general.qmd
+            - text: "② Causes of death"
+              href: en/A2_causes.qmd
+            - text: "③ Specific causes"
+              href: en/A3_specific_causes.qmd
+            - text: "④ Territorial dimension"
+              href: en/A4_territorial.qmd
+            - text: "⑤ Maximum disaggregation"
+              href: en/A5_maximum_disaggregation.qmd
+        - section: "Block B — Spatial analysis"
+          contents:
+            - text: "① Regional description"
+              href: en/B1_regional.qmd
+            - text: "② By State"
+              href: en/B2_spatial_states.qmd
+            - text: "③ By Municipality"
+              href: en/B3_spatial_municipalities.qmd
+        - section: "Block C — Life expectancy"
+          contents:
+            - text: "① Regional description"
+              href: en/C1_life_expectancy.qmd
+            - text: "② By State"
+              href: en/C2_le_states.qmd
+            - text: "③ By Municipality"
+              href: en/C3_le_municipalities.qmd
+
   page-footer:
-    left: "Análisis de mortalidad en México · Datos: INEGI"
-    right: "Generate by [Quarto](https://quarto.org) · {{< meta date >}}"
+    left: "Análisis de mortalidad en México · Datos: INEGI / SSA"
+    right: "Generado con [Quarto](https://quarto.org)"
 
-  # ── Options globales ──────────────────────────────────────────────────────────
   back-to-top-navigation: true
   bread-crumbs: true
   search: true
 
-# ── Format HTML (thème académique sobre) ────────────────────────────────────
 format:
   html:
     theme:
       light: [cosmo, assets/custom.scss]
     toc: true
     toc-depth: 3
-    toc-title: "Contenido"
     number-sections: false
     code-fold: true
     code-tools: true
@@ -116,14 +177,17 @@ format:
     fig-cap-location: bottom
     tbl-cap-location: top
     df-print: paged
-# ── Exécution R (niveau racine, pas sous format) ─────────────────────
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
 execute:
   warning: false
   message: false
   echo: true
   cache: false
 
-# ── Options knitr/R globales ─────────────────────────────────────────
 knitr:
   opts_chunk:
     fig.width: 9

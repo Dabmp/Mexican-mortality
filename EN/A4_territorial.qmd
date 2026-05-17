@@ -1,0 +1,88 @@
+---
+title: "④ Dimensión territorial — Estados"
+subtitle: "Bloque A · Nivel 4 — Disparidades regionales por entidad federativa y causa"
+date: today
+lang: es
+---
+
+<span class="badge-nivel">Bloque A · Nivel 4</span>
+**Variables** : `year` · `sex` · `state` · `cause`
+
+## Introducción
+
+La introducción del **estado** como variable de desagregación revela cómo las
+transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio.
+Se combinan aquí las dimensiones temporal, sanitaria y geográfica.
+
+::: {.callout-tip}
+Para un análisis explícitamente espacial, ver [Bloque B — ② bis · Estados](B2_espacial_estados.qmd).
+:::
+
+---
+
+```{r setup-a4, include=FALSE}
+library(tidyverse); library(scales)
+palette_causa <- c(
+  "Enfermedades cardiovasculares"="#1a2744","Tumores malignos"="#e84855",
+  "Diabetes mellitus"="#2a7a8c","Enfermedades respiratorias"="#f4a261",
+  "Causas externas"="#6c757d","Otras"="#adb5bd")
+set.seed(42)
+mort <- expand.grid(
+  year=2000:2022, sex=c("Hombre","Mujer"),
+  state=c("Ciudad de México","Jalisco","Nuevo León","Veracruz",
+          "Chiapas","Oaxaca","Guanajuato","Michoacán","Puebla","Sonora"),
+  cause=c("Enfermedades cardiovasculares","Tumores malignos","Diabetes mellitus",
+          "Enfermedades respiratorias","Causas externas","Otras")
+) |> mutate(
+  deaths=rpois(n(),lambda=500+40*(year-2000)+ifelse(sex=="Hombre",120,0)+
+    case_when(cause=="Diabetes mellitus"~200,cause=="Enfermedades cardiovasculares"~300,
+              cause=="Tumores malignos"~150,TRUE~50)+
+    case_when(state=="Ciudad de México"~400,state=="Chiapas"~ -100,TRUE~0)),
+  rate=deaths/runif(n(),1e5,2e6)*1e5)
+```
+
+## Disparidades inter-étatiques
+
+::: {.panel-tabset}
+
+#### Heatmap état × cause
+
+```{r fig-heatmap}
+mort |> filter(year==2022) |>
+  group_by(state,cause) |> summarise(rate=mean(rate),.groups="drop") |>
+  mutate(state=str_trunc(state,18), cause=str_wrap(cause,18)) |>
+  ggplot(aes(x=cause, y=reorder(state,rate), fill=rate)) +
+  geom_tile(color="white",linewidth=0.4) +
+  scale_fill_distiller(palette="Blues",direction=1,name="Tasa\n/100k") +
+  labs(title="Tasa de mortalidad por estado y causa (2022)",x=NULL,y=NULL) +
+  theme_minimal(base_size=11) +
+  theme(axis.text.x=element_text(angle=35,hjust=1),
+        plot.title=element_text(face="bold",color="#1a2744"))
+```
+
+#### Dispersión inter-estatal por causa
+
+```{r fig-boxplot-estado}
+mort |> filter(year==2022) |>
+  group_by(state,cause) |> summarise(rate=mean(rate),.groups="drop") |>
+  mutate(cause=str_wrap(cause,20)) |>
+  ggplot(aes(x=reorder(cause,rate,median), y=rate, fill=cause)) +
+  geom_boxplot(alpha=0.75, outlier.size=2) +
+  coord_flip() +
+  scale_fill_manual(values=palette_causa) +
+  labs(title="Dispersión inter-estatal de la tasa de mortalidad (2022)",
+       x=NULL, y="Tasa / 100 000 hab.") +
+  theme_minimal(base_size=12) + theme(legend.position="none",
+        plot.title=element_text(face="bold",color="#1a2744"),panel.grid.minor=element_blank())
+```
+
+:::
+
+---
+
+## Navigation
+
+::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
+[← ③ Causas específicas](A3_causas_especificas.qmd){.btn .btn-outline-secondary}
+[→ ⑤ Máxima desagregación](A5_maxima_desagregacion.qmd){.btn .btn-primary}
+:::

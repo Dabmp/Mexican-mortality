@@ -2,7 +2,7 @@
 title: "Mortality Analysis in Mexico"
 subtitle: "A multidimensional approach: temporality, causes and territory"
 date: today
-date-format: "MMMM YYYY"
+# date-format: "MMMM YYYY"
 lang: en
 sidebar: sidebar-en
 ---
@@ -11,32 +11,34 @@ sidebar: sidebar-en
 library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
 palette_sex   <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
-palette_cause <- c(
-  "Cardiovascular diseases"  = "#1a2744",
-  "Malignant tumors"         = "#e84855",
-  "Diabetes mellitus"        = "#2a7a8c",
-  "Respiratory diseases"     = "#f4a261",
-  "External causes"          = "#6c757d",
-  "Other"                    = "#adb5bd"
-)
+# palette_cause <- c(
+#   "Cardiovascular diseases"  = "#1a2744",
+#   "Malignant tumors"         = "#e84855",
+#   "Diabetes mellitus"        = "#2a7a8c",
+#   "Respiratory diseases"     = "#f4a261",
+#   "External causes"          = "#6c757d",
+#   "Other"                    = "#adb5bd"
+# )
 
 # ── Real data — update path as needed ───────────────────────────────
 # load("data/asmr_nac.rda")
-# mort <- asmr_nac |> mutate(year = as.integer(year))
+ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
+
+mort <- asmr_nac |> mutate(year = as.integer(year))
 
 # ── Simulated data (demo) ────────────────────────────────────────────
-set.seed(42)
-mort <- expand.grid(year = 1990:2024, sex = c("1", "2")) |>
-  mutate(
-    deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
-                     ifelse(sex == "1", 50000, 0) +
-                     ifelse(year %in% 2020:2021, 120000, 0)),
-    asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
-  )
+# set.seed(42)
+# mort <- expand.grid(year = 1990:2024, sex = c("1", "2")) |>
+#   mutate(
+#     deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
+#                      ifelse(sex == "1", 50000, 0) +
+#                      ifelse(year %in% 2020:2021, 120000, 0)),
+#     asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
+#   )
 
 mort_national <- mort |>
   group_by(year, sex) |>
-  summarise(deaths = sum(deaths), .groups = "drop")
+  summarise(deaths = sum(n_death), .groups = "drop")
 ```
 
 <!-- Hero banner -->
@@ -130,11 +132,11 @@ ggplot(mort_national,
 ```
 
 ::: {.callout-note}
-**Note on data**  
-The values presented here are **simulated** for demonstration purposes.
-For the real analysis, replace the `setup-global-en` chunk with:
-`load("data/asmr_nac.rda")`.
-Recommended sources: INEGI (SINAIS) and the DGE of the SSA.
+<!-- **Note on data**   -->
+<!-- The values presented here are **simulated** for demonstration purposes. -->
+<!-- For the real analysis, replace the `setup-global-en` chunk with: -->
+<!-- `load("data/asmr_nac.rda")`. -->
+<!-- Recommended sources: INEGI (SINAIS) and the DGE of the SSA. -->
 :::
 
 ---

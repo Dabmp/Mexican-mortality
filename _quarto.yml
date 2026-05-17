@@ -156,7 +156,7 @@ website:
         #       href: en/C3_le_municipalities.qmd
 
   page-footer:
-    left: "Análisis de mortalidad en México · Datos: INEGI / SSA"
+    left: "Análisis de mortalidad en México · Datos: INEGI"
     right: "Generado con [Quarto](https://quarto.org)"
 
   back-to-top-navigation: true

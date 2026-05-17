@@ -30,21 +30,21 @@ website:
           - text: "⑤ Máxima desagregación"
             href: es/A5_maxima_desagregacion.qmd
           - text: "---"
-          - text: "Bloque B — Disparidades regionales"
-          - text: "① Descripción regional"
-            href: es/B1_regional.qmd
-          - text: "② Análisis por Estados"
-            href: es/B2_espacial_estados.qmd
-          - text: "③ Análisis por Municipios"
-            href: es/B3_espacial_municipios.qmd
-          - text: "---"
-          - text: "Bloque C — Esperanza de vida"
-          - text: "① Descripción regional"
-            href: es/C1_esperanza_vida.qmd
-          - text: "② Por Estados"
-            href: es/C2_ev_estados.qmd
-          - text: "③ Por Municipios"
-            href: es/C3_ev_municipios.qmd
+          # - text: "Bloque B — Disparidades regionales"
+          # - text: "① Descripción regional"
+          #   href: es/B1_regional.qmd
+          # - text: "② Análisis por Estados"
+          #   href: es/B2_espacial_estados.qmd
+          # - text: "③ Análisis por Municipios"
+          #   href: es/B3_espacial_municipios.qmd
+          # - text: "---"
+          # - text: "Bloque C — Esperanza de vida"
+          # - text: "① Descripción regional"
+          #   href: es/C1_esperanza_vida.qmd
+          # - text: "② Por Estados"
+          #   href: es/C2_ev_estados.qmd
+          # - text: "③ Por Municipios"
+          #   href: es/C3_ev_municipios.qmd
 
       # ── English ───────────────────────────────────────────────────────
       - text: "🇬🇧 English"
@@ -64,21 +64,21 @@ website:
           - text: "⑤ Maximum disaggregation"
             href: en/A5_maximum_disaggregation.qmd
           - text: "---"
-          - text: "Block B — Regional disparities"
-          - text: "① Regional description"
-            href: en/B1_regional.qmd
-          - text: "② Analysis by State"
-            href: en/B2_spatial_states.qmd
-          - text: "③ Analysis by Municipality"
-            href: en/B3_spatial_municipalities.qmd
-          - text: "---"
-          - text: "Block C — Life expectancy"
-          - text: "① Regional description"
-            href: en/C1_life_expectancy.qmd
-          - text: "② By State"
-            href: en/C2_le_states.qmd
-          - text: "③ By Municipality"
-            href: en/C3_le_municipalities.qmd
+          # - text: "Block B — Regional disparities"
+          # - text: "① Regional description"
+          #   href: en/B1_regional.qmd
+          # - text: "② Analysis by State"
+          #   href: en/B2_spatial_states.qmd
+          # - text: "③ Analysis by Municipality"
+          #   href: en/B3_spatial_municipalities.qmd
+          # - text: "---"
+          # - text: "Block C — Life expectancy"
+          # - text: "① Regional description"
+          #   href: en/C1_life_expectancy.qmd
+          # - text: "② By State"
+          #   href: en/C2_le_states.qmd
+          # - text: "③ By Municipality"
+          #   href: en/C3_le_municipalities.qmd
 
     right:
       - icon: github
@@ -104,22 +104,22 @@ website:
               href: es/A4_territorial.qmd
             - text: "⑤ Máxima desagregación"
               href: es/A5_maxima_desagregacion.qmd
-        - section: "Bloque B — Análisis espacial"
-          contents:
-            - text: "① Descripción regional"
-              href: es/B1_regional.qmd
-            - text: "② Por Estados"
-              href: es/B2_espacial_estados.qmd
-            - text: "③ Por Municipios"
-              href: es/B3_espacial_municipios.qmd
-        - section: "Bloque C — Esperanza de vida"
-          contents:
-            - text: "① Descripción regional"
-              href: es/C1_esperanza_vida.qmd
-            - text: "② Por Estados"
-              href: es/C2_ev_estados.qmd
-            - text: "③ Por Municipios"
-              href: es/C3_ev_municipios.qmd
+        # - section: "Bloque B — Análisis espacial"
+        #   contents:
+        #     - text: "① Descripción regional"
+        #       href: es/B1_regional.qmd
+        #     - text: "② Por Estados"
+        #       href: es/B2_espacial_estados.qmd
+        #     - text: "③ Por Municipios"
+        #       href: es/B3_espacial_municipios.qmd
+        # - section: "Bloque C — Esperanza de vida"
+        #   contents:
+        #     - text: "① Descripción regional"
+        #       href: es/C1_esperanza_vida.qmd
+        #     - text: "② Por Estados"
+        #       href: es/C2_ev_estados.qmd
+        #     - text: "③ Por Municipios"
+        #       href: es/C3_ev_municipios.qmd
 
     - id: sidebar-en
       title: "Analysis · EN"
@@ -138,22 +138,22 @@ website:
               href: en/A4_territorial.qmd
             - text: "⑤ Maximum disaggregation"
               href: en/A5_maximum_disaggregation.qmd
-        - section: "Block B — Spatial analysis"
-          contents:
-            - text: "① Regional description"
-              href: en/B1_regional.qmd
-            - text: "② By State"
-              href: en/B2_spatial_states.qmd
-            - text: "③ By Municipality"
-              href: en/B3_spatial_municipalities.qmd
-        - section: "Block C — Life expectancy"
-          contents:
-            - text: "① Regional description"
-              href: en/C1_life_expectancy.qmd
-            - text: "② By State"
-              href: en/C2_le_states.qmd
-            - text: "③ By Municipality"
-              href: en/C3_le_municipalities.qmd
+        # - section: "Block B — Spatial analysis"
+        #   contents:
+        #     - text: "① Regional description"
+        #       href: en/B1_regional.qmd
+        #     - text: "② By State"
+        #       href: en/B2_spatial_states.qmd
+        #     - text: "③ By Municipality"
+        #       href: en/B3_spatial_municipalities.qmd
+        # - section: "Block C — Life expectancy"
+        #   contents:
+        #     - text: "① Regional description"
+        #       href: en/C1_life_expectancy.qmd
+        #     - text: "② By State"
+        #       href: en/C2_le_states.qmd
+        #     - text: "③ By Municipality"
+        #       href: en/C3_le_municipalities.qmd
 
   page-footer:
     left: "Análisis de mortalidad en México · Datos: INEGI / SSA"

@@ -2,7 +2,7 @@
 title: "Análisis de la Mortalidad en México"
 subtitle: "Una aproximación multidimensional: temporalidad, causas y territorio"
 date: today
-date-format: "MMMM YYYY"
+# date-format: "MMMM YYYY"
 lang: es
 sidebar: sidebar-es
 ---

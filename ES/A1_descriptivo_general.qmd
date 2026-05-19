@@ -24,18 +24,6 @@ library(tidyverse); library(scales); library(knitr); library(kableExtra)
 
 palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
-# mort <- expand.grid(
-#   year  = 2000:2022,
-#   sex   = c("Hombre", "Mujer"),
-#   state = c("Ciudad de México", "Jalisco", "Nuevo León", "Veracruz",
-#             "Chiapas", "Oaxaca", "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-#             "Diabetes mellitus", "Enfermedades respiratorias", "Causas externas", "Otras")
-# ) |> mutate(
-#   deaths = rpois(n(), lambda = 500 + 40*(year-2000) + ifelse(sex=="Hombre",120,0)),
-#   rate   = deaths / runif(n(), 1e5, 2e6) * 1e5
-# )
-
 mort_yr_sex <- mort |> group_by(year, sex) |> summarise(deaths=sum(n_death), .groups="drop")
 mort_yr     <- mort |> group_by(year)      |> summarise(deaths=sum(n_death), .groups="drop") |>
                mutate(sex = "Total")

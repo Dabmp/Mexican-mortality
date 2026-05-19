@@ -1,5 +1,5 @@
 ---
-title: "2- Desagregación por causa de muerte"
+title: "2- Desagregación por causa de defunción"
 subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2024"
 # date: today
 date-format: "MMMM YYYY"
@@ -13,7 +13,7 @@ lang: "en"
 
 ## Introducción analítica
 
-La incorporación de la **causa de muerte** como dimensión analítica permite identificar
+La incorporación de la **causa de defunción** como dimensión analítica permite identificar
 las grandes **transiciones epidemiológicas** que caracterizan la evolución sanitaria
 de México durante las tres ultimas décadas.
 
@@ -41,7 +41,7 @@ library(kableExtra)
 library(ggrepel)
 options(ggrepel.max.overlaps = Inf)
 library(patchwork)   # composition de graphiques
-mort <- deces1 |> filter(year > 1997) |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
+mort <- deces1 |> filter(year > 1989) |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
 
 # ── Palette cohérente (définie dans index.qmd, reproduite ici) ───────
 palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
@@ -49,28 +49,28 @@ palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
 #-------------------------plot SMR ------------------------------
 
-cause_name <- c(
-  "01" = "1 - Certain infectious and parasitic diseases",
-  "02" = "2 - Tumors (neoplasms)",
-  "03" = "3 - Diseases of the blood and immune system",
-  "04" = "4 - Endocrine, nutritional, and metabolic diseases",
-  "05" = "5 - Mental and behavioral disorders",
-  "06" = "6 - Diseases of the nervous system",
-  "07" = "7 - Diseases of the eye and adnexa",
-  "08" = "8 - Diseases of the ear and mastoid process",
-  "09" = "9 - Diseases of the circulatory system",
-  "10" = "10 - Diseases of the respiratory system",
-  "11" = "11 - Diseases of the digestive system",
-  "12" = "12 - Diseases of the skin and subcutaneous tissue",
-  "13" = "13 - Diseases of the musculoskeletal system and connective tissue",
-  "14" = "14 - Diseases of the genitourinary system",
-  "15" = "15 - Pregnancy, childbirth, and the puerperium",
-  "16" = "16 - Conditions originating in the perinatal period",
-  "17" = "17 - Congenital malformations and chromosomal abnormalities",
-  "18" = "18 - Symptoms, signs, and abnormal clinical and laboratory findings",
-  "20" = "20 - External causes of morbidity and mortality",
-  "22" = "22 - COVID-19"
-)
+
+# Preparar la tabla de mapeo para las etiquetas CAPITULO 
+cause_name <- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
+                 "02" = "2- Tumores (neoplasias)", 
+                 "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
+                 "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
+                 "05" = "5- Trastornos mentales y del comportamiento", 
+                 "06" = "6- Enfermedades del sistema nervioso", 
+                 "07" = "7- Enfermedades de los ojos y sus anexos", 
+                 "08" = "8- Enfermedades del oído y la apófisis mastoides", 
+                 "09" = "9- Enfermedades del sistema circulatorio", 
+                 "10" = "10- Enfermedades del sistema respiratorio", 
+                 "11" = "11- Enfermedades del sistema digestivo", 
+                 "12" = "12- Piel y tejido subcutáneo", 
+                 "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
+                 "14" = "14- Enfermedades del sistema genitourinario", 
+                 "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
+                 "16" = "16- Afecciones originadas en el período perinatal", 
+                 "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
+                 "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
+                 "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
+
 # palette_causa <- c(
 #   "Enfermedades cardiovasculares" = "#1a2744",
 #   "Tumores malignos"              = "#e84855",
@@ -92,37 +92,13 @@ cols_20 <- c(
   "#E8B828FF", "#F03838FF", "#783838FF", "#B83838FF",
   "#4078B8FF", "#282858FF", "#F85559FF", "#A8C0F8FF"
 )
-# ── Données (remplacer par readRDS("data/mort_simulated.rds")) ────────
-# set.seed(42)
-# years <- 2000:2022
+# ── Données ────────
 
-# mort <- expand.grid(
-#   year  = years,
-#   sex   = c("Hombre", "Mujer"),
-#   state = c("Ciudad de México", "Jalisco", "Nuevo León",
-#             "Veracruz", "Chiapas", "Oaxaca",
-#             "Guanajuato", "Michoacán", "Puebla", "Sonora"),
-#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",
-#             "Diabetes mellitus", "Enfermedades respiratorias",
-#             "Causas externas", "Otras")
-# ) |>
-#   mutate(
-#     deaths = rpois(n(), lambda = 500 +
-#                     40 * (year - 2000) +
-#                     ifelse(sex == "Hombre", 120, 0) +
-#                     case_when(
-#                       cause == "Diabetes mellitus"             ~ 200,
-#                       cause == "Enfermedades cardiovasculares" ~ 300,
-#                       cause == "Tumores malignos"              ~ 150,
-#                       TRUE ~ 50
-#                     ) +
-#                     case_when(
-#                       state == "Ciudad de México" ~ 400,
-#                       state == "Chiapas"          ~ -100,
-#                       TRUE ~ 0
-#                     )),
-#     rate = deaths / runif(n(), 100000, 2000000) * 100000
-#   )
+load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda")
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
 
 # ── Agrégations utiles ────────────────────────────────────────────────
 # Par année × cause
@@ -221,15 +197,15 @@ mort_causa_pct <- mort_causa_pct %>%
 #### Tabla resumen
 ```{r tabla-causa-anio}
 mort_causa |>
-  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024)) |>
+  filter(year %in% c(1990,1995,2000, 2005, 2010, 2015, 2019, 2024)) |>
   pivot_wider(names_from = year, values_from = deaths) |>
   arrange(desc(`2024`)) |>
     mutate(cause = unname(cause_name[cause])) |>
 
   mutate(across(where(is.numeric), ~ format(.x, big.mark = ","))) |>
   kable(
-    caption = "Deaths by cause of death, selected years",
-    col.names = c("Cause", "2000", "2005", "2010", "2015", "2019", "2024")
+    caption = "Defunciones por causa, años seleccionados",
+    col.names = c("Cause", "1990","1995","2000", "2005", "2010", "2015", "2019", "2024")
   ) |>
   kable_styling(bootstrap_options = c("striped", "hover"),
                 full_width = FALSE) |>
@@ -241,56 +217,66 @@ mort_causa |>
 
 :::
 
-## Tasas de mortalidad estandarizadas (TME) por causa, sexo y año
+## Tasas de mortalidad estandarizadas (TME) 
 
-### Tasas de mortalidad estandarizadas (TME) por causa, sexo y año
+### TME por causa, sexo y año
 
 ::: {.panel-tabset}
 
-#### Evolución de las causas de muerte (tasa estándar)
+#### Evolución de las causas de defunción (tasa estándar)
 ```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
-load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda")
 
 SDR <- asmr_cause %>%
-  filter(year>1997)
+  filter(year>1999)
 # install.packages("paletteer")
 library(paletteer)
 
 ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_bar(stat = "identity", position = "stack", width = 0.7) +
   facet_wrap(~ sex_lab) +
-  # scale_fill_paletteer_d("palettetown::carvanha") +
   scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +
-  
   labs(
- Título = "Causas de muerte estandarizadas (2000-2023)",
-x = "Años",
-y = "Tasa estandarizada",
-fill = "Causas de muerte"
+    title = "Causas de defunción estandarizadas (2000-2024)",
+    x     = "Años",
+    y     = "Tasa estandarizada (por 100k)",
+    fill  = "Causas de defunción"
   ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+    axis.text.x      = element_text(angle = 45, hjust = 1, size = 7),
+    axis.text.y      = element_text(size = 7),
+    legend.position  = "bottom",
+    legend.direction = "horizontal",
+  legend.title.position = "top",
+    legend.text      = element_text(size = 6, margin = margin(b = 0)),
+    legend.title     = element_text(size = 7),
+    legend.key.size  = unit(0.3, "cm"),
+    legend.spacing.y = unit(0.05, "cm"),
+    legend.spacing.x = unit(0.05, "cm"),
+    plot.margin      = margin(10, 10, 10, 10)
+  ) +
+  guides(fill = guide_legend(nrow = 7, byrow = TRUE))
 
 ```
 
-#### Las 5 principales causas de muerte (tasa estándar)
+#### Las 5 principales causas de defunción (tasa estándar)
 ```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
 #--------------------------Identifier les 5 principales causes de décès par année-----------------------------
-# top_5_causes_year <- SDR %>%
-#   group_by(year, sex) %>%
-#   slice_max(SDR, n = 5) %>%
-#   ungroup() %>%
-#   arrange(year, desc(SDR))
-# 
-# top_5_causes_year <- top_5_causes_year %>%
-#   mutate(
-#     capitulo = as.character(CAPITULO),
-#     cause_name = libelles_cause[CAPITULO],  # Map codes to names
-#     # label_sex = label_sex[sex]
-#      sex_label  = case_when(
-#       sex == 1 ~ "Men",
-#       sex == 2 ~ "Women")
-#   )
+top_5_causes_year <- SDR %>%
+  group_by(year, sex) %>%
+  slice_max(SDR, n = 5) %>%
+  ungroup() %>%
+  arrange(year, desc(SDR))
+
+top_5_causes_year <- top_5_causes_year %>%
+  mutate(
+    capitulo = as.character(CAPITULO),
+    cause_name = libelles_cause[CAPITULO],  # Map codes to names
+    # label_sex = label_sex[sex]
+     sex_label  = case_when(
+      sex == 1 ~ "Men",
+      sex == 2 ~ "Women")
+  )
 
 #-------------------------------------------------------
 cols_7 <- c(
@@ -320,6 +306,124 @@ cols_7 <- c(
 
 ```
 
+
+#### Tabla principales causas (hombre)
+```{r tabla-causa-anio-asmr-h}
+
+
+# Étape 1 : Top 5 causes par sexe basé sur 2024
+top5_hommes <- SDR |>
+  filter(sex == 1, year == 2024) |>
+  arrange(desc(asmr_100k)) |>
+  slice_head(n = 10) |>
+  select(CAPITULO, cause_name)
+
+top5_hommes
+
+# Étape 2 : Filtrer les données pour les années sélectionnées
+annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
+
+data_hommes <- SDR |>
+  filter(sex == 1, year %in% annees, CAPITULO %in% top5_hommes$CAPITULO)
+
+data_hommes
+
+# Étape 3 : Pivot
+wide_hommes <- data_hommes |>
+  select(cause_name, year, asmr_100k) |>
+  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  arrange(desc(`2024`))
+
+wide_hommes
+
+# Étape 4 : Tableau
+library(knitr)
+library(kableExtra)
+
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Cause", names(wide_data)[-1]),
+      align     = c("l", rep("r", ncol(wide_data) - 1))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 1,
+        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+
+tbl_hommes <- format_table(wide_hommes, "Top 5 causes de décès — Hommes")
+
+tbl_hommes
+
+  
+```
+#### Tabla principales causas (mujer)
+```{r tabla-causa-anio-asmr-m}
+
+
+# Étape 1 : Top 5 causes par sexe basé sur 2024
+top5_femmes <- SDR |>
+  filter(sex == 2, year == 2024) |>
+  arrange(desc(asmr_100k)) |>
+  slice_head(n = 10) |>
+  select(CAPITULO, cause_name)
+
+
+top5_femmes
+
+# Étape 2 : Filtrer les données pour les années sélectionnées
+annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
+
+data_femmes <- SDR |>
+  filter(sex == 2, year %in% annees, CAPITULO %in% top5_femmes$CAPITULO)
+
+data_femmes
+
+# Étape 3 : Pivot
+wide_femmes <- data_femmes |>
+  select(cause_name, year, asmr_100k) |>
+  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  arrange(desc(`2024`))
+
+wide_femmes
+
+# Étape 4 : Tableau
+library(knitr)
+library(kableExtra)
+
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Cause", names(wide_data)[-1]),
+      align     = c("l", rep("r", ncol(wide_data) - 1))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 1,
+        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+
+tbl_femmes <- format_table(wide_femmes, "Top 5 causes de décès — Femmes")
+
+tbl_femmes
+```
 :::
 
 

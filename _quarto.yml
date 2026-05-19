@@ -8,12 +8,12 @@ website:
   favicon: "assets/favicon.png"
 
   navbar:
-    title: "**Mortalidad · México**"
+    title: "**MortalMéxico**"
     background: "#1a2744"
     foreground: "white"
     left:
       # ── Español ──────────────────────────────────────────────────────
-      - text: "🇲🇽 Español"
+      - text: "Proyecto"
         menu:
           - text: "Inicio"
             href: es/index.qmd
@@ -47,7 +47,7 @@ website:
           #   href: es/C3_ev_municipios.qmd
 
       # ── English ───────────────────────────────────────────────────────
-      - text: "🇬🇧 English"
+      - text: "Project"
         menu:
           - text: "Home"
             href: en/index.qmd

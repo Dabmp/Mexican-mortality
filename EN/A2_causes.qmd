@@ -1,7 +1,7 @@
 ---
 title: "2- Disaggregation by cause of death"
-subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 1990–2024"
-date: today
+subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 2000–2024"
+# date: today
 date-format: "MMMM YYYY"
 lang: "en"
 ---
@@ -395,6 +395,6 @@ ggplot(ihh, aes(x = year, y = ihh)) +
 ## Navigation
 
 ::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
-[← ① Descriptivo general](A1_descriptivo_general.qmd){.btn .btn-outline-secondary}
-[→ ③ Causas específicas](A3_causas_especificas.qmd){.btn .btn-primary}
+[← 1- Descriptivo general](A1_descriptivo_general.qmd){.btn .btn-outline-secondary}
+[→ 3- Causas específicas](A3_causas_especificas.qmd){.btn .btn-primary}
 :::

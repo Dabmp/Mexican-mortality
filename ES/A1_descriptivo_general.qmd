@@ -1,17 +1,17 @@
 ---
-title: "1- General descriptive analysis"
-subtitle: "Bloc A Level 1 — Global mortality trends, 2000–2024"
-date: today
+title: "1- Análisis descriptivo general"
+subtitle: "Bloque A · Nivel 1 — Tendencias globales de 1990–2024"
+# date: today
 lang: en
 ---
 
 <span class="badge-nivel">Bloc A  L1</span>
 **Variables** : `year` · `sex`
 
-## Introduction
+##Introducción
 
-This section examines the  mortality trends in Mexico without disaggregation (by cause or territory),
-with the aim of identifying macro patterns and temporal inflection points.
+Esta sección examina las tendencias de mortalidad en México sin desagregación (por causa o territorio),
+con el objetivo de identificar patrones macro y puntos de inflexión temporales.
 
 
 ```{r setup-a1, include=FALSE}
@@ -48,11 +48,11 @@ asmr_female <- asmr_nac |> filter(sex == 2)
 
 ```
 
-## Global trends
+## Tendencias globales
 
 ::: {.panel-tabset}
 
-#### Temporal serie
+#### Serie temporal
 
 ```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}
 ggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +
@@ -68,7 +68,7 @@ x=NULL, y="Deaths (thousands)", color="Sex") +
         panel.grid.minor=element_blank())
 ```
 
-#### Growth rate
+#### Tasa de crecimiento
 
 ```{r fig-crecimiento}
 mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth)) |>
@@ -85,17 +85,17 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
 :::
 
 
-## ASMR trend
+## Tendencia de la tasa de mortalidad estandarizada por edad (TME)
 
-The Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.
+La tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.
 
 
 ::: {.panel-tabset}
 
-#### Temporal serie for ASMR
+#### Series temporales para ASMR
 
-The results show consistent trends in age-standardized mortality from 1990 to 2024
-Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.
+Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024.
+Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.
 
 <!-- for certain diseases -->
 
@@ -113,7 +113,7 @@ x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
         panel.grid.minor=element_blank())
 ```
 
-#### Men ASMR change
+#### Cambio ASMR masculino
 
 ```{r fig-men-change, fig.cap="ASMR men change"}
 asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
@@ -145,7 +145,7 @@ asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth))
 :::
 
 
-## Navigation
+## Navegación
 
 ::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
 [← Inicio](index.qmd){.btn .btn-outline-secondary}

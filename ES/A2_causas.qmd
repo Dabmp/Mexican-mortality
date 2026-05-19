@@ -1,7 +1,7 @@
 ---
-title: "2- Disaggregation by cause of death"
-subtitle: "Bloc A · Level 2 — Epidemiological transitions in Mexico, 1990–2024"
-date: today
+title: "2- Desagregación por causa de muerte"
+subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2024"
+# date: today
 date-format: "MMMM YYYY"
 lang: "en"
 ---
@@ -146,49 +146,14 @@ last_year <- max(mort$year)
 # class(year)  
 ```
 
-## Vue d'ensemble : composition de la mortalité
+## Vue d'ensemble: composición de la mortalité
 
-### Évolution de la structure par cause
+### Evolución de la estructura por causa
 
 ::: {.panel-tabset}
 
-#### Aire empilée (%)
 
-```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 1998–2024 (%)"}
-lookup <- data.frame(
-  cause = as.character(names(cause_name)),
-  cause_name = as.character(cause_name)
-)
-
-mort_causa_pct <- mort_causa_pct %>%
-  mutate(cause = as.character(cause)) %>%
-  left_join(lookup, by = "cause")
-
-
-ggplot(mort_causa_pct,
-       aes(x = year, y = pct, fill = cause_name)) +
-  geom_area(alpha = 0.88, color = "white", linewidth = 0.3) +
-  scale_fill_manual(values = cols_20) +
-  scale_x_continuous(breaks = seq(1998, 2022, 4)) +
-  scale_y_continuous(labels = label_percent(scale = 0.3)) +
-  labs(
-    title    = "Composition of mortality by cause group",
-    subtitle = "Annual proportion of deaths, Mexico 1990–2024",
-    x = NULL, y = "% deaths", fill = NULL
-  ) +
-  theme_minimal(base_size = 13) +
-  theme(
-    legend.position  = "bottom",
-    legend.key.size  = unit(0.2, "cm"),
-    plot.title       = element_text(face = "bold", color = "#1a2744"),
-    plot.subtitle    = element_text(color = "#6c757d"),
-    panel.grid.minor = element_blank()
-  ) +
-  guides(fill = guide_legend(nrow = 2))
-```
-
-#### Lignes absolues
-
+#### Líneas absolutas
 ```{r fig-lineas-absolutas, fig.cap="Évolution absolue de la mortalité par cause"}
 ggplot(mort_causa,
        aes(x = year, y = deaths / 1000,
@@ -219,12 +184,44 @@ ggplot(mort_causa,
   )
 ```
 
+#### Área apilada (%)
+```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 1998–2024 (%)"}
+lookup <- data.frame(
+  cause = as.character(names(cause_name)),
+  cause_name = as.character(cause_name)
+)
 
-#### Tableau résumé
+mort_causa_pct <- mort_causa_pct %>%
+  mutate(cause = as.character(cause)) %>%
+  left_join(lookup, by = "cause")
 
+
+# ggplot(mort_causa_pct,
+#        aes(x = year, y = pct, fill = cause_name)) +
+#   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) +
+#   scale_fill_manual(values = cols_20) +
+#   scale_x_continuous(breaks = seq(1998, 2022, 4)) +
+#   scale_y_continuous(labels = label_percent(scale = 0.3)) +
+#   labs(
+#     title    = "Composition of mortality by cause group",
+#     subtitle = "Annual proportion of deaths, Mexico 1990–2024",
+#     x = NULL, y = "% deaths", fill = NULL
+#   ) +
+#   theme_minimal(base_size = 13) +
+#   theme(
+#     legend.position  = "bottom",
+#     legend.key.size  = unit(0.2, "cm"),
+#     plot.title       = element_text(face = "bold", color = "#1a2744"),
+#     plot.subtitle    = element_text(color = "#6c757d"),
+#     panel.grid.minor = element_blank()
+#   ) +
+#   guides(fill = guide_legend(nrow = 2))
+```
+
+#### Tabla resumen
 ```{r tabla-causa-anio}
 mort_causa |>
-  filter(year %in% c(2000, 2005, 2010, 2015, 2020, 2024)) |>
+  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024)) |>
   pivot_wider(names_from = year, values_from = deaths) |>
   arrange(desc(`2024`)) |>
     mutate(cause = unname(cause_name[cause])) |>
@@ -244,14 +241,13 @@ mort_causa |>
 
 :::
 
-## Causes de décès std
+## Tasas de mortalidad estandarizadas (TME) por causa, sexo y año
 
-### Standardized death rates (SDR) par cause, sexe et année
+### Tasas de mortalidad estandarizadas (TME) por causa, sexo y año
 
 ::: {.panel-tabset}
 
-#### Evolution des causes de décès (std rate)
-
+#### Evolución de las causas de muerte (tasa estándar)
 ```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
 load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda")
 
@@ -267,17 +263,17 @@ ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
   scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +
   
   labs(
-    title = "Standardized causes of death (2000-2023)",
-    x = "Years",
-    y = "Standardized rate",
-    fill = "Causes of death"
+ Título = "Causas de muerte estandarizadas (2000-2023)",
+x = "Años",
+y = "Tasa estandarizada",
+fill = "Causas de muerte"
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
-#### Top 5 des causes de décès (std rate)
 
+#### Las 5 principales causas de muerte (tasa estándar)
 ```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
 #--------------------------Identifier les 5 principales causes de décès par année-----------------------------
 # top_5_causes_year <- SDR %>%
@@ -331,17 +327,17 @@ cols_7 <- c(
   
 ::: {.panel-tabset}
 
-#### Hommes vs Femmes (2023)
+<!-- #### Hommes vs Femmes (2023) -->
 
 ```{r fig-sex-causa-barras, fig.cap="Mortalité par cause et sexe, dernière année disponible"}
 ```
 
-#### Ratio H/M par cause
+<!-- #### Ratio H/M par cause -->
 
 ```{r fig-ratio-hm}
 ```
 
-#### Tendencias por sexo
+<!-- #### Tendencias por sexo -->
 
 ```{r fig-tendencias-sexo, fig.height=7, fig.cap="Tendencias por causa y sexo, 2000–2023"}
 ```
@@ -350,8 +346,7 @@ cols_7 <- c(
   
 
   
-## Indicateurs de concentration
-  
+## Indicadores de concentración  
 ```{r indice-concentracion}
 # Indice de Herfindahl-Hirschman (concentration causale)
 ihh <- mort_causa_pct |>
@@ -380,21 +375,23 @@ ggplot(ihh, aes(x = year, y = ihh)) +
 
 
 
-## Points clés de ce niveau
-
+## Puntos clave 
 ::: {.callout-note icon="false"}
-**Retenir de ce niveau ②**
+**Principales conclusiones**
 
-- La mortalité mexicaine est dominée par les maladies **cardiovasculaires** et le **diabète mellitus**, reflet de la transition épidémiologique avancée.
-- Les **causes externes** (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.
-- La dynamique temporelle montre une **diversification** progressive des causes, visible dans la baisse de l'IHH après 2010.
+- La mortalidad en México está dominada por las enfermedades cardiovasculares y endocrinas, lo que refleja la avanzada transición epidemiológica.
+
+- Las causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género.
+
+- La tendencia temporal muestra una progresiva diversificación de las causas, evidente en el 
+<!-- descenso del  -->
+Índice de Herfindahl-Hirschman (IHH) después de 2010.
 :::
 
 
 
-## Navigation
-
+## Navegación
 ::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
-[← ① Descriptivo general](A1_descriptivo_general.qmd){.btn .btn-outline-secondary}
-[→ ③ Causas específicas](A3_causas_especificas.qmd){.btn .btn-primary}
+[← 1- Descriptivo general](A1_descriptivo_general.qmd){.btn .btn-outline-secondary}
+[→ 3- Causas específicas](A3_causas_especificas.qmd){.btn .btn-primary}
 :::

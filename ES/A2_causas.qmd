@@ -70,15 +70,26 @@ cause_name <- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias",
                  "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
                  "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
                  "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
+cap_labels<- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
+                 "02" = "2- Tumores (neoplasias)", 
+                 "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
+                 "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
+                 "05" = "5- Trastornos mentales y del comportamiento", 
+                 "06" = "6- Enfermedades del sistema nervioso", 
+                 "07" = "7- Enfermedades de los ojos y sus anexos", 
+                 "08" = "8- Enfermedades del oído y la apófisis mastoides", 
+                 "09" = "9- Enfermedades del sistema circulatorio", 
+                 "10" = "10- Enfermedades del sistema respiratorio", 
+                 "11" = "11- Enfermedades del sistema digestivo", 
+                 "12" = "12- Piel y tejido subcutáneo", 
+                 "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
+                 "14" = "14- Enfermedades del sistema genitourinario", 
+                 "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
+                 "16" = "16- Afecciones originadas en el período perinatal", 
+                 "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
+                 "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
+                 "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
 
-# palette_causa <- c(
-#   "Enfermedades cardiovasculares" = "#1a2744",
-#   "Tumores malignos"              = "#e84855",
-#   "Diabetes mellitus"             = "#2a7a8c",
-#   "Enfermedades respiratorias"    = "#f4a261",
-#   "Causas externas"               = "#6c757d",
-#   "Otras"                         = "#adb5bd"
-# )
 cols_20 <- c(
   "#F88080FF", 
   "#60A040FF",   # muted green
@@ -160,39 +171,39 @@ ggplot(mort_causa,
   )
 ```
 
-#### Área apilada (%)
-```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 1998–2024 (%)"}
-lookup <- data.frame(
-  cause = as.character(names(cause_name)),
-  cause_name = as.character(cause_name)
-)
+<!-- #### Área apilada (%) -->
+<!-- ```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 1998–2024 (%)"} -->
+<!-- lookup <- data.frame( -->
+<!--   cause = as.character(names(cause_name)), -->
+<!--   cause_name = as.character(cause_name) -->
+<!-- ) -->
 
-mort_causa_pct <- mort_causa_pct %>%
-  mutate(cause = as.character(cause)) %>%
-  left_join(lookup, by = "cause")
+<!-- mort_causa_pct <- mort_causa_pct %>% -->
+<!--   mutate(cause = as.character(cause)) %>% -->
+<!--   left_join(lookup, by = "cause") -->
 
 
-# ggplot(mort_causa_pct,
-#        aes(x = year, y = pct, fill = cause_name)) +
-#   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) +
-#   scale_fill_manual(values = cols_20) +
-#   scale_x_continuous(breaks = seq(1998, 2022, 4)) +
-#   scale_y_continuous(labels = label_percent(scale = 0.3)) +
-#   labs(
-#     title    = "Composition of mortality by cause group",
-#     subtitle = "Annual proportion of deaths, Mexico 1990–2024",
-#     x = NULL, y = "% deaths", fill = NULL
-#   ) +
-#   theme_minimal(base_size = 13) +
-#   theme(
-#     legend.position  = "bottom",
-#     legend.key.size  = unit(0.2, "cm"),
-#     plot.title       = element_text(face = "bold", color = "#1a2744"),
-#     plot.subtitle    = element_text(color = "#6c757d"),
-#     panel.grid.minor = element_blank()
-#   ) +
-#   guides(fill = guide_legend(nrow = 2))
-```
+<!-- # ggplot(mort_causa_pct, -->
+<!-- #        aes(x = year, y = pct, fill = cause_name)) + -->
+<!-- #   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) + -->
+<!-- #   scale_fill_manual(values = cols_20) + -->
+<!-- #   scale_x_continuous(breaks = seq(1998, 2022, 4)) + -->
+<!-- #   scale_y_continuous(labels = label_percent(scale = 0.3)) + -->
+<!-- #   labs( -->
+<!-- #     title    = "Composition of mortality by cause group", -->
+<!-- #     subtitle = "Annual proportion of deaths, Mexico 1990–2024", -->
+<!-- #     x = NULL, y = "% deaths", fill = NULL -->
+<!-- #   ) + -->
+<!-- #   theme_minimal(base_size = 13) + -->
+<!-- #   theme( -->
+<!-- #     legend.position  = "bottom", -->
+<!-- #     legend.key.size  = unit(0.2, "cm"), -->
+<!-- #     plot.title       = element_text(face = "bold", color = "#1a2744"), -->
+<!-- #     plot.subtitle    = element_text(color = "#6c757d"), -->
+<!-- #     panel.grid.minor = element_blank() -->
+<!-- #   ) + -->
+<!-- #   guides(fill = guide_legend(nrow = 2)) -->
+<!-- ``` -->
 
 #### Tabla resumen
 ```{r tabla-causa-anio}
@@ -223,7 +234,8 @@ mort_causa |>
 
 ::: {.panel-tabset}
 
-#### Evolución de las causas de defunción (tasa estándar)
+#### Evolución de las causas 
+<!-- de defunción (tasa estándar) -->
 ```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
 
 SDR <- asmr_cause %>%
@@ -259,20 +271,26 @@ ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
 
 ```
 
-#### Las 5 principales causas de defunción (tasa estándar)
+#### Principales causas de defunción (tasa estándar)
 ```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
 #--------------------------Identifier les 5 principales causes de décès par année-----------------------------
-top_5_causes_year <- SDR %>%
-  group_by(year, sex) %>%
-  slice_max(SDR, n = 5) %>%
-  ungroup() %>%
-  arrange(year, desc(SDR))
+# top_5_causes_year <- SDR %>%
+#   group_by(year, sex) %>%
+#   slice_max(order_by = asmr_100k, n = 5) %>%
+#   ungroup() %>%
+#   arrange(year, desc(SDR))
+
+top_5_causes_year <- SDR |>
+  group_by(year, sex) |>
+  slice_max(order_by = asmr_100k, n = 5) |>
+  ungroup() |>
+  arrange(year, sex, desc(asmr_100k))
+
+top_5_causes_year
 
 top_5_causes_year <- top_5_causes_year %>%
   mutate(
-    capitulo = as.character(CAPITULO),
-    cause_name = libelles_cause[CAPITULO],  # Map codes to names
-    # label_sex = label_sex[sex]
+    cause_label = cap_labels[CAPITULO],
      sex_label  = case_when(
       sex == 1 ~ "Men",
       sex == 2 ~ "Women")
@@ -282,27 +300,51 @@ top_5_causes_year <- top_5_causes_year %>%
 cols_7 <- c(
   "#C89028FF", "#10580FFF", "#304898FF", "#783838FF",
   "#A8C0F8FF", "#F03838FF", "grey80", 
-  "#4078B8FF", "#282858FF", "#F85559FF"
+  "#4078B8FF", "#282858FF"
+  # , "#F85559FF"
 )
+
+  cols_20 <- c(
+    "#F88080FF", 
+    "#E18727",   # muted green
+    "#9060A0FF",   # muted purple
+    "#FCD1ADFF",   # muted brown‑orange
+    "#50A0C0FF",   # muted teal
+    "#B05090FF",   # muted magenta
+    "#409070FF",   # muted forest green
+    "#808080FF" ,  # medium gray (for baseline / total)
+    "#766FA7FF", 
+    "#FFDC91", 
+    "#4A7C59",
+    "#304898FF", 
+    # "#282858FF", 
+    "#E8B828FF", 
+    # "#F03838FF", 
+    "#68C5BEFF",
+    "#4078B8FF", 
+    "#C89028FF",
+    # "#54845FFF",
+    "#A8C0F8FF","#6F99AD", 
+    "#BC3C29"
+  )
 
 # label_sex <- c("1" = "Men", "2"= "Women")
 #-------------------------------------------------------
-# 
-# ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +
-#   geom_bar(stat = "identity", position = "stack") +
-#   facet_wrap(~ sex_label) +
-#   # scale_fill_paletteer_d("palettetown::carvanha") +
-#   scale_fill_manual(values = cols_7[1:length(unique(SDR$libelles_cause))]) +
-#   
-#   labs(
-#     title = "Top 5 standardized causes of death (2000-2023)",
-#     x = "Years",
-#     y = "Standardized rate",
-#     fill = "Causes of death"
-#   ) +
-#   theme_minimal() +
-#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-# 
+
+ggplot(top_5_causes_year, aes(x = factor(year), y = asmr_100k, fill = cause_label)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ sex_label) +
+  # scale_fill_paletteer_d("palettetown::carvanha") +
+  scale_fill_manual(values = cols_7[1:length(unique(top_5_causes_year$cause_label))]) +
+
+  labs(
+    title = "Top 5 standardized causes of death (2000-2023)",
+    x = "Years",
+    y = "Standardized rate",
+    fill = "Causes of death"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
 

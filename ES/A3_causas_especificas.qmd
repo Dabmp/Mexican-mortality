@@ -1,5 +1,5 @@
 ---
-title: "③ Causas específicas de muerte"
+title: "3- Causas específicas de muerte"
 subtitle: "Bloque A · Nivel 3 — Refinamiento analítico por causa específica (CIE-10)"
 lang: en
 ---
@@ -21,29 +21,27 @@ library(tidyverse); library(scales)
 
 palette_sexo <- c("Hombre"="#1a2744","Mujer"="#e84855","Total"="#2a7a8c")
 
-set.seed(99)
-cause_specific_list <- c(
-  "Cardiopatía isquémica", "Insuficiencia cardíaca", "EVC",
-  "Cáncer de mama", "Cáncer cervical", "Cáncer de próstata", "Cáncer de pulmón",
-  "Diabetes tipo 2", "Complicaciones DM", "Cirrosis hepática",
-  "Neumonía", "EPOC", "COVID-19",
-  "Accidentes de tránsito", "Homicidios", "Suicidios"
-)
 
-mort_spec <- expand.grid(
-  year           = 2000:2022,
-  sex            = c("Hombre","Mujer"),
-  cause_specific = cause_specific_list,
-  stringsAsFactors = FALSE
-) |> mutate(
-  deaths = rpois(n(), lambda = 100 + 15*(year-2000) +
-                   ifelse(sex=="Hombre",40,0) +
-                   case_when(
-                     cause_specific %in% c("Cardiopatía isquémica","Diabetes tipo 2") ~ 300,
-                     cause_specific %in% c("Homicidios","Accidentes de tránsito")     ~ 200,
-                     TRUE ~ 50
-                   ))
-)
+load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_sc.rda")
+load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/top10_sc.rda")
+SDR <- asmr_sc
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# top10h <- top10_sc |>
+#   filter(sex == 1, year == 2024) |>  
+#   arrange(desc(asmr_100k)) |>
+# select(CAP_GRUPO, DESCRIP)
+# Créer le dictionnaire CAP_GRUPO -> DESCRIP
+# Dictionnaire sans groupement
+dict_cause <- top10_sc |>
+  ungroup() |>
+  select(CAP_GRUPO, DESCRIP) |>
+  distinct()
+
+
 ```
 
 ## Evolución por causa específica
@@ -53,12 +51,12 @@ mort_spec <- expand.grid(
 #### Top 10 causas (2022)
 
 ```{r fig-top10-causas}
-mort_spec |>
-  filter(year==2022) |>
-  group_by(cause_specific) |>
-  summarise(deaths=sum(deaths)) |>
+SDR |>
+  filter(year==2024) |>
+  group_by(CAP_GRUPO) |>
+  summarise(deaths=sum(n_death)) |>
   slice_max(deaths, n=10) |>
-  mutate(cause_specific=reorder(cause_specific, deaths)) |>
+  mutate(cause_specific=reorder(CAP_GRUPO, deaths)) |>
   ggplot(aes(x=cause_specific, y=deaths/1000)) +
   geom_col(fill="#1a2744", alpha=0.85) + coord_flip() +
   scale_y_continuous(labels=label_comma(suffix=" k")) +
@@ -66,30 +64,148 @@ mort_spec |>
        x=NULL, y="Defunciones (miles)") +
   theme_minimal(base_size=12) +
   theme(plot.title=element_text(face="bold",color="#1a2744"),panel.grid.minor=element_blank())
+# dict_cause
 ```
 
 #### Tendencias por sexo
 
 ```{r fig-trends-spec, fig.height=8}
-top_causes <- mort_spec |> filter(year==2022) |>
-  group_by(cause_specific) |> summarise(d=sum(deaths)) |>
-  slice_max(d,n=6) |> pull(cause_specific)
-
-mort_spec |> filter(cause_specific %in% top_causes) |>
-  group_by(year, sex, cause_specific) |>
-  summarise(deaths=sum(deaths),.groups="drop") |>
-  ggplot(aes(x=year, y=deaths/1000, color=sex, group=sex)) +
-  geom_line(linewidth=0.9) +
-  facet_wrap(~str_wrap(cause_specific,18), scales="free_y", ncol=3) +
-  scale_color_manual(values=palette_sexo) +
-  scale_x_continuous(breaks=c(2000,2010,2022)) +
-  labs(x=NULL, y="Defunciones (miles)", color="Sexo",
-       title="Tendencias por causa específica y sexo") +
-  theme_minimal(base_size=11) +
-  theme(legend.position="bottom",plot.title=element_text(face="bold",color="#1a2744"),
-        strip.text=element_text(face="bold",size=9),panel.grid.minor=element_blank())
+# top_causes <- mort_spec |> filter(year==2022) |>
+#   group_by(cause_specific) |> summarise(d=sum(deaths)) |>
+#   slice_max(d,n=6) |> pull(cause_specific)
+# 
+# mort_spec |> filter(cause_specific %in% top_causes) |>
+#   group_by(year, sex, cause_specific) |>
+#   summarise(deaths=sum(deaths),.groups="drop") |>
+#   ggplot(aes(x=year, y=deaths/1000, color=sex, group=sex)) +
+#   geom_line(linewidth=0.9) +
+#   facet_wrap(~str_wrap(cause_specific,18), scales="free_y", ncol=3) +
+#   scale_color_manual(values=palette_sexo) +
+#   scale_x_continuous(breaks=c(2000,2010,2022)) +
+#   labs(x=NULL, y="Defunciones (miles)", color="Sexo",
+#        title="Tendencias por causa específica y sexo") +
+#   theme_minimal(base_size=11) +
+#   theme(legend.position="bottom",plot.title=element_text(face="bold",color="#1a2744"),
+#         strip.text=element_text(face="bold",size=9),panel.grid.minor=element_blank())
 ```
 
+#### Tabla (hombre)
+```{r fig-tab-hombre, fig.height=8}
+
+# Étape 1 : Top 5 causes par sexe basé sur 2024
+top10h <- SDR |>
+  filter(sex == 1, year == 2024) |>
+  arrange(desc(asmr_100k)) |>
+  slice_head(n = 10) |>
+  select(CAP_GRUPO)
+
+# summary(top10h)
+# 
+# top10h
+
+# Étape 2 : Filtrer les données pour les années sélectionnées
+annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
+
+data_hommes <- SDR |>
+  filter(sex == 1, year %in% annees, CAP_GRUPO %in% top10h$CAP_GRUPO)
+
+data_hommes
+
+# Étape 3 : Pivot
+wide_hommes <- data_hommes |>
+  select(CAP_GRUPO, year, asmr_100k) |>
+  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  arrange(desc(`2024`))
+
+wide_hommes <- wide_hommes |>
+  left_join(dict_cause, by = "CAP_GRUPO") |>
+  select(CAP_GRUPO, DESCRIP, everything())
+
+wide_hommes
+
+# Étape 4 : Tableau
+library(knitr)
+library(kableExtra)
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Cause", "Description", names(wide_data)[-(1:2)]),
+      align     = c("l", "l", rep("r", ncol(wide_data) - 2))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 2,
+        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 2)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+tbl_hommes <- format_table(wide_hommes, "Top 10 causes de décès — Hommes")
+
+tbl_hommes
+```
+#### Tabla (mujer)
+```{r fig-tab-mujer, fig.height=8}
+
+ top10m<- SDR |>
+   filter(sex == 2, year == 2024) |>
+   arrange(desc(asmr_100k)) |>
+   slice_head(n = 10) |>
+   select(CAP_GRUPO)
+
+ top10m
+# # Étape 2 : Filtrer les données pour les années sélectionnées
+# annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
+
+data_femmes <- SDR |>
+  # arrange(desc(asmr_100k)) |>
+  filter(sex == 2, year %in% annees, CAP_GRUPO %in% top10m$CAP_GRUPO)
+
+data_femmes
+
+# Étape 3 : Pivot
+
+wide_femmes <- data_femmes |>
+  select(CAP_GRUPO, year, asmr_100k) |>
+  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  arrange(desc(`2024`))
+
+
+wide_femmes <- wide_femmes |>
+  left_join(dict_cause, by = "CAP_GRUPO") |>
+  select(CAP_GRUPO, DESCRIP, everything())
+
+wide_femmes
+
+# Étape 4 : Tableau
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Cause", "Description", names(wide_data)[-(1:2)]),
+      align     = c("l", "l", rep("r", ncol(wide_data) - 2))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 2,
+        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 2)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+
+tbl_femmes <- format_table(wide_femmes, "Top 5 causes de décès — Femmes")
+tbl_femmes
+```
 :::
 
 

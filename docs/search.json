@@ -214,53 +214,42 @@
   {
     "objectID": "es/A1_descriptivo_general.html",
     "href": "es/A1_descriptivo_general.html",
-    "title": "1- General descriptive analysis",
+    "title": "1- Análisis descriptivo general",
     "section": "",
-    "text": "Bloc A L1 Variables : year · sex",
+    "text": "Bloc A L1 Variables : year · sex\n##Introducción\nEsta sección examina las tendencias de mortalidad en México sin desagregación (por causa o territorio), con el objetivo de identificar patrones macro y puntos de inflexión temporales.",
     "crumbs": [
       "Bloque A — Temporalidad",
       "① Descripción general"
     ]
   },
   {
-    "objectID": "es/A1_descriptivo_general.html#introduction",
-    "href": "es/A1_descriptivo_general.html#introduction",
-    "title": "1- General descriptive analysis",
-    "section": "Introduction",
-    "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
+    "objectID": "es/A1_descriptivo_general.html#tendencias-globales",
+    "href": "es/A1_descriptivo_general.html#tendencias-globales",
+    "title": "1- Análisis descriptivo general",
+    "section": "Tendencias globales",
+    "text": "Tendencias globales\n\n\nSerie temporal\nTasa de crecimiento\n\n\n\n\nCodeggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"Total Mortality in Mexico\", subtitle=\"Deaths by Sex, 1990–2024\",\n\nx=NULL, y=\"Deaths (thousands)\", color=\"Sex\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\nCodemort_yr |&gt; mutate(growth = (deaths/lag(deaths)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual Mortality Growth Rate\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
     "crumbs": [
       "Bloque A — Temporalidad",
       "① Descripción general"
     ]
   },
   {
-    "objectID": "es/A1_descriptivo_general.html#global-trends",
-    "href": "es/A1_descriptivo_general.html#global-trends",
-    "title": "1- General descriptive analysis",
-    "section": "Global trends",
-    "text": "Global trends\n\n\nTemporal serie\nGrowth rate\n\n\n\n\nCodeggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"Total Mortality in Mexico\", subtitle=\"Deaths by Sex, 1990–2024\",\n\nx=NULL, y=\"Deaths (thousands)\", color=\"Sex\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\nCodemort_yr |&gt; mutate(growth = (deaths/lag(deaths)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual Mortality Growth Rate\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 2",
+    "objectID": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
+    "href": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
+    "title": "1- Análisis descriptivo general",
+    "section": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)",
+    "text": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)\nLa tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.\n\n\nSeries temporales para ASMR\nCambio ASMR masculino\nWomen ASMR change\n\n\n\nLos resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.\n\n\nCodeggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"ASMR trend in Mexico\", subtitle=\"ASMR per 100k inhabitants by Sex, 1990–2024\",\n\nx=NULL, y=\"ASMR per 100k inhabitants\", color=\"Sex\") +\n  theme_minimal(base_size=10) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\nCodeasmr_male |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (male)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\nCodeasmr_female |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (female)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 5: ASMR women change",
     "crumbs": [
       "Bloque A — Temporalidad",
       "① Descripción general"
     ]
   },
   {
-    "objectID": "es/A1_descriptivo_general.html#asmr-trend",
-    "href": "es/A1_descriptivo_general.html#asmr-trend",
-    "title": "1- General descriptive analysis",
-    "section": "ASMR trend",
-    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\n\nTemporal serie for ASMR\nMen ASMR change\nWomen ASMR change\n\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\nCodeggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +\n  geom_line(linewidth=1.1) + geom_point(size=2.2) +\n  scale_color_manual(values=palette_sexo) +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n  scale_y_continuous(labels=label_comma(suffix=\" k\")) +\n labs(title=\"ASMR trend in Mexico\", subtitle=\"ASMR per 100k inhabitants by Sex, 1990–2024\",\n\nx=NULL, y=\"ASMR per 100k inhabitants\", color=\"Sex\") +\n  theme_minimal(base_size=10) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), legend.position=\"bottom\",\n        panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\nCodeasmr_male |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (male)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\nCodeasmr_female |&gt; mutate(growth = (asmr/lag(asmr)-1)*100) |&gt; filter(!is.na(growth)) |&gt;\n  ggplot(aes(x=year, y=growth)) +\n  geom_col(fill=\"#2a7a8c\", alpha=0.8, width=0.7) +\n  geom_hline(yintercept=0, color=\"#1a2744\") +\n  scale_x_continuous(breaks=seq(1990,2024,4)) +\n labs(title=\"Annual ASMR Growth Rate (female)\",\n  x=\"Year\", y=\"Annual Change (%)\") +\n  theme_minimal(base_size=13) +\n  theme(plot.title=element_text(face=\"bold\",color=\"#1a2744\"), panel.grid.minor=element_blank())\n\n\n\n\n\n\nFigure 5: ASMR women change",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "① Descripción general"
-    ]
-  },
-  {
-    "objectID": "es/A1_descriptivo_general.html#navigation",
-    "href": "es/A1_descriptivo_general.html#navigation",
-    "title": "1- General descriptive analysis",
-    "section": "Navigation",
-    "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
+    "objectID": "es/A1_descriptivo_general.html#navegación",
+    "href": "es/A1_descriptivo_general.html#navegación",
+    "title": "1- Análisis descriptivo general",
+    "section": "Navegación",
+    "text": "Navegación\n\n← Inicio → 2- Desagregación por causa",
     "crumbs": [
       "Bloque A — Temporalidad",
       "① Descripción general"
@@ -513,7 +502,7 @@
     "href": "en/A2_causes.html#navigation",
     "title": "2- Disaggregation by cause of death",
     "section": "Navigation",
-    "text": "Navigation\n\n← ① Descriptivo general → ③ Causas específicas",
+    "text": "Navigation\n\n← 1- Descriptivo general → 3- Causas específicas",
     "crumbs": [
       "Block A — Temporal trends",
       "② Causes of death"
@@ -601,7 +590,7 @@
   {
     "objectID": "es/A2_causas.html",
     "href": "es/A2_causas.html",
-    "title": "2- Disaggregation by cause of death",
+    "title": "2- Desagregación por causa de muerte",
     "section": "",
     "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
     "crumbs": [
@@ -612,7 +601,7 @@
   {
     "objectID": "es/A2_causas.html#introducción-analítica",
     "href": "es/A2_causas.html#introducción-analítica",
-    "title": "2- Disaggregation by cause of death",
+    "title": "2- Desagregación por causa de muerte",
     "section": "Introducción analítica",
     "text": "Introducción analítica\nLa incorporación de la causa de muerte como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
     "crumbs": [
@@ -621,55 +610,55 @@
     ]
   },
   {
-    "objectID": "es/A2_causas.html#vue-densemble-composition-de-la-mortalité",
-    "href": "es/A2_causas.html#vue-densemble-composition-de-la-mortalité",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Vue d’ensemble : composition de la mortalité",
-    "text": "Vue d’ensemble : composition de la mortalité\nÉvolution de la structure par cause\n\n\nAire empilée (%)\nLignes absolues\nTableau résumé\n\n\n\n\nCodelookup &lt;- data.frame(\n  cause = as.character(names(cause_name)),\n  cause_name = as.character(cause_name)\n)\n\nmort_causa_pct &lt;- mort_causa_pct %&gt;%\n  mutate(cause = as.character(cause)) %&gt;%\n  left_join(lookup, by = \"cause\")\n\n\nggplot(mort_causa_pct,\n       aes(x = year, y = pct, fill = cause_name)) +\n  geom_area(alpha = 0.88, color = \"white\", linewidth = 0.3) +\n  scale_fill_manual(values = cols_20) +\n  scale_x_continuous(breaks = seq(1998, 2022, 4)) +\n  scale_y_continuous(labels = label_percent(scale = 0.3)) +\n  labs(\n    title    = \"Composition of mortality by cause group\",\n    subtitle = \"Annual proportion of deaths, Mexico 1990–2024\",\n    x = NULL, y = \"% deaths\", fill = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position  = \"bottom\",\n    legend.key.size  = unit(0.2, \"cm\"),\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    panel.grid.minor = element_blank()\n  ) +\n  guides(fill = guide_legend(nrow = 2))\n\n\n\n\n\n\nFigure 1: Structure de la mortalité par cause, 1998–2024 (%)\n\n\n\n\n\n\n\nCodeggplot(mort_causa,\n       aes(x = year, y = deaths / 1000,\n           color = cause, group = cause)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 2, alpha = 0.8) +\n  geom_label_repel(\n    data  = mort_causa |&gt; filter(year == last_year),\n    aes(label = str_wrap(cause, 18)),\n    size  = 3, nudge_x = 0.8, segment.color = \"grey60\",\n    show.legend = FALSE\n  ) +\n  scale_color_manual(values = cols_20) +\n  scale_x_continuous(breaks = seq(1998,  2024, 4),\n                     limits = c(1998, 2025)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title    = \"Evolución absoluta de la mortalidad por causa\",\n    subtitle = \"Número de defunciones (miles), México 2000–2023\",\n    x = NULL, y = \"Defunciones (miles)\", color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position  = \"none\",\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\nFigure 2: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\nCodemort_causa |&gt;\n  filter(year %in% c(2000, 2005, 2010, 2015, 2020, 2024)) |&gt;\n  pivot_wider(names_from = year, values_from = deaths) |&gt;\n  arrange(desc(`2024`)) |&gt;\n    mutate(cause = unname(cause_name[cause])) |&gt;\n\n  mutate(across(where(is.numeric), ~ format(.x, big.mark = \",\"))) |&gt;\n  kable(\n    caption = \"Deaths by cause of death, selected years\",\n    col.names = c(\"Cause\", \"2000\", \"2005\", \"2010\", \"2015\", \"2019\", \"2024\")\n  ) |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\"),\n                full_width = FALSE) |&gt;\n  row_spec(1, bold = TRUE, background = \"#f0f4f8\")\n\n\nDeaths by cause of death, selected years\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n9 - Diseases of the circulatory system\n97,579\n112,189\n141,515\n166,773\n261,900\n224,876\n\n\n4 - Endocrine, nutritional, and metabolic diseases\n60,023\n81,393\n99,461\n114,619\n171,422\n126,955\n\n\n2 - Tumors (neoplasms)\n57,749\n66,480\n74,761\n85,165\n97,472\n102,306\n\n\n20 - External causes of morbidity and mortality\n51,744\n53,328\n73,072\n67,457\n81,013\n81,809\n\n\n11 - Diseases of the digestive system\n42,343\n47,801\n55,044\n62,949\n71,416\n74,464\n\n\n10 - Diseases of the respiratory system\n38,525\n43,452\n51,301\n55,381\n96,896\n68,708\n\n\n14 - Diseases of the genitourinary system\n11,950\n14,277\n17,350\n22,503\n26,918\n31,600\n\n\n1 - Certain infectious and parasitic diseases\n18,648\n18,273\n17,164\n16,222\n17,924\n23,242\n\n\n6 - Diseases of the nervous system\n7,444\n9,132\n10,436\n11,368\n12,992\n14,122\n\n\n16 - Conditions originating in the perinatal period\n19,465\n16,421\n14,340\n12,941\n10,054\n9,280\n\n\n18 - Symptoms, signs, and abnormal clinical and laboratory findings\n8,468\n9,281\n12,528\n10,787\n11,153\n9,251\n\n\n17 - Congenital malformations and chromosomal abnormalities\n9,569\n9,254\n9,137\n9,305\n8,020\n6,870\n\n\n12 - Diseases of the skin and subcutaneous tissue\n976\n1,032\n1,689\n2,850\n3,221\n5,606\n\n\n13 - Diseases of the musculoskeletal system and connective tissue\n2,711\n3,316\n5,025\n4,589\n5,505\n5,570\n\n\n3 - Diseases of the blood and immune system\n3,894\n4,453\n4,828\n4,735\n5,326\n4,969\n\n\n5 - Mental and behavioral disorders\n4,995\n4,500\n4,389\n5,282\n5,197\n4,927\n\n\n22 - COVID-19\nNA\nNA\nNA\nNA\n200,805\n1,359\n\n\n15 - Pregnancy, childbirth, and the puerperium\n1,316\n1,275\n1,031\n905\n1,172\n741\n\n\n8 - Diseases of the ear and mastoid process\n54\n44\n33\n38\n45\n50\n\n\n7 - Diseases of the eye and adnexa\n10\n8\n14\n16\n10\n13",
+    "objectID": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
+    "href": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
+    "title": "2- Desagregación por causa de muerte",
+    "section": "Vue d’ensemble: composición de la mortalité",
+    "text": "Vue d’ensemble: composición de la mortalité\nEvolución de la estructura por causa\n\n\nLíneas absolutas\nÁrea apilada (%)\nTabla resumen\n\n\n\n\nCodeggplot(mort_causa,\n       aes(x = year, y = deaths / 1000,\n           color = cause, group = cause)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 2, alpha = 0.8) +\n  geom_label_repel(\n    data  = mort_causa |&gt; filter(year == last_year),\n    aes(label = str_wrap(cause, 18)),\n    size  = 3, nudge_x = 0.8, segment.color = \"grey60\",\n    show.legend = FALSE\n  ) +\n  scale_color_manual(values = cols_20) +\n  scale_x_continuous(breaks = seq(1998,  2024, 4),\n                     limits = c(1998, 2025)) +\n  scale_y_continuous(labels = label_comma(suffix = \" k\")) +\n  labs(\n    title    = \"Evolución absoluta de la mortalidad por causa\",\n    subtitle = \"Número de defunciones (miles), México 2000–2023\",\n    x = NULL, y = \"Defunciones (miles)\", color = NULL\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    legend.position  = \"none\",\n    plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle    = element_text(color = \"#6c757d\"),\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\nFigure 1: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\nCodelookup &lt;- data.frame(\n  cause = as.character(names(cause_name)),\n  cause_name = as.character(cause_name)\n)\n\nmort_causa_pct &lt;- mort_causa_pct %&gt;%\n  mutate(cause = as.character(cause)) %&gt;%\n  left_join(lookup, by = \"cause\")\n\n\n# ggplot(mort_causa_pct,\n#        aes(x = year, y = pct, fill = cause_name)) +\n#   geom_area(alpha = 0.88, color = \"white\", linewidth = 0.3) +\n#   scale_fill_manual(values = cols_20) +\n#   scale_x_continuous(breaks = seq(1998, 2022, 4)) +\n#   scale_y_continuous(labels = label_percent(scale = 0.3)) +\n#   labs(\n#     title    = \"Composition of mortality by cause group\",\n#     subtitle = \"Annual proportion of deaths, Mexico 1990–2024\",\n#     x = NULL, y = \"% deaths\", fill = NULL\n#   ) +\n#   theme_minimal(base_size = 13) +\n#   theme(\n#     legend.position  = \"bottom\",\n#     legend.key.size  = unit(0.2, \"cm\"),\n#     plot.title       = element_text(face = \"bold\", color = \"#1a2744\"),\n#     plot.subtitle    = element_text(color = \"#6c757d\"),\n#     panel.grid.minor = element_blank()\n#   ) +\n#   guides(fill = guide_legend(nrow = 2))\n\n\n\n\n\nCodemort_causa |&gt;\n  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024)) |&gt;\n  pivot_wider(names_from = year, values_from = deaths) |&gt;\n  arrange(desc(`2024`)) |&gt;\n    mutate(cause = unname(cause_name[cause])) |&gt;\n\n  mutate(across(where(is.numeric), ~ format(.x, big.mark = \",\"))) |&gt;\n  kable(\n    caption = \"Deaths by cause of death, selected years\",\n    col.names = c(\"Cause\", \"2000\", \"2005\", \"2010\", \"2015\", \"2019\", \"2024\")\n  ) |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\"),\n                full_width = FALSE) |&gt;\n  row_spec(1, bold = TRUE, background = \"#f0f4f8\")\n\n\nDeaths by cause of death, selected years\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n9 - Diseases of the circulatory system\n97,579\n112,189\n141,515\n166,773\n193,896\n224,876\n\n\n4 - Endocrine, nutritional, and metabolic diseases\n60,023\n81,393\n99,461\n114,619\n119,611\n126,955\n\n\n2 - Tumors (neoplasms)\n57,749\n66,480\n74,761\n85,165\n95,388\n102,306\n\n\n20 - External causes of morbidity and mortality\n51,744\n53,328\n73,072\n67,457\n81,384\n81,809\n\n\n11 - Diseases of the digestive system\n42,343\n47,801\n55,044\n62,949\n70,979\n74,464\n\n\n10 - Diseases of the respiratory system\n38,525\n43,452\n51,301\n55,381\n69,364\n68,708\n\n\n14 - Diseases of the genitourinary system\n11,950\n14,277\n17,350\n22,503\n26,939\n31,600\n\n\n1 - Certain infectious and parasitic diseases\n18,648\n18,273\n17,164\n16,222\n19,602\n23,242\n\n\n6 - Diseases of the nervous system\n7,444\n9,132\n10,436\n11,368\n13,146\n14,122\n\n\n16 - Conditions originating in the perinatal period\n19,465\n16,421\n14,340\n12,941\n11,532\n9,280\n\n\n18 - Symptoms, signs, and abnormal clinical and laboratory findings\n8,468\n9,281\n12,528\n10,787\n9,675\n9,251\n\n\n17 - Congenital malformations and chromosomal abnormalities\n9,569\n9,254\n9,137\n9,305\n8,932\n6,870\n\n\n12 - Diseases of the skin and subcutaneous tissue\n976\n1,032\n1,689\n2,850\n4,085\n5,606\n\n\n13 - Diseases of the musculoskeletal system and connective tissue\n2,711\n3,316\n5,025\n4,589\n5,204\n5,570\n\n\n3 - Diseases of the blood and immune system\n3,894\n4,453\n4,828\n4,735\n4,804\n4,969\n\n\n5 - Mental and behavioral disorders\n4,995\n4,500\n4,389\n5,282\n4,731\n4,927\n\n\n22 - COVID-19\nNA\nNA\nNA\nNA\nNA\n1,359\n\n\n15 - Pregnancy, childbirth, and the puerperium\n1,316\n1,275\n1,031\n905\n853\n741\n\n\n8 - Diseases of the ear and mastoid process\n54\n44\n33\n38\n50\n50\n\n\n7 - Diseases of the eye and adnexa\n10\n8\n14\n16\n16\n13",
     "crumbs": [
       "Bloque A — Temporalidad",
       "② Causas de muerte"
     ]
   },
   {
-    "objectID": "es/A2_causas.html#causes-de-décès-std",
-    "href": "es/A2_causas.html#causes-de-décès-std",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Causes de décès std",
-    "text": "Causes de décès std\nStandardized death rates (SDR) par cause, sexe et année\n\n\nEvolution des causes de décès (std rate)\nTop 5 des causes de décès (std rate)\n\n\n\n\nCodeload(\"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda\")\n\nSDR &lt;- asmr_cause %&gt;%\n  filter(year&gt;1997)\n# install.packages(\"paletteer\")\nlibrary(paletteer)\n\nggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +\n  geom_bar(stat = \"identity\", position = \"stack\") +\n  facet_wrap(~ sex_lab) +\n  # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n  scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +\n  \n  labs(\n    title = \"Standardized causes of death (2000-2023)\",\n    x = \"Years\",\n    y = \"Standardized rate\",\n    fill = \"Causes of death\"\n  ) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\nFigure 3: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\nCode#--------------------------Identifier les 5 principales causes de décès par année-----------------------------\n# top_5_causes_year &lt;- SDR %&gt;%\n#   group_by(year, sex) %&gt;%\n#   slice_max(SDR, n = 5) %&gt;%\n#   ungroup() %&gt;%\n#   arrange(year, desc(SDR))\n# \n# top_5_causes_year &lt;- top_5_causes_year %&gt;%\n#   mutate(\n#     capitulo = as.character(CAPITULO),\n#     cause_name = libelles_cause[CAPITULO],  # Map codes to names\n#     # label_sex = label_sex[sex]\n#      sex_label  = case_when(\n#       sex == 1 ~ \"Men\",\n#       sex == 2 ~ \"Women\")\n#   )\n\n#-------------------------------------------------------\ncols_7 &lt;- c(\n  \"#C89028FF\", \"#10580FFF\", \"#304898FF\", \"#783838FF\",\n  \"#A8C0F8FF\", \"#F03838FF\", \"grey80\", \n  \"#4078B8FF\", \"#282858FF\", \"#F85559FF\"\n)\n\n# label_sex &lt;- c(\"1\" = \"Men\", \"2\"= \"Women\")\n#-------------------------------------------------------\n# \n# ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +\n#   geom_bar(stat = \"identity\", position = \"stack\") +\n#   facet_wrap(~ sex_label) +\n#   # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n#   scale_fill_manual(values = cols_7[1:length(unique(SDR$libelles_cause))]) +\n#   \n#   labs(\n#     title = \"Top 5 standardized causes of death (2000-2023)\",\n#     x = \"Years\",\n#     y = \"Standardized rate\",\n#     fill = \"Causes of death\"\n#   ) +\n#   theme_minimal() +\n#   theme(axis.text.x = element_text(angle = 45, hjust = 1))\n# \n\n\n\n\n\n\n\n\nHommes vs Femmes (2023)\nRatio H/M par cause\nTendencias por sexo",
+    "objectID": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme-por-causa-sexo-y-año",
+    "href": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme-por-causa-sexo-y-año",
+    "title": "2- Desagregación por causa de muerte",
+    "section": "Tasas de mortalidad estandarizadas (TME) por causa, sexo y año",
+    "text": "Tasas de mortalidad estandarizadas (TME) por causa, sexo y año\nTasas de mortalidad estandarizadas (TME) por causa, sexo y año\n\n\nEvolución de las causas de muerte (tasa estándar)\nLas 5 principales causas de muerte (tasa estándar)\n\n\n\n\nCodeload(\"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda\")\n\nSDR &lt;- asmr_cause %&gt;%\n  filter(year&gt;1997)\n# install.packages(\"paletteer\")\nlibrary(paletteer)\n\nggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +\n  geom_bar(stat = \"identity\", position = \"stack\") +\n  facet_wrap(~ sex_lab) +\n  # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n  scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +\n  \n  labs(\n Título = \"Causas de muerte estandarizadas (2000-2023)\",\nx = \"Años\",\ny = \"Tasa estandarizada\",\nfill = \"Causas de muerte\"\n  ) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\nFigure 2: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\nCode#--------------------------Identifier les 5 principales causes de décès par année-----------------------------\n# top_5_causes_year &lt;- SDR %&gt;%\n#   group_by(year, sex) %&gt;%\n#   slice_max(SDR, n = 5) %&gt;%\n#   ungroup() %&gt;%\n#   arrange(year, desc(SDR))\n# \n# top_5_causes_year &lt;- top_5_causes_year %&gt;%\n#   mutate(\n#     capitulo = as.character(CAPITULO),\n#     cause_name = libelles_cause[CAPITULO],  # Map codes to names\n#     # label_sex = label_sex[sex]\n#      sex_label  = case_when(\n#       sex == 1 ~ \"Men\",\n#       sex == 2 ~ \"Women\")\n#   )\n\n#-------------------------------------------------------\ncols_7 &lt;- c(\n  \"#C89028FF\", \"#10580FFF\", \"#304898FF\", \"#783838FF\",\n  \"#A8C0F8FF\", \"#F03838FF\", \"grey80\", \n  \"#4078B8FF\", \"#282858FF\", \"#F85559FF\"\n)\n\n# label_sex &lt;- c(\"1\" = \"Men\", \"2\"= \"Women\")\n#-------------------------------------------------------\n# \n# ggplot(top_5_causes_year, aes(x = factor(year), y = SDR, fill = cause_name)) +\n#   geom_bar(stat = \"identity\", position = \"stack\") +\n#   facet_wrap(~ sex_label) +\n#   # scale_fill_paletteer_d(\"palettetown::carvanha\") +\n#   scale_fill_manual(values = cols_7[1:length(unique(SDR$libelles_cause))]) +\n#   \n#   labs(\n#     title = \"Top 5 standardized causes of death (2000-2023)\",\n#     x = \"Years\",\n#     y = \"Standardized rate\",\n#     fill = \"Causes of death\"\n#   ) +\n#   theme_minimal() +\n#   theme(axis.text.x = element_text(angle = 45, hjust = 1))\n#",
     "crumbs": [
       "Bloque A — Temporalidad",
       "② Causas de muerte"
     ]
   },
   {
-    "objectID": "es/A2_causas.html#indicateurs-de-concentration",
-    "href": "es/A2_causas.html#indicateurs-de-concentration",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Indicateurs de concentration",
-    "text": "Indicateurs de concentration\n\nCode# Indice de Herfindahl-Hirschman (concentration causale)\nihh &lt;- mort_causa_pct |&gt;\n  group_by(year) |&gt;\n  summarise(ihh = sum((pct / 100)^2),\n            n_causas = n_distinct(cause),\n            causa_top = cause[which.max(pct)],\n            pct_top   = max(pct)) |&gt;\n  ungroup()\n\nggplot(ihh, aes(x = year, y = ihh)) +\n  geom_line(color = \"#2a7a8c\", linewidth = 1.2) +\n  geom_point(color = \"#2a7a8c\", size = 3) +\n  scale_x_continuous(breaks = seq(2000, 2023, 4)) +\n  labs(\n    title    = \"Índice de concentración de la mortalidad por causa (IHH)\",\n    subtitle = \"Valores más altos indican mayor concentración en pocas causas\",\n    x = NULL, y = \"Índice Herfindahl-Hirschman\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title    = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle = element_text(color = \"#6c757d\")\n  )",
+    "objectID": "es/A2_causas.html#indicadores-de-concentración",
+    "href": "es/A2_causas.html#indicadores-de-concentración",
+    "title": "2- Desagregación por causa de muerte",
+    "section": "Indicadores de concentración",
+    "text": "Indicadores de concentración\n\nCode# Indice de Herfindahl-Hirschman (concentration causale)\nihh &lt;- mort_causa_pct |&gt;\n  group_by(year) |&gt;\n  summarise(ihh = sum((pct / 100)^2),\n            n_causas = n_distinct(cause),\n            causa_top = cause[which.max(pct)],\n            pct_top   = max(pct)) |&gt;\n  ungroup()\n\nggplot(ihh, aes(x = year, y = ihh)) +\n  geom_line(color = \"#2a7a8c\", linewidth = 1.2) +\n  geom_point(color = \"#2a7a8c\", size = 3) +\n  scale_x_continuous(breaks = seq(2000, 2023, 4)) +\n  labs(\n    title    = \"Índice de concentración de la mortalidad por causa (IHH)\",\n    subtitle = \"Valores más altos indican mayor concentración en pocas causas\",\n    x = NULL, y = \"Índice Herfindahl-Hirschman\"\n  ) +\n  theme_minimal(base_size = 13) +\n  theme(\n    plot.title    = element_text(face = \"bold\", color = \"#1a2744\"),\n    plot.subtitle = element_text(color = \"#6c757d\")\n  )",
     "crumbs": [
       "Bloque A — Temporalidad",
       "② Causas de muerte"
     ]
   },
   {
-    "objectID": "es/A2_causas.html#points-clés-de-ce-niveau",
-    "href": "es/A2_causas.html#points-clés-de-ce-niveau",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Points clés de ce niveau",
-    "text": "Points clés de ce niveau\n\n\n\n\n\n\nNote\n\n\n\nRetenir de ce niveau ②\n\nLa mortalité mexicaine est dominée par les maladies cardiovasculaires et le diabète mellitus, reflet de la transition épidémiologique avancée.\nLes causes externes (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.\nLa dynamique temporelle montre une diversification progressive des causes, visible dans la baisse de l’IHH après 2010.",
+    "objectID": "es/A2_causas.html#puntos-clave",
+    "href": "es/A2_causas.html#puntos-clave",
+    "title": "2- Desagregación por causa de muerte",
+    "section": "Puntos clave",
+    "text": "Puntos clave\n\n\n\n\n\n\nNote\n\n\n\nPrincipales conclusiones\n\nLa mortalidad en México está dominada por las enfermedades cardiovasculares y endocrinas, lo que refleja la avanzada transición epidemiológica.\nLas causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género.\nLa tendencia temporal muestra una progresiva diversificación de las causas, evidente en el  Índice de Herfindahl-Hirschman (IHH) después de 2010.",
     "crumbs": [
       "Bloque A — Temporalidad",
       "② Causas de muerte"
     ]
   },
   {
-    "objectID": "es/A2_causas.html#navigation",
-    "href": "es/A2_causas.html#navigation",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ① Descriptivo general → ③ Causas específicas",
+    "objectID": "es/A2_causas.html#navegación",
+    "href": "es/A2_causas.html#navegación",
+    "title": "2- Desagregación por causa de muerte",
+    "section": "Navegación",
+    "text": "Navegación\n\n← 1- Descriptivo general → 3- Causas específicas",
     "crumbs": [
       "Bloque A — Temporalidad",
       "② Causas de muerte"

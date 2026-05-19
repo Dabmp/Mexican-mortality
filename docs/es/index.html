@@ -120,10 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Proyecto</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">
 <li>
     <a class="dropdown-item" href="../es/index.html">
  <span class="dropdown-text">Inicio</span></a>
@@ -154,10 +154,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Project</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">
 <li>
     <a class="dropdown-item" href="../en/index.html">
  <span class="dropdown-text">Home</span></a>
@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Análisis de la Mortalidad en México</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Análisis de la Mortalidad en México</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Código</button></div></div>
 <p class="subtitle lead">Una aproximación multidimensional: temporalidad, causas y territorio</p>
 </div>
 
@@ -437,7 +437,7 @@ Evolución de la esperanza de vida al nacer y a distintas edades, con desagregac
 </table>
 <hr></section></section><section id="síntesis-preliminar" class="level2"><h2 class="anchored" data-anchor-id="síntesis-preliminar">Síntesis preliminar</h2>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mort_nacional</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mort_nacional</span>,</span>
 <span>       <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">deaths</span> <span class="op">/</span> <span class="fl">1000</span>, color <span class="op">=</span> <span class="va">sex</span>, group <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
@@ -457,7 +457,7 @@ Evolución de la esperanza de vida al nacer y a distintas edades, con desagregac
 <span>    legend.position  <span class="op">=</span> <span class="st">"bottom"</span>,</span>
 <span>    panel.grid.minor <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-resumen-nacional" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-resumen-nacional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="index_files/figure-html/fig-resumen-nacional-1.png" class="img-fluid figure-img" style="width:100.0%">

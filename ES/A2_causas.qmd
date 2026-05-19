@@ -271,84 +271,82 @@ ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
 
 ```
 
-#### Principales causas de defunción (tasa estándar)
-```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"}
-#--------------------------Identifier les 5 principales causes de décès par année-----------------------------
-# top_5_causes_year <- SDR %>%
-#   group_by(year, sex) %>%
-#   slice_max(order_by = asmr_100k, n = 5) %>%
-#   ungroup() %>%
-#   arrange(year, desc(SDR))
+<!-- #### Principales causas de defunción (tasa estándar) -->
+<!-- ```{r fig-top5stdcausedeath, fig.cap="Top 5 des causes de la mortalité (std)"} -->
+<!-- #--------------------------Identifier les 5 principales causes de décès par année----------------------------- -->
+<!-- # top_5_causes_year <- SDR %>% -->
+<!-- #   group_by(year, sex) %>% -->
+<!-- #   slice_max(order_by = asmr_100k, n = 5) %>% -->
+<!-- #   ungroup() %>% -->
+<!-- #   arrange(year, desc(SDR)) -->
 
-top_5_causes_year <- SDR |>
-  group_by(year, sex) |>
-  slice_max(order_by = asmr_100k, n = 5) |>
-  ungroup() |>
-  arrange(year, sex, desc(asmr_100k))
+<!-- top_5_causes_year <- SDR |> -->
+<!--   group_by(year, sex) |> -->
+<!--   slice_max(order_by = asmr_100k, n = 5) |> -->
+<!--   ungroup() |> -->
+<!--   arrange(year, sex, desc(asmr_100k)) -->
 
-top_5_causes_year
+<!-- top_5_causes_year -->
 
-top_5_causes_year <- top_5_causes_year %>%
-  mutate(
-    cause_label = cap_labels[CAPITULO],
-     sex_label  = case_when(
-      sex == 1 ~ "Men",
-      sex == 2 ~ "Women")
-  )
+<!-- top_5_causes_year <- top_5_causes_year %>% -->
+<!--   mutate( -->
+<!--     cause_label = cap_labels[CAPITULO], -->
+<!--      sex_label  = case_when( -->
+<!--       sex == 1 ~ "Men", -->
+<!--       sex == 2 ~ "Women") -->
+<!--   ) -->
 
-#-------------------------------------------------------
-cols_7 <- c(
-  "#C89028FF", "#10580FFF", "#304898FF", "#783838FF",
-  "#A8C0F8FF", "#F03838FF", "grey80", 
-  "#4078B8FF", "#282858FF"
-  # , "#F85559FF"
-)
+<!-- #------------------------------------------------------- -->
+<!-- cols_7 <- c( -->
+<!--   "#C89028FF", "#10580FFF", "#304898FF", "#783838FF", -->
+<!--   "#A8C0F8FF", "#F03838FF", "grey80",  -->
+<!--   "#4078B8FF", "#282858FF" -->
+<!--   # , "#F85559FF" -->
+<!-- ) -->
 
-  cols_20 <- c(
-    "#F88080FF", 
-    "#E18727",   # muted green
-    "#9060A0FF",   # muted purple
-    "#FCD1ADFF",   # muted brown‑orange
-    "#50A0C0FF",   # muted teal
-    "#B05090FF",   # muted magenta
-    "#409070FF",   # muted forest green
-    "#808080FF" ,  # medium gray (for baseline / total)
-    "#766FA7FF", 
-    "#FFDC91", 
-    "#4A7C59",
-    "#304898FF", 
-    # "#282858FF", 
-    "#E8B828FF", 
-    # "#F03838FF", 
-    "#68C5BEFF",
-    "#4078B8FF", 
-    "#C89028FF",
-    # "#54845FFF",
-    "#A8C0F8FF","#6F99AD", 
-    "#BC3C29"
-  )
+<!--   cols_20 <- c( -->
+<!--     "#F88080FF",  -->
+<!--     "#E18727",   # muted green -->
+<!--     "#9060A0FF",   # muted purple -->
+<!--     "#FCD1ADFF",   # muted brown‑orange -->
+<!--     "#50A0C0FF",   # muted teal -->
+<!--     "#B05090FF",   # muted magenta -->
+<!--     "#409070FF",   # muted forest green -->
+<!--     "#808080FF" ,  # medium gray (for baseline / total) -->
+<!--     "#766FA7FF",  -->
+<!--     "#FFDC91",  -->
+<!--     "#4A7C59", -->
+<!--     "#304898FF",  -->
+<!--     # "#282858FF",  -->
+<!--     "#E8B828FF",  -->
+<!--     # "#F03838FF",  -->
+<!--     "#68C5BEFF", -->
+<!--     "#4078B8FF",  -->
+<!--     "#C89028FF", -->
+<!--     # "#54845FFF", -->
+<!--     "#A8C0F8FF","#6F99AD",  -->
+<!--     "#BC3C29" -->
+<!--   ) -->
 
-# label_sex <- c("1" = "Men", "2"= "Women")
-#-------------------------------------------------------
+<!-- # label_sex <- c("1" = "Men", "2"= "Women") -->
+<!-- #------------------------------------------------------- -->
 
-ggplot(top_5_causes_year, aes(x = factor(year), y = asmr_100k, fill = cause_label)) +
-  geom_bar(stat = "identity", position = "stack") +
-  facet_wrap(~ sex_label) +
-  # scale_fill_paletteer_d("palettetown::carvanha") +
-  scale_fill_manual(values = cols_7[1:length(unique(top_5_causes_year$cause_label))]) +
+<!-- ggplot(top_5_causes_year, aes(x = factor(year), y = asmr_100k, fill = cause_label)) + -->
+<!--   geom_bar(stat = "identity", position = "stack") + -->
+<!--   facet_wrap(~ sex_label) + -->
+<!--   # scale_fill_paletteer_d("palettetown::carvanha") + -->
+<!--   scale_fill_manual(values = cols_7[1:length(unique(top_5_causes_year$cause_label))]) + -->
 
-  labs(
-    title = "Top 5 standardized causes of death (2000-2023)",
-    x = "Years",
-    y = "Standardized rate",
-    fill = "Causes of death"
-  ) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+<!--   labs( -->
+<!--     title = "Top 5 standardized causes of death (2000-2023)", -->
+<!--     x = "Years", -->
+<!--     y = "Standardized rate", -->
+<!--     fill = "Causes of death" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1)) -->
 
-```
-
-
+<!-- ``` -->
 #### Tabla principales causas (hombre)
 ```{r tabla-causa-anio-asmr-h}
 
@@ -495,12 +493,13 @@ tbl_femmes
 ## Indicadores de concentración  
 ```{r indice-concentracion}
 # Indice de Herfindahl-Hirschman (concentration causale)
-ihh <- mort_causa_pct |>
+ihh <- SDR |>
+  filter(year>1999)|>
   group_by(year) |>
-  summarise(ihh = sum((pct / 100)^2),
-            n_causas = n_distinct(cause),
-            causa_top = cause[which.max(pct)],
-            pct_top   = max(pct)) |>
+  summarise(ihh = sum((n_death / 100)^2),
+            n_causas = n_distinct(CAPITULO),
+            causa_top = CAPITULO[which.max(n_death)],
+            pct_top   = max(n_death)) |>
   ungroup()
 
 ggplot(ihh, aes(x = year, y = ihh)) +

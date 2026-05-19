@@ -120,10 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Proyecto</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">
 <li>
     <a class="dropdown-item" href="../es/index.html">
  <span class="dropdown-text">Inicio</span></a>
@@ -154,10 +154,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Project</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">
 <li>
     <a class="dropdown-item" href="../en/index.html">
  <span class="dropdown-text">Home</span></a>
@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../es/A1_descriptivo_general.html">Bloque A — Temporalidad</a></li><li class="breadcrumb-item"><a href="../es/A1_descriptivo_general.html">① Descripción general</a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">1- Análisis descriptivo general</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">1- Análisis descriptivo general</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Bloque A · Nivel 1 — Tendencias globales de 1990–2024</p>
 </div>
 
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mort_global</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">deaths</span><span class="op">/</span><span class="fl">1000</span>, color<span class="op">=</span><span class="va">sex</span>, group<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mort_global</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">deaths</span><span class="op">/</span><span class="fl">1000</span>, color<span class="op">=</span><span class="va">sex</span>, group<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth<span class="op">=</span><span class="fl">1.1</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">2.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_color_manual</span><span class="op">(</span>values<span class="op">=</span><span class="va">palette_sexo</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1990</span>,<span class="fl">2024</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"bottom"</span>,</span>
 <span>        panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-serie-temporal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-serie-temporal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A1_descriptivo_general_files/figure-html/fig-serie-temporal-1.png" class="img-fluid figure-img" style="width:100.0%">
@@ -319,7 +319,7 @@ Figure&nbsp;1: Evolución de la mortalidad total (2000–2024)
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort_yr</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">deaths</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">deaths</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort_yr</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">deaths</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">deaths</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"#2a7a8c"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, width<span class="op">=</span><span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">0</span>, color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -328,7 +328,7 @@ Figure&nbsp;1: Evolución de la mortalidad total (2000–2024)
 <span>  x<span class="op">=</span><span class="st">"Year"</span>, y<span class="op">=</span><span class="st">"Annual Change (%)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>, panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-crecimiento" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crecimiento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A1_descriptivo_general_files/figure-html/fig-crecimiento-1.png" id="fig-crecimiento" class="img-fluid figure-img" style="width:100.0%">
@@ -355,7 +355,7 @@ Figure&nbsp;2
 <p>Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.</p>
 <!-- for certain diseases -->
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">asmr_nac</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">asmr_100k</span>, color<span class="op">=</span><span class="va">sex</span>, group<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">asmr_nac</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">asmr_100k</span>, color<span class="op">=</span><span class="va">sex</span>, group<span class="op">=</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth<span class="op">=</span><span class="fl">1.1</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">2.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_color_manual</span><span class="op">(</span>values<span class="op">=</span><span class="va">palette_sexo</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1990</span>,<span class="fl">2024</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -366,7 +366,7 @@ Figure&nbsp;2
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"bottom"</span>,</span>
 <span>        panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-ASMR" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ASMR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A1_descriptivo_general_files/figure-html/fig-ASMR-1.png" class="img-fluid figure-img" style="width:100.0%">
@@ -380,7 +380,7 @@ Figure&nbsp;3: ASMR trend (1990–2024)
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">asmr_male</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">asmr</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">asmr</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">asmr_male</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">asmr</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">asmr</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"#2a7a8c"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, width<span class="op">=</span><span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">0</span>, color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -389,7 +389,7 @@ Figure&nbsp;3: ASMR trend (1990–2024)
 <span>  x<span class="op">=</span><span class="st">"Year"</span>, y<span class="op">=</span><span class="st">"Annual Change (%)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>, panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-men-change" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-men-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A1_descriptivo_general_files/figure-html/fig-men-change-1.png" class="img-fluid figure-img" style="width:100.0%">
@@ -403,7 +403,7 @@ Figure&nbsp;4: ASMR men change
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">asmr_female</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">asmr</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">asmr</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">asmr_female</span> <span class="op">|&gt;</span> <span class="fu">mutate</span><span class="op">(</span>growth <span class="op">=</span> <span class="op">(</span><span class="va">asmr</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">asmr</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span><span class="va">growth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_col</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"#2a7a8c"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, width<span class="op">=</span><span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept<span class="op">=</span><span class="fl">0</span>, color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -412,7 +412,7 @@ Figure&nbsp;4: ASMR men change
 <span>  x<span class="op">=</span><span class="st">"Year"</span>, y<span class="op">=</span><span class="st">"Annual Change (%)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">13</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>, panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-women-change" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-women-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A1_descriptivo_general_files/figure-html/fig-women-change-1.png" class="img-fluid figure-img" style="width:100.0%">
@@ -911,133 +911,121 @@ Figure&nbsp;5: ASMR women change
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>palette_sexo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#2a7a8c"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"#e84855"</span>, <span class="st">"Total"</span> <span class="ot">=</span> <span class="st">"grey40"</span>)</span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># mort &lt;- expand.grid(</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   year  = 2000:2022,</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#   sex   = c("Hombre", "Mujer"),</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#   state = c("Ciudad de México", "Jalisco", "Nuevo León", "Veracruz",</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#             "Chiapas", "Oaxaca", "Guanajuato", "Michoacán", "Puebla", "Sonora"),</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   cause = c("Enfermedades cardiovasculares", "Tumores malignos",</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#             "Diabetes mellitus", "Enfermedades respiratorias", "Causas externas", "Otras")</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># ) |&gt; mutate(</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#   deaths = rpois(n(), lambda = 500 + 40*(year-2000) + ifelse(sex=="Hombre",120,0)),</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#   rate   = deaths / runif(n(), 1e5, 2e6) * 1e5</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>mort_yr_sex <span class="ot">&lt;-</span> mort <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year, sex) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">deaths=</span><span class="fu">sum</span>(n_death), <span class="at">.groups=</span><span class="st">"drop"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>mort_yr     <span class="ot">&lt;-</span> mort <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year)      <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">deaths=</span><span class="fu">sum</span>(n_death), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"Total"</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>mort_global <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mort_yr_sex, mort_yr)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ASMR</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>asmr_male <span class="ot">&lt;-</span> asmr_nac<span class="sc">|&gt;</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>asmr_female <span class="ot">&lt;-</span> asmr_nac <span class="sc">|&gt;</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>mort_yr_sex <span class="ot">&lt;-</span> mort <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year, sex) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">deaths=</span><span class="fu">sum</span>(n_death), <span class="at">.groups=</span><span class="st">"drop"</span>)</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>mort_yr     <span class="ot">&lt;-</span> mort <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year)      <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">deaths=</span><span class="fu">sum</span>(n_death), <span class="at">.groups=</span><span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>               <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"Total"</span>)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>mort_global <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mort_yr_sex, mort_yr)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># ASMR</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>asmr_male <span class="ot">&lt;-</span> asmr_nac<span class="sc">|&gt;</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>asmr_female <span class="ot">&lt;-</span> asmr_nac <span class="sc">|&gt;</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="dv">2</span>)</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tendencias globales</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tendencias globales</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Serie temporal</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mort_global, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>deaths<span class="sc">/</span><span class="dv">1000</span>, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth=</span><span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">2.2</span>) <span class="sc">+</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette_sexo) <span class="sc">+</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span><span class="fu">label_comma</span>(<span class="at">suffix=</span><span class="st">" k"</span>)) <span class="sc">+</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Total Mortality in Mexico"</span>, <span class="at">subtitle=</span><span class="st">"Deaths by Sex, 1990–2024"</span>,</span>
 <span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Serie temporal</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mort_global, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>deaths<span class="sc">/</span><span class="dv">1000</span>, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth=</span><span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">2.2</span>) <span class="sc">+</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette_sexo) <span class="sc">+</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span><span class="fu">label_comma</span>(<span class="at">suffix=</span><span class="st">" k"</span>)) <span class="sc">+</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Total Mortality in Mexico"</span>, <span class="at">subtitle=</span><span class="st">"Deaths by Sex, 1990–2024"</span>,</span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="st">"Deaths (thousands)"</span>, <span class="at">color=</span><span class="st">"Sex"</span>) <span class="sc">+</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">legend.position=</span><span class="st">"bottom"</span>,</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tasa de crecimiento</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="st">"Deaths (thousands)"</span>, <span class="at">color=</span><span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">legend.position=</span><span class="st">"bottom"</span>,</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Tasa de crecimiento</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-crecimiento}</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>mort_yr <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (deaths<span class="sc">/</span><span class="fu">lag</span>(deaths)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual Mortality Growth Rate"</span>,</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-crecimiento}</span></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>mort_yr <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (deaths<span class="sc">/</span><span class="fu">lag</span>(deaths)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual Mortality Growth Rate"</span>,</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tendencia de la tasa de mortalidad estandarizada por edad (TME)</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>La tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Series temporales para ASMR</span></span>
 <span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024.</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.</span>
 <span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tendencia de la tasa de mortalidad estandarizada por edad (TME)</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- for certain diseases --&gt;</span></span>
 <span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>La tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.</span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Series temporales para ASMR</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024.</span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- for certain diseases --&gt;</span></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-ASMR, fig.cap="ASMR trend (1990–2024)"}</span></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(asmr_nac, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>asmr_100k, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth=</span><span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">2.2</span>) <span class="sc">+</span></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette_sexo) <span class="sc">+</span></span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span><span class="fu">label_comma</span>(<span class="at">suffix=</span><span class="st">" k"</span>)) <span class="sc">+</span></span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"ASMR trend in Mexico"</span>, <span class="at">subtitle=</span><span class="st">"ASMR per 100k inhabitants by Sex, 1990–2024"</span>,</span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="st">"ASMR per 100k inhabitants"</span>, <span class="at">color=</span><span class="st">"Sex"</span>) <span class="sc">+</span></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">legend.position=</span><span class="st">"bottom"</span>,</span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cambio ASMR masculino</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-ASMR, fig.cap="ASMR trend (1990–2024)"}</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(asmr_nac, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>asmr_100k, <span class="at">color=</span>sex, <span class="at">group=</span>sex)) <span class="sc">+</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth=</span><span class="fl">1.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">2.2</span>) <span class="sc">+</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span>palette_sexo) <span class="sc">+</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span><span class="fu">label_comma</span>(<span class="at">suffix=</span><span class="st">" k"</span>)) <span class="sc">+</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"ASMR trend in Mexico"</span>, <span class="at">subtitle=</span><span class="st">"ASMR per 100k inhabitants by Sex, 1990–2024"</span>,</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="st">"ASMR per 100k inhabitants"</span>, <span class="at">color=</span><span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">legend.position=</span><span class="st">"bottom"</span>,</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cambio ASMR masculino</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-men-change, fig.cap="ASMR men change"}</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>asmr_male <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (asmr<span class="sc">/</span><span class="fu">lag</span>(asmr)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual ASMR Growth Rate (male)"</span>,</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-men-change, fig.cap="ASMR men change"}</span></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>asmr_male <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (asmr<span class="sc">/</span><span class="fu">lag</span>(asmr)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual ASMR Growth Rate (male)"</span>,</span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Women ASMR change</span></span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-women-change, fig.cap="ASMR women change"}</span></span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Women ASMR change</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-women-change, fig.cap="ASMR women change"}</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>asmr_female <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (asmr<span class="sc">/</span><span class="fu">lag</span>(asmr)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual ASMR Growth Rate (female)"</span>,</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>asmr_female <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">growth =</span> (asmr<span class="sc">/</span><span class="fu">lag</span>(asmr)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(growth)) <span class="sc">|&gt;</span></span>
-<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>growth)) <span class="sc">+</span></span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"#2a7a8c"</span>, <span class="at">alpha=</span><span class="fl">0.8</span>, <span class="at">width=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>, <span class="at">color=</span><span class="st">"#1a2744"</span>) <span class="sc">+</span></span>
-<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">1990</span>,<span class="dv">2024</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Annual ASMR Growth Rate (female)"</span>,</span>
-<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Annual Change (%)"</span>) <span class="sc">+</span></span>
-<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>,<span class="at">color=</span><span class="st">"#1a2744"</span>), <span class="at">panel.grid.minor=</span><span class="fu">element_blank</span>())</span>
-<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Navegación</span></span>
-<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}</span>
-<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">← Inicio</span><span class="co">](index.qmd)</span>{.btn .btn-outline-secondary}</span>
-<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ 2- Desagregación por causa</span><span class="co">](A2_causas.qmd)</span>{.btn .btn-primary}</span>
-<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Navegación</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}</span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">← Inicio</span><span class="co">](index.qmd)</span>{.btn .btn-outline-secondary}</span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">→ 2- Desagregación por causa</span><span class="co">](A2_causas.qmd)</span>{.btn .btn-primary}</span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

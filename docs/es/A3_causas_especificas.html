@@ -121,10 +121,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Proyecto</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">
 <li>
     <a class="dropdown-item" href="../es/index.html">
  <span class="dropdown-text">Inicio</span></a>
@@ -155,10 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Project</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">
 <li>
     <a class="dropdown-item" href="../en/index.html">
  <span class="dropdown-text">Home</span></a>
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../es/A1_descriptivo_general.html">Bloque A — Temporalidad</a></li><li class="breadcrumb-item"><a href="../es/A3_causas_especificas.html">③ Causas específicas</a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">3- Causas específicas de muerte</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">3- Causas específicas de muerte</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Bloque A · Nivel 3 — Refinamiento analítico por causa específica (CIE-10)</p>
 </div>
 
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SDR</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SDR</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2024</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">CAP_GRUPO</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>deaths<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n_death</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -311,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">12</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>,panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># dict_cause</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-top10-causas" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-top10-causas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A3_causas_especificas_files/figure-html/fig-top10-causas-1.png" id="fig-top10-causas" class="img-fluid figure-img" style="width:100.0%">
@@ -325,7 +325,7 @@ Figure&nbsp;1
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># top_causes &lt;- mort_spec |&gt; filter(year==2022) |&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># top_causes &lt;- mort_spec |&gt; filter(year==2022) |&gt;</span></span>
 <span><span class="co">#   group_by(cause_specific) |&gt; summarise(d=sum(deaths)) |&gt;</span></span>
 <span><span class="co">#   slice_max(d,n=6) |&gt; pull(cause_specific)</span></span>
 <span><span class="co"># </span></span>
@@ -342,12 +342,11 @@ Figure&nbsp;1
 <span><span class="co">#   theme_minimal(base_size=11) +</span></span>
 <span><span class="co">#   theme(legend.position="bottom",plot.title=element_text(face="bold",color="#1a2744"),</span></span>
 <span><span class="co">#         strip.text=element_text(face="bold",size=9),panel.grid.minor=element_blank())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 1 : Top 5 causes par sexe basé sur 2024</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 1 : Top 5 causes par sexe basé sur 2024</span></span>
 <span><span class="va">top10h</span> <span class="op">&lt;-</span> <span class="va">SDR</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2024</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">asmr_100k</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -365,7 +364,7 @@ Figure&nbsp;1
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">annees</span>, <span class="va">CAP_GRUPO</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top10h</span><span class="op">$</span><span class="va">CAP_GRUPO</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data_hommes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-hombre-1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-hombre-1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-hombre-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -377,7 +376,7 @@ Figure&nbsp;1
 Figure&nbsp;2
 </figcaption></figure>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 3 : Pivot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 3 : Pivot</span></span>
 <span><span class="va">wide_hommes</span> <span class="op">&lt;-</span> <span class="va">data_hommes</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">CAP_GRUPO</span>, <span class="va">year</span>, <span class="va">asmr_100k</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">year</span>, values_from <span class="op">=</span> <span class="va">asmr_100k</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -388,7 +387,7 @@ Figure&nbsp;2
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">CAP_GRUPO</span>, <span class="va">DESCRIP</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wide_hommes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-hombre-2" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-hombre-2" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-hombre-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -400,7 +399,7 @@ Figure&nbsp;2
 Figure&nbsp;3
 </figcaption></figure>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 4 : Tableau</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 4 : Tableau</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span><span class="va">format_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">wide_data</span>, <span class="va">caption_txt</span><span class="op">)</span> <span class="op">{</span></span>
@@ -425,7 +424,7 @@ Figure&nbsp;3
 <span><span class="va">tbl_hommes</span> <span class="op">&lt;-</span> <span class="fu">format_table</span><span class="op">(</span><span class="va">wide_hommes</span>, <span class="st">"Top 10 causes de décès — Hommes"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tbl_hommes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-hombre-3" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-hombre-3" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-hombre-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <colgroup>
@@ -592,14 +591,14 @@ Figure&nbsp;4: Top 10 causes de décès — Hommes
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span> <span class="va">top10m</span><span class="op">&lt;-</span> <span class="va">SDR</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span> <span class="va">top10m</span><span class="op">&lt;-</span> <span class="va">SDR</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">2</span>, <span class="va">year</span> <span class="op">==</span> <span class="fl">2024</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">asmr_100k</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">select</span><span class="op">(</span><span class="va">CAP_GRUPO</span><span class="op">)</span></span>
 <span></span>
 <span> <span class="va">top10m</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-mujer-1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-mujer-1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-mujer-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -611,7 +610,7 @@ Figure&nbsp;4: Top 10 causes de décès — Hommes
 Figure&nbsp;5
 </figcaption></figure>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # Étape 2 : Filtrer les données pour les années sélectionnées</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # Étape 2 : Filtrer les données pour les années sélectionnées</span></span>
 <span><span class="co"># annees &lt;- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)</span></span>
 <span></span>
 <span><span class="va">data_femmes</span> <span class="op">&lt;-</span> <span class="va">SDR</span> <span class="op">|&gt;</span></span>
@@ -619,7 +618,7 @@ Figure&nbsp;5
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="fl">2</span>, <span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">annees</span>, <span class="va">CAP_GRUPO</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">top10m</span><span class="op">$</span><span class="va">CAP_GRUPO</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data_femmes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-mujer-2" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-mujer-2" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-mujer-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -631,7 +630,7 @@ Figure&nbsp;5
 Figure&nbsp;6
 </figcaption></figure>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 3 : Pivot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 3 : Pivot</span></span>
 <span></span>
 <span><span class="va">wide_femmes</span> <span class="op">&lt;-</span> <span class="va">data_femmes</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">CAP_GRUPO</span>, <span class="va">year</span>, <span class="va">asmr_100k</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -644,7 +643,7 @@ Figure&nbsp;6
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">CAP_GRUPO</span>, <span class="va">DESCRIP</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wide_femmes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-mujer-3" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-mujer-3" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-mujer-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -656,7 +655,7 @@ Figure&nbsp;6
 Figure&nbsp;7
 </figcaption></figure>
 </div>
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 4 : Tableau</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Étape 4 : Tableau</span></span>
 <span><span class="va">format_table</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">wide_data</span>, <span class="va">caption_txt</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">wide_data</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span>, big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -679,7 +678,7 @@ Figure&nbsp;7
 <span></span>
 <span><span class="va">tbl_femmes</span> <span class="op">&lt;-</span> <span class="fu">format_table</span><span class="op">(</span><span class="va">wide_femmes</span>, <span class="st">"Top 5 causes de décès — Femmes"</span><span class="op">)</span></span>
 <span><span class="va">tbl_femmes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div id="fig-tab-mujer-4" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tab-mujer-4" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tab-mujer-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <colgroup>

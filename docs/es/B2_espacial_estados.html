@@ -121,10 +121,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Proyecto</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">
 <li>
     <a class="dropdown-item" href="../es/index.html">
  <span class="dropdown-text">Inicio</span></a>
@@ -155,10 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Project</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">
 <li>
     <a class="dropdown-item" href="../en/index.html">
  <span class="dropdown-text">Home</span></a>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">② bis · Análisis espacial por Estados</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">② bis · Análisis espacial por Estados</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Código</button></div></div>
 <p class="subtitle lead">Bloque B — Distribución espacial, gradientes regionales y clusters, 2000–2022</p>
 </div>
 
@@ -273,7 +273,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ── Note : remplacer mx_grid par mx_states (shp réel) ───────────────</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ── Note : remplacer mx_grid par mx_states (shp réel) ───────────────</span></span>
 <span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">mx_grid</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span></span>
 <span>    col           <span class="op">=</span> <span class="st">"mean_rate"</span>,</span>
@@ -296,7 +296,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_compass</span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_scale_bar</span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="B2_espacial_estados_files/figure-html/mapa-tasa-global-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Taux de mortalité moyen par état (toutes causes, 2000–2022)</figcaption></figure>
@@ -306,7 +306,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Cause dominante par état</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Cause dominante par état</span></span>
 <span><span class="va">cause_dominante</span> <span class="op">&lt;-</span> <span class="va">mort_state_cause_last</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">slice_max</span><span class="op">(</span><span class="va">rate_100k</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -336,7 +336,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 <span>    legend.outside  <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    frame           <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="B2_espacial_estados_files/figure-html/mapa-causa-principal-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Cause principale de mortalité par état (2022)</figcaption></figure>
@@ -346,7 +346,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Résumé par état × année sélectionnée</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Résumé par état × année sélectionnée</span></span>
 <span><span class="va">rate_comp</span> <span class="op">&lt;-</span> <span class="va">mort_state</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">2022</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -376,7 +376,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 <span>    legend.outside  <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    frame           <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="B2_espacial_estados_files/figure-html/mapa-comparacion-temporal-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Évolution du taux de mortalité entre 2000 et 2022</figcaption></figure>
@@ -388,7 +388,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 </div>
 <hr></section><section id="analyse-des-gradients-régionaux" class="level2"><h2 class="anchored" data-anchor-id="analyse-des-gradients-régionaux">2 · Analyse des gradients régionaux</h2>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort_state</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort_state</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2022</span>, <span class="va">cause</span> <span class="op">==</span> <span class="st">"Enfermedades cardiovasculares"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span>, <span class="va">lat_rank</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>rate_100k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rate_100k</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -409,7 +409,7 @@ El <a href="../es/A4_territorial.html">Nivel ④ del Bloque A</a> introduce el e
 <span>    plot.title    <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, color <span class="op">=</span> <span class="st">"#1a2744"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#6c757d"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-gradient-regional" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-gradient-regional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="B2_espacial_estados_files/figure-html/fig-gradient-regional-1.png" class="img-fluid figure-img" style="width:100.0%">
@@ -422,7 +422,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 </div>
 <hr></section><section id="typologies-régionales-clustering" class="level2"><h2 class="anchored" data-anchor-id="typologies-régionales-clustering">3 · Typologies régionales (clustering)</h2>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ── Clustering k-means sur profil causal ─────────────────────────────</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ── Clustering k-means sur profil causal ─────────────────────────────</span></span>
 <span><span class="co"># (en production : ajouter standardisation + Moran's I pour autocorrélation)</span></span>
 <span></span>
 <span><span class="co"># Matrice état × cause (taux 2022)</span></span>
@@ -464,7 +464,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 <span>    plot.title       <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, color <span class="op">=</span> <span class="st">"#1a2744"</span><span class="op">)</span>,</span>
 <span>    panel.grid.minor <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="B2_espacial_estados_files/figure-html/clustering-regional-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Profil de mortalité par cluster d’états</figcaption></figure>
@@ -472,7 +472,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 </div>
 </div>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tableau des états par cluster</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tableau des états par cluster</span></span>
 <span><span class="va">clusters_df</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">mort_state_total</span>, by <span class="op">=</span> <span class="st">"state"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">cluster</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">mean_rate</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -483,7 +483,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 <span>  <span class="fu">kable_styling</span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span><span class="op">)</span>,</span>
 <span>                full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pack_rows</span><span class="op">(</span>index <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">clusters_df</span><span class="op">$</span><span class="va">cluster</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <caption>Asignación de estados por cluster de mortalidad</caption>
 <thead><tr class="header">
@@ -670,7 +670,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 </div>
 <hr></section><section id="indicateurs-de-dispersion-spatiale" class="level2"><h2 class="anchored" data-anchor-id="indicateurs-de-dispersion-spatiale">4 · Indicateurs de dispersion spatiale</h2>
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coefficient de variation inter-étatique par année</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Coefficient de variation inter-étatique par année</span></span>
 <span><span class="va">cv_by_year</span> <span class="op">&lt;-</span> <span class="va">mort_state</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">state</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>rate_100k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rate_100k</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -703,7 +703,7 @@ Figura&nbsp;1: Gradient du taux de mortalité selon la latitude (proxy)
 <span><span class="co"># patchwork : côte à côte</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
 <span><span class="va">p1</span> <span class="op">|</span> <span class="va">p2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="B2_espacial_estados_files/figure-html/dispersion-espacial-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Évolution de la dispersion inter-étatique de la mortalité</figcaption></figure>

@@ -120,10 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Proyecto</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">
 <li>
     <a class="dropdown-item" href="../es/index.html">
  <span class="dropdown-text">Inicio</span></a>
@@ -154,10 +154,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Project</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">
 <li>
     <a class="dropdown-item" href="../en/index.html">
  <span class="dropdown-text">Home</span></a>
@@ -267,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../es/A1_descriptivo_general.html">Bloque A — Temporalidad</a></li><li class="breadcrumb-item"><a href="../es/A4_territorial.html">④ Dimensión territorial</a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">④ Dimensión territorial — Estados</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar todo el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Ocultar todo el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código fuente</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">④ Dimensión territorial — Estados</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Código</button></div></div>
 <p class="subtitle lead">Bloque A · Nivel 4 — Disparidades regionales por entidad federativa y causa</p>
 </div>
 
@@ -313,7 +313,7 @@ Tip
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span>,<span class="va">cause</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">summarise</span><span class="op">(</span>rate<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rate</span><span class="op">)</span>,.groups<span class="op">=</span><span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>state<span class="op">=</span><span class="fu">str_trunc</span><span class="op">(</span><span class="va">state</span>,<span class="fl">18</span><span class="op">)</span>, cause<span class="op">=</span><span class="fu">str_wrap</span><span class="op">(</span><span class="va">cause</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">cause</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">state</span>,<span class="va">rate</span><span class="op">)</span>, fill<span class="op">=</span><span class="va">rate</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -323,7 +323,7 @@ Tip
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">11</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>angle<span class="op">=</span><span class="fl">35</span>,hjust<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>        plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-heatmap" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A4_territorial_files/figure-html/fig-heatmap-1.png" id="fig-heatmap" class="img-fluid figure-img" style="width:100.0%">
@@ -337,7 +337,7 @@ Figura&nbsp;1
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<details class="code-fold"><summary>Código</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mort</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span><span class="op">==</span><span class="fl">2022</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">state</span>,<span class="va">cause</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">summarise</span><span class="op">(</span>rate<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rate</span><span class="op">)</span>,.groups<span class="op">=</span><span class="st">"drop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>cause<span class="op">=</span><span class="fu">str_wrap</span><span class="op">(</span><span class="va">cause</span>,<span class="fl">20</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">cause</span>,<span class="va">rate</span>,<span class="va">median</span><span class="op">)</span>, y<span class="op">=</span><span class="va">rate</span>, fill<span class="op">=</span><span class="va">cause</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -348,7 +348,7 @@ Figura&nbsp;1
 <span>       x<span class="op">=</span><span class="cn">NULL</span>, y<span class="op">=</span><span class="st">"Tasa / 100 000 hab."</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span>base_size<span class="op">=</span><span class="fl">12</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme</span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"none"</span>,</span>
 <span>        plot.title<span class="op">=</span><span class="fu">element_text</span><span class="op">(</span>face<span class="op">=</span><span class="st">"bold"</span>,color<span class="op">=</span><span class="st">"#1a2744"</span><span class="op">)</span>,panel.grid.minor<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
+<div class="cell-output-display">
 <div id="fig-boxplot-estado" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-estado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="A4_territorial_files/figure-html/fig-boxplot-estado-1.png" id="fig-boxplot-estado" class="img-fluid figure-img" style="width:100.0%">

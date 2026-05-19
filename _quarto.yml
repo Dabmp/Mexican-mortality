@@ -13,7 +13,7 @@ website:
     foreground: "white"
     left:
       # ── Español ──────────────────────────────────────────────────────
-      - text: "Proyecto"
+      - text: "Proyecto ES"
         menu:
           - text: "Inicio"
             href: es/index.qmd
@@ -47,7 +47,7 @@ website:
           #   href: es/C3_ev_municipios.qmd
 
       # ── English ───────────────────────────────────────────────────────
-      - text: "Project"
+      - text: "Project EN"
         menu:
           - text: "Home"
             href: en/index.qmd
@@ -170,7 +170,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: false
-    code-fold: true
+    code-fold: false
     code-tools: true
     code-link: true
     fig-align: center

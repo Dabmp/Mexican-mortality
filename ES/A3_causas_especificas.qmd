@@ -109,7 +109,7 @@ annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
 data_hommes <- SDR |>
   filter(sex == 1, year %in% annees, CAP_GRUPO %in% top10h$CAP_GRUPO)
 
-data_hommes
+# data_hommes
 
 # Étape 3 : Pivot
 wide_hommes <- data_hommes |>
@@ -121,7 +121,7 @@ wide_hommes <- wide_hommes |>
   left_join(dict_cause, by = "CAP_GRUPO") |>
   select(CAP_GRUPO, DESCRIP, everything())
 
-wide_hommes
+# wide_hommes
 
 # Étape 4 : Tableau
 library(knitr)
@@ -158,7 +158,7 @@ tbl_hommes
    slice_head(n = 10) |>
    select(CAP_GRUPO)
 
- top10m
+ # top10m
 # # Étape 2 : Filtrer les données pour les années sélectionnées
 # annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
 
@@ -166,7 +166,7 @@ data_femmes <- SDR |>
   # arrange(desc(asmr_100k)) |>
   filter(sex == 2, year %in% annees, CAP_GRUPO %in% top10m$CAP_GRUPO)
 
-data_femmes
+# data_femmes
 
 # Étape 3 : Pivot
 
@@ -180,7 +180,7 @@ wide_femmes <- wide_femmes |>
   left_join(dict_cause, by = "CAP_GRUPO") |>
   select(CAP_GRUPO, DESCRIP, everything())
 
-wide_femmes
+# wide_femmes
 
 # Étape 4 : Tableau
 format_table <- function(wide_data, caption_txt) {

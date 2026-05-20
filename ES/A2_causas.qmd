@@ -171,39 +171,105 @@ ggplot(mort_causa,
   )
 ```
 
-<!-- #### Área apilada (%) -->
-<!-- ```{r fig-aire-empilada, fig.cap="Structure de la mortalité par cause, 1998–2024 (%)"} -->
-<!-- lookup <- data.frame( -->
-<!--   cause = as.character(names(cause_name)), -->
-<!--   cause_name = as.character(cause_name) -->
-<!-- ) -->
+#### Distribución por grupo de edad
+```{r fig-dist-edad, fig.cap="Distribucion por grupo de edad, 2000–2024"}
+# Área apilada (%)
 
-<!-- mort_causa_pct <- mort_causa_pct %>% -->
-<!--   mutate(cause = as.character(cause)) %>% -->
-<!--   left_join(lookup, by = "cause") -->
+setwd("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/Cause G")
+# save(deces0024, file = "deces.rds")
+load( "H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/Cause G/deces.rds")
+
+#
+library(tidyverse)
+library(scales)
+library(patchwork)
+
+# ── 4. Profil par groupe d'âge ────────────────────────────────────────
+top_cap <- deces0024 |>
+  group_by(CAPITULO, cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  slice_max(deaths, n = 10)
+
+p4 <- deces0024 |>
+  filter(CAPITULO %in% top_cap$CAPITULO) |>
+  group_by(age_group, cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  mutate(cause_name = str_wrap(cause_name, 20)) |>
+  ggplot(aes(x = age_group, y = deaths / 1000, fill = cause_name)) +
+  geom_col(position = "stack", alpha = 0.88) +
+  scale_fill_viridis_d(option = "turbo") +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(title = "Distribución por grupo de edad",
+       x = "Groupe d'âge", y = "Décès (milliers)", fill = NULL) +
+  theme_minimal(base_size = 11) +
+  theme(plot.title    = element_text(face = "bold", color = "#1a2744"),
+        axis.text.x   = element_text(angle = 45, hjust = 1),
+        legend.position = "bottom",
+        panel.grid.minor = element_blank()) +
+  guides(fill = guide_legend(nrow = 3))
+p4
+# lookup <- data.frame(
+#   cause = as.character(names(cause_name)),
+#   cause_name = as.character(cause_name)
+# )
+# 
+# mort_causa_pct <- mort_causa_pct %>%
+#   mutate(cause = as.character(cause)) %>%
+#   left_join(lookup, by = "cause")
 
 
-<!-- # ggplot(mort_causa_pct, -->
-<!-- #        aes(x = year, y = pct, fill = cause_name)) + -->
-<!-- #   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) + -->
-<!-- #   scale_fill_manual(values = cols_20) + -->
-<!-- #   scale_x_continuous(breaks = seq(1998, 2022, 4)) + -->
-<!-- #   scale_y_continuous(labels = label_percent(scale = 0.3)) + -->
-<!-- #   labs( -->
-<!-- #     title    = "Composition of mortality by cause group", -->
-<!-- #     subtitle = "Annual proportion of deaths, Mexico 1990–2024", -->
-<!-- #     x = NULL, y = "% deaths", fill = NULL -->
-<!-- #   ) + -->
-<!-- #   theme_minimal(base_size = 13) + -->
-<!-- #   theme( -->
-<!-- #     legend.position  = "bottom", -->
-<!-- #     legend.key.size  = unit(0.2, "cm"), -->
-<!-- #     plot.title       = element_text(face = "bold", color = "#1a2744"), -->
-<!-- #     plot.subtitle    = element_text(color = "#6c757d"), -->
-<!-- #     panel.grid.minor = element_blank() -->
-<!-- #   ) + -->
-<!-- #   guides(fill = guide_legend(nrow = 2)) -->
-<!-- ``` -->
+# ggplot(mort_causa_pct,
+#        aes(x = year, y = pct, fill = cause_name)) +
+#   geom_area(alpha = 0.88, color = "white", linewidth = 0.3) +
+#   scale_fill_manual(values = cols_20) +
+#   scale_x_continuous(breaks = seq(1998, 2022, 4)) +
+#   scale_y_continuous(labels = label_percent(scale = 0.3)) +
+#   labs(
+#     title    = "Composition of mortality by cause group",
+#     subtitle = "Annual proportion of deaths, Mexico 1990–2024",
+#     x = NULL, y = "% deaths", fill = NULL
+#   ) +
+#   theme_minimal(base_size = 13) +
+#   theme(
+#     legend.position  = "bottom",
+#     legend.key.size  = unit(0.2, "cm"),
+#     plot.title       = element_text(face = "bold", color = "#1a2744"),
+#     plot.subtitle    = element_text(color = "#6c757d"),
+#     panel.grid.minor = element_blank()
+#   ) +
+#   guides(fill = guide_legend(nrow = 2))
+```
+
+
+#### Top 6  
+```{r fig-ev-temp-cause, fig.cap="Evolución temporal de las principales causas, 2000–2024"}
+
+# ── 5. Évolution temporelle — top 6 chapitres ─────────────────────────
+top6 <- top_cap |> slice_max(deaths, n = 6) |> pull(CAPITULO)
+
+p6 <- deces0024 |>
+  filter(CAPITULO %in% top6) |>
+  group_by(year, sex, cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  mutate(cause_name = str_wrap(cause_name, 22)) |>
+  ggplot(aes(x = year, y = deaths / 1000,
+             color = factor(sex), group = factor(sex))) +
+  geom_line(linewidth = 0.9) +
+  facet_wrap(~ cause_name, scales = "free_y", ncol = 3) +
+  scale_color_manual(values = palette_sexo,
+                     labels = c("1" = "Hommes", "2" = "Femmes")) +
+  scale_x_continuous(breaks = c(2000, 2010, 2020, 2024)) +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(title = "Évolution par sexe — top 6 chapitres",
+       x = NULL, y = "Décès (milliers)", color = "Sexe") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title     = element_text(face = "bold", color = "#1a2744"),
+        legend.position = "bottom",
+        strip.text     = element_text(face = "bold", size = 8),
+        panel.grid.minor = element_blank())
+
+p6
+```
 
 #### Tabla resumen
 ```{r tabla-causa-anio}
@@ -358,7 +424,7 @@ top5_hommes <- SDR |>
   slice_head(n = 10) |>
   select(CAPITULO, cause_name)
 
-top5_hommes
+# top5_hommes
 
 # Étape 2 : Filtrer les données pour les années sélectionnées
 annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
@@ -366,7 +432,7 @@ annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
 data_hommes <- SDR |>
   filter(sex == 1, year %in% annees, CAPITULO %in% top5_hommes$CAPITULO)
 
-data_hommes
+# data_hommes
 
 # Étape 3 : Pivot
 wide_hommes <- data_hommes |>
@@ -418,7 +484,7 @@ top5_femmes <- SDR |>
   select(CAPITULO, cause_name)
 
 
-top5_femmes
+# top5_femmes
 
 # Étape 2 : Filtrer les données pour les années sélectionnées
 annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
@@ -426,7 +492,7 @@ annees <- c(1990, 1995, 2000, 2005, 2010, 2015, 2019, 2024)
 data_femmes <- SDR |>
   filter(sex == 2, year %in% annees, CAPITULO %in% top5_femmes$CAPITULO)
 
-data_femmes
+# data_femmes
 
 # Étape 3 : Pivot
 wide_femmes <- data_femmes |>
@@ -434,7 +500,7 @@ wide_femmes <- data_femmes |>
   pivot_wider(names_from = year, values_from = asmr_100k) |>
   arrange(desc(`2024`))
 
-wide_femmes
+# wide_femmes
 
 # Étape 4 : Tableau
 library(knitr)

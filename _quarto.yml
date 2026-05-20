@@ -19,11 +19,11 @@ website:
             href: es/index.qmd
           - text: "---"
           - text: "Bloque A — Evolución de la mortalidad"
-          - text: "① Descripción general"
+          - text: "1- Descripción general"
             href: es/A1_descriptivo_general.qmd
-          - text: "② Desagregación por causa"
+          - text: "2- Desagregación por causa"
             href: es/A2_causas.qmd
-          - text: "③ Causas específicas"
+          - text: "3- Causas específicas"
             href: es/A3_causas_especificas.qmd
           - text: "④ Dimensión territorial"
             href: es/A4_territorial.qmd
@@ -53,11 +53,11 @@ website:
             href: en/index.qmd
           - text: "---"
           - text: "Block A — Mortality trends"
-          - text: "① General description"
+          - text: "1- General description"
             href: en/A1_descriptive_general.qmd
-          - text: "② Disaggregation by cause"
+          - text: "2- Disaggregation by cause"
             href: en/A2_causes.qmd
-          - text: "③ Specific causes"
+          - text: "3- Specific causes"
             href: en/A3_specific_causes.qmd
           - text: "④ Territorial dimension"
             href: en/A4_territorial.qmd
@@ -94,11 +94,11 @@ website:
       contents:
         - section: "Bloque A — Temporalidad"
           contents:
-            - text: "① Descripción general"
+            - text: "1- Descripción general"
               href: es/A1_descriptivo_general.qmd
-            - text: "② Causas de muerte"
+            - text: "2- Causas de muerte"
               href: es/A2_causas.qmd
-            - text: "③ Causas específicas"
+            - text: "3- Causas específicas"
               href: es/A3_causas_especificas.qmd
             - text: "④ Dimensión territorial"
               href: es/A4_territorial.qmd
@@ -128,11 +128,11 @@ website:
       contents:
         - section: "Block A — Temporal trends"
           contents:
-            - text: "① General description"
+            - text: "1- General description"
               href: en/A1_descriptive_general.qmd
-            - text: "② Causes of death"
+            - text: "2- Causes of death"
               href: en/A2_causes.qmd
-            - text: "③ Specific causes"
+            - text: "3- Specific causes"
               href: en/A3_specific_causes.qmd
             - text: "④ Territorial dimension"
               href: en/A4_territorial.qmd
@@ -171,8 +171,8 @@ format:
     toc-depth: 3
     number-sections: false
     code-fold: false
-    code-tools: true
-    code-link: true
+    code-tools: false
+    code-link: false
     fig-align: center
     fig-cap-location: bottom
     tbl-cap-location: top

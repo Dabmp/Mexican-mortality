@@ -170,7 +170,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: false
-    code-fold: false
+    code-fold: true
     code-tools: true
     code-link: false
     fig-align: center
@@ -185,7 +185,7 @@ format:
 execute:
   warning: false
   message: false
-  echo: true
+  echo: false
   cache: false
 
 knitr:

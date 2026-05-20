@@ -175,10 +175,7 @@ ggplot(mort_causa,
 ```{r fig-dist-edad, fig.cap="Distribucion por grupo de edad, 2000–2024"}
 # Área apilada (%)
 
-setwd("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/Cause G")
-# save(deces0024, file = "deces.rds")
-load( "H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/Cause G/deces.rds")
-
+load("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/deces.rda")
 #
 library(tidyverse)
 library(scales)

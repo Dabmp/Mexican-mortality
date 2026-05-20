@@ -171,7 +171,7 @@ format:
     toc-depth: 3
     number-sections: false
     code-fold: false
-    code-tools: false
+    code-tools: true
     code-link: false
     fig-align: center
     fig-cap-location: bottom

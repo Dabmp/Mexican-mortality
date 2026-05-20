@@ -21,6 +21,8 @@ library(tidyverse); library(scales)
 
 palette_sexo <- c("Hombre"="#1a2744","Mujer"="#e84855","Total"="#2a7a8c")
 
+setwd("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause")
+load("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/deces.rds")
 
 load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_sc.rda")
 load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/top10_sc.rda")
@@ -48,28 +50,156 @@ dict_cause <- top10_sc |>
 
 ::: {.panel-tabset}
 
-#### Top 10 causas (2022)
+#### Top 10 causas (2024)
 
 ```{r fig-top10-causas}
-SDR |>
-  filter(year==2024) |>
-  group_by(CAP_GRUPO) |>
-  summarise(deaths=sum(n_death)) |>
-  slice_max(deaths, n=10) |>
-  mutate(cause_specific=reorder(CAP_GRUPO, deaths)) |>
-  ggplot(aes(x=cause_specific, y=deaths/1000)) +
-  geom_col(fill="#1a2744", alpha=0.85) + coord_flip() +
-  scale_y_continuous(labels=label_comma(suffix=" k")) +
-  labs(title="Top 10 causas específicas de mortalidad (2022)",
-       x=NULL, y="Defunciones (miles)") +
-  theme_minimal(base_size=12) +
-  theme(plot.title=element_text(face="bold",color="#1a2744"),panel.grid.minor=element_blank())
+
+# ── 1. Top chapitres (vue globale) ────────────────────────────────────
+top_cap <- deces0024 |>
+      filter(year==2024) |>
+
+  group_by(CAP_GRUPO, specifi_cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  slice_max(deaths, n = 10)
+
+p1 <- top_cap |>
+  mutate(specifi_cause_name = str_wrap(specifi_cause_name, 35)) |>
+  ggplot(aes(x = reorder(specifi_cause_name, deaths), y = deaths / 1000)) +
+  geom_col(fill = "#1a2744", alpha = 0.85) +
+  coord_flip() +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(title = "Top 10 chapitres — total 2000–2024",
+       x = NULL, y = "Décès (milliers)") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", color = "#1a2744"),
+        panel.grid.minor = element_blank())
+
+# ── 2. Profil par sexe ────────────────────────────────────────────────
+p2 <- deces0024 |>
+  filter(CAP_GRUPO %in% top_cap$CAP_GRUPO) |>
+  group_by(CAP_GRUPO, specifi_cause_name, sex) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  mutate(specifi_cause_name = str_wrap(specifi_cause_name, 30)) |>
+  ggplot(aes(x = reorder(specifi_cause_name, deaths),
+             y = deaths / 1000, fill = factor(sex))) +
+  geom_col(position = "dodge", width = 0.7, alpha = 0.9) +
+  coord_flip() +
+  scale_fill_manual(values = palette_sexo,
+                    labels = c("1" = "Hommes", "2" = "Femmes")) +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(title = "Profil par sexe — top chapitres",
+       x = NULL, y = "Décès (milliers)", fill = "Sexe") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", color = "#1a2744"),
+        legend.position = "bottom",
+        panel.grid.minor = element_blank())
+
+# ── 3. Ratio Hommes / Femmes par chapitre ─────────────────────────────
+p3 <- deces0024 |>
+  filter(CAP_GRUPO %in% top_cap$CAP_GRUPO) |>
+  group_by(CAP_GRUPO, specifi_cause_name, sex) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  pivot_wider(names_from = sex, values_from = deaths,
+              names_prefix = "sex_") |>
+  mutate(
+    ratio_hf   = sex_1 / sex_2,
+    specifi_cause_name = str_wrap(specifi_cause_name, 30),
+    direction  = if_else(ratio_hf > 1, "Excès masculin", "Excès féminin")
+  ) |>
+  ggplot(aes(x = reorder(specifi_cause_name, ratio_hf),
+             y = ratio_hf, fill = direction)) +
+  geom_col(width = 0.65, alpha = 0.9) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "#6c757d") +
+  coord_flip() +
+  scale_fill_manual(values = c("Excès masculin" = "#1a2744",
+                               "Excès féminin"  = "#e84855")) +
+  labs(title = "Ratio H/F par chapitre",
+       x = NULL, y = "Ratio H/F", fill = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold", color = "#1a2744"),
+        legend.position = "bottom",
+        panel.grid.minor = element_blank())
+
+ 
+# SDR |>
+#   filter(year==2024) |>
+#   group_by(CAP_GRUPO) |>
+#   summarise(deaths=sum(n_death)) |>
+#   slice_max(deaths, n=10) |>
+#   mutate(cause_specific=reorder(CAP_GRUPO, deaths)) |>
+#   ggplot(aes(x=cause_specific, y=deaths/1000)) +
+#   geom_col(fill="#1a2744", alpha=0.85) + coord_flip() +
+#   scale_y_continuous(labels=label_comma(suffix=" k")) +
+#   labs(title="Top 10 causas específicas de mortalidad (2022)",
+#        x=NULL, y="Defunciones (miles)") +
+#   theme_minimal(base_size=12) +
+#   theme(plot.title=element_text(face="bold",color="#1a2744"),panel.grid.minor=element_blank())
 # dict_cause
 ```
 
 #### Tendencias por sexo
 
 ```{r fig-trends-spec, fig.height=8}
+
+# ── 6. Évolution par sexe — top 6 chapitres ───────────────────────────
+top6 <- deces0024 |>
+  group_by(CAP_GRUPO, specifi_cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+ slice_max(deaths, n = 6) |> pull(CAP_GRUPO)
+
+
+p6 <- deces0024 |>
+  filter(CAP_GRUPO %in% top6) |>
+  group_by(year, sex, specifi_cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  mutate(specifi_cause_name = str_wrap(specifi_cause_name, 22)) |>
+  ggplot(aes(x = year, y = deaths / 1000,
+             color = factor(sex), group = factor(sex))) +
+  geom_line(linewidth = 0.9) +
+  facet_wrap(~ specifi_cause_name, scales = "free_y", ncol = 3) +
+  scale_color_manual(values = palette_sexo,
+                     labels = c("1" = "Hommes", "2" = "Femmes")) +
+  scale_x_continuous(breaks = c(2000, 2010, 2020, 2024)) +
+  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  labs(title = "Évolution par sexe — top 6 chapitres",
+       x = NULL, y = "Décès (milliers)", color = "Sexe") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title     = element_text(face = "bold", color = "#1a2744"),
+        legend.position = "bottom",
+        strip.text     = element_text(face = "bold", size = 8),
+        panel.grid.minor = element_blank())
+p6
+# ── 7. Pyramide des âges par chapitre (top 4) ────────────────────────
+top4 <- deces0024 |>
+  group_by(CAP_GRUPO, specifi_cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  slice_max(deaths, n = 4) |> pull(CAP_GRUPO)
+
+p7 <- deces0024 |>
+  filter(CAP_GRUPO %in% top4) |>
+  group_by(age_group, sex, specifi_cause_name) |>
+  summarise(deaths = sum(deaths), .groups = "drop") |>
+  mutate(
+    deaths_plot = if_else(sex == 1, -deaths, deaths),
+    specifi_cause_name  = str_wrap(specifi_cause_name, 25)
+  ) |>
+  ggplot(aes(x = age_group, y = deaths_plot / 1000,
+             fill = factor(sex))) +
+  geom_col(width = 0.85, alpha = 0.9) +
+  coord_flip() +
+  facet_wrap(~ specifi_cause_name, scales = "free_x", ncol = 2) +
+  scale_fill_manual(values = palette_sexo,
+                    labels = c("1" = "Hommes", "2" = "Femmes")) +
+  scale_y_continuous(labels = ~ label_comma(suffix = " k")(abs(.))) +
+  labs(title = "Pyramide des décès par âge et sexe — top 4 chapitres",
+       x = "Groupe d'âge", y = "Décès (milliers)", fill = "Sexe") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title     = element_text(face = "bold", color = "#1a2744"),
+        legend.position = "bottom",
+        strip.text     = element_text(face = "bold", size = 9),
+        panel.grid.minor = element_blank())
+
+p7
 # top_causes <- mort_spec |> filter(year==2022) |>
 #   group_by(cause_specific) |> summarise(d=sum(deaths)) |>
 #   slice_max(d,n=6) |> pull(cause_specific)
@@ -208,7 +338,10 @@ tbl_femmes
 ```
 :::
 
+## Perfil por causa específica
+```{r fig-tab-profil, fig.height=8}
 
+```
 
 ## Navigation
 

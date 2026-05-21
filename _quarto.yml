@@ -8,7 +8,7 @@ website:
   favicon: "assets/favicon.png"
 
   navbar:
-    title: "**MortalMéxico**"
+    title: "**Health_México**"
     background: "#1a2744"
     foreground: "white"
     left:
@@ -92,11 +92,11 @@ website:
       style: "docked"
       background: "#f5f7fb"
       contents:
-        - section: "Bloque A — Temporalidad"
+        - section: "Bloque A — Trends"
           contents:
             - text: "1- Descripción general"
               href: es/A1_descriptivo_general.qmd
-            - text: "2- Causas de muerte"
+            - text: "2- Causas"
               href: es/A2_causas.qmd
             - text: "3- Causas específicas"
               href: es/A3_causas_especificas.qmd
@@ -126,7 +126,7 @@ website:
       style: "docked"
       background: "#f5f7fb"
       contents:
-        - section: "Block A — Temporal trends"
+        - section: "Block A — Trends"
           contents:
             - text: "1- General description"
               href: en/A1_descriptive_general.qmd

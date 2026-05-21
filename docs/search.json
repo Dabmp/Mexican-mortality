@@ -1,765 +1,52 @@
 [
   {
-    "objectID": "es/index.html",
-    "href": "es/index.html",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
     "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
-    "objectID": "es/index.html#mortalidad-en-méxico",
-    "href": "es/index.html#mortalidad-en-méxico",
+    "objectID": "index.html#mortalidad-en-méxico",
+    "href": "index.html#mortalidad-en-méxico",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
     "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
-    "objectID": "es/index.html#estructura-del-sitio",
-    "href": "es/index.html#estructura-del-sitio",
+    "objectID": "index.html#estructura-del-sitio",
+    "href": "index.html#estructura-del-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Estructura del sitio",
     "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n→\n\n\n⑤\nyear, sex, state, cause_specific\nArticulación salud-territorio\n→\n\n\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n→\n\n\n②\nstate, year, cause\nDistribución espacial, clústeres\n→\n\n\n③\nmunicipality, year, cause\nHeterogeneidad intra-estatal\n→\n\n\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n→\n\n\n②\nstate, year, sex\nEvolución por entidad\n→\n\n\n③\nmunicipality, sex\nHeterogeneidad municipal\n→"
   },
   {
-    "objectID": "es/index.html#síntesis-preliminar",
-    "href": "es/index.html#síntesis-preliminar",
+    "objectID": "index.html#síntesis-preliminar",
+    "href": "index.html#síntesis-preliminar",
     "title": "Análisis de la Mortalidad en México",
     "section": "Síntesis preliminar",
     "text": "Síntesis preliminar\n\n\n\n\n\n\n\n\nFigura 1: Evolución de la mortalidad total por sexo (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNota"
   },
   {
-    "objectID": "es/index.html#cómo-navegar-este-sitio",
-    "href": "es/index.html#cómo-navegar-este-sitio",
+    "objectID": "index.html#cómo-navegar-este-sitio",
+    "href": "index.html#cómo-navegar-este-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Cómo navegar este sitio",
     "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú 🇲🇽 Español / 🇬🇧 English en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ ① Descripción general"
   },
   {
-    "objectID": "es/C2_espacial_estados.html",
-    "href": "es/C2_espacial_estados.html",
-    "title": "C2_espacial_estados",
+    "objectID": "es/C3_espacial_municipios.html",
+    "href": "es/C3_espacial_municipios.html",
+    "title": "C3_espacial_municipios",
     "section": "",
     "text": "Back to top"
   },
   {
-    "objectID": "es/B3_espacial_municipios.html",
-    "href": "es/B3_espacial_municipios.html",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "",
-    "text": "Bloque B · Nivel 3 bis Variables : municipality · year · cause"
-  },
-  {
-    "objectID": "es/B3_espacial_municipios.html#introducción",
-    "href": "es/B3_espacial_municipios.html#introducción",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "Introducción",
-    "text": "Introducción\nEl nivel municipal constituye la escala más fina del análisis espacial. Permite revelar :\n\nL’heterogeneidad intra-estatal : dos municipios del mismo estado pueden tener perfiles de mortalité radicalmente distintos.\nLa existencia de hotspots locales (focos de mortalidad elevada) a menudo invisibles en análisis estatales.\nEl papel de determinantes locales : urbanización, marginación, acceso a servicios.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nNota sobre confidencialidad\nPara municipios pequeños (&lt; 5 000 hab.), los datos de mortalidad pueden estar sujetos a restricciones de divulgación (INEGI). Aplicar técnicas de suavizado espacial (kriging, kernel density) en esos casos."
-  },
-  {
-    "objectID": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
-    "href": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "1 · Cartographie à l’échelle municipale",
-    "text": "1 · Cartographie à l’échelle municipale\n\nTaux de mortalité totalMortalité cardiovasculaireCauses externesHotspots / Coldspots\n\n\n\n\n\n\n\nTaux de mortalité par municipio (données simulées)"
-  },
-  {
-    "objectID": "es/B3_espacial_municipios.html#relation-marginationmortalité",
-    "href": "es/B3_espacial_municipios.html#relation-marginationmortalité",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "2 · Relation margination–mortalité",
-    "text": "2 · Relation margination–mortalité\n\n\n\n\n\n\n\n\nFigura 1"
-  },
-  {
-    "objectID": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
-    "href": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "3 · Note méthodologique — Détection de hotspots",
-    "text": "3 · Note méthodologique — Détection de hotspots\n\n\n\n\n\n\nNota\n\n\n\nMéthode recommandée en production\nLa détection de clusters locaux repose sur la statistique Gi* de Getis-Ord ou sur l’LISA (Local Indicators of Spatial Association) via spdep :\nlibrary(spdep)\n# Construire la matrice de poids spatiaux\nw    &lt;- poly2nb(mx_mun, queen = TRUE)\nwl   &lt;- nb2listw(w, style = \"W\")\n\n# LISA (Moran local)\nlm   &lt;- localmoran(mx_mun$rate_total, wl)\nmx_mun$local_I &lt;- lm[,1]\nmx_mun$p_value &lt;- lm[,5]\n\n# Classifier : HH, LL, HL, LH, ns\nmx_mun &lt;- mx_mun |&gt;\n  mutate(lisa_class = case_when(\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &gt; mean(rate_total) ~ \"HH (hotspot)\",\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &lt; mean(rate_total) ~ \"LL (coldspot)\",\n    p_value &lt; 0.05 & local_I &lt; 0 ~ \"Outlier spatial\",\n    TRUE ~ \"Non significatif\"\n  ))"
-  },
-  {
-    "objectID": "es/B3_espacial_municipios.html#navigation",
-    "href": "es/B3_espacial_municipios.html#navigation",
-    "title": "③ bis · Análisis espacial por Municipios",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ② bis · Estados ← Retour à l’accueil"
-  },
-  {
-    "objectID": "es/B1_Regional_description.html",
-    "href": "es/B1_Regional_description.html",
-    "title": "B1_Regional_description",
+    "objectID": "es/C1_regional_description.html",
+    "href": "es/C1_regional_description.html",
+    "title": "C1_regional_description",
     "section": "",
     "text": "Back to top"
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html",
-    "href": "es/A5_maxima_desagregacion.html",
-    "title": "⑤ Máxima desagregación",
-    "section": "",
-    "text": "Bloque A · Nivel 5 Variables : year · sex · state · cause_specific",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#introducción",
-    "href": "es/A5_maxima_desagregacion.html#introducción",
-    "title": "⑤ Máxima desagregación",
-    "section": "Introducción",
-    "text": "Introducción\nEste nivel constituye la máxima desagregación del Bloque A: combina las cuatro dimensiones analíticas (tiempo, sexo, territorio y causa específica CIE-10) para producir perfiles epidemiológicos estatal-causales de alta resolución.\nLa pregunta central es: ¿qué combinaciones estado × causa × sexo concentran la mayor carga de mortalidad evitable?\n\n\n\n\n\n\nTip\n\n\n\nUso recomendado\nEste nivel es el punto de entrada natural para priorizar intervenciones de salud pública a nivel estatal. Los resultados son complementados por el análisis espacial del Bloque B.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
-    "href": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
-    "title": "⑤ Máxima desagregación",
-    "section": "Perfiles estatales por causa específica",
-    "text": "Perfiles estatales por causa específica\n\nHeatmap estado × causa específicaRanking estatal por causaBrecha de género por estado y causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 3",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
-    "href": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
-    "title": "⑤ Máxima desagregación",
-    "section": "Tendencias temporales por estado y causa",
-    "text": "Tendencias temporales por estado y causa\n\n\n\n\n\n\n\n\nFigura 4",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
-    "href": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
-    "title": "⑤ Máxima desagregación",
-    "section": "Tabla de síntesis",
-    "text": "Tabla de síntesis\n\n\n\nTop 15 combinaciones estado × causa por carga de mortalidad ( 2024 )\n\n\nEstado\nCausa específica\nDefunciones\nTasa /100k\n\n\n\n\nCiudad de México\nCOVID-19\n1,638\n47.2\n\n\nCiudad de México\nDiabetes tipo 2\n1,562\n77.3\n\n\nCiudad de México\nCardiopatía isquémica\n1,494\n12.8\n\n\nCiudad de México\nAccidentes de tránsito\n1,370\n15.2\n\n\nCiudad de México\nHomicidios\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nCiudad de México\nComplicaciones DM\n1,149\n8.8\n\n\nJalisco\nCardiopatía isquémica\n1,149\n11.1",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
-    "href": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
-    "title": "⑤ Máxima desagregación",
-    "section": "Puntos clave de este nivel",
-    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel ⑤\n\nLa combinación estado × causa × sexo revela concentraciones geográficas específicas que quedan ocultas en niveles de análisis más agregados.\nLa cardiopatía isquémica y la diabetes tipo 2 dominan en casi todos los estados, pero con intensidades muy distintas según la región.\nLas causas externas (homicidios, accidentes) presentan el ratio H/M más elevado y una concentración en estados del norte y noroeste.\nEste nivel es el punto de entrada para priorizar intervenciones de salud pública con máxima especificidad territorial.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A5_maxima_desagregacion.html#navegación",
-    "href": "es/A5_maxima_desagregacion.html#navegación",
-    "title": "⑤ Máxima desagregación",
-    "section": "Navegación",
-    "text": "Navegación\n\n← ④ Dimensión territorial → Bloque B · ① Descripción regional",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "⑤ Máxima desagregación"
-    ]
-  },
-  {
-    "objectID": "es/A3_causas_especificas.html",
-    "href": "es/A3_causas_especificas.html",
-    "title": "3- Causas específicas de muerte",
-    "section": "",
-    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "3- Causas específicas"
-    ]
-  },
-  {
-    "objectID": "es/A3_causas_especificas.html#introducción",
-    "href": "es/A3_causas_especificas.html#introducción",
-    "title": "3- Causas específicas de muerte",
-    "section": "Introducción",
-    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "3- Causas específicas"
-    ]
-  },
-  {
-    "objectID": "es/A3_causas_especificas.html#evolución-por-causa-específica",
-    "href": "es/A3_causas_especificas.html#evolución-por-causa-específica",
-    "title": "3- Causas específicas de muerte",
-    "section": "Evolución por causa específica",
-    "text": "Evolución por causa específica\n\nTop 10 causas (2024)Tendencias por sexoTabla (hombre)Tabla (mujer)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\nDescription\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n0904\nEnfermedades isquémicas del corazón (I20-I25)\n6.2\n8.8\n2,195.1\n2,320.7\n2,589.6\n2,650.9\n2,872.9\n3,063.9\n\n\n0402\nDiabetes mellitus (E10-E14)\n3.0\n8.0\n1,643.9\n2,081.2\n2,299.9\n2,366.6\n2,201.3\n2,045.5\n\n\n2027\nAgresiones (X85-Y09)\n1.9\n3.5\n620.2\n515.8\n1,475.3\n947.4\n1,596.6\n1,411.0\n\n\n1108\nEnfermedades del hígado (K70-K77)\n3.2\n4.6\n1,524.7\n1,440.9\n1,352.5\n1,269.6\n1,275.0\n1,121.4\n\n\n1002\nInfluenza (gripe) y neumonía (J09-J18)\n1.0\n2.4\n480.7\n478.6\n514.6\n547.5\n748.5\n780.1\n\n\n0907\nEnfermedades cerebrovasculares (I60-I69)\n2.7\n3.4\n1,066.2\n975.2\n975.6\n868.8\n803.5\n709.9\n\n\n0202\nTumores malignos de los órganos digestivos (C15-C26)\n3.1\n3.6\n727.8\n716.7\n655.2\n673.3\n668.0\n625.3\n\n\n0903\nEnfermedades hipertensivas (I10-I15)\n0.7\n1.5\n324.8\n389.0\n485.2\n550.7\n509.0\n495.4\n\n\n1005\nEnfermedades crónicas de las vías respiratorias inferiores (J40-J47)\n1.8\n4.6\n949.7\n965.4\n943.3\n760.8\n679.7\n434.9\n\n\n1403\nInsuficiencia renal (N17-N19)\n1.4\n1.8\n349.8\n396.8\n388.3\n388.5\n367.3\n381.0\n\n\n\n\n\nFigure 3: Top 10 causes de décès — Hommes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\nDescription\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n0904\nEnfermedades isquémicas del corazón (I20-I25)\n3.3\n6.6\n1,509.3\n1,510.8\n1,680.5\n1,702.7\n1,883.8\n1,988.6\n\n\n0402\nDiabetes mellitus (E10-E14)\n4.3\n10.2\n1,853.2\n2,245.1\n2,256.9\n2,234.7\n2,009.1\n1,799.4\n\n\n1002\nInfluenza (gripe) y neumonía (J09-J18)\n0.4\n1.0\n346.9\n379.3\n356.5\n377.1\n538.1\n556.1\n\n\n0907\nEnfermedades cerebrovasculares (I60-I69)\n2.2\n2.5\n972.2\n891.9\n889.9\n778.7\n678.6\n545.4\n\n\n0202\nTumores malignos de los órganos digestivos (C15-C26)\n2.0\n5.1\n660.0\n634.5\n582.8\n574.9\n545.4\n517.4\n\n\n0903\nEnfermedades hipertensivas (I10-I15)\n1.0\n1.3\n438.8\n460.7\n545.5\n565.1\n524.1\n498.8\n\n\n1108\nEnfermedades del hígado (K70-K77)\n0.8\n1.7\n462.4\n480.9\n468.4\n446.8\n415.0\n374.5\n\n\n0208\nTumores malignos de los órganos genitales femeninos (C51-C58)\n2.5\n3.3\n497.3\n424.4\n366.7\n349.7\n338.7\n350.1\n\n\n1005\nEnfermedades crónicas de las vías respiratorias inferiores (J40-J47)\n2.6\n3.5\n576.1\n626.1\n596.6\n517.3\n477.0\n324.0\n\n\n0207\nTumor maligno de la mama (C50)\n0.9\n0.9\n246.5\n260.1\n269.3\n287.8\n305.0\n289.3\n\n\n\n\n\nFigure 4: Top 5 causes de décès — Femmes",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "3- Causas específicas"
-    ]
-  },
-  {
-    "objectID": "es/A3_causas_especificas.html#perfil-por-causa-específica",
-    "href": "es/A3_causas_especificas.html#perfil-por-causa-específica",
-    "title": "3- Causas específicas de muerte",
-    "section": "Perfil por causa específica",
-    "text": "Perfil por causa específica",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "3- Causas específicas"
-    ]
-  },
-  {
-    "objectID": "es/A3_causas_especificas.html#navigation",
-    "href": "es/A3_causas_especificas.html#navigation",
-    "title": "3- Causas específicas de muerte",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "3- Causas específicas"
-    ]
-  },
-  {
-    "objectID": "es/A1_descriptivo_general.html",
-    "href": "es/A1_descriptivo_general.html",
-    "title": "1- Análisis descriptivo general",
-    "section": "",
-    "text": "Bloc A L1 Variables : year · sex\n##Introducción\nEsta sección examina las tendencias de mortalidad en México sin desagregación (por causa o territorio), con el objetivo de identificar patrones macro y puntos de inflexión temporales.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "1- Descripción general"
-    ]
-  },
-  {
-    "objectID": "es/A1_descriptivo_general.html#tendencias-globales",
-    "href": "es/A1_descriptivo_general.html#tendencias-globales",
-    "title": "1- Análisis descriptivo general",
-    "section": "Tendencias globales",
-    "text": "Tendencias globales\n\nSerie temporalTasa de crecimiento\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "1- Descripción general"
-    ]
-  },
-  {
-    "objectID": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
-    "href": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
-    "title": "1- Análisis descriptivo general",
-    "section": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)",
-    "text": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)\nLa tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.\n\nSeries temporales para ASMRCambio ASMR masculinoWomen ASMR change\n\n\nLos resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "1- Descripción general"
-    ]
-  },
-  {
-    "objectID": "es/A1_descriptivo_general.html#navegación",
-    "href": "es/A1_descriptivo_general.html#navegación",
-    "title": "1- Análisis descriptivo general",
-    "section": "Navegación",
-    "text": "Navegación\n\n← Inicio → 2- Desagregación por causa",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "1- Descripción general"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html",
-    "href": "en/A5_maximum_disaggregation.html",
-    "title": "⑤ Maximum disaggregation",
-    "section": "",
-    "text": "Block A · Level 5 Variables : year · sex · state · cause_specific",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#introduction",
-    "href": "en/A5_maximum_disaggregation.html#introduction",
-    "title": "⑤ Maximum disaggregation",
-    "section": "Introduction",
-    "text": "Introduction\nThis level represents the maximum disaggregation of Block A: it combines all four analytical dimensions (time, sex, territory, and ICD-10 specific cause) to produce high-resolution state–cause epidemiological profiles.\nThe central question is: which state × cause × sex combinations concentrate the greatest burden of preventable mortality?\n\n\n\n\n\n\nTip\n\n\n\nRecommended use\nThis level is the natural starting point for prioritising public health interventions at the state level. Results are complemented by the spatial analysis in Block B.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
-    "href": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
-    "title": "⑤ Maximum disaggregation",
-    "section": "State profiles by specific cause",
-    "text": "State profiles by specific cause\n\nHeatmap: state × specific causeState ranking by causeGender gap by state and cause\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
-    "href": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
-    "title": "⑤ Maximum disaggregation",
-    "section": "Temporal trends by state and cause",
-    "text": "Temporal trends by state and cause\n\n\n\n\n\n\n\n\nFigure 4",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#summary-table",
-    "href": "en/A5_maximum_disaggregation.html#summary-table",
-    "title": "⑤ Maximum disaggregation",
-    "section": "Summary table",
-    "text": "Summary table\n\n\n\nTop 15 state × cause combinations by mortality burden (2024)\n\n\nState\nSpecific cause\nDeaths\nRate /100k\n\n\n\n\nMexico City\nCOVID-19\n1,638\n47.2\n\n\nMexico City\nType 2 diabetes\n1,562\n77.3\n\n\nMexico City\nIschemic heart disease\n1,494\n12.8\n\n\nMexico City\nRoad traffic accidents\n1,370\n15.2\n\n\nMexico City\nHomicides\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nJalisco\nIschemic heart disease\n1,149\n11.1\n\n\nMexico City\nDM complications\n1,149\n8.8",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#key-findings",
-    "href": "en/A5_maximum_disaggregation.html#key-findings",
-    "title": "⑤ Maximum disaggregation",
-    "section": "Key findings",
-    "text": "Key findings\n\n\n\n\n\n\nNote\n\n\n\nKey takeaways from Level ⑤\n\nThe state × cause × sex combination reveals specific geographic concentrations that remain hidden at more aggregated levels of analysis.\nIschemic heart disease and type 2 diabetes dominate in almost every state, but with very different intensities depending on the region.\nExternal causes (homicides, accidents) show the highest M/F ratio and are concentrated in northern and north-western states.\nThis level provides the entry point for prioritising public health interventions with maximum territorial specificity.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A5_maximum_disaggregation.html#navigation",
-    "href": "en/A5_maximum_disaggregation.html#navigation",
-    "title": "⑤ Maximum disaggregation",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ④ Territorial dimension → Block B · ① Regional description",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "⑤ Maximum disaggregation"
-    ]
-  },
-  {
-    "objectID": "en/A3_specific_causes.html",
-    "href": "en/A3_specific_causes.html",
-    "title": "③ Causas específicas de muerte",
-    "section": "",
-    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "3- Specific causes"
-    ]
-  },
-  {
-    "objectID": "en/A3_specific_causes.html#introducción",
-    "href": "en/A3_specific_causes.html#introducción",
-    "title": "③ Causas específicas de muerte",
-    "section": "Introducción",
-    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "3- Specific causes"
-    ]
-  },
-  {
-    "objectID": "en/A3_specific_causes.html#evolución-por-causa-específica",
-    "href": "en/A3_specific_causes.html#evolución-por-causa-específica",
-    "title": "③ Causas específicas de muerte",
-    "section": "Evolución por causa específica",
-    "text": "Evolución por causa específica\n\nTop 10 causas (2022)Tendencias por sexo\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "3- Specific causes"
-    ]
-  },
-  {
-    "objectID": "en/A3_specific_causes.html#navigation",
-    "href": "en/A3_specific_causes.html#navigation",
-    "title": "③ Causas específicas de muerte",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "3- Specific causes"
-    ]
-  },
-  {
-    "objectID": "en/A1_descriptive_general.html",
-    "href": "en/A1_descriptive_general.html",
-    "title": "1- General descriptive analysis",
-    "section": "",
-    "text": "Bloc A L1 Variables : year · sex",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "1- General description"
-    ]
-  },
-  {
-    "objectID": "en/A1_descriptive_general.html#introduction",
-    "href": "en/A1_descriptive_general.html#introduction",
-    "title": "1- General descriptive analysis",
-    "section": "Introduction",
-    "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "1- General description"
-    ]
-  },
-  {
-    "objectID": "en/A1_descriptive_general.html#global-trends",
-    "href": "en/A1_descriptive_general.html#global-trends",
-    "title": "1- General descriptive analysis",
-    "section": "Global trends",
-    "text": "Global trends\n\nTemporal serieGrowth rate\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "1- General description"
-    ]
-  },
-  {
-    "objectID": "en/A1_descriptive_general.html#asmr-trend",
-    "href": "en/A1_descriptive_general.html#asmr-trend",
-    "title": "1- General descriptive analysis",
-    "section": "ASMR trend",
-    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\nTemporal serie for ASMRMen ASMR changeWomen ASMR change\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "1- General description"
-    ]
-  },
-  {
-    "objectID": "en/A1_descriptive_general.html#navigation",
-    "href": "en/A1_descriptive_general.html#navigation",
-    "title": "1- General descriptive analysis",
-    "section": "Navigation",
-    "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "1- General description"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html",
-    "href": "en/A2_causes.html",
-    "title": "2- Disaggregation by cause of death",
-    "section": "",
-    "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#introducción-analítica",
-    "href": "en/A2_causes.html#introducción-analítica",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Introducción analítica",
-    "text": "Introducción analítica\nLa incorporación de la causa de muerte como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#vue-densemble-composition-de-la-mortalité",
-    "href": "en/A2_causes.html#vue-densemble-composition-de-la-mortalité",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Vue d’ensemble : composition de la mortalité",
-    "text": "Vue d’ensemble : composition de la mortalité\n\nÉvolution de la structure par cause\n\nAire empilée (%)Lignes absoluesTableau résumé\n\n\n\n\n\n\n\n\n\n\nFigure 1: Structure de la mortalité par cause, 1998–2024 (%)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\n\n\n\nDeaths by cause of death, selected years\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9 - Diseases of the circulatory system\n97,579\n112,189\n141,515\n166,773\n261,900\n224,876\n\n\n4 - Endocrine, nutritional, and metabolic diseases\n60,023\n81,393\n99,461\n114,619\n171,422\n126,955\n\n\n2 - Tumors (neoplasms)\n57,749\n66,480\n74,761\n85,165\n97,472\n102,306\n\n\n20 - External causes of morbidity and mortality\n51,744\n53,328\n73,072\n67,457\n81,013\n81,809\n\n\n11 - Diseases of the digestive system\n42,343\n47,801\n55,044\n62,949\n71,416\n74,464\n\n\n10 - Diseases of the respiratory system\n38,525\n43,452\n51,301\n55,381\n96,896\n68,708\n\n\n14 - Diseases of the genitourinary system\n11,950\n14,277\n17,350\n22,503\n26,918\n31,600\n\n\n1 - Certain infectious and parasitic diseases\n18,648\n18,273\n17,164\n16,222\n17,924\n23,242\n\n\n6 - Diseases of the nervous system\n7,444\n9,132\n10,436\n11,368\n12,992\n14,122\n\n\n16 - Conditions originating in the perinatal period\n19,465\n16,421\n14,340\n12,941\n10,054\n9,280\n\n\n18 - Symptoms, signs, and abnormal clinical and laboratory findings\n8,468\n9,281\n12,528\n10,787\n11,153\n9,251\n\n\n17 - Congenital malformations and chromosomal abnormalities\n9,569\n9,254\n9,137\n9,305\n8,020\n6,870\n\n\n12 - Diseases of the skin and subcutaneous tissue\n976\n1,032\n1,689\n2,850\n3,221\n5,606\n\n\n13 - Diseases of the musculoskeletal system and connective tissue\n2,711\n3,316\n5,025\n4,589\n5,505\n5,570\n\n\n3 - Diseases of the blood and immune system\n3,894\n4,453\n4,828\n4,735\n5,326\n4,969\n\n\n5 - Mental and behavioral disorders\n4,995\n4,500\n4,389\n5,282\n5,197\n4,927\n\n\n22 - COVID-19\nNA\nNA\nNA\nNA\n200,805\n1,359\n\n\n15 - Pregnancy, childbirth, and the puerperium\n1,316\n1,275\n1,031\n905\n1,172\n741\n\n\n8 - Diseases of the ear and mastoid process\n54\n44\n33\n38\n45\n50\n\n\n7 - Diseases of the eye and adnexa\n10\n8\n14\n16\n10\n13",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#causes-de-décès-std",
-    "href": "en/A2_causes.html#causes-de-décès-std",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Causes de décès std",
-    "text": "Causes de décès std\n\nStandardized death rates (SDR) par cause, sexe et année\n\nEvolution des causes de décès (std rate)Top 5 des causes de décès (std rate)\n\n\n\n\n\n\n\n\n\n\nFigure 3: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\nHommes vs Femmes (2023)Ratio H/M par causeTendencias por sexo",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#indicateurs-de-concentration",
-    "href": "en/A2_causes.html#indicateurs-de-concentration",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Indicateurs de concentration",
-    "text": "Indicateurs de concentration",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#points-clés-de-ce-niveau",
-    "href": "en/A2_causes.html#points-clés-de-ce-niveau",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Points clés de ce niveau",
-    "text": "Points clés de ce niveau\n\n\n\n\n\n\nNote\n\n\n\nRetenir de ce niveau ②\n\nLa mortalité mexicaine est dominée par les maladies cardiovasculaires et le diabète mellitus, reflet de la transition épidémiologique avancée.\nLes causes externes (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.\nLa dynamique temporelle montre une diversification progressive des causes, visible dans la baisse de l’IHH après 2010.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A2_causes.html#navigation",
-    "href": "en/A2_causes.html#navigation",
-    "title": "2- Disaggregation by cause of death",
-    "section": "Navigation",
-    "text": "Navigation\n\n← 1- Descriptivo general → 3- Causas específicas",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "2- Causes of death"
-    ]
-  },
-  {
-    "objectID": "en/A4_territorial.html",
-    "href": "en/A4_territorial.html",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "",
-    "text": "Bloque A · Nivel 4 Variables : year · sex · state · cause",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "④ Territorial dimension"
-    ]
-  },
-  {
-    "objectID": "en/A4_territorial.html#introducción",
-    "href": "en/A4_territorial.html#introducción",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Introducción",
-    "text": "Introducción\nLa introducción del estado como variable de desagregación revela cómo las transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio. Se combinan aquí las dimensiones temporal, sanitaria y geográfica.\n\n\n\n\n\n\nTip\n\n\n\nPara un análisis explícitamente espacial, ver Bloque B — ② bis · Estados.",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "④ Territorial dimension"
-    ]
-  },
-  {
-    "objectID": "en/A4_territorial.html#disparidades-inter-étatiques",
-    "href": "en/A4_territorial.html#disparidades-inter-étatiques",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Disparidades inter-étatiques",
-    "text": "Disparidades inter-étatiques\n\nHeatmap état × causeDispersión inter-estatal por causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "④ Territorial dimension"
-    ]
-  },
-  {
-    "objectID": "en/A4_territorial.html#navigation",
-    "href": "en/A4_territorial.html#navigation",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ③ Causas específicas → ⑤ Máxima desagregación",
-    "crumbs": [
-      "Block A — Temporal trends",
-      "④ Territorial dimension"
-    ]
-  },
-  {
-    "objectID": "en/index.html",
-    "href": "en/index.html",
-    "title": "Mortality Analysis in Mexico",
-    "section": "",
-    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
-  },
-  {
-    "objectID": "en/index.html#mortality-in-mexico",
-    "href": "en/index.html#mortality-in-mexico",
-    "title": "Mortality Analysis in Mexico",
-    "section": "",
-    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
-  },
-  {
-    "objectID": "en/index.html#site-structure",
-    "href": "en/index.html#site-structure",
-    "title": "Mortality Analysis in Mexico",
-    "section": "Site structure",
-    "text": "Site structure\n\nBlock A — Health and temporal analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nGlobal trends, ASMR\n→\n\n\n②\nyear, sex, cause\nEpidemiological transitions\n→\n\n\n③\nyear, sex, cause_specific\nICD-10 specific cause breakdown\n→\n\n\n④\nyear, sex, state, cause\nRegional disparities\n→\n\n\n⑤\nyear, sex, state, cause_specific\nHealth-territory articulation\n→\n\n\n\n\n\nBlock B — Spatial analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nstate, cause\nRegional description\n→\n\n\n②\nstate, year, cause\nSpatial distribution, clusters\n→\n\n\n③\nmunicipality, year, cause\nIntra-state heterogeneity\n→\n\n\n\n\n\nBlock C — Life expectancy\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nNational overview\n→\n\n\n②\nstate, year, sex\nState-level trends\n→\n\n\n③\nmunicipality, sex\nMunicipal heterogeneity\n→"
-  },
-  {
-    "objectID": "en/index.html#preliminary-overview",
-    "href": "en/index.html#preliminary-overview",
-    "title": "Mortality Analysis in Mexico",
-    "section": "Preliminary overview",
-    "text": "Preliminary overview\n\n\n\n\n\n\n\n\nFigure 1: Total mortality trends by sex (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNote"
-  },
-  {
-    "objectID": "en/index.html#how-to-navigate-this-site",
-    "href": "en/index.html#how-to-navigate-this-site",
-    "title": "Mortality Analysis in Mexico",
-    "section": "How to navigate this site",
-    "text": "How to navigate this site\n\nProgressive reading — follow Block A from level ① to ⑤, gradually increasing analytical complexity.\nThematic reading — go directly to Block B (spatial perspective) or Block C (life expectancy) depending on your research question.\nLanguage switch — use the 🇲🇽 Español / 🇬🇧 English menu in the navigation bar to access equivalent content in Spanish.\n\n\n→ ① General description"
-  },
-  {
-    "objectID": "es/A2_causas.html",
-    "href": "es/A2_causas.html",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "",
-    "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#introducción-analítica",
-    "href": "es/A2_causas.html#introducción-analítica",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Introducción analítica",
-    "text": "Introducción analítica\nLa incorporación de la causa de defunción como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
-    "href": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Vue d’ensemble: composición de la mortalité",
-    "text": "Vue d’ensemble: composición de la mortalité\n\nEvolución de la estructura por causa\n\nLíneas absolutasDistribución por grupo de edadTop 6Tabla resumen\n\n\n\n\n\n\n\n\n\n\nFigure 1: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Distribucion por grupo de edad, 2000–2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Evolución temporal de las principales causas, 2000–2024\n\n\n\n\n\n\n\n\n\n\nDefunciones por causa, años seleccionados\n\n\nCause\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Enfermedades del sistema circulatorio\n138\n249\n97,579\n112,189\n141,515\n166,773\n193,896\n224,876\n\n\n4- Enfermedades endocrinas, nutricionales y metabólicas\n73\n178\n60,023\n81,393\n99,461\n114,619\n119,611\n126,955\n\n\n2- Tumores (neoplasias)\n100\n180\n57,749\n66,480\n74,761\n85,165\n95,388\n102,306\n\n\n20- Causas externas de morbilidad y mortalidad\n83\n127\n51,744\n53,328\n73,072\n67,457\n81,384\n81,809\n\n\n11- Enfermedades del sistema digestivo\n52\n96\n42,343\n47,801\n55,044\n62,949\n70,979\n74,464\n\n\n10- Enfermedades del sistema respiratorio\n49\n96\n38,525\n43,452\n51,301\n55,381\n69,364\n68,708\n\n\n14- Enfermedades del sistema genitourinario\n13\n29\n11,950\n14,277\n17,350\n22,503\n26,939\n31,600\n\n\n1- Ciertas enfermedades infecciosas y parasitarias\n21\n36\n18,648\n18,273\n17,164\n16,222\n19,602\n23,242\n\n\n6- Enfermedades del sistema nervioso\n16\n24\n7,444\n9,132\n10,436\n11,368\n13,146\n14,122\n\n\n16- Afecciones originadas en el período perinatal\n5\n8\n19,465\n16,421\n14,340\n12,941\n11,532\n9,280\n\n\n18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales\n145\n202\n8,468\n9,281\n12,528\n10,787\n9,675\n9,251\n\n\n17- Malformaciones congénitas y anomalías cromosómicas\n4\n4\n9,569\n9,254\n9,137\n9,305\n8,932\n6,870\n\n\n12- Piel y tejido subcutáneo\nNA\n2\n976\n1,032\n1,689\n2,850\n4,085\n5,606\n\n\n13- Enfermedades del sistema musculoesquelético y del tejido conectivo\n4\n8\n2,711\n3,316\n5,025\n4,589\n5,204\n5,570\n\n\n3- Enfermedades de la sangre y del sistema inmunitario\n7\n13\n3,894\n4,453\n4,828\n4,735\n4,804\n4,969\n\n\n5- Trastornos mentales y del comportamiento\n12\n12\n4,995\n4,500\n4,389\n5,282\n4,731\n4,927\n\n\n22- COVID-19\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n1,359\n\n\n15- Enfermedades del embarazo, el parto y el puerperio\n5\n4\n1,316\n1,275\n1,031\n905\n853\n741\n\n\n8- Enfermedades del oído y la apófisis mastoides\nNA\nNA\n54\n44\n33\n38\n50\n50\n\n\n7- Enfermedades de los ojos y sus anexos\nNA\nNA\n10\n8\n14\n16\n16\n13\n\n\nNA\n410,246\n428,129\nNA\nNA\nNA\nNA\nNA\nNA",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme",
-    "href": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Tasas de mortalidad estandarizadas (TME)",
-    "text": "Tasas de mortalidad estandarizadas (TME)\n\nTME por causa, sexo y año\n\nEvolución de las causasTabla principales causas (hombre)Tabla principales causas (mujer)\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nTop 5 causes de décès — Hommes\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Diseases of the circulatory system diseases\n4,311.1\n4,317.3\n4,658.1\n4,630.9\n4,657.4\n4,757.7\n\n\n20- External causes of morbidity and mortality\n3,101.9\n2,893.0\n3,777.6\n2,974.2\n3,461.7\n3,332.5\n\n\n4- Endocrine, nutritional and metabolic diseases\n2,187.5\n2,599.3\n2,832.0\n2,803.7\n2,581.4\n2,404.9\n\n\n2- Tumors (neoplasms)\n2,347.7\n2,402.6\n2,294.6\n2,205.3\n2,162.5\n1,974.2\n\n\n11- Digestive system diseases\n2,105.3\n2,052.0\n2,031.9\n1,988.9\n1,980.7\n1,823.2\n\n\n10- Respiratory system diseases\n1,764.5\n1,732.2\n1,810.2\n1,618.2\n1,707.9\n1,475.4\n\n\n14- Genitourinary system diseases\n521.5\n578.4\n579.3\n634.5\n641.4\n654.1\n\n\n1- Certain infectious and parasitic diseases\n796.5\n727.6\n635.9\n545.1\n598.1\n622.6\n\n\n6- Nervous system diseases\n300.2\n327.7\n348.1\n345.4\n354.8\n340.7\n\n\n16- Conditions originating in the perinatal period\n519.6\n460.5\n409.6\n392.2\n361.3\n312.7\n\n\n\n\n\n\n\n\n\n\nTop 5 causes de décès — Femmes\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Diseases of the circulatory system diseases\n3,628.1\n3,469.8\n3,679.5\n3,529.0\n3,503.0\n3,443.6\n\n\n4- Endocrine, nutritional and metabolic diseases\n2,357.1\n2,708.2\n2,709.0\n2,624.2\n2,343.0\n2,106.9\n\n\n2- Tumors (neoplasms)\n2,163.6\n2,104.2\n2,033.4\n1,982.9\n1,969.8\n1,880.2\n\n\n10- Respiratory system diseases\n1,171.2\n1,233.5\n1,199.6\n1,124.3\n1,208.4\n1,055.9\n\n\n11- Digestive system diseases\n986.2\n1,018.3\n1,065.5\n1,059.0\n1,001.0\n950.5\n\n\n20- External causes of morbidity and mortality\n704.2\n728.8\n747.9\n675.1\n679.8\n677.0\n\n\n14- Genitourinary system diseases\n391.3\n386.6\n407.4\n484.9\n506.5\n548.6\n\n\n1- Certain infectious and parasitic diseases\n464.5\n432.2\n362.2\n304.2\n338.7\n375.8\n\n\n6- Nervous system diseases\n220.5\n259.5\n267.2\n252.4\n265.8\n257.1\n\n\n16- Conditions originating in the perinatal period\n390.2\n352.6\n309.7\n312.5\n279.3\n235.5",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#indicadores-de-concentración",
-    "href": "es/A2_causas.html#indicadores-de-concentración",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Indicadores de concentración",
-    "text": "Indicadores de concentración",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#puntos-clave",
-    "href": "es/A2_causas.html#puntos-clave",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Puntos clave",
-    "text": "Puntos clave\n\n\n\n\n\n\nNote\n\n\n\nPrincipales conclusiones\n\nLa mortalidad en México está dominada por las enfermedades cardiovasculares y endocrinas, lo que refleja la avanzada transición epidemiológica.\nLas causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género.\nLa tendencia temporal muestra una progresiva diversificación de las causas, evidente en el  Índice de Herfindahl-Hirschman (IHH) después de 2010.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A2_causas.html#navegación",
-    "href": "es/A2_causas.html#navegación",
-    "title": "2- Desagregación por causa de defunción",
-    "section": "Navegación",
-    "text": "Navegación\n\n← 1- Descriptivo general → 3- Causas específicas",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "2- Causas de muerte"
-    ]
-  },
-  {
-    "objectID": "es/A4_territorial.html",
-    "href": "es/A4_territorial.html",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "",
-    "text": "Bloque A · Nivel 4 Variables : year · sex · state · cause",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "④ Dimensión territorial"
-    ]
-  },
-  {
-    "objectID": "es/A4_territorial.html#introducción",
-    "href": "es/A4_territorial.html#introducción",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Introducción",
-    "text": "Introducción\nLa introducción del estado como variable de desagregación revela cómo las transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio. Se combinan aquí las dimensiones temporal, sanitaria y geográfica.\n\n\n\n\n\n\nTip\n\n\n\nPara un análisis explícitamente espacial, ver Bloque B — ② bis · Estados.",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "④ Dimensión territorial"
-    ]
-  },
-  {
-    "objectID": "es/A4_territorial.html#disparidades-inter-étatiques",
-    "href": "es/A4_territorial.html#disparidades-inter-étatiques",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Disparidades inter-étatiques",
-    "text": "Disparidades inter-étatiques\n\nHeatmap état × causeDispersión inter-estatal por causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "④ Dimensión territorial"
-    ]
-  },
-  {
-    "objectID": "es/A4_territorial.html#navigation",
-    "href": "es/A4_territorial.html#navigation",
-    "title": "④ Dimensión territorial — Estados",
-    "section": "Navigation",
-    "text": "Navigation\n\n← ③ Causas específicas → ⑤ Máxima desagregación",
-    "crumbs": [
-      "Bloque A — Temporalidad",
-      "④ Dimensión territorial"
-    ]
-  },
-  {
-    "objectID": "es/B1_regional.html",
-    "href": "es/B1_regional.html",
-    "title": "① Descripción regional",
-    "section": "",
-    "text": "Bloque B · Nivel 1 Variables : state · sex · cause"
-  },
-  {
-    "objectID": "es/B1_regional.html#introducción",
-    "href": "es/B1_regional.html#introducción",
-    "title": "① Descripción regional",
-    "section": "Introducción",
-    "text": "Introducción\nEl Bloque B aborda la dimensión espacial de la mortalidad en México. A diferencia del Bloque A —que analiza la evolución temporal—, aquí el foco es la distribución geográfica de la mortalidad entre entidades federativas.\nEste primer nivel establece el panorama regional sin desagregación temporal, respondiendo a la pregunta: ¿qué estados concentran la mayor carga de mortalidad y en qué causas?\n\n\n\n\n\n\nTip\n\n\n\nComplementariedad con el Bloque A\nEl Bloque A · Nivel ④ aborda la evolución temporal por estado. Este nivel B1 sirve como punto de entrada estrictamente geográfico."
-  },
-  {
-    "objectID": "es/B1_regional.html#panorama-nacional",
-    "href": "es/B1_regional.html#panorama-nacional",
-    "title": "① Descripción regional",
-    "section": "Panorama nacional",
-    "text": "Panorama nacional\n\nRanking de estadosComposición por causaDispersión inter-estatalBrecha H/M por estado\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 4"
-  },
-  {
-    "objectID": "es/B1_regional.html#tabla-resumen",
-    "href": "es/B1_regional.html#tabla-resumen",
-    "title": "① Descripción regional",
-    "section": "Tabla resumen",
-    "text": "Tabla resumen\n\n\n\nResumen de mortalidad por entidad federativa\n\n\nEstado\nTasa total /100k\nCausa principal\nRatio H/M\n\n\n\n\nNuevo León\n2064.7\nEnf. cardiovasculares\n1.01\n\n\nJalisco\n2014.0\nEnf. cardiovasculares\n0.94\n\n\nGuanajuato\n1985.8\nEnf. cardiovasculares\n0.80\n\n\nCiudad de México\n1929.5\nEnf. cardiovasculares\n1.04\n\n\nCoahuila\n1879.0\nEnf. cardiovasculares\n1.33\n\n\nChihuahua\n1878.3\nEnf. cardiovasculares\n1.06\n\n\nMichoacán\n1848.9\nDiabetes mellitus\n0.99\n\n\nYucatán\n1831.5\nCausas externas\n1.21\n\n\nQuintana Roo\n1829.3\nDiabetes mellitus\n1.08\n\n\nTamaulipas\n1766.5\nDiabetes mellitus\n1.30\n\n\nBaja California Sur\n1757.2\nEnf. cardiovasculares\n1.33\n\n\nPuebla\n1747.0\nCausas externas\n0.84\n\n\nDurango\n1679.9\nDiabetes mellitus\n1.88\n\n\nQuerétaro\n1659.2\nEnf. cardiovasculares\n1.50\n\n\nMorelos\n1649.1\nCausas externas\n1.05\n\n\nCampeche\n1643.8\nEnf. cardiovasculares\n1.00\n\n\nSinaloa\n1635.5\nEnf. cardiovasculares\n0.96\n\n\nAguascalientes\n1634.1\nEnf. cardiovasculares\n0.90\n\n\nBaja California\n1625.4\nCausas externas\n1.60\n\n\nEstado de México\n1613.7\nDiabetes mellitus\n1.07\n\n\nGuerrero\n1581.3\nEnf. cardiovasculares\n1.23\n\n\nVeracruz\n1565.7\nEnf. cardiovasculares\n0.98\n\n\nNayarit\n1546.8\nEnf. cardiovasculares\n0.86\n\n\nSonora\n1505.5\nDiabetes mellitus\n1.21\n\n\nColima\n1501.6\nTumores malignos\n0.97\n\n\nZacatecas\n1486.4\nDiabetes mellitus\n1.00\n\n\nTabasco\n1479.8\nEnf. cardiovasculares\n1.07\n\n\nHidalgo\n1479.1\nEnf. cardiovasculares\n0.91\n\n\nTlaxcala\n1432.4\nEnf. cardiovasculares\n1.13\n\n\nOaxaca\n1402.9\nEnf. cardiovasculares\n0.80\n\n\nSan Luis Potosí\n1391.9\nOtras\n1.23\n\n\nChiapas\n1295.6\nEnf. cardiovasculares\n1.41"
-  },
-  {
-    "objectID": "es/B1_regional.html#puntos-clave-de-este-nivel",
-    "href": "es/B1_regional.html#puntos-clave-de-este-nivel",
-    "title": "① Descripción regional",
-    "section": "Puntos clave de este nivel",
-    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel B1\n\nExiste una heterogeneidad marcada entre entidades: las tasas de mortalidad varían considerablemente entre los estados con mayor y menor carga.\nLas enfermedades cardiovasculares y la diabetes son la causa dominante en la mayoría de los estados, con excepciones en estados con alta violencia.\nLa brecha de género es especialmente pronunciada en estados del norte, donde las causas externas pesan más en la mortalidad masculina."
-  },
-  {
-    "objectID": "es/B1_regional.html#navegación",
-    "href": "es/B1_regional.html#navegación",
-    "title": "① Descripción regional",
-    "section": "Navegación",
-    "text": "Navegación\n\n← ⑤ Máxima desagregación → B② Análisis espacial por estados"
   },
   {
     "objectID": "es/B2_espacial_estados.html",
@@ -818,17 +105,765 @@
     "text": "Navigation\n\n← ④ Dimensión territorial (Bloque A) → ③ bis · Municipios"
   },
   {
-    "objectID": "es/C1_regional_description.html",
-    "href": "es/C1_regional_description.html",
-    "title": "C1_regional_description",
+    "objectID": "es/B1_regional.html",
+    "href": "es/B1_regional.html",
+    "title": "① Descripción regional",
+    "section": "",
+    "text": "Bloque B · Nivel 1 Variables : state · sex · cause"
+  },
+  {
+    "objectID": "es/B1_regional.html#introducción",
+    "href": "es/B1_regional.html#introducción",
+    "title": "① Descripción regional",
+    "section": "Introducción",
+    "text": "Introducción\nEl Bloque B aborda la dimensión espacial de la mortalidad en México. A diferencia del Bloque A —que analiza la evolución temporal—, aquí el foco es la distribución geográfica de la mortalidad entre entidades federativas.\nEste primer nivel establece el panorama regional sin desagregación temporal, respondiendo a la pregunta: ¿qué estados concentran la mayor carga de mortalidad y en qué causas?\n\n\n\n\n\n\nTip\n\n\n\nComplementariedad con el Bloque A\nEl Bloque A · Nivel ④ aborda la evolución temporal por estado. Este nivel B1 sirve como punto de entrada estrictamente geográfico."
+  },
+  {
+    "objectID": "es/B1_regional.html#panorama-nacional",
+    "href": "es/B1_regional.html#panorama-nacional",
+    "title": "① Descripción regional",
+    "section": "Panorama nacional",
+    "text": "Panorama nacional\n\nRanking de estadosComposición por causaDispersión inter-estatalBrecha H/M por estado\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 4"
+  },
+  {
+    "objectID": "es/B1_regional.html#tabla-resumen",
+    "href": "es/B1_regional.html#tabla-resumen",
+    "title": "① Descripción regional",
+    "section": "Tabla resumen",
+    "text": "Tabla resumen\n\n\n\nResumen de mortalidad por entidad federativa\n\n\nEstado\nTasa total /100k\nCausa principal\nRatio H/M\n\n\n\n\nNuevo León\n2064.7\nEnf. cardiovasculares\n1.01\n\n\nJalisco\n2014.0\nEnf. cardiovasculares\n0.94\n\n\nGuanajuato\n1985.8\nEnf. cardiovasculares\n0.80\n\n\nCiudad de México\n1929.5\nEnf. cardiovasculares\n1.04\n\n\nCoahuila\n1879.0\nEnf. cardiovasculares\n1.33\n\n\nChihuahua\n1878.3\nEnf. cardiovasculares\n1.06\n\n\nMichoacán\n1848.9\nDiabetes mellitus\n0.99\n\n\nYucatán\n1831.5\nCausas externas\n1.21\n\n\nQuintana Roo\n1829.3\nDiabetes mellitus\n1.08\n\n\nTamaulipas\n1766.5\nDiabetes mellitus\n1.30\n\n\nBaja California Sur\n1757.2\nEnf. cardiovasculares\n1.33\n\n\nPuebla\n1747.0\nCausas externas\n0.84\n\n\nDurango\n1679.9\nDiabetes mellitus\n1.88\n\n\nQuerétaro\n1659.2\nEnf. cardiovasculares\n1.50\n\n\nMorelos\n1649.1\nCausas externas\n1.05\n\n\nCampeche\n1643.8\nEnf. cardiovasculares\n1.00\n\n\nSinaloa\n1635.5\nEnf. cardiovasculares\n0.96\n\n\nAguascalientes\n1634.1\nEnf. cardiovasculares\n0.90\n\n\nBaja California\n1625.4\nCausas externas\n1.60\n\n\nEstado de México\n1613.7\nDiabetes mellitus\n1.07\n\n\nGuerrero\n1581.3\nEnf. cardiovasculares\n1.23\n\n\nVeracruz\n1565.7\nEnf. cardiovasculares\n0.98\n\n\nNayarit\n1546.8\nEnf. cardiovasculares\n0.86\n\n\nSonora\n1505.5\nDiabetes mellitus\n1.21\n\n\nColima\n1501.6\nTumores malignos\n0.97\n\n\nZacatecas\n1486.4\nDiabetes mellitus\n1.00\n\n\nTabasco\n1479.8\nEnf. cardiovasculares\n1.07\n\n\nHidalgo\n1479.1\nEnf. cardiovasculares\n0.91\n\n\nTlaxcala\n1432.4\nEnf. cardiovasculares\n1.13\n\n\nOaxaca\n1402.9\nEnf. cardiovasculares\n0.80\n\n\nSan Luis Potosí\n1391.9\nOtras\n1.23\n\n\nChiapas\n1295.6\nEnf. cardiovasculares\n1.41"
+  },
+  {
+    "objectID": "es/B1_regional.html#puntos-clave-de-este-nivel",
+    "href": "es/B1_regional.html#puntos-clave-de-este-nivel",
+    "title": "① Descripción regional",
+    "section": "Puntos clave de este nivel",
+    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel B1\n\nExiste una heterogeneidad marcada entre entidades: las tasas de mortalidad varían considerablemente entre los estados con mayor y menor carga.\nLas enfermedades cardiovasculares y la diabetes son la causa dominante en la mayoría de los estados, con excepciones en estados con alta violencia.\nLa brecha de género es especialmente pronunciada en estados del norte, donde las causas externas pesan más en la mortalidad masculina."
+  },
+  {
+    "objectID": "es/B1_regional.html#navegación",
+    "href": "es/B1_regional.html#navegación",
+    "title": "① Descripción regional",
+    "section": "Navegación",
+    "text": "Navegación\n\n← ⑤ Máxima desagregación → B② Análisis espacial por estados"
+  },
+  {
+    "objectID": "es/A4_territorial.html",
+    "href": "es/A4_territorial.html",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "",
+    "text": "Bloque A · Nivel 4 Variables : year · sex · state · cause",
+    "crumbs": [
+      "Bloque A — Trends",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#introducción",
+    "href": "es/A4_territorial.html#introducción",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Introducción",
+    "text": "Introducción\nLa introducción del estado como variable de desagregación revela cómo las transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio. Se combinan aquí las dimensiones temporal, sanitaria y geográfica.\n\n\n\n\n\n\nTip\n\n\n\nPara un análisis explícitamente espacial, ver Bloque B — ② bis · Estados.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#disparidades-inter-étatiques",
+    "href": "es/A4_territorial.html#disparidades-inter-étatiques",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Disparidades inter-étatiques",
+    "text": "Disparidades inter-étatiques\n\nHeatmap état × causeDispersión inter-estatal por causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2",
+    "crumbs": [
+      "Bloque A — Trends",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A4_territorial.html#navigation",
+    "href": "es/A4_territorial.html#navigation",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ③ Causas específicas → ⑤ Máxima desagregación",
+    "crumbs": [
+      "Bloque A — Trends",
+      "④ Dimensión territorial"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html",
+    "href": "es/A2_causas.html",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "",
+    "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#introducción-analítica",
+    "href": "es/A2_causas.html#introducción-analítica",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Introducción analítica",
+    "text": "Introducción analítica\nLa incorporación de la causa de defunción como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
+    "href": "es/A2_causas.html#vue-densemble-composición-de-la-mortalité",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Vue d’ensemble: composición de la mortalité",
+    "text": "Vue d’ensemble: composición de la mortalité\n\nEvolución de la estructura por causa\n\nLíneas absolutasDistribución por grupo de edadTop 6Tabla resumen\n\n\n\n\n\n\n\n\n\n\nFigure 1: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Distribucion por grupo de edad, 2000–2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Evolución temporal de las principales causas, 2000–2024\n\n\n\n\n\n\n\n\n\n\nDefunciones por causa, años seleccionados\n\n\nCause\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Enfermedades del sistema circulatorio\n138\n249\n97,579\n112,189\n141,515\n166,773\n193,896\n224,876\n\n\n4- Enfermedades endocrinas, nutricionales y metabólicas\n73\n178\n60,023\n81,393\n99,461\n114,619\n119,611\n126,955\n\n\n2- Tumores (neoplasias)\n100\n180\n57,749\n66,480\n74,761\n85,165\n95,388\n102,306\n\n\n20- Causas externas de morbilidad y mortalidad\n83\n127\n51,744\n53,328\n73,072\n67,457\n81,384\n81,809\n\n\n11- Enfermedades del sistema digestivo\n52\n96\n42,343\n47,801\n55,044\n62,949\n70,979\n74,464\n\n\n10- Enfermedades del sistema respiratorio\n49\n96\n38,525\n43,452\n51,301\n55,381\n69,364\n68,708\n\n\n14- Enfermedades del sistema genitourinario\n13\n29\n11,950\n14,277\n17,350\n22,503\n26,939\n31,600\n\n\n1- Ciertas enfermedades infecciosas y parasitarias\n21\n36\n18,648\n18,273\n17,164\n16,222\n19,602\n23,242\n\n\n6- Enfermedades del sistema nervioso\n16\n24\n7,444\n9,132\n10,436\n11,368\n13,146\n14,122\n\n\n16- Afecciones originadas en el período perinatal\n5\n8\n19,465\n16,421\n14,340\n12,941\n11,532\n9,280\n\n\n18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales\n145\n202\n8,468\n9,281\n12,528\n10,787\n9,675\n9,251\n\n\n17- Malformaciones congénitas y anomalías cromosómicas\n4\n4\n9,569\n9,254\n9,137\n9,305\n8,932\n6,870\n\n\n12- Piel y tejido subcutáneo\nNA\n2\n976\n1,032\n1,689\n2,850\n4,085\n5,606\n\n\n13- Enfermedades del sistema musculoesquelético y del tejido conectivo\n4\n8\n2,711\n3,316\n5,025\n4,589\n5,204\n5,570\n\n\n3- Enfermedades de la sangre y del sistema inmunitario\n7\n13\n3,894\n4,453\n4,828\n4,735\n4,804\n4,969\n\n\n5- Trastornos mentales y del comportamiento\n12\n12\n4,995\n4,500\n4,389\n5,282\n4,731\n4,927\n\n\n22- COVID-19\nNA\nNA\nNA\nNA\nNA\nNA\nNA\n1,359\n\n\n15- Enfermedades del embarazo, el parto y el puerperio\n5\n4\n1,316\n1,275\n1,031\n905\n853\n741\n\n\n8- Enfermedades del oído y la apófisis mastoides\nNA\nNA\n54\n44\n33\n38\n50\n50\n\n\n7- Enfermedades de los ojos y sus anexos\nNA\nNA\n10\n8\n14\n16\n16\n13\n\n\nNA\n410,246\n428,129\nNA\nNA\nNA\nNA\nNA\nNA",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme",
+    "href": "es/A2_causas.html#tasas-de-mortalidad-estandarizadas-tme",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Tasas de mortalidad estandarizadas (TME)",
+    "text": "Tasas de mortalidad estandarizadas (TME)\n\nTME por causa, sexo y año\n\nEvolución de las causasTabla principales causas (hombre)Tabla principales causas (mujer)\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nTop 5 causes de décès — Hommes\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Diseases of the circulatory system diseases\n4,311.1\n4,317.3\n4,658.1\n4,630.9\n4,657.4\n4,757.7\n\n\n20- External causes of morbidity and mortality\n3,101.9\n2,893.0\n3,777.6\n2,974.2\n3,461.7\n3,332.5\n\n\n4- Endocrine, nutritional and metabolic diseases\n2,187.5\n2,599.3\n2,832.0\n2,803.7\n2,581.4\n2,404.9\n\n\n2- Tumors (neoplasms)\n2,347.7\n2,402.6\n2,294.6\n2,205.3\n2,162.5\n1,974.2\n\n\n11- Digestive system diseases\n2,105.3\n2,052.0\n2,031.9\n1,988.9\n1,980.7\n1,823.2\n\n\n10- Respiratory system diseases\n1,764.5\n1,732.2\n1,810.2\n1,618.2\n1,707.9\n1,475.4\n\n\n14- Genitourinary system diseases\n521.5\n578.4\n579.3\n634.5\n641.4\n654.1\n\n\n1- Certain infectious and parasitic diseases\n796.5\n727.6\n635.9\n545.1\n598.1\n622.6\n\n\n6- Nervous system diseases\n300.2\n327.7\n348.1\n345.4\n354.8\n340.7\n\n\n16- Conditions originating in the perinatal period\n519.6\n460.5\n409.6\n392.2\n361.3\n312.7\n\n\n\n\n\n\n\n\n\n\nTop 5 causes de décès — Femmes\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9- Diseases of the circulatory system diseases\n3,628.1\n3,469.8\n3,679.5\n3,529.0\n3,503.0\n3,443.6\n\n\n4- Endocrine, nutritional and metabolic diseases\n2,357.1\n2,708.2\n2,709.0\n2,624.2\n2,343.0\n2,106.9\n\n\n2- Tumors (neoplasms)\n2,163.6\n2,104.2\n2,033.4\n1,982.9\n1,969.8\n1,880.2\n\n\n10- Respiratory system diseases\n1,171.2\n1,233.5\n1,199.6\n1,124.3\n1,208.4\n1,055.9\n\n\n11- Digestive system diseases\n986.2\n1,018.3\n1,065.5\n1,059.0\n1,001.0\n950.5\n\n\n20- External causes of morbidity and mortality\n704.2\n728.8\n747.9\n675.1\n679.8\n677.0\n\n\n14- Genitourinary system diseases\n391.3\n386.6\n407.4\n484.9\n506.5\n548.6\n\n\n1- Certain infectious and parasitic diseases\n464.5\n432.2\n362.2\n304.2\n338.7\n375.8\n\n\n6- Nervous system diseases\n220.5\n259.5\n267.2\n252.4\n265.8\n257.1\n\n\n16- Conditions originating in the perinatal period\n390.2\n352.6\n309.7\n312.5\n279.3\n235.5",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#indicadores-de-concentración",
+    "href": "es/A2_causas.html#indicadores-de-concentración",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Indicadores de concentración",
+    "text": "Indicadores de concentración",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#puntos-clave",
+    "href": "es/A2_causas.html#puntos-clave",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Puntos clave",
+    "text": "Puntos clave\n\n\n\n\n\n\nNote\n\n\n\nPrincipales conclusiones\n\nLa mortalidad en México está dominada por las enfermedades cardiovasculares y endocrinas, lo que refleja la avanzada transición epidemiológica.\nLas causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género.\nLa tendencia temporal muestra una progresiva diversificación de las causas, evidente en el  Índice de Herfindahl-Hirschman (IHH) después de 2010.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "es/A2_causas.html#navegación",
+    "href": "es/A2_causas.html#navegación",
+    "title": "2- Desagregación por causa de defunción",
+    "section": "Navegación",
+    "text": "Navegación\n\n← 1- Descriptivo general → 3- Causas específicas",
+    "crumbs": [
+      "Bloque A — Trends",
+      "2- Causas"
+    ]
+  },
+  {
+    "objectID": "en/index.html",
+    "href": "en/index.html",
+    "title": "Mortality Analysis in Mexico",
+    "section": "",
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+  },
+  {
+    "objectID": "en/index.html#mortality-in-mexico",
+    "href": "en/index.html#mortality-in-mexico",
+    "title": "Mortality Analysis in Mexico",
+    "section": "",
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+  },
+  {
+    "objectID": "en/index.html#site-structure",
+    "href": "en/index.html#site-structure",
+    "title": "Mortality Analysis in Mexico",
+    "section": "Site structure",
+    "text": "Site structure\n\nBlock A — Health and temporal analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nGlobal trends, ASMR\n→\n\n\n②\nyear, sex, cause\nEpidemiological transitions\n→\n\n\n③\nyear, sex, cause_specific\nICD-10 specific cause breakdown\n→\n\n\n④\nyear, sex, state, cause\nRegional disparities\n→\n\n\n⑤\nyear, sex, state, cause_specific\nHealth-territory articulation\n→\n\n\n\n\n\nBlock B — Spatial analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nstate, cause\nRegional description\n→\n\n\n②\nstate, year, cause\nSpatial distribution, clusters\n→\n\n\n③\nmunicipality, year, cause\nIntra-state heterogeneity\n→\n\n\n\n\n\nBlock C — Life expectancy\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nNational overview\n→\n\n\n②\nstate, year, sex\nState-level trends\n→\n\n\n③\nmunicipality, sex\nMunicipal heterogeneity\n→"
+  },
+  {
+    "objectID": "en/index.html#preliminary-overview",
+    "href": "en/index.html#preliminary-overview",
+    "title": "Mortality Analysis in Mexico",
+    "section": "Preliminary overview",
+    "text": "Preliminary overview\n\n\n\n\n\n\n\n\nFigure 1: Total mortality trends by sex (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNote"
+  },
+  {
+    "objectID": "en/index.html#how-to-navigate-this-site",
+    "href": "en/index.html#how-to-navigate-this-site",
+    "title": "Mortality Analysis in Mexico",
+    "section": "How to navigate this site",
+    "text": "How to navigate this site\n\nProgressive reading — follow Block A from level ① to ⑤, gradually increasing analytical complexity.\nThematic reading — go directly to Block B (spatial perspective) or Block C (life expectancy) depending on your research question.\nLanguage switch — use the 🇲🇽 Español / 🇬🇧 English menu in the navigation bar to access equivalent content in Spanish.\n\n\n→ ① General description"
+  },
+  {
+    "objectID": "en/A4_territorial.html",
+    "href": "en/A4_territorial.html",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "",
+    "text": "Bloque A · Nivel 4 Variables : year · sex · state · cause",
+    "crumbs": [
+      "Block A — Trends",
+      "④ Territorial dimension"
+    ]
+  },
+  {
+    "objectID": "en/A4_territorial.html#introducción",
+    "href": "en/A4_territorial.html#introducción",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Introducción",
+    "text": "Introducción\nLa introducción del estado como variable de desagregación revela cómo las transiciones epidemiológicas se desarrollan de forma heterogénea en el territorio. Se combinan aquí las dimensiones temporal, sanitaria y geográfica.\n\n\n\n\n\n\nTip\n\n\n\nPara un análisis explícitamente espacial, ver Bloque B — ② bis · Estados.",
+    "crumbs": [
+      "Block A — Trends",
+      "④ Territorial dimension"
+    ]
+  },
+  {
+    "objectID": "en/A4_territorial.html#disparidades-inter-étatiques",
+    "href": "en/A4_territorial.html#disparidades-inter-étatiques",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Disparidades inter-étatiques",
+    "text": "Disparidades inter-étatiques\n\nHeatmap état × causeDispersión inter-estatal por causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2",
+    "crumbs": [
+      "Block A — Trends",
+      "④ Territorial dimension"
+    ]
+  },
+  {
+    "objectID": "en/A4_territorial.html#navigation",
+    "href": "en/A4_territorial.html#navigation",
+    "title": "④ Dimensión territorial — Estados",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ③ Causas específicas → ⑤ Máxima desagregación",
+    "crumbs": [
+      "Block A — Trends",
+      "④ Territorial dimension"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html",
+    "href": "en/A2_causes.html",
+    "title": "2- Disaggregation by cause of death",
+    "section": "",
+    "text": "Bloque A · Nivel 2 Variables : year · sex · cause",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#introducción-analítica",
+    "href": "en/A2_causes.html#introducción-analítica",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Introducción analítica",
+    "text": "Introducción analítica\nLa incorporación de la causa de muerte como dimensión analítica permite identificar las grandes transiciones epidemiológicas que caracterizan la evolución sanitaria de México durante las tres ultimas décadas.\nEn este nivel se busca responder tres preguntas clave :\n\n¿Qué enfermedades concentran la mayor carga de mortalidad ?\n¿Cómo ha evolucionado la composición por causa en el tiempo ?\n¿Existen diferencias de género en los patrones causales ?\n\n\n\n\n\n\n\nTip\n\n\n\nEnlace con el nivel anterior\nEl Nivel ① — Descriptivo general establece las tendencias brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#vue-densemble-composition-de-la-mortalité",
+    "href": "en/A2_causes.html#vue-densemble-composition-de-la-mortalité",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Vue d’ensemble : composition de la mortalité",
+    "text": "Vue d’ensemble : composition de la mortalité\n\nÉvolution de la structure par cause\n\nAire empilée (%)Lignes absoluesTableau résumé\n\n\n\n\n\n\n\n\n\n\nFigure 1: Structure de la mortalité par cause, 1998–2024 (%)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Évolution absolue de la mortalité par cause\n\n\n\n\n\n\n\n\n\n\nDeaths by cause of death, selected years\n\n\nCause\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n9 - Diseases of the circulatory system\n97,579\n112,189\n141,515\n166,773\n261,900\n224,876\n\n\n4 - Endocrine, nutritional, and metabolic diseases\n60,023\n81,393\n99,461\n114,619\n171,422\n126,955\n\n\n2 - Tumors (neoplasms)\n57,749\n66,480\n74,761\n85,165\n97,472\n102,306\n\n\n20 - External causes of morbidity and mortality\n51,744\n53,328\n73,072\n67,457\n81,013\n81,809\n\n\n11 - Diseases of the digestive system\n42,343\n47,801\n55,044\n62,949\n71,416\n74,464\n\n\n10 - Diseases of the respiratory system\n38,525\n43,452\n51,301\n55,381\n96,896\n68,708\n\n\n14 - Diseases of the genitourinary system\n11,950\n14,277\n17,350\n22,503\n26,918\n31,600\n\n\n1 - Certain infectious and parasitic diseases\n18,648\n18,273\n17,164\n16,222\n17,924\n23,242\n\n\n6 - Diseases of the nervous system\n7,444\n9,132\n10,436\n11,368\n12,992\n14,122\n\n\n16 - Conditions originating in the perinatal period\n19,465\n16,421\n14,340\n12,941\n10,054\n9,280\n\n\n18 - Symptoms, signs, and abnormal clinical and laboratory findings\n8,468\n9,281\n12,528\n10,787\n11,153\n9,251\n\n\n17 - Congenital malformations and chromosomal abnormalities\n9,569\n9,254\n9,137\n9,305\n8,020\n6,870\n\n\n12 - Diseases of the skin and subcutaneous tissue\n976\n1,032\n1,689\n2,850\n3,221\n5,606\n\n\n13 - Diseases of the musculoskeletal system and connective tissue\n2,711\n3,316\n5,025\n4,589\n5,505\n5,570\n\n\n3 - Diseases of the blood and immune system\n3,894\n4,453\n4,828\n4,735\n5,326\n4,969\n\n\n5 - Mental and behavioral disorders\n4,995\n4,500\n4,389\n5,282\n5,197\n4,927\n\n\n22 - COVID-19\nNA\nNA\nNA\nNA\n200,805\n1,359\n\n\n15 - Pregnancy, childbirth, and the puerperium\n1,316\n1,275\n1,031\n905\n1,172\n741\n\n\n8 - Diseases of the ear and mastoid process\n54\n44\n33\n38\n45\n50\n\n\n7 - Diseases of the eye and adnexa\n10\n8\n14\n16\n10\n13",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#causes-de-décès-std",
+    "href": "en/A2_causes.html#causes-de-décès-std",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Causes de décès std",
+    "text": "Causes de décès std\n\nStandardized death rates (SDR) par cause, sexe et année\n\nEvolution des causes de décès (std rate)Top 5 des causes de décès (std rate)\n\n\n\n\n\n\n\n\n\n\nFigure 3: Évolution de la mortalité std par cause\n\n\n\n\n\n\n\n\n\n\n\n\n\nHommes vs Femmes (2023)Ratio H/M par causeTendencias por sexo",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#indicateurs-de-concentration",
+    "href": "en/A2_causes.html#indicateurs-de-concentration",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Indicateurs de concentration",
+    "text": "Indicateurs de concentration",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#points-clés-de-ce-niveau",
+    "href": "en/A2_causes.html#points-clés-de-ce-niveau",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Points clés de ce niveau",
+    "text": "Points clés de ce niveau\n\n\n\n\n\n\nNote\n\n\n\nRetenir de ce niveau ②\n\nLa mortalité mexicaine est dominée par les maladies cardiovasculaires et le diabète mellitus, reflet de la transition épidémiologique avancée.\nLes causes externes (accidents, violences) présentent un ratio H/M nettement supérieur à 1, révélant un déterminisme de genre fort.\nLa dynamique temporelle montre une diversification progressive des causes, visible dans la baisse de l’IHH après 2010.",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A2_causes.html#navigation",
+    "href": "en/A2_causes.html#navigation",
+    "title": "2- Disaggregation by cause of death",
+    "section": "Navigation",
+    "text": "Navigation\n\n← 1- Descriptivo general → 3- Causas específicas",
+    "crumbs": [
+      "Block A — Trends",
+      "2- Causes of death"
+    ]
+  },
+  {
+    "objectID": "en/A1_descriptive_general.html",
+    "href": "en/A1_descriptive_general.html",
+    "title": "1- General descriptive analysis",
+    "section": "",
+    "text": "Bloc A L1 Variables : year · sex",
+    "crumbs": [
+      "Block A — Trends",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "en/A1_descriptive_general.html#introduction",
+    "href": "en/A1_descriptive_general.html#introduction",
+    "title": "1- General descriptive analysis",
+    "section": "Introduction",
+    "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
+    "crumbs": [
+      "Block A — Trends",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "en/A1_descriptive_general.html#global-trends",
+    "href": "en/A1_descriptive_general.html#global-trends",
+    "title": "1- General descriptive analysis",
+    "section": "Global trends",
+    "text": "Global trends\n\nTemporal serieGrowth rate\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Block A — Trends",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "en/A1_descriptive_general.html#asmr-trend",
+    "href": "en/A1_descriptive_general.html#asmr-trend",
+    "title": "1- General descriptive analysis",
+    "section": "ASMR trend",
+    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\nTemporal serie for ASMRMen ASMR changeWomen ASMR change\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
+    "crumbs": [
+      "Block A — Trends",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "en/A1_descriptive_general.html#navigation",
+    "href": "en/A1_descriptive_general.html#navigation",
+    "title": "1- General descriptive analysis",
+    "section": "Navigation",
+    "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
+    "crumbs": [
+      "Block A — Trends",
+      "1- General description"
+    ]
+  },
+  {
+    "objectID": "en/A3_specific_causes.html",
+    "href": "en/A3_specific_causes.html",
+    "title": "③ Causas específicas de muerte",
+    "section": "",
+    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
+    "crumbs": [
+      "Block A — Trends",
+      "3- Specific causes"
+    ]
+  },
+  {
+    "objectID": "en/A3_specific_causes.html#introducción",
+    "href": "en/A3_specific_causes.html#introducción",
+    "title": "③ Causas específicas de muerte",
+    "section": "Introducción",
+    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
+    "crumbs": [
+      "Block A — Trends",
+      "3- Specific causes"
+    ]
+  },
+  {
+    "objectID": "en/A3_specific_causes.html#evolución-por-causa-específica",
+    "href": "en/A3_specific_causes.html#evolución-por-causa-específica",
+    "title": "③ Causas específicas de muerte",
+    "section": "Evolución por causa específica",
+    "text": "Evolución por causa específica\n\nTop 10 causas (2022)Tendencias por sexo\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Block A — Trends",
+      "3- Specific causes"
+    ]
+  },
+  {
+    "objectID": "en/A3_specific_causes.html#navigation",
+    "href": "en/A3_specific_causes.html#navigation",
+    "title": "③ Causas específicas de muerte",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
+    "crumbs": [
+      "Block A — Trends",
+      "3- Specific causes"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html",
+    "href": "en/A5_maximum_disaggregation.html",
+    "title": "⑤ Maximum disaggregation",
+    "section": "",
+    "text": "Block A · Level 5 Variables : year · sex · state · cause_specific",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#introduction",
+    "href": "en/A5_maximum_disaggregation.html#introduction",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Introduction",
+    "text": "Introduction\nThis level represents the maximum disaggregation of Block A: it combines all four analytical dimensions (time, sex, territory, and ICD-10 specific cause) to produce high-resolution state–cause epidemiological profiles.\nThe central question is: which state × cause × sex combinations concentrate the greatest burden of preventable mortality?\n\n\n\n\n\n\nTip\n\n\n\nRecommended use\nThis level is the natural starting point for prioritising public health interventions at the state level. Results are complemented by the spatial analysis in Block B.",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
+    "href": "en/A5_maximum_disaggregation.html#state-profiles-by-specific-cause",
+    "title": "⑤ Maximum disaggregation",
+    "section": "State profiles by specific cause",
+    "text": "State profiles by specific cause\n\nHeatmap: state × specific causeState ranking by causeGender gap by state and cause\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
+    "href": "en/A5_maximum_disaggregation.html#temporal-trends-by-state-and-cause",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Temporal trends by state and cause",
+    "text": "Temporal trends by state and cause\n\n\n\n\n\n\n\n\nFigure 4",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#summary-table",
+    "href": "en/A5_maximum_disaggregation.html#summary-table",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Summary table",
+    "text": "Summary table\n\n\n\nTop 15 state × cause combinations by mortality burden (2024)\n\n\nState\nSpecific cause\nDeaths\nRate /100k\n\n\n\n\nMexico City\nCOVID-19\n1,638\n47.2\n\n\nMexico City\nType 2 diabetes\n1,562\n77.3\n\n\nMexico City\nIschemic heart disease\n1,494\n12.8\n\n\nMexico City\nRoad traffic accidents\n1,370\n15.2\n\n\nMexico City\nHomicides\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nJalisco\nIschemic heart disease\n1,149\n11.1\n\n\nMexico City\nDM complications\n1,149\n8.8",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#key-findings",
+    "href": "en/A5_maximum_disaggregation.html#key-findings",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Key findings",
+    "text": "Key findings\n\n\n\n\n\n\nNote\n\n\n\nKey takeaways from Level ⑤\n\nThe state × cause × sex combination reveals specific geographic concentrations that remain hidden at more aggregated levels of analysis.\nIschemic heart disease and type 2 diabetes dominate in almost every state, but with very different intensities depending on the region.\nExternal causes (homicides, accidents) show the highest M/F ratio and are concentrated in northern and north-western states.\nThis level provides the entry point for prioritising public health interventions with maximum territorial specificity.",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "en/A5_maximum_disaggregation.html#navigation",
+    "href": "en/A5_maximum_disaggregation.html#navigation",
+    "title": "⑤ Maximum disaggregation",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ④ Territorial dimension → Block B · ① Regional description",
+    "crumbs": [
+      "Block A — Trends",
+      "⑤ Maximum disaggregation"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html",
+    "href": "es/A1_descriptivo_general.html",
+    "title": "1- Análisis descriptivo general",
+    "section": "",
+    "text": "Bloc A L1 Variables : year · sex\n##Introducción\nEsta sección examina las tendencias de mortalidad en México sin desagregación (por causa o territorio), con el objetivo de identificar patrones macro y puntos de inflexión temporales.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "1- Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#tendencias-globales",
+    "href": "es/A1_descriptivo_general.html#tendencias-globales",
+    "title": "1- Análisis descriptivo general",
+    "section": "Tendencias globales",
+    "text": "Tendencias globales\n\nSerie temporalTasa de crecimiento\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
+    "crumbs": [
+      "Bloque A — Trends",
+      "1- Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
+    "href": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
+    "title": "1- Análisis descriptivo general",
+    "section": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)",
+    "text": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)\nLa tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.\n\nSeries temporales para ASMRCambio ASMR masculinoWomen ASMR change\n\n\nLos resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
+    "crumbs": [
+      "Bloque A — Trends",
+      "1- Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A1_descriptivo_general.html#navegación",
+    "href": "es/A1_descriptivo_general.html#navegación",
+    "title": "1- Análisis descriptivo general",
+    "section": "Navegación",
+    "text": "Navegación\n\n← Inicio → 2- Desagregación por causa",
+    "crumbs": [
+      "Bloque A — Trends",
+      "1- Descripción general"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html",
+    "href": "es/A3_causas_especificas.html",
+    "title": "3- Causas específicas de muerte",
+    "section": "",
+    "text": "Bloque A · Nivel 3 Variables : year · sex · cause_specific",
+    "crumbs": [
+      "Bloque A — Trends",
+      "3- Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#introducción",
+    "href": "es/A3_causas_especificas.html#introducción",
+    "title": "3- Causas específicas de muerte",
+    "section": "Introducción",
+    "text": "Introducción\nLa desagregación hacia causas específicas (código a 3–4 dígitos CIE-10) permite identificar patrones imposibles de detectar a nivel de grandes grupos. Se analizan, entre otras : cardiopatía isquémica, cáncer de mama, diabetes tipo 2, cirrosis hepática, homicidios y accidentes de tránsito.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "3- Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#evolución-por-causa-específica",
+    "href": "es/A3_causas_especificas.html#evolución-por-causa-específica",
+    "title": "3- Causas específicas de muerte",
+    "section": "Evolución por causa específica",
+    "text": "Evolución por causa específica\n\nTop 10 causas (2024)Tendencias por sexoTabla (hombre)Tabla (mujer)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\nFigure 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\nDescription\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n0904\nEnfermedades isquémicas del corazón (I20-I25)\n6.2\n8.8\n2,195.1\n2,320.7\n2,589.6\n2,650.9\n2,872.9\n3,063.9\n\n\n0402\nDiabetes mellitus (E10-E14)\n3.0\n8.0\n1,643.9\n2,081.2\n2,299.9\n2,366.6\n2,201.3\n2,045.5\n\n\n2027\nAgresiones (X85-Y09)\n1.9\n3.5\n620.2\n515.8\n1,475.3\n947.4\n1,596.6\n1,411.0\n\n\n1108\nEnfermedades del hígado (K70-K77)\n3.2\n4.6\n1,524.7\n1,440.9\n1,352.5\n1,269.6\n1,275.0\n1,121.4\n\n\n1002\nInfluenza (gripe) y neumonía (J09-J18)\n1.0\n2.4\n480.7\n478.6\n514.6\n547.5\n748.5\n780.1\n\n\n0907\nEnfermedades cerebrovasculares (I60-I69)\n2.7\n3.4\n1,066.2\n975.2\n975.6\n868.8\n803.5\n709.9\n\n\n0202\nTumores malignos de los órganos digestivos (C15-C26)\n3.1\n3.6\n727.8\n716.7\n655.2\n673.3\n668.0\n625.3\n\n\n0903\nEnfermedades hipertensivas (I10-I15)\n0.7\n1.5\n324.8\n389.0\n485.2\n550.7\n509.0\n495.4\n\n\n1005\nEnfermedades crónicas de las vías respiratorias inferiores (J40-J47)\n1.8\n4.6\n949.7\n965.4\n943.3\n760.8\n679.7\n434.9\n\n\n1403\nInsuficiencia renal (N17-N19)\n1.4\n1.8\n349.8\n396.8\n388.3\n388.5\n367.3\n381.0\n\n\n\n\n\nFigure 3: Top 10 causes de décès — Hommes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTaux de mortalité standardisé (pour 100 000 hab.)\n\n\n\nCause\nDescription\n1990\n1995\n2000\n2005\n2010\n2015\n2019\n2024\n\n\n\n\n0904\nEnfermedades isquémicas del corazón (I20-I25)\n3.3\n6.6\n1,509.3\n1,510.8\n1,680.5\n1,702.7\n1,883.8\n1,988.6\n\n\n0402\nDiabetes mellitus (E10-E14)\n4.3\n10.2\n1,853.2\n2,245.1\n2,256.9\n2,234.7\n2,009.1\n1,799.4\n\n\n1002\nInfluenza (gripe) y neumonía (J09-J18)\n0.4\n1.0\n346.9\n379.3\n356.5\n377.1\n538.1\n556.1\n\n\n0907\nEnfermedades cerebrovasculares (I60-I69)\n2.2\n2.5\n972.2\n891.9\n889.9\n778.7\n678.6\n545.4\n\n\n0202\nTumores malignos de los órganos digestivos (C15-C26)\n2.0\n5.1\n660.0\n634.5\n582.8\n574.9\n545.4\n517.4\n\n\n0903\nEnfermedades hipertensivas (I10-I15)\n1.0\n1.3\n438.8\n460.7\n545.5\n565.1\n524.1\n498.8\n\n\n1108\nEnfermedades del hígado (K70-K77)\n0.8\n1.7\n462.4\n480.9\n468.4\n446.8\n415.0\n374.5\n\n\n0208\nTumores malignos de los órganos genitales femeninos (C51-C58)\n2.5\n3.3\n497.3\n424.4\n366.7\n349.7\n338.7\n350.1\n\n\n1005\nEnfermedades crónicas de las vías respiratorias inferiores (J40-J47)\n2.6\n3.5\n576.1\n626.1\n596.6\n517.3\n477.0\n324.0\n\n\n0207\nTumor maligno de la mama (C50)\n0.9\n0.9\n246.5\n260.1\n269.3\n287.8\n305.0\n289.3\n\n\n\n\n\nFigure 4: Top 5 causes de décès — Femmes",
+    "crumbs": [
+      "Bloque A — Trends",
+      "3- Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#perfil-por-causa-específica",
+    "href": "es/A3_causas_especificas.html#perfil-por-causa-específica",
+    "title": "3- Causas específicas de muerte",
+    "section": "Perfil por causa específica",
+    "text": "Perfil por causa específica",
+    "crumbs": [
+      "Bloque A — Trends",
+      "3- Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A3_causas_especificas.html#navigation",
+    "href": "es/A3_causas_especificas.html#navigation",
+    "title": "3- Causas específicas de muerte",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② Causas → ④ Dimensión territorial",
+    "crumbs": [
+      "Bloque A — Trends",
+      "3- Causas específicas"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html",
+    "href": "es/A5_maxima_desagregacion.html",
+    "title": "⑤ Máxima desagregación",
+    "section": "",
+    "text": "Bloque A · Nivel 5 Variables : year · sex · state · cause_specific",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#introducción",
+    "href": "es/A5_maxima_desagregacion.html#introducción",
+    "title": "⑤ Máxima desagregación",
+    "section": "Introducción",
+    "text": "Introducción\nEste nivel constituye la máxima desagregación del Bloque A: combina las cuatro dimensiones analíticas (tiempo, sexo, territorio y causa específica CIE-10) para producir perfiles epidemiológicos estatal-causales de alta resolución.\nLa pregunta central es: ¿qué combinaciones estado × causa × sexo concentran la mayor carga de mortalidad evitable?\n\n\n\n\n\n\nTip\n\n\n\nUso recomendado\nEste nivel es el punto de entrada natural para priorizar intervenciones de salud pública a nivel estatal. Los resultados son complementados por el análisis espacial del Bloque B.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
+    "href": "es/A5_maxima_desagregacion.html#perfiles-estatales-por-causa-específica",
+    "title": "⑤ Máxima desagregación",
+    "section": "Perfiles estatales por causa específica",
+    "text": "Perfiles estatales por causa específica\n\nHeatmap estado × causa específicaRanking estatal por causaBrecha de género por estado y causa\n\n\n\n\n\n\n\n\n\n\nFigura 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigura 3",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
+    "href": "es/A5_maxima_desagregacion.html#tendencias-temporales-por-estado-y-causa",
+    "title": "⑤ Máxima desagregación",
+    "section": "Tendencias temporales por estado y causa",
+    "text": "Tendencias temporales por estado y causa\n\n\n\n\n\n\n\n\nFigura 4",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
+    "href": "es/A5_maxima_desagregacion.html#tabla-de-síntesis",
+    "title": "⑤ Máxima desagregación",
+    "section": "Tabla de síntesis",
+    "text": "Tabla de síntesis\n\n\n\nTop 15 combinaciones estado × causa por carga de mortalidad ( 2024 )\n\n\nEstado\nCausa específica\nDefunciones\nTasa /100k\n\n\n\n\nCiudad de México\nCOVID-19\n1,638\n47.2\n\n\nCiudad de México\nDiabetes tipo 2\n1,562\n77.3\n\n\nCiudad de México\nCardiopatía isquémica\n1,494\n12.8\n\n\nCiudad de México\nAccidentes de tránsito\n1,370\n15.2\n\n\nCiudad de México\nHomicidios\n1,303\n65.5\n\n\nNuevo León\nCOVID-19\n1,264\n31.9\n\n\nOaxaca\nCOVID-19\n1,243\n12.6\n\n\nPuebla\nCOVID-19\n1,242\n16.1\n\n\nJalisco\nCOVID-19\n1,234\n48.3\n\n\nGuanajuato\nCOVID-19\n1,216\n13.2\n\n\nMichoacán\nCOVID-19\n1,203\n15.8\n\n\nVeracruz\nCOVID-19\n1,202\n24.0\n\n\nSonora\nCOVID-19\n1,184\n17.6\n\n\nChiapas\nCOVID-19\n1,154\n63.6\n\n\nCiudad de México\nComplicaciones DM\n1,149\n8.8\n\n\nJalisco\nCardiopatía isquémica\n1,149\n11.1",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
+    "href": "es/A5_maxima_desagregacion.html#puntos-clave-de-este-nivel",
+    "title": "⑤ Máxima desagregación",
+    "section": "Puntos clave de este nivel",
+    "text": "Puntos clave de este nivel\n\n\n\n\n\n\nNota\n\n\n\nLo esencial del nivel ⑤\n\nLa combinación estado × causa × sexo revela concentraciones geográficas específicas que quedan ocultas en niveles de análisis más agregados.\nLa cardiopatía isquémica y la diabetes tipo 2 dominan en casi todos los estados, pero con intensidades muy distintas según la región.\nLas causas externas (homicidios, accidentes) presentan el ratio H/M más elevado y una concentración en estados del norte y noroeste.\nEste nivel es el punto de entrada para priorizar intervenciones de salud pública con máxima especificidad territorial.",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/A5_maxima_desagregacion.html#navegación",
+    "href": "es/A5_maxima_desagregacion.html#navegación",
+    "title": "⑤ Máxima desagregación",
+    "section": "Navegación",
+    "text": "Navegación\n\n← ④ Dimensión territorial → Bloque B · ① Descripción regional",
+    "crumbs": [
+      "Bloque A — Trends",
+      "⑤ Máxima desagregación"
+    ]
+  },
+  {
+    "objectID": "es/B1_Regional_description.html",
+    "href": "es/B1_Regional_description.html",
+    "title": "B1_Regional_description",
     "section": "",
     "text": "Back to top"
   },
   {
-    "objectID": "es/C3_espacial_municipios.html",
-    "href": "es/C3_espacial_municipios.html",
-    "title": "C3_espacial_municipios",
+    "objectID": "es/B3_espacial_municipios.html",
+    "href": "es/B3_espacial_municipios.html",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "",
+    "text": "Bloque B · Nivel 3 bis Variables : municipality · year · cause"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#introducción",
+    "href": "es/B3_espacial_municipios.html#introducción",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "Introducción",
+    "text": "Introducción\nEl nivel municipal constituye la escala más fina del análisis espacial. Permite revelar :\n\nL’heterogeneidad intra-estatal : dos municipios del mismo estado pueden tener perfiles de mortalité radicalmente distintos.\nLa existencia de hotspots locales (focos de mortalidad elevada) a menudo invisibles en análisis estatales.\nEl papel de determinantes locales : urbanización, marginación, acceso a servicios.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nNota sobre confidencialidad\nPara municipios pequeños (&lt; 5 000 hab.), los datos de mortalidad pueden estar sujetos a restricciones de divulgación (INEGI). Aplicar técnicas de suavizado espacial (kriging, kernel density) en esos casos."
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
+    "href": "es/B3_espacial_municipios.html#cartographie-à-léchelle-municipale",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "1 · Cartographie à l’échelle municipale",
+    "text": "1 · Cartographie à l’échelle municipale\n\nTaux de mortalité totalMortalité cardiovasculaireCauses externesHotspots / Coldspots\n\n\n\n\n\n\n\nTaux de mortalité par municipio (données simulées)"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#relation-marginationmortalité",
+    "href": "es/B3_espacial_municipios.html#relation-marginationmortalité",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "2 · Relation margination–mortalité",
+    "text": "2 · Relation margination–mortalité\n\n\n\n\n\n\n\n\nFigura 1"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
+    "href": "es/B3_espacial_municipios.html#note-méthodologique-détection-de-hotspots",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "3 · Note méthodologique — Détection de hotspots",
+    "text": "3 · Note méthodologique — Détection de hotspots\n\n\n\n\n\n\nNota\n\n\n\nMéthode recommandée en production\nLa détection de clusters locaux repose sur la statistique Gi* de Getis-Ord ou sur l’LISA (Local Indicators of Spatial Association) via spdep :\nlibrary(spdep)\n# Construire la matrice de poids spatiaux\nw    &lt;- poly2nb(mx_mun, queen = TRUE)\nwl   &lt;- nb2listw(w, style = \"W\")\n\n# LISA (Moran local)\nlm   &lt;- localmoran(mx_mun$rate_total, wl)\nmx_mun$local_I &lt;- lm[,1]\nmx_mun$p_value &lt;- lm[,5]\n\n# Classifier : HH, LL, HL, LH, ns\nmx_mun &lt;- mx_mun |&gt;\n  mutate(lisa_class = case_when(\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &gt; mean(rate_total) ~ \"HH (hotspot)\",\n    p_value &lt; 0.05 & local_I &gt; 0 & rate_total &lt; mean(rate_total) ~ \"LL (coldspot)\",\n    p_value &lt; 0.05 & local_I &lt; 0 ~ \"Outlier spatial\",\n    TRUE ~ \"Non significatif\"\n  ))"
+  },
+  {
+    "objectID": "es/B3_espacial_municipios.html#navigation",
+    "href": "es/B3_espacial_municipios.html#navigation",
+    "title": "③ bis · Análisis espacial por Municipios",
+    "section": "Navigation",
+    "text": "Navigation\n\n← ② bis · Estados ← Retour à l’accueil"
+  },
+  {
+    "objectID": "es/C2_espacial_estados.html",
+    "href": "es/C2_espacial_estados.html",
+    "title": "C2_espacial_estados",
     "section": "",
     "text": "Back to top"
+  },
+  {
+    "objectID": "es/index.html",
+    "href": "es/index.html",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+  },
+  {
+    "objectID": "es/index.html#mortalidad-en-méxico",
+    "href": "es/index.html#mortalidad-en-méxico",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "",
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+  },
+  {
+    "objectID": "es/index.html#estructura-del-sitio",
+    "href": "es/index.html#estructura-del-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Estructura del sitio",
+    "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n→\n\n\n⑤\nyear, sex, state, cause_specific\nArticulación salud-territorio\n→\n\n\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n→\n\n\n②\nstate, year, cause\nDistribución espacial, clústeres\n→\n\n\n③\nmunicipality, year, cause\nHeterogeneidad intra-estatal\n→\n\n\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n→\n\n\n②\nstate, year, sex\nEvolución por entidad\n→\n\n\n③\nmunicipality, sex\nHeterogeneidad municipal\n→"
+  },
+  {
+    "objectID": "es/index.html#síntesis-preliminar",
+    "href": "es/index.html#síntesis-preliminar",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Síntesis preliminar",
+    "text": "Síntesis preliminar\n\n\n\n\n\n\n\n\nFigura 1: Evolución de la mortalidad total por sexo (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNota"
+  },
+  {
+    "objectID": "es/index.html#cómo-navegar-este-sitio",
+    "href": "es/index.html#cómo-navegar-este-sitio",
+    "title": "Análisis de la Mortalidad en México",
+    "section": "Cómo navegar este sitio",
+    "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú 🇲🇽 Español / 🇬🇧 English en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ ① Descripción general"
   }
 ]

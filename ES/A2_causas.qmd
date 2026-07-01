@@ -25,7 +25,7 @@ En este nivel se busca responder tres preguntas clave :
 
 ::: {.callout-tip}
 **Enlace con el nivel anterior**  
-El [Nivel ① — Descriptivo general](A1_descriptivo_general.qmd) establece las tendencias
+El [Nivel 1 — Descriptivo general](A1_descriptivo_general.qmd) establece las tendencias
 brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas tendencias.
 :::
 
@@ -142,7 +142,7 @@ top5_causes <- mort_causa %>%
 # class(year)  
 ```
 
-## Vue d'ensemble: composición de la mortalité
+## Panorama general
 
 ### Evolución de la estructura por causa
 
@@ -343,7 +343,7 @@ mort_causa |>
 
 #### Evolución de las causas 
 <!-- de defunción (tasa estándar) -->
-```{r fig-stdcausedeath, fig.cap="Évolution de la mortalité std par cause"}
+```{r fig-stdcausedeath, fig.cap="Evolución de la TME"}
 
 SDR <- asmr_cause %>%
   filter(year>1999)

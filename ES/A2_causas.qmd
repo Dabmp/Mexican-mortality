@@ -3,7 +3,7 @@ title: "2- Desagregación por causa de defunción"
 subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2024"
 # date: today
 date-format: "MMMM YYYY"
-lang: "en"
+lang: "es"
 ---
 
 <span class="badge-nivel">Bloque A · Nivel 2</span>
@@ -100,7 +100,8 @@ cols_20 <- c(
   "#409070FF",   # muted forest green
   "#808080FF" ,  # medium gray (for baseline / total)
   "#C89028FF", "#11500FFF", "#304898FF", "#604838FF",
-  "#E8B828FF", "#F03838FF", "#783838FF", "#B83838FF",
+  # "#E8B828FF", 
+  "#F03838FF", "#783838FF", "#B83838FF",
   "#4078B8FF", "#282858FF", "#F85559FF", "#A8C0F8FF"
 )
 # ── Données ────────
@@ -110,7 +111,7 @@ load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asm
 library(tidyverse)
 library(knitr)
 library(kableExtra)
-
+library(dplyr)
 # ── Agrégations utiles ────────────────────────────────────────────────
 # Par année × cause
 mort_causa <- mort |>
@@ -130,6 +131,14 @@ mort_causa_pct <- mort_causa |>
 
 # Dernière année disponible
 last_year <- max(mort$year)
+
+
+# top 5 
+top5_causes <- mort_causa %>%
+  group_by(cause) %>%
+  summarise(total_deaths = sum(deaths, na.rm = TRUE)) %>%
+  slice_max(total_deaths, n = 10) %>%
+  pull(cause)
 # class(year)  
 ```
 
@@ -141,32 +150,67 @@ last_year <- max(mort$year)
 
 
 #### Líneas absolutas
-```{r fig-lineas-absolutas, fig.cap="Évolution absolue de la mortalité par cause"}
-ggplot(mort_causa,
-       aes(x = year, y = deaths / 1000,
-           color = cause, group = cause)) +
+```{r fig-lineas-absolutas, fig.cap="Evolución de la mortalidad por causa"}
+# ggplot(mort_causa,
+#        aes(x = year, y = deaths / 1000,
+#            color = cause, group = cause)) +
+#   geom_line(linewidth = 1) +
+#   geom_point(size = 2, alpha = 0.8) +
+#   geom_label_repel(
+#     data  = mort_causa |> filter(year == last_year),
+#     aes(label = str_wrap(cause, 18)),
+#     size  = 3, nudge_x = 0.8, segment.color = "grey60",
+#     show.legend = FALSE
+#   ) +
+#   scale_color_manual(values = cols_20) +
+#   scale_x_continuous(breaks = seq(1998,  2024, 4),
+#                      limits = c(1998, 2025)) +
+#   scale_y_continuous(labels = label_comma(suffix = " k")) +
+#   labs(
+#     title    = "Evolución absoluta de la mortalidad por causa",
+#     subtitle = "Número de defunciones (miles), México 2000–2023",
+#     x = NULL, y = "Defunciones (miles)", color = NULL
+#   ) +
+#   theme_minimal(base_size = 13) +
+#   theme(
+#     legend.position  = "none",
+#     plot.title       = element_text(face = "bold", color = "#1a2744"),
+#     plot.subtitle    = element_text(color = "#6c757d"),
+#     panel.grid.minor = element_blank()
+#   )
+mort_causa %>%
+  filter(cause %in% top5_causes) %>%
+  ggplot(aes(x = year, y = deaths / 1000,
+             color = cause, group = cause)) +
   geom_line(linewidth = 1) +
   geom_point(size = 2, alpha = 0.8) +
   geom_label_repel(
-    data  = mort_causa |> filter(year == last_year),
+    data = mort_causa %>%
+      filter(cause %in% top5_causes, year == last_year),
     aes(label = str_wrap(cause, 18)),
-    size  = 3, nudge_x = 0.8, segment.color = "grey60",
+    size = 3,
+    nudge_x = 0.8,
+    segment.color = "grey60",
     show.legend = FALSE
   ) +
-  scale_color_manual(values = cols_20) +
-  scale_x_continuous(breaks = seq(1998,  2024, 4),
-                     limits = c(1998, 2025)) +
+  scale_color_manual(values = cols_20[1:11]) +
+  scale_x_continuous(
+    breaks = seq(1998, 2024, 4),
+    limits = c(1998, 2025)
+  ) +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
   labs(
-    title    = "Evolución absoluta de la mortalidad por causa",
+    title = "Evolución de la mortalidad por las princiaples causas",
     subtitle = "Número de defunciones (miles), México 2000–2023",
-    x = NULL, y = "Defunciones (miles)", color = NULL
+    x = NULL,
+    y = "Defunciones (miles)",
+    color = NULL
   ) +
   theme_minimal(base_size = 13) +
   theme(
-    legend.position  = "none",
-    plot.title       = element_text(face = "bold", color = "#1a2744"),
-    plot.subtitle    = element_text(color = "#6c757d"),
+    legend.position = "none",
+    plot.title = element_text(face = "bold", color = "#1a2744"),
+    plot.subtitle = element_text(color = "#6c757d"),
     panel.grid.minor = element_blank()
   )
 ```
@@ -197,7 +241,7 @@ p4 <- deces0024 |>
   scale_fill_viridis_d(option = "turbo") +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
   labs(title = "Distribución por grupo de edad",
-       x = "Groupe d'âge", y = "Décès (milliers)", fill = NULL) +
+       x = "Grupo de edad", y = "Defunciones (miles)", fill = NULL) +
   theme_minimal(base_size = 11) +
   theme(plot.title    = element_text(face = "bold", color = "#1a2744"),
         axis.text.x   = element_text(angle = 45, hjust = 1),
@@ -238,7 +282,7 @@ p4
 ```
 
 
-#### Top 6  
+#### Top 6 por sexo  
 ```{r fig-ev-temp-cause, fig.cap="Evolución temporal de las principales causas, 2000–2024"}
 
 # ── 5. Évolution temporelle — top 6 chapitres ─────────────────────────
@@ -254,11 +298,11 @@ p6 <- deces0024 |>
   geom_line(linewidth = 0.9) +
   facet_wrap(~ cause_name, scales = "free_y", ncol = 3) +
   scale_color_manual(values = palette_sexo,
-                     labels = c("1" = "Hommes", "2" = "Femmes")) +
+                     labels = c("1" = "hombres", "2" = "mujeres")) +
   scale_x_continuous(breaks = c(2000, 2010, 2020, 2024)) +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
-  labs(title = "Évolution par sexe — top 6 chapitres",
-       x = NULL, y = "Décès (milliers)", color = "Sexe") +
+  labs(title = "Evolución de las principales 6 causas por sexo",
+       x = NULL, y = "Defunciones (miles)", color = "Sexo") +
   theme_minimal(base_size = 10) +
   theme(plot.title     = element_text(face = "bold", color = "#1a2744"),
         legend.position = "bottom",
@@ -271,7 +315,7 @@ p6
 #### Tabla resumen
 ```{r tabla-causa-anio}
 mort_causa |>
-  filter(year %in% c(1990,1995,2000, 2005, 2010, 2015, 2019, 2024)) |>
+  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024)) |>
   pivot_wider(names_from = year, values_from = deaths) |>
   arrange(desc(`2024`)) |>
     mutate(cause = unname(cause_name[cause])) |>
@@ -279,7 +323,7 @@ mort_causa |>
   mutate(across(where(is.numeric), ~ format(.x, big.mark = ","))) |>
   kable(
     caption = "Defunciones por causa, años seleccionados",
-    col.names = c("Cause", "1990","1995","2000", "2005", "2010", "2015", "2019", "2024")
+    col.names = c("Causas", "2000", "2005", "2010", "2015", "2019", "2024")
   ) |>
   kable_styling(bootstrap_options = c("striped", "hover"),
                 full_width = FALSE) |>
@@ -305,32 +349,32 @@ SDR <- asmr_cause %>%
   filter(year>1999)
 # install.packages("paletteer")
 library(paletteer)
-
-ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
-  geom_bar(stat = "identity", position = "stack", width = 0.7) +
-  facet_wrap(~ sex_lab) +
-  scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +
-  labs(
-    title = "Causas de defunción estandarizadas (2000-2024)",
-    x     = "Años",
-    y     = "Tasa estandarizada (por 100k)",
-    fill  = "Causas de defunción"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.x      = element_text(angle = 45, hjust = 1, size = 7),
-    axis.text.y      = element_text(size = 7),
-    legend.position  = "bottom",
-    legend.direction = "horizontal",
-  legend.title.position = "top",
-    legend.text      = element_text(size = 6, margin = margin(b = 0)),
-    legend.title     = element_text(size = 7),
-    legend.key.size  = unit(0.3, "cm"),
-    legend.spacing.y = unit(0.05, "cm"),
-    legend.spacing.x = unit(0.05, "cm"),
-    plot.margin      = margin(10, 10, 10, 10)
-  ) +
-  guides(fill = guide_legend(nrow = 7, byrow = TRUE))
+# 
+# ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
+#   geom_bar(stat = "identity", position = "stack", width = 0.7) +
+#   facet_wrap(~ sex_lab) +
+#   scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +
+#   labs(
+#     title = "Causas de defunción estandarizadas (2000-2024)",
+#     x     = "Años",
+#     y     = "Tasa estandarizada (por 100k)",
+#     fill  = "Causas de defunción"
+#   ) +
+#   theme_minimal() +
+#   theme(
+#     axis.text.x      = element_text(angle = 45, hjust = 1, size = 7),
+#     axis.text.y      = element_text(size = 7),
+#     legend.position  = "bottom",
+#     legend.direction = "horizontal",
+#   legend.title.position = "top",
+#     legend.text      = element_text(size = 6, margin = margin(b = 0)),
+#     legend.title     = element_text(size = 7),
+#     legend.key.size  = unit(0.3, "cm"),
+#     legend.spacing.y = unit(0.05, "cm"),
+#     legend.spacing.x = unit(0.05, "cm"),
+#     plot.margin      = margin(10, 10, 10, 10)
+#   ) +
+#   guides(fill = guide_legend(nrow = 7, byrow = TRUE))
 
 ```
 
@@ -410,7 +454,7 @@ ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
 <!--   theme(axis.text.x = element_text(angle = 45, hjust = 1)) -->
 
 <!-- ``` -->
-#### Tabla principales causas (hombre)
+#### Principales causas (hombre)
 ```{r tabla-causa-anio-asmr-h}
 
 
@@ -437,39 +481,40 @@ wide_hommes <- data_hommes |>
   pivot_wider(names_from = year, values_from = asmr_100k) |>
   arrange(desc(`2024`))
 
-wide_hommes
+# afficer tableau ommes !!!
+# wide_hommes
 
 # Étape 4 : Tableau
 library(knitr)
 library(kableExtra)
-
-format_table <- function(wide_data, caption_txt) {
-  wide_data |>
-    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
-    kable(
-      caption   = caption_txt,
-      col.names = c("Cause", names(wide_data)[-1]),
-      align     = c("l", rep("r", ncol(wide_data) - 1))
-    ) |>
-    kable_styling(
-      bootstrap_options = c("striped", "hover", "condensed"),
-      full_width        = FALSE,
-      font_size         = 13
-    ) |>
-    add_header_above(
-      c(" " = 1,
-        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
-    ) |>
-    row_spec(1, bold = TRUE, background = "#f0f4f8")
-}
-
-tbl_hommes <- format_table(wide_hommes, "Top 5 causes de décès — Hommes")
-
-tbl_hommes
+# 
+# format_table <- function(wide_data, caption_txt) {
+#   wide_data |>
+#     mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+#     kable(
+#       caption   = caption_txt,
+#       col.names = c("Cause", names(wide_data)[-1]),
+#       align     = c("l", rep("r", ncol(wide_data) - 1))
+#     ) |>
+#     kable_styling(
+#       bootstrap_options = c("striped", "hover", "condensed"),
+#       full_width        = FALSE,
+#       font_size         = 13
+#     ) |>
+#     add_header_above(
+#       c(" " = 1,
+#         "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
+#     ) |>
+#     row_spec(1, bold = TRUE, background = "#f0f4f8")
+# }
+# 
+# tbl_hommes <- format_table(wide_hommes, "Top 5 causes de décès — Hommes")
+# 
+# tbl_hommes
 
   
 ```
-#### Tabla principales causas (mujer)
+#### Principales causas (mujer)
 ```{r tabla-causa-anio-asmr-m}
 
 
@@ -502,30 +547,30 @@ wide_femmes <- data_femmes |>
 # Étape 4 : Tableau
 library(knitr)
 library(kableExtra)
-
-format_table <- function(wide_data, caption_txt) {
-  wide_data |>
-    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
-    kable(
-      caption   = caption_txt,
-      col.names = c("Cause", names(wide_data)[-1]),
-      align     = c("l", rep("r", ncol(wide_data) - 1))
-    ) |>
-    kable_styling(
-      bootstrap_options = c("striped", "hover", "condensed"),
-      full_width        = FALSE,
-      font_size         = 13
-    ) |>
-    add_header_above(
-      c(" " = 1,
-        "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
-    ) |>
-    row_spec(1, bold = TRUE, background = "#f0f4f8")
-}
-
-tbl_femmes <- format_table(wide_femmes, "Top 5 causes de décès — Femmes")
-
-tbl_femmes
+# 
+# format_table <- function(wide_data, caption_txt) {
+#   wide_data |>
+#     mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+#     kable(
+#       caption   = caption_txt,
+#       col.names = c("Cause", names(wide_data)[-1]),
+#       align     = c("l", rep("r", ncol(wide_data) - 1))
+#     ) |>
+#     kable_styling(
+#       bootstrap_options = c("striped", "hover", "condensed"),
+#       full_width        = FALSE,
+#       font_size         = 13
+#     ) |>
+#     add_header_above(
+#       c(" " = 1,
+#         "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
+#     ) |>
+#     row_spec(1, bold = TRUE, background = "#f0f4f8")
+# }
+# 
+# tbl_femmes <- format_table(wide_femmes, "Top 5 causes de décès — Femmes")
+# 
+# tbl_femmes
 ```
 :::
 
@@ -568,7 +613,7 @@ ihh <- SDR |>
 ggplot(ihh, aes(x = year, y = ihh)) +
   geom_line(color = "#2a7a8c", linewidth = 1.2) +
   geom_point(color = "#2a7a8c", size = 3) +
-  scale_x_continuous(breaks = seq(2000, 2023, 4)) +
+  scale_x_continuous(breaks = seq(2000, 2024, 4)) +
   labs(
     title    = "Índice de concentración de la mortalidad por causa (IHH)",
     subtitle = "Valores más altos indican mayor concentración en pocas causas",
@@ -577,7 +622,11 @@ ggplot(ihh, aes(x = year, y = ihh)) +
   theme_minimal(base_size = 13) +
   theme(
     plot.title    = element_text(face = "bold", color = "#1a2744"),
-    plot.subtitle = element_text(color = "#6c757d")
+    plot.subtitle = element_text(color = "#6c757d"), 
+      axis.text.y = element_blank(),
+  axis.ticks.y = element_blank(),
+  panel.grid.major.y = element_blank()
+  # panel.grid.minor.y = element_blank()
   )
 ```
 
@@ -589,11 +638,11 @@ ggplot(ihh, aes(x = year, y = ihh)) +
 
 - La mortalidad en México está dominada por las enfermedades cardiovasculares y endocrinas, lo que refleja la avanzada transición epidemiológica.
 
-- Las causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género.
+<!-- - Las causas externas (accidentes, violencia) presentan una proporción hombre-mujer significativamente mayor que 1, lo que revela un marcado sesgo de género. -->
 
 - La tendencia temporal muestra una progresiva diversificación de las causas, evidente en el 
 <!-- descenso del  -->
-Índice de Herfindahl-Hirschman (IHH) después de 2010.
+Índice de Herfindahl-Hirschman (IHH).
 :::
 
 

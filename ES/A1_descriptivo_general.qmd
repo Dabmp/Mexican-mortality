@@ -45,12 +45,13 @@ asmr_female <- asmr_nac |> filter(sex == 2)
 ```{r fig-serie-temporal, fig.cap="Evolución de la mortalidad total (2000–2024)"}
 ggplot(mort_global, aes(x=year, y=deaths/1000, color=sex, group=sex)) +
   geom_line(linewidth=1.1) + geom_point(size=2.2) +
-  scale_color_manual(values=palette_sexo) +
+ scale_color_manual(values = palette_sexo,
+                     labels = c("1" = "hombres", "2" = "mujeres")) +
   scale_x_continuous(breaks=seq(1990,2024,4)) +
   scale_y_continuous(labels=label_comma(suffix=" k")) +
- labs(title="Total Mortality in Mexico", subtitle="Deaths by Sex, 1990–2024",
+ labs(title="Mortalidad total en México", subtitle="Defunciones por sexo, 1990–2024",
 
-x=NULL, y="Deaths (thousands)", color="Sex") +
+x=NULL, y="Defunciones (miles)", color="sexo") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), legend.position="bottom",
         panel.grid.minor=element_blank())
@@ -64,8 +65,8 @@ mort_yr |> mutate(growth = (deaths/lag(deaths)-1)*100) |> filter(!is.na(growth))
   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
   geom_hline(yintercept=0, color="#1a2744") +
   scale_x_continuous(breaks=seq(1990,2024,4)) +
- labs(title="Annual Mortality Growth Rate",
-  x="Year", y="Annual Change (%)") +
+ labs(title="Tasa de crecimiento anual de la mortalidad",
+  x="Año", y="Cambio anual (%)") +
   theme_minimal(base_size=13) +
   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
 ```
@@ -80,7 +81,7 @@ La tasa de mortalidad estandarizada por edad (TME) es una medida estadística ut
 
 ::: {.panel-tabset}
 
-#### Series temporales para ASMR
+#### Series temporales para TME
 
 Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024.
 Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.
@@ -88,49 +89,49 @@ Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hom
 <!-- for certain diseases -->
 
 ```{r fig-ASMR, fig.cap="ASMR trend (1990–2024)"}
-ggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +
-  geom_line(linewidth=1.1) + geom_point(size=2.2) +
-  scale_color_manual(values=palette_sexo) +
-  scale_x_continuous(breaks=seq(1990,2024,4)) +
-  scale_y_continuous(labels=label_comma(suffix=" k")) +
- labs(title="ASMR trend in Mexico", subtitle="ASMR per 100k inhabitants by Sex, 1990–2024",
-
-x=NULL, y="ASMR per 100k inhabitants", color="Sex") +
-  theme_minimal(base_size=10) +
-  theme(plot.title=element_text(face="bold",color="#1a2744"), legend.position="bottom",
-        panel.grid.minor=element_blank())
+# ggplot(asmr_nac, aes(x=year, y=asmr_100k, color=sex, group=sex)) +
+#   geom_line(linewidth=1.1) + geom_point(size=2.2) +
+#   scale_color_manual(values=palette_sexo) +
+#   scale_x_continuous(breaks=seq(1990,2024,4)) +
+#   scale_y_continuous(labels=label_comma(suffix=" k")) +
+#  labs(title="Tendencia TME en México", subtitle="TME por 100 mil habitantes por sexo, 1990–2024",
+# 
+# x=NULL, y="TME por 100 mil habitantes", color="Sex") +
+#   theme_minimal(base_size=10) +
+#   theme(plot.title=element_text(face="bold",color="#1a2744"), legend.position="bottom",
+#         panel.grid.minor=element_blank())
 ```
 
-#### Cambio ASMR masculino
+<!-- #### Cambio ASMR masculino -->
 
-```{r fig-men-change, fig.cap="ASMR men change"}
-asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
-  ggplot(aes(x=year, y=growth)) +
-  geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
-  geom_hline(yintercept=0, color="#1a2744") +
-  scale_x_continuous(breaks=seq(1990,2024,4)) +
- labs(title="Annual ASMR Growth Rate (male)",
-  x="Year", y="Annual Change (%)") +
-  theme_minimal(base_size=13) +
-  theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
-```
+<!-- ```{r fig-men-change, fig.cap="ASMR men change"} -->
+<!-- asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |> -->
+<!--   ggplot(aes(x=year, y=growth)) + -->
+<!--   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) + -->
+<!--   geom_hline(yintercept=0, color="#1a2744") + -->
+<!--   scale_x_continuous(breaks=seq(1990,2024,4)) + -->
+<!--  labs(title="Annual ASMR Growth Rate (male)", -->
+<!--   x="Year", y="Annual Change (%)") + -->
+<!--   theme_minimal(base_size=13) + -->
+<!--   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank()) -->
+<!-- ``` -->
 
-#### Women ASMR change
+<!-- #### Women ASMR change -->
 
-```{r fig-women-change, fig.cap="ASMR women change"}
-  
+<!-- ```{r fig-women-change, fig.cap="ASMR women change"} -->
 
-asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |>
-  ggplot(aes(x=year, y=growth)) +
-  geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) +
-  geom_hline(yintercept=0, color="#1a2744") +
-  scale_x_continuous(breaks=seq(1990,2024,4)) +
- labs(title="Annual ASMR Growth Rate (female)",
-  x="Year", y="Annual Change (%)") +
-  theme_minimal(base_size=13) +
-  theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank())
-```
-:::
+
+<!-- asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |> -->
+<!--   ggplot(aes(x=year, y=growth)) + -->
+<!--   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) + -->
+<!--   geom_hline(yintercept=0, color="#1a2744") + -->
+<!--   scale_x_continuous(breaks=seq(1990,2024,4)) + -->
+<!--  labs(title="Annual ASMR Growth Rate (female)", -->
+<!--   x="Year", y="Annual Change (%)") + -->
+<!--   theme_minimal(base_size=13) + -->
+<!--   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank()) -->
+<!-- ``` -->
+<!-- ::: -->
 
 
 ## Navegación

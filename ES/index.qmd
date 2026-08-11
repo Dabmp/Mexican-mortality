@@ -101,9 +101,12 @@ con desagregación por sexo, entidad y municipio.
 
 | Nivel | Variables principales | Objetivo analítico | Página |
 |:---:|:---|:---|:---:|
-| ① | `state`, `sex` | Panorama nacional | [→](C1_esperanza_vida.qmd) |
-| ② | `state`, `year`, `sex` | Evolución por entidad | [→](C2_ev_estados.qmd) |
-| ③ | `municipality`, `sex` | Heterogeneidad municipal | [→](C3_ev_municipios.qmd) |
+| ① | `state`, `sex` | Panorama nacional | [→]
+<!-- (C1_esperanza_vida.qmd) | -->
+| ② | `state`, `year`, `sex` | Evolución por entidad | [→]
+<!-- (C2_ev_estados.qmd) | -->
+| ③ | `municipality`, `sex` | Heterogeneidad municipal | [→]
+<!-- (C3_ev_municipios.qmd) | -->
 
 ---
 

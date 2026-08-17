@@ -1,6 +1,0 @@
----
-title: "B1_Regional_description"
-subtitle: "Bloc B"
-lang: en
----
-

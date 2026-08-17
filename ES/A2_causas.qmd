@@ -32,7 +32,7 @@ brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas te
 
 
 ```{r setup-n2, include=FALSE}
- load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/ratepopbycause.rda")
+ load("data/ratepopbycause.rda")
 
 library(tidyverse)
 library(scales)
@@ -106,7 +106,7 @@ cols_20 <- c(
 )
 # ── Données ────────
 
-load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_cause.rda")
+load("data/asmr_cause.rda")
 
 library(tidyverse)
 library(knitr)
@@ -219,7 +219,7 @@ mort_causa %>%
 ```{r fig-dist-edad, fig.cap="Distribucion por grupo de edad, 2000–2024"}
 # Área apilada (%)
 
-load("H:/Mon Drive/Broni/Projet R Mortality/Output/20260519 Profils par cause/deces.rda")
+load("data/deces.rda")
 #
 library(tidyverse)
 library(scales)

@@ -22,7 +22,7 @@ palette_sex   <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
 # ── Real data — update path as needed ───────────────────────────────
 # load("data/asmr_nac.rda")
- load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
+ load("data/asmr_nac.rda")
 
 mort <- asmr_nac |> mutate(year = as.integer(year))
 

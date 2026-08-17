@@ -14,3 +14,10 @@
 # Input datasets — keep data/README.md, ignore the data files
 /data/*
 !/data/README.md
+
+# Source scripts (.qmd) — kept private locally, not published on GitHub.
+# The rendered site lives in docs/ and remains public.
+# _quarto.yml (build config) stays tracked.
+/*.qmd
+/en/*.qmd
+/es/*.qmd

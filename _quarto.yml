@@ -170,8 +170,8 @@ format:
     toc: true
     toc-depth: 3
     number-sections: false
-    code-fold: true
-    code-tools: true
+    code-fold: false
+    code-tools: false
     code-link: false
     fig-align: center
     fig-cap-location: bottom
@@ -189,6 +189,8 @@ execute:
   cache: false
 
 knitr:
+  opts_knit:
+    root.dir: "."
   opts_chunk:
     fig.width: 9
     fig.height: 5.5

@@ -10,3 +10,7 @@
 .positai
 
 **/*.quarto_ipynb
+
+# Input datasets — keep data/README.md, ignore the data files
+/data/*
+!/data/README.md

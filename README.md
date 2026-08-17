@@ -32,12 +32,12 @@ serve it with any static file server.
 .
 ├── _quarto.yml                 # Quarto project config (website, navbar, sidebars, format)
 ├── index.qmd                  # Spanish landing page (root)
-├── ES/                         # Spanish content (.qmd sources)
+├── es/                         # Spanish content (.qmd sources)
 │   ├── index.qmd
 │   ├── A1_descriptivo_general.qmd   … A5_maxima_desagregacion.qmd
 │   ├── B1_regional.qmd              … B3_espacial_municipios.qmd
 │   └── C1_regional_description.qmd  … C3_espacial_municipios.qmd
-├── EN/                         # English content (.qmd sources)
+├── en/                         # English content (.qmd sources)
 │   ├── index.qmd
 │   └── A1_descriptive_general.qmd … A5_maximum_disaggregation.qmd
 ├── assets/
@@ -49,7 +49,7 @@ serve it with any static file server.
 
 ### Source vs. rendered output
 
-- **`.qmd`** files in `ES/`, `EN/` and the root are the **source** of the site.
+- **`.qmd`** files in `es/`, `en/` and the root are the **source** of the site.
 - **`docs/`** contains the **rendered HTML** and supporting `site_libs/`
   assets. It is committed so the site can be viewed without rebuilding.
 
@@ -137,7 +137,7 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for:
 
 - development setup & package installation,
 - the recommended portable data-loading pattern,
-- case-sensitivity notes on the `ES/` / `EN/` directories,
+- case-sensitivity notes on the `es/` / `en/` directories,
 - bilingual content rules,
 - rendering & commit conventions.
 

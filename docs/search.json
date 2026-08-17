@@ -424,6 +424,90 @@
     ]
   },
   {
+    "objectID": "CONTRIBUTING.html",
+    "href": "CONTRIBUTING.html",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Thanks for your interest in improving this project. This document describes how to set up the project locally, how the site is built, and the conventions to follow when editing the content.\n\n\n\n\n\n\n\n\nTool\nMinimum\nNotes\n\n\n\n\nR\n4.2\nhttps://cloud.r-project.org/\n\n\nQuarto\n1.4\nhttps://quarto.org/docs/download/\n\n\nRStudio\n(optional)\nOpen Mexican mortality.Rproj\n\n\n\n\n\n\nInstall all required packages in one go:\ninstall.packages(c(\n  \"tidyverse\", \"scales\", \"knitr\", \"kableExtra\",\n  \"ggrepel\", \"patchwork\", \"RColorBrewer\", \"paletteer\",\n  \"sf\", \"rnaturalearth\", \"tmap\", \"spdep\"\n))\nFor sf on Linux you may need system libraries (GDAL, GEOS, PROJ). On Debian/Ubuntu:\nsudo apt-get install -y libgdal-dev libgeos-dev libproj-dev\nFor high-resolution maps, also install the data companion:\ninstall.packages(\"rnaturalearthdata\")\n\n\n\n\n\n\n\nSeveral setup chunks currently load data from a hard-coded, machine-specific Windows path:\nload(\"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda\")\nThis path is not portable and will break the build for anyone else.\n\n\n\n\nCreate a data/ directory at the project root (it is .gitignore-d for large files — see below).\nPlace the upstream .rda files there:\ndata/\n├── asmr_nac.rda\n├── asmr_cause.rda\n├── asmr_sc.rda\n├── ratepopbycause.rda\n├── top10_sc.rda\n└── deces.rda\nIn every setup chunk, use the relative path:\nload(\"data/asmr_nac.rda\")\nThe commented # load(\"data/asmr_nac.rda\") lines already present in most setup chunks show the intended form — just uncomment and remove the H:/... line.\n\n\n\n\nMicrodata and pre-computed aggregations can be large or subject to redistribution restrictions. Keep data/ local and document the expected file names in README.md so others know which files to obtain.\n\n\n\n\n\n\n\nquarto render\nOutput is written to docs/ (configured in _quarto.yml → output-dir: docs).\n\n\n\nquarto preview\n\n\n\nquarto render ES/A1_descriptivo_general.qmd\n\n\n\nOpen Mexican mortality.Rproj, then use the Render button on any .qmd file. Use the Serve / Preview option to get a live site preview.\n\n\n\n\n\nThe site is maintained in two parallel trees:\n\n\n\nLanguage\nDirectory\nLanding page\n\n\n\n\nSpanish\nES/\nES/index.qmd (also mirrored at root index.qmd)\n\n\nEnglish\nEN/\nEN/index.qmd\n\n\n\n\n\nWhen you add or edit a section, update both the ES/ and EN/ versions. Keep the same chunk labels and figure captions translated, so the rendered figures match between languages.\n\n\n\nEach .qmd starts with a YAML header. Set lang correctly:\n\nSpanish pages → lang: es\nEnglish pages → lang: en\n\n\n⚠️ Some Spanish pages currently declare lang: en in their YAML header (e.g. ES/A1_descriptivo_general.qmd). Set it to lang: es for Spanish content.\n\n\n\n\n\n\nImportant for Linux / CI builds.\nThe directories on disk are uppercase: ES/ and EN/. However, the navigation in _quarto.yml references them with lowercase hrefs:\n- href: es/index.qmd      # actual directory is ES/\n- href: en/index.qmd      # actual directory is EN/\nOn case-insensitive filesystems (macOS APFS default, Windows) this works by accident. On case-sensitive filesystems (Linux, most CI runners) these links will resolve correctly only because Quarto renders to docs/es/ and docs/en/ (lowercase output). The source-directory casing does not leak into the rendered URLs, but be careful when adding new pages:\n\nAdd new Spanish pages to ES/ and reference them as es/&lt;file&gt;.qmd in _quarto.yml.\nAdd new English pages to EN/ and reference them as en/&lt;file&gt;.qmd.\n\nKeep the source directory casing uppercase (ES/, EN/) to stay consistent with the existing structure.\n\n\n\n\nThe site theme is customised in assets/custom.scss. It overrides:\n\nfonts (Source Sans 3, Playfair Display, JetBrains Mono — loaded via Google Fonts in _quarto.yml → include-in-header),\ncolours ($primary: #1a2744, $secondary: #2a7a8c, $accent: #e84855),\ncallout border colours,\ntable and sidebar styling.\n\nWhen changing colours, keep them consistent with the palette_sexo / palette_sex vectors defined in the setup chunks (#2a7a8c men, #e84855 women).\n\n\n\n\nThe global knitr options in _quarto.yml apply:\nknitr:\n  opts_chunk:\n    fig.width: 9\n    fig.height: 5.5\n    dpi: 150\n    out.width: \"100%\"\n\nexecute:\n  echo: false      # code hidden by default\n  warning: false\n  message: false\n  cache: false\n\nCode is folded (code-fold: true) and the code-tools menu is enabled, so readers can inspect the source.\nUse fig.cap on every figure chunk — captions render below the figure.\nUse df-print: paged for interactive tables (already set globally).\nUse the palette_sexo (ES) / palette_sex (EN) vectors for sex colours so the site stays visually consistent.\n\n\n\n\n\nThe docs/ directory is committed to the repository so the site can be viewed without rebuilding. Therefore:\n\nRe-render the site (quarto render) after changing any .qmd source.\nCommit both the source (.qmd) and the rendered output (docs/) together.\n\nquarto render\ngit add ES/ EN/ docs/\ngit commit -m \"docs: update &lt;page&gt; in ES and EN\"\nDo not hand-edit files under docs/ — regenerate them with Quarto.\n\n\n\n\nUse a short, descriptive prefix in English:\n\ndocs: — documentation / content changes\nfeat: — new analytical page or section\nfix: — bug fix in a chunk or figure\nstyle: — theme / SCSS changes\nchore: — config, .gitignore, tooling\n\nExample:\ndocs: add life-expectancy subsection to A5 (ES/EN)\n\n\n\n\n\n\n\nBlock\nStatus\n\n\n\n\nA (epidemiological)\nActive — 5 levels rendered (ES + EN)\n\n\nB (spatial)\nPartial — ES pages exist; commented out in nav\n\n\nC (life expectancy)\nStub pages only (placeholder .qmd)\n\n\n\nWhen un-commenting a block in _quarto.yml, make sure the referenced .qmd files exist and render before committing.\n\n\n\n\n\nRendering issues → check Quarto version (quarto --version) and re-run quarto render.\nMissing R packages → see §1.2.\nload() errors → you are hitting the hard-coded path; switch to data/ (see §2).\n\nThank you for contributing. 🇲🇽"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#development-setup",
+    "href": "CONTRIBUTING.html#development-setup",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Tool\nMinimum\nNotes\n\n\n\n\nR\n4.2\nhttps://cloud.r-project.org/\n\n\nQuarto\n1.4\nhttps://quarto.org/docs/download/\n\n\nRStudio\n(optional)\nOpen Mexican mortality.Rproj\n\n\n\n\n\n\nInstall all required packages in one go:\ninstall.packages(c(\n  \"tidyverse\", \"scales\", \"knitr\", \"kableExtra\",\n  \"ggrepel\", \"patchwork\", \"RColorBrewer\", \"paletteer\",\n  \"sf\", \"rnaturalearth\", \"tmap\", \"spdep\"\n))\nFor sf on Linux you may need system libraries (GDAL, GEOS, PROJ). On Debian/Ubuntu:\nsudo apt-get install -y libgdal-dev libgeos-dev libproj-dev\nFor high-resolution maps, also install the data companion:\ninstall.packages(\"rnaturalearthdata\")"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#data-portable-loading-pattern",
+    "href": "CONTRIBUTING.html#data-portable-loading-pattern",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Several setup chunks currently load data from a hard-coded, machine-specific Windows path:\nload(\"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda\")\nThis path is not portable and will break the build for anyone else.\n\n\n\n\nCreate a data/ directory at the project root (it is .gitignore-d for large files — see below).\nPlace the upstream .rda files there:\ndata/\n├── asmr_nac.rda\n├── asmr_cause.rda\n├── asmr_sc.rda\n├── ratepopbycause.rda\n├── top10_sc.rda\n└── deces.rda\nIn every setup chunk, use the relative path:\nload(\"data/asmr_nac.rda\")\nThe commented # load(\"data/asmr_nac.rda\") lines already present in most setup chunks show the intended form — just uncomment and remove the H:/... line.\n\n\n\n\nMicrodata and pre-computed aggregations can be large or subject to redistribution restrictions. Keep data/ local and document the expected file names in README.md so others know which files to obtain."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#building-the-site",
+    "href": "CONTRIBUTING.html#building-the-site",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "quarto render\nOutput is written to docs/ (configured in _quarto.yml → output-dir: docs).\n\n\n\nquarto preview\n\n\n\nquarto render ES/A1_descriptivo_general.qmd\n\n\n\nOpen Mexican mortality.Rproj, then use the Render button on any .qmd file. Use the Serve / Preview option to get a live site preview."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#bilingual-content",
+    "href": "CONTRIBUTING.html#bilingual-content",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "The site is maintained in two parallel trees:\n\n\n\nLanguage\nDirectory\nLanding page\n\n\n\n\nSpanish\nES/\nES/index.qmd (also mirrored at root index.qmd)\n\n\nEnglish\nEN/\nEN/index.qmd\n\n\n\n\n\nWhen you add or edit a section, update both the ES/ and EN/ versions. Keep the same chunk labels and figure captions translated, so the rendered figures match between languages.\n\n\n\nEach .qmd starts with a YAML header. Set lang correctly:\n\nSpanish pages → lang: es\nEnglish pages → lang: en\n\n\n⚠️ Some Spanish pages currently declare lang: en in their YAML header (e.g. ES/A1_descriptivo_general.qmd). Set it to lang: es for Spanish content."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#case-sensitivity-es-en-directories",
+    "href": "CONTRIBUTING.html#case-sensitivity-es-en-directories",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Important for Linux / CI builds.\nThe directories on disk are uppercase: ES/ and EN/. However, the navigation in _quarto.yml references them with lowercase hrefs:\n- href: es/index.qmd      # actual directory is ES/\n- href: en/index.qmd      # actual directory is EN/\nOn case-insensitive filesystems (macOS APFS default, Windows) this works by accident. On case-sensitive filesystems (Linux, most CI runners) these links will resolve correctly only because Quarto renders to docs/es/ and docs/en/ (lowercase output). The source-directory casing does not leak into the rendered URLs, but be careful when adding new pages:\n\nAdd new Spanish pages to ES/ and reference them as es/&lt;file&gt;.qmd in _quarto.yml.\nAdd new English pages to EN/ and reference them as en/&lt;file&gt;.qmd.\n\nKeep the source directory casing uppercase (ES/, EN/) to stay consistent with the existing structure."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#theme-assets",
+    "href": "CONTRIBUTING.html#theme-assets",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "The site theme is customised in assets/custom.scss. It overrides:\n\nfonts (Source Sans 3, Playfair Display, JetBrains Mono — loaded via Google Fonts in _quarto.yml → include-in-header),\ncolours ($primary: #1a2744, $secondary: #2a7a8c, $accent: #e84855),\ncallout border colours,\ntable and sidebar styling.\n\nWhen changing colours, keep them consistent with the palette_sexo / palette_sex vectors defined in the setup chunks (#2a7a8c men, #e84855 women)."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#conventions-for-figures-code",
+    "href": "CONTRIBUTING.html#conventions-for-figures-code",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "The global knitr options in _quarto.yml apply:\nknitr:\n  opts_chunk:\n    fig.width: 9\n    fig.height: 5.5\n    dpi: 150\n    out.width: \"100%\"\n\nexecute:\n  echo: false      # code hidden by default\n  warning: false\n  message: false\n  cache: false\n\nCode is folded (code-fold: true) and the code-tools menu is enabled, so readers can inspect the source.\nUse fig.cap on every figure chunk — captions render below the figure.\nUse df-print: paged for interactive tables (already set globally).\nUse the palette_sexo (ES) / palette_sex (EN) vectors for sex colours so the site stays visually consistent."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#committing-rendered-output",
+    "href": "CONTRIBUTING.html#committing-rendered-output",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "The docs/ directory is committed to the repository so the site can be viewed without rebuilding. Therefore:\n\nRe-render the site (quarto render) after changing any .qmd source.\nCommit both the source (.qmd) and the rendered output (docs/) together.\n\nquarto render\ngit add ES/ EN/ docs/\ngit commit -m \"docs: update &lt;page&gt; in ES and EN\"\nDo not hand-edit files under docs/ — regenerate them with Quarto."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#commit-message-style",
+    "href": "CONTRIBUTING.html#commit-message-style",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Use a short, descriptive prefix in English:\n\ndocs: — documentation / content changes\nfeat: — new analytical page or section\nfix: — bug fix in a chunk or figure\nstyle: — theme / SCSS changes\nchore: — config, .gitignore, tooling\n\nExample:\ndocs: add life-expectancy subsection to A5 (ES/EN)"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#blocks-status",
+    "href": "CONTRIBUTING.html#blocks-status",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Block\nStatus\n\n\n\n\nA (epidemiological)\nActive — 5 levels rendered (ES + EN)\n\n\nB (spatial)\nPartial — ES pages exist; commented out in nav\n\n\nC (life expectancy)\nStub pages only (placeholder .qmd)\n\n\n\nWhen un-commenting a block in _quarto.yml, make sure the referenced .qmd files exist and render before committing."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#need-help",
+    "href": "CONTRIBUTING.html#need-help",
+    "title": "Contributing to Mexican-mortality",
+    "section": "",
+    "text": "Rendering issues → check Quarto version (quarto --version) and re-run quarto render.\nMissing R packages → see §1.2.\nload() errors → you are hitting the hard-coded path; switch to data/ (see §2).\n\nThank you for contributing. 🇲🇽"
+  },
+  {
     "objectID": "en/A1_descriptive_general.html",
     "href": "en/A1_descriptive_general.html",
     "title": "1- General descriptive analysis",

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>contributing – Mortality in Mexico</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-49c9dac6fae8e09f4ca8bec003b153f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e579c3393cc4d4e8e3febf1937a5d21c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Source+Sans+3:wght@300;400;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title"><strong>Health_México</strong></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto-es" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto ES</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto-es">    
+        <li>
+    <a class="dropdown-item" href="./es/index.html">
+ <span class="dropdown-text">Inicio</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Bloque A — Evolución de la mortalidad</li>
+        <li>
+    <a class="dropdown-item" href="./es/A1_descriptivo_general.html">
+ <span class="dropdown-text">1- Descripción general</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./es/A2_causas.html">
+ <span class="dropdown-text">2- Desagregación por causa</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./es/A3_causas_especificas.html">
+ <span class="dropdown-text">3- Causas específicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./es/A4_territorial.html">
+ <span class="dropdown-text">④ Dimensión territorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./es/A5_maxima_desagregacion.html">
+ <span class="dropdown-text">⑤ Máxima desagregación</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project-en" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project EN</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project-en">    
+        <li>
+    <a class="dropdown-item" href="./en/index.html">
+ <span class="dropdown-text">Home</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Block A — Mortality trends</li>
+        <li>
+    <a class="dropdown-item" href="./en/A1_descriptive_general.html">
+ <span class="dropdown-text">1- General description</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en/A2_causes.html">
+ <span class="dropdown-text">2- Disaggregation by cause</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en/A3_specific_causes.html">
+ <span class="dropdown-text">3- Specific causes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en/A4_territorial.html">
+ <span class="dropdown-text">④ Territorial dimension</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./en/A5_maximum_disaggregation.html">
+ <span class="dropdown-text">⑤ Maximum disaggregation</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dabmp/mortalidad-mexico"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#contributing-to-mexican-mortality" id="toc-contributing-to-mexican-mortality" class="nav-link active" data-scroll-target="#contributing-to-mexican-mortality">Contributing to Mexican-mortality</a>
+  <ul class="collapse">
+  <li><a href="#development-setup" id="toc-development-setup" class="nav-link" data-scroll-target="#development-setup">1. Development setup</a>
+  <ul class="collapse">
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">1.1 Tools</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">1.2 R packages</a></li>
+  </ul></li>
+  <li><a href="#data-portable-loading-pattern" id="toc-data-portable-loading-pattern" class="nav-link" data-scroll-target="#data-portable-loading-pattern">2. Data — portable loading pattern</a>
+  <ul class="collapse">
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">2.1 The problem</a></li>
+  <li><a href="#the-recommended-pattern" id="toc-the-recommended-pattern" class="nav-link" data-scroll-target="#the-recommended-pattern">2.2 The recommended pattern</a></li>
+  <li><a href="#why-data-is-not-committed" id="toc-why-data-is-not-committed" class="nav-link" data-scroll-target="#why-data-is-not-committed">2.3 Why <code>data/</code> is not committed</a></li>
+  </ul></li>
+  <li><a href="#building-the-site" id="toc-building-the-site" class="nav-link" data-scroll-target="#building-the-site">3. Building the site</a>
+  <ul class="collapse">
+  <li><a href="#render-the-whole-website" id="toc-render-the-whole-website" class="nav-link" data-scroll-target="#render-the-whole-website">3.1 Render the whole website</a></li>
+  <li><a href="#preview-with-live-reload" id="toc-preview-with-live-reload" class="nav-link" data-scroll-target="#preview-with-live-reload">3.2 Preview with live reload</a></li>
+  <li><a href="#render-a-single-page" id="toc-render-a-single-page" class="nav-link" data-scroll-target="#render-a-single-page">3.3 Render a single page</a></li>
+  <li><a href="#in-rstudio" id="toc-in-rstudio" class="nav-link" data-scroll-target="#in-rstudio">3.4 In RStudio</a></li>
+  </ul></li>
+  <li><a href="#bilingual-content" id="toc-bilingual-content" class="nav-link" data-scroll-target="#bilingual-content">4. Bilingual content</a>
+  <ul class="collapse">
+  <li><a href="#keep-both-languages-in-sync" id="toc-keep-both-languages-in-sync" class="nav-link" data-scroll-target="#keep-both-languages-in-sync">4.1 Keep both languages in sync</a></li>
+  <li><a href="#page-metadata" id="toc-page-metadata" class="nav-link" data-scroll-target="#page-metadata">4.2 Page metadata</a></li>
+  </ul></li>
+  <li><a href="#case-sensitivity-es-en-directories" id="toc-case-sensitivity-es-en-directories" class="nav-link" data-scroll-target="#case-sensitivity-es-en-directories">5. Case sensitivity — <code>ES/</code> / <code>EN/</code> directories</a></li>
+  <li><a href="#theme-assets" id="toc-theme-assets" class="nav-link" data-scroll-target="#theme-assets">6. Theme &amp; assets</a></li>
+  <li><a href="#conventions-for-figures-code" id="toc-conventions-for-figures-code" class="nav-link" data-scroll-target="#conventions-for-figures-code">7. Conventions for figures &amp; code</a></li>
+  <li><a href="#committing-rendered-output" id="toc-committing-rendered-output" class="nav-link" data-scroll-target="#committing-rendered-output">8. Committing rendered output</a></li>
+  <li><a href="#commit-message-style" id="toc-commit-message-style" class="nav-link" data-scroll-target="#commit-message-style">9. Commit message style</a></li>
+  <li><a href="#blocks-status" id="toc-blocks-status" class="nav-link" data-scroll-target="#blocks-status">10. Blocks status</a></li>
+  <li><a href="#need-help" id="toc-need-help" class="nav-link" data-scroll-target="#need-help">11. Need help?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="contributing-to-mexican-mortality" class="level1">
+<h1>Contributing to Mexican-mortality</h1>
+<p>Thanks for your interest in improving this project. This document describes how to set up the project locally, how the site is built, and the conventions to follow when editing the content.</p>
+<hr>
+<section id="development-setup" class="level2">
+<h2 class="anchored" data-anchor-id="development-setup">1. Development setup</h2>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">1.1 Tools</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tool</th>
+<th style="text-align: left;">Minimum</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;">4.2</td>
+<td style="text-align: left;"><a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Quarto</strong></td>
+<td style="text-align: left;">1.4</td>
+<td style="text-align: left;"><a href="https://quarto.org/docs/download/" class="uri">https://quarto.org/docs/download/</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RStudio</td>
+<td style="text-align: left;"><em>(optional)</em></td>
+<td style="text-align: left;">Open <code>Mexican mortality.Rproj</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages">1.2 R packages</h3>
+<p>Install all required packages in one go:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>, <span class="st">"scales"</span>, <span class="st">"knitr"</span>, <span class="st">"kableExtra"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ggrepel"</span>, <span class="st">"patchwork"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"paletteer"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sf"</span>, <span class="st">"rnaturalearth"</span>, <span class="st">"tmap"</span>, <span class="st">"spdep"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For <code>sf</code> on Linux you may need system libraries (GDAL, GEOS, PROJ). On Debian/Ubuntu:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> libgdal-dev libgeos-dev libproj-dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For high-resolution maps, also install the data companion:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rnaturalearthdata"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="data-portable-loading-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="data-portable-loading-pattern">2. Data — portable loading pattern</h2>
+<section id="the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem">2.1 The problem</h3>
+<p>Several setup chunks currently load data from a <strong>hard-coded, machine-specific Windows path</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This path is <strong>not portable</strong> and will break the build for anyone else.</p>
+</section>
+<section id="the-recommended-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="the-recommended-pattern">2.2 The recommended pattern</h3>
+<ol type="1">
+<li><p>Create a <code>data/</code> directory at the project root (it is <code>.gitignore</code>-d for large files — see below).</p></li>
+<li><p>Place the upstream <code>.rda</code> files there:</p>
+<pre><code>data/
+├── asmr_nac.rda
+├── asmr_cause.rda
+├── asmr_sc.rda
+├── ratepopbycause.rda
+├── top10_sc.rda
+└── deces.rda</code></pre></li>
+<li><p>In every setup chunk, use the <strong>relative</strong> path:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/asmr_nac.rda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The commented <code># load("data/asmr_nac.rda")</code> lines already present in most setup chunks show the intended form — just uncomment and remove the <code>H:/...</code> line.</p></li>
+</ol>
+</section>
+<section id="why-data-is-not-committed" class="level3">
+<h3 class="anchored" data-anchor-id="why-data-is-not-committed">2.3 Why <code>data/</code> is not committed</h3>
+<p>Microdata and pre-computed aggregations can be large or subject to redistribution restrictions. Keep <code>data/</code> local and document the expected file names in <a href="README.md#data">README.md</a> so others know which files to obtain.</p>
+<hr>
+</section>
+</section>
+<section id="building-the-site" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-site">3. Building the site</h2>
+<section id="render-the-whole-website" class="level3">
+<h3 class="anchored" data-anchor-id="render-the-whole-website">3.1 Render the whole website</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Output is written to <code>docs/</code> (configured in <code>_quarto.yml</code> → <code>output-dir: docs</code>).</p>
+</section>
+<section id="preview-with-live-reload" class="level3">
+<h3 class="anchored" data-anchor-id="preview-with-live-reload">3.2 Preview with live reload</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="render-a-single-page" class="level3">
+<h3 class="anchored" data-anchor-id="render-a-single-page">3.3 Render a single page</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render ES/A1_descriptivo_general.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="in-rstudio">3.4 In RStudio</h3>
+<p>Open <code>Mexican mortality.Rproj</code>, then use the <strong>Render</strong> button on any <code>.qmd</code> file. Use the <strong>Serve</strong> / <strong>Preview</strong> option to get a live site preview.</p>
+<hr>
+</section>
+</section>
+<section id="bilingual-content" class="level2">
+<h2 class="anchored" data-anchor-id="bilingual-content">4. Bilingual content</h2>
+<p>The site is maintained in two parallel trees:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Directory</th>
+<th style="text-align: left;">Landing page</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Spanish</td>
+<td style="text-align: left;"><code>ES/</code></td>
+<td style="text-align: left;"><code>ES/index.qmd</code> (also mirrored at root <code>index.qmd</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">English</td>
+<td style="text-align: left;"><code>EN/</code></td>
+<td style="text-align: left;"><code>EN/index.qmd</code></td>
+</tr>
+</tbody>
+</table>
+<section id="keep-both-languages-in-sync" class="level3">
+<h3 class="anchored" data-anchor-id="keep-both-languages-in-sync">4.1 Keep both languages in sync</h3>
+<p>When you add or edit a section, <strong>update both the <code>ES/</code> and <code>EN/</code> versions</strong>. Keep the same chunk labels and figure captions translated, so the rendered figures match between languages.</p>
+</section>
+<section id="page-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="page-metadata">4.2 Page metadata</h3>
+<p>Each <code>.qmd</code> starts with a YAML header. Set <code>lang</code> correctly:</p>
+<ul>
+<li>Spanish pages → <code>lang: es</code></li>
+<li>English pages → <code>lang: en</code></li>
+</ul>
+<blockquote class="blockquote">
+<p>⚠️ Some Spanish pages currently declare <code>lang: en</code> in their YAML header (e.g. <code>ES/A1_descriptivo_general.qmd</code>). Set it to <code>lang: es</code> for Spanish content.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="case-sensitivity-es-en-directories" class="level2">
+<h2 class="anchored" data-anchor-id="case-sensitivity-es-en-directories">5. Case sensitivity — <code>ES/</code> / <code>EN/</code> directories</h2>
+<p><strong>Important for Linux / CI builds.</strong></p>
+<p>The directories on disk are uppercase: <strong><code>ES/</code></strong> and <strong><code>EN/</code></strong>. However, the navigation in <code>_quarto.yml</code> references them with <strong>lowercase</strong> hrefs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> es/index.qmd</span><span class="co">      # actual directory is ES/</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">href</span><span class="kw">:</span><span class="at"> en/index.qmd</span><span class="co">      # actual directory is EN/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On <strong>case-insensitive</strong> filesystems (macOS APFS default, Windows) this works by accident. On <strong>case-sensitive</strong> filesystems (Linux, most CI runners) these links will resolve correctly <strong>only because Quarto renders to <code>docs/es/</code> and <code>docs/en/</code></strong> (lowercase output). The source-directory casing does not leak into the rendered URLs, but be careful when adding new pages:</p>
+<ul>
+<li>Add new Spanish pages to <code>ES/</code> and reference them as <code>es/&lt;file&gt;.qmd</code> in <code>_quarto.yml</code>.</li>
+<li>Add new English pages to <code>EN/</code> and reference them as <code>en/&lt;file&gt;.qmd</code>.</li>
+</ul>
+<p>Keep the <strong>source directory casing uppercase</strong> (<code>ES/</code>, <code>EN/</code>) to stay consistent with the existing structure.</p>
+<hr>
+</section>
+<section id="theme-assets" class="level2">
+<h2 class="anchored" data-anchor-id="theme-assets">6. Theme &amp; assets</h2>
+<p>The site theme is customised in <a href="assets/custom.scss"><code>assets/custom.scss</code></a>. It overrides:</p>
+<ul>
+<li>fonts (Source Sans 3, Playfair Display, JetBrains Mono — loaded via Google Fonts in <code>_quarto.yml</code> → <code>include-in-header</code>),</li>
+<li>colours (<code>$primary: #1a2744</code>, <code>$secondary: #2a7a8c</code>, <code>$accent: #e84855</code>),</li>
+<li>callout border colours,</li>
+<li>table and sidebar styling.</li>
+</ul>
+<p>When changing colours, keep them consistent with the <code>palette_sexo</code> / <code>palette_sex</code> vectors defined in the setup chunks (<code>#2a7a8c</code> men, <code>#e84855</code> women).</p>
+<hr>
+</section>
+<section id="conventions-for-figures-code" class="level2">
+<h2 class="anchored" data-anchor-id="conventions-for-figures-code">7. Conventions for figures &amp; code</h2>
+<p>The global knitr options in <code>_quarto.yml</code> apply:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knitr</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig.width</span><span class="kw">:</span><span class="at"> </span><span class="dv">9</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig.height</span><span class="kw">:</span><span class="at"> </span><span class="fl">5.5</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dpi</span><span class="kw">:</span><span class="at"> </span><span class="dv">150</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">out.width</span><span class="kw">:</span><span class="at"> </span><span class="st">"100%"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">      # code hidden by default</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Code is folded</strong> (<code>code-fold: true</code>) and the <strong>code-tools</strong> menu is enabled, so readers can inspect the source.</li>
+<li>Use <strong><code>fig.cap</code></strong> on every figure chunk — captions render below the figure.</li>
+<li>Use <strong><code>df-print: paged</code></strong> for interactive tables (already set globally).</li>
+<li>Use the <code>palette_sexo</code> (ES) / <code>palette_sex</code> (EN) vectors for sex colours so the site stays visually consistent.</li>
+</ul>
+<hr>
+</section>
+<section id="committing-rendered-output" class="level2">
+<h2 class="anchored" data-anchor-id="committing-rendered-output">8. Committing rendered output</h2>
+<p>The <code>docs/</code> directory <strong>is committed</strong> to the repository so the site can be viewed without rebuilding. Therefore:</p>
+<ol type="1">
+<li>Re-render the site (<code>quarto render</code>) <strong>after</strong> changing any <code>.qmd</code> source.</li>
+<li>Commit <strong>both</strong> the source (<code>.qmd</code>) and the rendered output (<code>docs/</code>) together.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add ES/ EN/ docs/</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"docs: update &lt;page&gt; in ES and EN"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do not hand-edit files under <code>docs/</code> — regenerate them with Quarto.</p>
+<hr>
+</section>
+<section id="commit-message-style" class="level2">
+<h2 class="anchored" data-anchor-id="commit-message-style">9. Commit message style</h2>
+<p>Use a short, descriptive prefix in <strong>English</strong>:</p>
+<ul>
+<li><code>docs:</code> — documentation / content changes</li>
+<li><code>feat:</code> — new analytical page or section</li>
+<li><code>fix:</code> — bug fix in a chunk or figure</li>
+<li><code>style:</code> — theme / SCSS changes</li>
+<li><code>chore:</code> — config, <code>.gitignore</code>, tooling</li>
+</ul>
+<p>Example:</p>
+<pre><code>docs: add life-expectancy subsection to A5 (ES/EN)</code></pre>
+<hr>
+</section>
+<section id="blocks-status" class="level2">
+<h2 class="anchored" data-anchor-id="blocks-status">10. Blocks status</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Block</th>
+<th style="text-align: left;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>A</strong> (epidemiological)</td>
+<td style="text-align: left;">Active — 5 levels rendered (ES + EN)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>B</strong> (spatial)</td>
+<td style="text-align: left;">Partial — ES pages exist; commented out in nav</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>C</strong> (life expectancy)</td>
+<td style="text-align: left;">Stub pages only (placeholder <code>.qmd</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>When un-commenting a block in <code>_quarto.yml</code>, make sure the referenced <code>.qmd</code> files exist and render before committing.</p>
+<hr>
+</section>
+<section id="need-help" class="level2">
+<h2 class="anchored" data-anchor-id="need-help">11. Need help?</h2>
+<ul>
+<li>Rendering issues → check Quarto version (<code>quarto --version</code>) and re-run <code>quarto render</code>.</li>
+<li>Missing R packages → see <a href="#12-r-packages">§1.2</a>.</li>
+<li><code>load()</code> errors → you are hitting the hard-coded path; switch to <code>data/</code> (see <a href="#2-data--portable-loading-pattern">§2</a>).</li>
+</ul>
+<p>Thank you for contributing. 🇲🇽</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Análisis de mortalidad en México · Datos: INEGI</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Generado con <a href="https://quarto.org">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

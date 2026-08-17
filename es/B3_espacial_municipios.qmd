@@ -1,0 +1,169 @@
+---
+title: "③ bis · Análisis espacial por Municipios"
+subtitle: "Bloque B — Heterogeneidad intra-estatal y detección de hotspots"
+date: today
+lang: es
+---
+
+<span class="badge-nivel" style="background:#2a9d6e;">Bloque B · Nivel 3 bis</span>
+**Variables** : `municipality` · `year` · `cause`
+
+## Introducción
+
+El nivel municipal constituye la escala más fina del análisis espacial.
+Permite revelar :
+
+- L'**heterogeneidad intra-estatal** : dos municipios del mismo estado
+  pueden tener perfiles de mortalité radicalmente distintos.
+- La existencia de **hotspots locales** (focos de mortalidad elevada)
+  a menudo invisibles en análisis estatales.
+- El papel de determinantes locales : urbanización, marginación, acceso a servicios.
+
+::: {.callout-warning}
+**Nota sobre confidencialidad**  
+Para municipios pequeños (< 5 000 hab.), los datos de mortalidad
+pueden estar sujetos a restricciones de divulgación (INEGI).
+Aplicar técnicas de suavizado espacial (kriging, kernel density)
+en esos casos.
+:::
+
+---
+
+```{r setup-b3, include=FALSE}
+library(tidyverse); library(scales); library(sf); library(tmap)
+tmap_mode("plot")
+
+set.seed(77)
+n_mun <- 100
+mun_names <- paste0("Municipio_", str_pad(1:n_mun, 3, pad="0"))
+
+# Géométrie simulée (grille) — remplacer par shapefile INEGI
+mun_grid <- st_make_grid(
+  st_as_sfc(st_bbox(c(xmin=-104,ymin=19,xmax=-98,ymax=22),crs=4326)),
+  n=c(10,10), square=TRUE, crs=4326
+) |> st_sf() |> mutate(
+  municipality = mun_names,
+  state        = sample(c("Jalisco","Michoacán","Colima","Guerrero"), n_mun, replace=TRUE),
+  pop          = runif(n_mun, 5000, 250000),
+  rate_total   = rnorm(n_mun, mean=150, sd=45),
+  rate_cv      = rnorm(n_mun, mean=30, sd=12),
+  rate_ext     = rnorm(n_mun, mean=25, sd=20),
+  margination  = runif(n_mun, 0, 1),
+  cluster      = sample(c("Hotspot","Coldspot","No significativo"), n_mun,
+                        replace=TRUE, prob=c(0.15,0.15,0.70))
+)
+```
+
+## 1 · Cartographie à l'échelle municipale
+
+::: {.panel-tabset}
+
+#### Taux de mortalité total
+
+```{r mapa-municipios-total, fig.cap="Taux de mortalité par municipio (données simulées)"}
+tm_shape(mun_grid) +
+  tm_polygons(col="rate_total", title="Tasa / 100k hab.",
+              palette="YlOrRd", style="jenks", n=5,
+              border.col="white", border.alpha=0.5) +
+  tm_layout(main.title="Tasa de mortalidad total por municipio",
+            main.title.size=1, legend.outside=TRUE, frame=FALSE) +
+  tm_scale_bar(position=c("left","bottom"))
+```
+
+#### Mortalité cardiovasculaire
+
+```{r mapa-cv}
+tm_shape(mun_grid) +
+  tm_polygons(col="rate_cv", title="Tasa CV / 100k",
+              palette="Blues", style="quantile", n=5,
+              border.col="white", border.alpha=0.5) +
+  tm_layout(main.title="Mortalidad cardiovascular por municipio",
+            main.title.size=1, legend.outside=TRUE, frame=FALSE)
+```
+
+#### Causes externes
+
+```{r mapa-ext}
+tm_shape(mun_grid) +
+  tm_polygons(col="rate_ext", title="Tasa ext. / 100k",
+              palette="Reds", style="quantile", n=5,
+              border.col="white", border.alpha=0.5) +
+  tm_layout(main.title="Mortalidad por causas externas (violencia/accidentes)",
+            main.title.size=1, legend.outside=TRUE, frame=FALSE)
+```
+
+#### Hotspots / Coldspots
+
+```{r mapa-clusters}
+tm_shape(mun_grid) +
+  tm_polygons(col="cluster",
+              palette=c("Hotspot"="#e84855","Coldspot"="#1a2744",
+                        "No significativo"="#e0e0e0"),
+              title="Clasificación espacial",
+              border.col="white", border.alpha=0.5) +
+  tm_layout(main.title="Detección de hotspots de mortalidad",
+            main.title.size=1, legend.outside=TRUE, frame=FALSE)
+```
+
+:::
+
+---
+
+## 2 · Relation margination–mortalité
+
+```{r fig-margination}
+ggplot(mun_grid, aes(x=margination, y=rate_total, color=state)) +
+  geom_point(alpha=0.7, size=3) +
+  geom_smooth(aes(group=1), method="lm", se=TRUE,
+              color="#1a2744", fill="#1a2744", alpha=0.15) +
+  scale_color_brewer(palette="Set2") +
+  labs(title="Relación marginalidad–tasa de mortalidad",
+       subtitle="Cada punto = un municipio",
+       x="Índice de marginalidad (0=baja, 1=alta)",
+       y="Tasa de mortalidad / 100 000 hab.", color="Estado") +
+  theme_minimal(base_size=13) +
+  theme(plot.title=element_text(face="bold",color="#1a2744"),
+        plot.subtitle=element_text(color="#6c757d"),
+        panel.grid.minor=element_blank())
+```
+
+---
+
+## 3 · Note méthodologique — Détection de hotspots
+
+::: {.callout-note}
+**Méthode recommandée en production**
+
+La détection de clusters locaux repose sur la statistique **Gi\*** de Getis-Ord
+ou sur l'**LISA** (Local Indicators of Spatial Association) via `spdep` :
+
+```r
+library(spdep)
+# Construire la matrice de poids spatiaux
+w    <- poly2nb(mx_mun, queen = TRUE)
+wl   <- nb2listw(w, style = "W")
+
+# LISA (Moran local)
+lm   <- localmoran(mx_mun$rate_total, wl)
+mx_mun$local_I <- lm[,1]
+mx_mun$p_value <- lm[,5]
+
+# Classifier : HH, LL, HL, LH, ns
+mx_mun <- mx_mun |>
+  mutate(lisa_class = case_when(
+    p_value < 0.05 & local_I > 0 & rate_total > mean(rate_total) ~ "HH (hotspot)",
+    p_value < 0.05 & local_I > 0 & rate_total < mean(rate_total) ~ "LL (coldspot)",
+    p_value < 0.05 & local_I < 0 ~ "Outlier spatial",
+    TRUE ~ "Non significatif"
+  ))
+```
+:::
+
+---
+
+## Navigation
+
+::: {style="display:flex; justify-content:space-between; margin-top:2rem;"}
+[← ② bis · Estados](B2_espacial_estados.qmd){.btn .btn-outline-secondary}
+[← Retour à l'accueil](index.qmd){.btn .btn-outline-secondary}
+:::

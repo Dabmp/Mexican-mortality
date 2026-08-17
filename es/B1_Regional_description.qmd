@@ -1,8 +1,0 @@
----
-title: "B1_Regional_description"
-subtitle: "Bloc B"
-date: today
-date-format: "MMMM YYYY"
-lang: en
----
-

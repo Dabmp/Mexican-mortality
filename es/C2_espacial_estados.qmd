@@ -1,4 +1,0 @@
----
-title: "C2_espacial_estados"
----
-

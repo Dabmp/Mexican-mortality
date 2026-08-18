@@ -249,6 +249,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#tendencias-globales" id="toc-tendencias-globales" class="nav-link active" data-scroll-target="#tendencias-globales">Tendencias globales</a></li>
   <li><a href="#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme" id="toc-tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme" class="nav-link" data-scroll-target="#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme">Tendencia de la tasa de mortalidad estandarizada por edad (TME)</a></li>
+  <li><a href="#navegación" id="toc-navegación" class="nav-link" data-scroll-target="#navegación">Navegación</a></li>
   </ul>
 </nav>
     </div>
@@ -322,36 +323,61 @@ Figure&nbsp;2
 <h2 class="anchored" data-anchor-id="tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme">Tendencia de la tasa de mortalidad estandarizada por edad (TME)</h2>
 <p>La tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Series temporales para TME</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Series temporales para TME</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Cambio ASMR masculino</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Women ASMR change</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Los resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.</p>
 <!-- for certain diseases -->
-<!-- #### Cambio ASMR masculino -->
-<!-- ```{r fig-men-change, fig.cap="ASMR men change"} -->
-<!-- asmr_male |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |> -->
-<!--   ggplot(aes(x=year, y=growth)) + -->
-<!--   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) + -->
-<!--   geom_hline(yintercept=0, color="#1a2744") + -->
-<!--   scale_x_continuous(breaks=seq(1990,2024,4)) + -->
-<!--  labs(title="Annual ASMR Growth Rate (male)", -->
-<!--   x="Year", y="Annual Change (%)") + -->
-<!--   theme_minimal(base_size=13) + -->
-<!--   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank()) -->
-<!-- ``` -->
-<!-- #### Women ASMR change -->
-<!-- ```{r fig-women-change, fig.cap="ASMR women change"} -->
-<!-- asmr_female |> mutate(growth = (asmr/lag(asmr)-1)*100) |> filter(!is.na(growth)) |> -->
-<!--   ggplot(aes(x=year, y=growth)) + -->
-<!--   geom_col(fill="#2a7a8c", alpha=0.8, width=0.7) + -->
-<!--   geom_hline(yintercept=0, color="#1a2744") + -->
-<!--   scale_x_continuous(breaks=seq(1990,2024,4)) + -->
-<!--  labs(title="Annual ASMR Growth Rate (female)", -->
-<!--   x="Year", y="Annual Change (%)") + -->
-<!--   theme_minimal(base_size=13) + -->
-<!--   theme(plot.title=element_text(face="bold",color="#1a2744"), panel.grid.minor=element_blank()) -->
-<!-- ``` -->
-<!-- ::: -->
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ASMR" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ASMR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="A1_descriptivo_general_files/figure-html/fig-ASMR-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ASMR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: ASMR trend (1990–2024)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-men-change" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-men-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="A1_descriptivo_general_files/figure-html/fig-men-change-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-men-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: ASMR men change
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-women-change" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-women-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="A1_descriptivo_general_files/figure-html/fig-women-change-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-women-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: ASMR women change
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="navegación" class="level2">
 <h2 class="anchored" data-anchor-id="navegación">Navegación</h2>
 <div style="display:flex; justify-content:space-between; margin-top:2rem;">
@@ -359,10 +385,6 @@ Figure&nbsp;2
 </div>
 
 
-</section>
-</div>
-</div>
-</div>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

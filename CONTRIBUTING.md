@@ -94,7 +94,7 @@ quarto preview
 ### 3.3 Render a single page
 
 ```bash
-quarto render ES/A1_descriptivo_general.qmd
+quarto render es/A1_descriptivo_general.qmd
 ```
 
 ### 3.4 In RStudio
@@ -110,12 +110,12 @@ The site is maintained in two parallel trees:
 
 | Language | Directory | Landing page |
 |:---|:---|:---|
-| Spanish | `ES/` | `ES/index.qmd` (also mirrored at root `index.qmd`) |
-| English | `EN/` | `EN/index.qmd` |
+| Spanish | `es/` | `es/index.qmd` (also mirrored at root `index.qmd`) |
+| English | `en/` | `en/index.qmd` |
 
 ### 4.1 Keep both languages in sync
 
-When you add or edit a section, **update both the `ES/` and `EN/` versions**.
+When you add or edit a section, **update both the `es/` and `en/` versions**.
 Keep the same chunk labels and figure captions translated, so the rendered figures
 match between languages.
 
@@ -127,33 +127,29 @@ Each `.qmd` starts with a YAML header. Set `lang` correctly:
 - English pages → `lang: en`
 
 > ⚠️ Some Spanish pages currently declare `lang: en` in their YAML header (e.g.
-> `ES/A1_descriptivo_general.qmd`). Set it to `lang: es` for Spanish content.
+> `es/A1_descriptivo_general.qmd`). Set it to `lang: es` for Spanish content.
 
 ---
 
-## 5. Case sensitivity — `ES/` / `EN/` directories
+## 5. Directory naming — `es/` / `en/`
 
-**Important for Linux / CI builds.**
-
-The directories on disk are uppercase: **`ES/`** and **`EN/`**. However, the
-navigation in `_quarto.yml` references them with **lowercase** hrefs:
+The source directories use **lowercase** names: **`es/`** (Spanish) and **`en/`**
+(English). The navigation in `_quarto.yml` references them with matching lowercase
+hrefs:
 
 ```yaml
-- href: es/index.qmd      # actual directory is ES/
-- href: en/index.qmd      # actual directory is EN/
+- href: es/index.qmd
+- href: en/index.qmd
 ```
 
-On **case-insensitive** filesystems (macOS APFS default, Windows) this works by
-accident. On **case-sensitive** filesystems (Linux, most CI runners) these links
-will resolve correctly **only because Quarto renders to `docs/es/` and `docs/en/`**
-(lowercase output). The source-directory casing does not leak into the rendered
-URLs, but be careful when adding new pages:
+This is consistent with the rendered output in `docs/es/` and `docs/en/`, and works
+on all filesystems (including case-sensitive Linux/CI). When adding new pages:
 
-- Add new Spanish pages to `ES/` and reference them as `es/<file>.qmd` in `_quarto.yml`.
-- Add new English pages to `EN/` and reference them as `en/<file>.qmd`.
+- Add new Spanish pages to `es/` and reference them as `es/<file>.qmd` in `_quarto.yml`.
+- Add new English pages to `en/` and reference them as `en/<file>.qmd`.
 
-Keep the **source directory casing uppercase** (`ES/`, `EN/`) to stay consistent
-with the existing structure.
+Keep the directory casing **lowercase** to stay consistent with the existing
+structure and the rendered output.
 
 ---
 
@@ -211,7 +207,7 @@ without rebuilding. Therefore:
 
 ```bash
 quarto render
-git add ES/ EN/ docs/
+git add es/ en/ docs/
 git commit -m "docs: update <page> in ES and EN"
 ```
 
@@ -232,7 +228,7 @@ Use a short, descriptive prefix in **English**:
 Example:
 
 ```
-docs: add life-expectancy subsection to A5 (ES/EN)
+docs: add life-expectancy subsection to A5 (es/en)
 ```
 
 ---

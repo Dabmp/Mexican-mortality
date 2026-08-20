@@ -9,12 +9,12 @@ locally.
 
 | File | Used by | Description |
 |:---|:---|:---|
-| `asmr_nac.rda` | `index.qmd`, `ES/A1`, `EN/A1` | National age-standardised mortality rates |
-| `asmr_cause.rda` | `ES/A2`, `EN/A2` | ASMR disaggregated by cause |
-| `asmr_sc.rda` | `ES/A3`, `EN/A3` | ASMR for specific causes |
-| `ratepopbycause.rda` | `ES/A2` | Rates / population by cause |
-| `top10_sc.rda` | `ES/A3`, `EN/A3` | Top-10 specific causes |
-| `deces.rda` / `deces.rds` | `ES/A5` | Deaths profile by cause |
+| `asmr_nac.rda` | `index.qmd`, `es/A1`, `en/A1` | National age-standardised mortality rates |
+| `asmr_cause.rda` | `es/A2`, `en/A2` | ASMR disaggregated by cause |
+| `asmr_sc.rda` | `es/A3`, `en/A3` | ASMR for specific causes |
+| `ratepopbycause.rda` | `es/A2` | Rates / population by cause |
+| `top10_sc.rda` | `es/A3`, `en/A3` | Top-10 specific causes |
+| `deces.rda` / `deces.rds` | `es/A5` | Deaths profile by cause |
 
 ## How to load them
 

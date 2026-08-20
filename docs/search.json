@@ -4,35 +4,35 @@
     "href": "index.html",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
-    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
     "objectID": "index.html#mortalidad-en-méxico",
     "href": "index.html#mortalidad-en-méxico",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
-    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
     "objectID": "index.html#estructura-del-sitio",
     "href": "index.html#estructura-del-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Estructura del sitio",
-    "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n→\n\n\n⑤\nyear, sex, state, cause_specific\nArticulación salud-territorio\n→\n\n\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n→\n\n\n②\nstate, year, cause\nDistribución espacial, clústeres\n→\n\n\n③\nmunicipality, year, cause\nHeterogeneidad intra-estatal\n→\n\n\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n→\n\n\n②\nstate, year, sex\nEvolución por entidad\n→\n\n\n③\nmunicipality, sex\nHeterogeneidad municipal\n→"
+    "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n\n\n\n\n\n⑤ | year, sex, state, cause_specific | Articulación salud-territorio |\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n\n\n\n\n\n② | state, year, cause | Distribución espacial, clústeres |\n\n③ | municipality, year, cause | Heterogeneidad intra-estatal |\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n\n\n\n\n\n② | state, year, sex | Evolución por entidad |\n\n③ | municipality, sex | Heterogeneidad municipal |"
   },
   {
     "objectID": "index.html#síntesis-preliminar",
     "href": "index.html#síntesis-preliminar",
     "title": "Análisis de la Mortalidad en México",
     "section": "Síntesis preliminar",
-    "text": "Síntesis preliminar\n\n\n\n\n\n\n\n\nFigura 1: Evolución de la mortalidad total por sexo (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNota"
+    "text": "Síntesis preliminar\n\n\n\n\n\n\n\n\nFigura 1: Evolución de la mortalidad total por sexo (1990–2024)"
   },
   {
     "objectID": "index.html#cómo-navegar-este-sitio",
     "href": "index.html#cómo-navegar-este-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Cómo navegar este sitio",
-    "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú 🇲🇽 Español / 🇬🇧 English en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ ① Descripción general"
+    "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel 1 al 5, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú ES Español / EN English  en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ 1- Descripción general"
   },
   {
     "objectID": "es/C3_espacial_municipios.html",
@@ -272,35 +272,35 @@
     "href": "en/index.html",
     "title": "Mortality Analysis in Mexico",
     "section": "",
-    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
   },
   {
     "objectID": "en/index.html#mortality-in-mexico",
     "href": "en/index.html#mortality-in-mexico",
     "title": "Mortality Analysis in Mexico",
     "section": "",
-    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI / Ministry of Health), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
+    "text": "This site presents a systematic and progressive analysis of mortality in Mexico based on administrative records (INEGI), covering the period 1990–2024. The analytical architecture is organised in three complementary blocks:\n\n\n📈 Block A — Epidemiological analysis\nProgressive disaggregation: global trends → causes → specific causes → states → municipalities.\n\n\n🗺️ Block B — Regional disparities\nMulti-scale mapping: state-level distribution, municipal hotspots, regional gradients.\n\n\n⏳ Block C — Life expectancy\nTrends in life expectancy at birth and at selected ages, disaggregated by sex, state, and municipality."
   },
   {
     "objectID": "en/index.html#site-structure",
     "href": "en/index.html#site-structure",
     "title": "Mortality Analysis in Mexico",
     "section": "Site structure",
-    "text": "Site structure\n\nBlock A — Health and temporal analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nGlobal trends, ASMR\n→\n\n\n②\nyear, sex, cause\nEpidemiological transitions\n→\n\n\n③\nyear, sex, cause_specific\nICD-10 specific cause breakdown\n→\n\n\n④\nyear, sex, state, cause\nRegional disparities\n→\n\n\n⑤\nyear, sex, state, cause_specific\nHealth-territory articulation\n→\n\n\n\n\n\nBlock B — Spatial analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nstate, cause\nRegional description\n→\n\n\n②\nstate, year, cause\nSpatial distribution, clusters\n→\n\n\n③\nmunicipality, year, cause\nIntra-state heterogeneity\n→\n\n\n\n\n\nBlock C — Life expectancy\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nNational overview\n→\n\n\n②\nstate, year, sex\nState-level trends\n→\n\n\n③\nmunicipality, sex\nMunicipal heterogeneity\n→"
+    "text": "Site structure\n\nBlock A — Health and temporal analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nGlobal trends, ASMR\n→\n\n\n②\nyear, sex, cause\nEpidemiological transitions\n→\n\n\n③\nyear, sex, cause_specific\nICD-10 specific cause breakdown\n→\n\n\n④\nyear, sex, state, cause\nRegional disparities\n\n\n\n\n\n⑤ | year, sex, state, cause_specific | Health-territory articulation |\n\n\n\nBlock B — Spatial analysis\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nstate, cause\nRegional description\n\n\n\n\n\n② | state, year, cause | Spatial distribution, clusters |\n\n③ | municipality, year, cause | Intra-state heterogeneity |\n\n\n\nBlock C — Life expectancy\n\n\n\nLevel\nMain variables\nAnalytical objective\nPage\n\n\n\n\n①\nyear, sex\nNational overview\n\n\n\n\n\n② | state, year, sex | State-level trends |\n\n③ | municipality, sex | Municipal heterogeneity |"
   },
   {
     "objectID": "en/index.html#preliminary-overview",
     "href": "en/index.html#preliminary-overview",
     "title": "Mortality Analysis in Mexico",
     "section": "Preliminary overview",
-    "text": "Preliminary overview\n\n\n\n\n\n\n\n\nFigure 1: Total mortality trends by sex (1990–2024)"
+    "text": "Preliminary overview\n\n\n\n\n\n\n\n\nFigure 1: Total mortality trends by sex (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\nNote"
   },
   {
     "objectID": "en/index.html#how-to-navigate-this-site",
     "href": "en/index.html#how-to-navigate-this-site",
     "title": "Mortality Analysis in Mexico",
     "section": "How to navigate this site",
-    "text": "How to navigate this site\n\nProgressive reading — follow Block A from level ① to ⑤, gradually increasing analytical complexity.\nThematic reading — go directly to Block B (spatial perspective) or Block C (life expectancy) depending on your research question.\nLanguage switch — use the 🇲🇽 Español / 🇬🇧 English menu in the navigation bar to access equivalent content in Spanish.\n\n\n→ ① General description"
+    "text": "How to navigate this site\n\nProgressive reading — follow Block A from level 1 to 5, gradually increasing analytical complexity.\nThematic reading — go directly to Block B (spatial perspective) or Block C (life expectancy) depending on your research question.\nLanguage switch — use the ES Español / EN English menu in the navigation bar to access equivalent content in Spanish.\n\n\n→ ① General description"
   },
   {
     "objectID": "en/A4_territorial.html",
@@ -510,7 +510,7 @@
   {
     "objectID": "en/A1_descriptive_general.html",
     "href": "en/A1_descriptive_general.html",
-    "title": "1- General descriptive analysis",
+    "title": "1- General description analysis",
     "section": "",
     "text": "Bloc A L1 Variables : year · sex",
     "crumbs": [
@@ -521,7 +521,7 @@
   {
     "objectID": "en/A1_descriptive_general.html#introduction",
     "href": "en/A1_descriptive_general.html#introduction",
-    "title": "1- General descriptive analysis",
+    "title": "1- General description analysis",
     "section": "Introduction",
     "text": "Introduction\nThis section examines the mortality trends in Mexico without disaggregation (by cause or territory), with the aim of identifying macro patterns and temporal inflection points.",
     "crumbs": [
@@ -532,9 +532,9 @@
   {
     "objectID": "en/A1_descriptive_general.html#global-trends",
     "href": "en/A1_descriptive_general.html#global-trends",
-    "title": "1- General descriptive analysis",
+    "title": "1- General description analysis",
     "section": "Global trends",
-    "text": "Global trends\n\nTemporal serieGrowth rate\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
+    "text": "Global trends\n\nTemporal serie\n\n\n\n\n\n\n\n\n\n\nFigure 1: Trend in total mortality (2000–2024)",
     "crumbs": [
       "Block A — Trends",
       "1- General description"
@@ -543,9 +543,9 @@
   {
     "objectID": "en/A1_descriptive_general.html#asmr-trend",
     "href": "en/A1_descriptive_general.html#asmr-trend",
-    "title": "1- General descriptive analysis",
+    "title": "1- General description analysis",
     "section": "ASMR trend",
-    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\nTemporal serie for ASMRMen ASMR changeWomen ASMR change\n\n\nThe results show consistent trends in age-standardized mortality from 1990 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
+    "text": "ASMR trend\nThe Age-standardized mortality rate (ASMR) is a statistical measure used in epidemiology to compare disease death rates, particularly when comparing populations with different age structures.\n\nTemporal serie for ASMRMen ASMR changeWomen ASMR change\n\n\nThe results show consistent trends in age-standardized mortality from 2000 to 2024 Age-standardized mortality rates differ by sex, with males experiencing higher rates of disease-specific mortality compared to females.\n\n\n\n\n\n\n\n\n\nFigure 2: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR women change",
     "crumbs": [
       "Block A — Trends",
       "1- General description"
@@ -554,9 +554,9 @@
   {
     "objectID": "en/A1_descriptive_general.html#navigation",
     "href": "en/A1_descriptive_general.html#navigation",
-    "title": "1- General descriptive analysis",
+    "title": "1- General description analysis",
     "section": "Navigation",
-    "text": "Navigation\n\n← Inicio → 2- Desagregación por causa",
+    "text": "Navigation\n\n← Inicio → 2- Disaggregation by cause",
     "crumbs": [
       "Block A — Trends",
       "1- General description"
@@ -699,7 +699,7 @@
     "href": "es/A1_descriptivo_general.html#tendencias-globales",
     "title": "1- Análisis descriptivo general",
     "section": "Tendencias globales",
-    "text": "Tendencias globales\n\nSerie temporalTasa de crecimiento\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2",
+    "text": "Tendencias globales\n\nSerie temporal\n\n\n\n\n\n\n\n\n\n\nFigure 1: Evolución de la mortalidad total (2000–2024)",
     "crumbs": [
       "Bloque A — Trends",
       "1- Descripción general"
@@ -710,7 +710,7 @@
     "href": "es/A1_descriptivo_general.html#tendencia-de-la-tasa-de-mortalidad-estandarizada-por-edad-tme",
     "title": "1- Análisis descriptivo general",
     "section": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)",
-    "text": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)\nLa tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.\n\nSeries temporales para TMECambio ASMR masculinoWomen ASMR change\n\n\nLos resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 1990 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.\n\n\n\n\n\n\n\n\n\nFigure 3: ASMR trend (1990–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: ASMR men change\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: ASMR women change",
+    "text": "Tendencia de la tasa de mortalidad estandarizada por edad (TME)\nLa tasa de mortalidad estandarizada por edad (TME) es una medida estadística utilizada en epidemiología para comparar las tasas de mortalidad por enfermedades, especialmente al comparar poblaciones con diferentes estructuras de edad.\n\nSeries temporales para TMEVariación anual TME masculinoVariación anual TME femenino\n\n\nLos resultados muestran tendencias consistentes en la mortalidad estandarizada por edad desde 2000 hasta 2024. Las tasas de mortalidad estandarizadas por edad difieren según el sexo: los hombres presentan tasas de mortalidad por enfermedades específicas más elevadas que las mujeres.\n\n\n\n\n\n\n\n\n\nFigure 2: ASMR trend (2000–2024)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Variacipn TME masculino\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Variacion TME femenino",
     "crumbs": [
       "Bloque A — Trends",
       "1- Descripción general"
@@ -920,21 +920,21 @@
     "href": "es/index.html",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
-    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
     "objectID": "es/index.html#mortalidad-en-méxico",
     "href": "es/index.html#mortalidad-en-méxico",
     "title": "Análisis de la Mortalidad en México",
     "section": "",
-    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
+    "text": "Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI), cubriendo el período 1990–2024. La arquitectura analítica se organiza en tres bloques complementarios:\n\n\n📈 Bloque A — Análisis epidemiológico\nProgresión por desagregación de variables: tendencias globales → causas → causas específicas → estados → municipios.\n\n\n🗺️ Bloque B — Disparidades regionales\nCartografía multi-escala: distribución por estados, hotspots municipales, gradientes regionales.\n\n\n⏳ Bloque C — Esperanza de vida\nEvolución de la esperanza de vida al nacer y a distintas edades, con desagregación por sexo, entidad y municipio."
   },
   {
     "objectID": "es/index.html#estructura-del-sitio",
     "href": "es/index.html#estructura-del-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Estructura del sitio",
-    "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n→\n\n\n⑤\nyear, sex, state, cause_specific\nArticulación salud-territorio\n→\n\n\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n→\n\n\n②\nstate, year, cause\nDistribución espacial, clústeres\n→\n\n\n③\nmunicipality, year, cause\nHeterogeneidad intra-estatal\n→\n\n\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n[→]\n\n\n\n\n② | state, year, sex | Evolución por entidad | [→]\n\n③ | municipality, sex | Heterogeneidad municipal | [→]"
+    "text": "Estructura del sitio\n\nBloque A — Análisis sanitario y temporal\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nyear, sex\nTendencias globales, ASMR\n→\n\n\n②\nyear, sex, cause\nTransiciones epidemiológicas\n→\n\n\n③\nyear, sex, cause_specific\nRefinamiento por causa CIE-10\n→\n\n\n④\nyear, sex, state, cause\nDisparidades regionales\n\n\n\n\n\n⑤ | year, sex, state, cause_specific | Articulación salud-territorio |\n\n\n\nBloque B — Análisis espacial\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, cause\nDescripción regional\n\n\n\n\n\n② | state, year, cause | Distribución espacial, clústeres |\n\n③ | municipality, year, cause | Heterogeneidad intra-estatal |\n\n\n\nBloque C — Esperanza de vida\n\n\n\nNivel\nVariables principales\nObjetivo analítico\nPágina\n\n\n\n\n①\nstate, sex\nPanorama nacional\n\n\n\n\n\n② | state, year, sex | Evolución por entidad |\n\n③ | municipality, sex | Heterogeneidad municipal |"
   },
   {
     "objectID": "es/index.html#síntesis-preliminar",
@@ -948,6 +948,6 @@
     "href": "es/index.html#cómo-navegar-este-sitio",
     "title": "Análisis de la Mortalidad en México",
     "section": "Cómo navegar este sitio",
-    "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú 🇲🇽 Español / 🇬🇧 English en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ ① Descripción general"
+    "text": "Cómo navegar este sitio\n\nLectura progresiva — seguir el Bloque A del nivel 1 al 5, aumentando gradualmente la complejidad analítica.\nLectura temática — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.\nCambio de idioma — utilizar el menú ES Español / EN English  en la barra de navegación para acceder al contenido equivalente en inglés.\n\n\n→ 1- Descripción general"
   }
 ]

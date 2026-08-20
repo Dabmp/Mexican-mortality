@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">2- Desagregación por causa</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./es/A3_causas_especificas.html">
+    <a class="dropdown-item" href="./es/A3_causas_especificas.qmd">
  <span class="dropdown-text">3- Causas específicas</span></a>
   </li>  
     </ul>
@@ -197,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./es/A3_causas_especificas.html" class="sidebar-item-text sidebar-link">
+  <a href="./es/A3_causas_especificas.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3- Causas específicas</span></a>
   </div>
 </li>
@@ -239,12 +239,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">20 de agosto de 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -258,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="column-screen page-columns page-full" style="background: linear-gradient(135deg, #1a2744 0%, #2a7a8c 100%); padding: 4rem 2rem; margin-bottom: 2.5rem; color: white;">
 <section id="mortalidad-en-méxico" class="level2 column-body" style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;">
 <h2 style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;" class="anchored" data-anchor-id="mortalidad-en-méxico">Mortalidad en México</h2>
-<p>Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo el período <strong>1990–2024</strong>. La arquitectura analítica se organiza en <strong>tres bloques complementarios</strong>:</p>
+<p>Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México a partir de registros administrativos (INEGI), cubriendo el período <strong>1990–2024</strong>. La arquitectura analítica se organiza en <strong>tres bloques complementarios</strong>:</p>
 <div style="display:flex; gap:2rem; margin-top:1.5rem; flex-wrap:wrap;">
 <div style="flex:1; min-width:240px; background:rgba(255,255,255,0.12); border-radius:8px; padding:1.2rem;">
 <p><strong>📈 Bloque A — Análisis epidemiológico</strong><br>
@@ -311,16 +305,13 @@ Evolución de la esperanza de vida al nacer y a distintas edades, con desagregac
 <td style="text-align: center;">④</td>
 <td style="text-align: left;"><code>year</code>, <code>sex</code>, <code>state</code>, <code>cause</code></td>
 <td style="text-align: left;">Disparidades regionales</td>
-<td style="text-align: center;"><a href="A4_territorial.qmd">→</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">⑤</td>
-<td style="text-align: left;"><code>year</code>, <code>sex</code>, <code>state</code>, <code>cause_specific</code></td>
-<td style="text-align: left;">Articulación salud-territorio</td>
-<td style="text-align: center;"><a href="A5_maxima_desagregacion.qmd">→</a></td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
+<!-- [→](A4_territorial.qmd) | -->
+<div class="line-block">⑤ | <code>year</code>, <code>sex</code>, <code>state</code>, <code>cause_specific</code> | Articulación salud-territorio |</div>
+<!-- [→](A5_maxima_desagregacion.qmd) | -->
 </section>
 <section id="bloque-b-análisis-espacial" class="level3">
 <h3 class="anchored" data-anchor-id="bloque-b-análisis-espacial">Bloque B — Análisis espacial</h3>
@@ -338,22 +329,15 @@ Evolución de la esperanza de vida al nacer y a distintas edades, con desagregac
 <td style="text-align: center;">①</td>
 <td style="text-align: left;"><code>state</code>, <code>cause</code></td>
 <td style="text-align: left;">Descripción regional</td>
-<td style="text-align: center;"><a href="B1_regional.qmd">→</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">②</td>
-<td style="text-align: left;"><code>state</code>, <code>year</code>, <code>cause</code></td>
-<td style="text-align: left;">Distribución espacial, clústeres</td>
-<td style="text-align: center;"><a href="B2_espacial_estados.qmd">→</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">③</td>
-<td style="text-align: left;"><code>municipality</code>, <code>year</code>, <code>cause</code></td>
-<td style="text-align: left;">Heterogeneidad intra-estatal</td>
-<td style="text-align: center;"><a href="B3_espacial_municipios.qmd">→</a></td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
+<!-- [→](B1_regional.qmd) | -->
+<div class="line-block">② | <code>state</code>, <code>year</code>, <code>cause</code> | Distribución espacial, clústeres |</div>
+<!-- [→](B2_espacial_estados.qmd) | -->
+<div class="line-block">③ | <code>municipality</code>, <code>year</code>, <code>cause</code> | Heterogeneidad intra-estatal |</div>
+<!-- [→](B3_espacial_municipios.qmd) | -->
 </section>
 <section id="bloque-c-esperanza-de-vida" class="level3">
 <h3 class="anchored" data-anchor-id="bloque-c-esperanza-de-vida">Bloque C — Esperanza de vida</h3>
@@ -371,22 +355,15 @@ Evolución de la esperanza de vida al nacer y a distintas edades, con desagregac
 <td style="text-align: center;">①</td>
 <td style="text-align: left;"><code>state</code>, <code>sex</code></td>
 <td style="text-align: left;">Panorama nacional</td>
-<td style="text-align: center;"><a href="C1_esperanza_vida.qmd">→</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">②</td>
-<td style="text-align: left;"><code>state</code>, <code>year</code>, <code>sex</code></td>
-<td style="text-align: left;">Evolución por entidad</td>
-<td style="text-align: center;"><a href="C2_ev_estados.qmd">→</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">③</td>
-<td style="text-align: left;"><code>municipality</code>, <code>sex</code></td>
-<td style="text-align: left;">Heterogeneidad municipal</td>
-<td style="text-align: center;"><a href="C3_ev_municipios.qmd">→</a></td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
+<!-- [→](C1_esperanza_vida.qmd) | -->
+<div class="line-block">② | <code>state</code>, <code>year</code>, <code>sex</code> | Evolución por entidad |</div>
+<!-- [→](C2_ev_estados.qmd) | -->
+<div class="line-block">③ | <code>municipality</code>, <code>sex</code> | Heterogeneidad municipal |</div>
+<!-- [→](C3_ev_municipios.qmd) | -->
 <hr>
 </section>
 </section>
@@ -406,34 +383,24 @@ Figura&nbsp;1: Evolución de la mortalidad total por sexo (1990–2024)
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<!-- ::: {.callout-note} -->
 <!-- **Nota sobre los datos**   -->
 <!-- Los valores presentados son **simulados** con fines demostrativos. -->
 <!-- Para el análisis real, reemplazar en el chunk `setup-global` por: -->
 <!-- `load("data/asmr_nac.rda")`. -->
 <!-- Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA. -->
-</div>
-</div>
+<!-- ::: -->
 <hr>
 </section>
 <section id="cómo-navegar-este-sitio" class="level2">
 <h2 class="anchored" data-anchor-id="cómo-navegar-este-sitio">Cómo navegar este sitio</h2>
 <ol type="1">
-<li><strong>Lectura progresiva</strong> — seguir el Bloque A del nivel ① al ⑤, aumentando gradualmente la complejidad analítica.</li>
+<li><strong>Lectura progresiva</strong> — seguir el Bloque A del nivel 1 al 5, aumentando gradualmente la complejidad analítica.</li>
 <li><strong>Lectura temática</strong> — ir directamente al Bloque B (perspectiva espacial) o al Bloque C (esperanza de vida) según la pregunta de investigación.</li>
-<li><strong>Cambio de idioma</strong> — utilizar el menú <strong>🇲🇽 Español / 🇬🇧 English</strong> en la barra de navegación para acceder al contenido equivalente en inglés.</li>
+<li><strong>Cambio de idioma</strong> — utilizar el menú <strong>ES Español / EN English </strong> en la barra de navegación para acceder al contenido equivalente en inglés.</li>
 </ol>
 <div style="display:flex; justify-content:flex-end; margin-top:2rem;">
-<p><a href="A1_descriptivo_general.qmd" class="btn btn-primary">→ ① Descripción general</a></p>
+<p><a href="A1_descriptivo_general.qmd" class="btn btn-primary">→ 1- Descripción general</a></p>
 </div>
 
 

@@ -1,6 +1,7 @@
 ---
 title: "④ Dimensión territorial — Estados"
 subtitle: "Bloque A · Nivel 4 — Disparidades regionales por entidad federativa y causa"
+date: today
 lang: es
 ---
 

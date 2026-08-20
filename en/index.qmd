@@ -1,6 +1,8 @@
 ---
 title: "Mortality Analysis in Mexico"
 subtitle: "A multidimensional approach: temporality, causes and territory"
+date: today
+# date-format: "MMMM YYYY"
 lang: en
 sidebar: sidebar-en
 ---
@@ -129,6 +131,13 @@ ggplot(mort_national,
   )
 ```
 
+::: {.callout-note}
+<!-- **Note on data**   -->
+<!-- The values presented here are **simulated** for demonstration purposes. -->
+<!-- For the real analysis, replace the `setup-global-en` chunk with: -->
+<!-- `load("data/asmr_nac.rda")`. -->
+<!-- Recommended sources: INEGI (SINAIS) and the DGE of the SSA. -->
+:::
 
 ---
 

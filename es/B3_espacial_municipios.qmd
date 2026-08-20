@@ -1,6 +1,7 @@
 ---
 title: "③ bis · Análisis espacial por Municipios"
 subtitle: "Bloque B — Heterogeneidad intra-estatal y detección de hotspots"
+date: today
 lang: es
 ---
 

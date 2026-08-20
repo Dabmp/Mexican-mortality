@@ -1,6 +1,8 @@
 ---
 title: "Análisis de la Mortalidad en México"
 subtitle: "Una aproximación multidimensional: temporalidad, causas y territorio"
+date: today
+# date-format: "MMMM YYYY"
 lang: es
 sidebar: sidebar-es
 ---
@@ -130,6 +132,13 @@ ggplot(mort_nacional,
   )
 ```
 
+::: {.callout-note}
+<!-- **Nota sobre los datos**   -->
+<!-- Los valores presentados son **simulados** con fines demostrativos. -->
+<!-- Para el análisis real, reemplazar en el chunk `setup-global` por: -->
+<!-- `load("data/asmr_nac.rda")`. -->
+<!-- Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA. -->
+:::
 
 ---
 

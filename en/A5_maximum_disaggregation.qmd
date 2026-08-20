@@ -1,6 +1,7 @@
 ---
 title: "⑤ Maximum disaggregation"
 subtitle: "Block A · Level 5 — Health-territory articulation: state × specific cause × sex"
+date: today
 lang: en
 sidebar: sidebar-en
 ---

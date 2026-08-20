@@ -25,11 +25,11 @@ website:
             href: es/A2_causas.qmd
           - text: "3- Causas específicas"
             href: es/A3_causas_especificas.qmd
-          - text: "④ Dimensión territorial"
-            href: es/A4_territorial.qmd
-          - text: "⑤ Máxima desagregación"
-            href: es/A5_maxima_desagregacion.qmd
-          - text: "---"
+          # - text: "④ Dimensión territorial"
+          #   href: es/A4_territorial.qmd
+          # - text: "⑤ Máxima desagregación"
+          #   href: es/A5_maxima_desagregacion.qmd
+          # - text: "---"
           # - text: "Bloque B — Disparidades regionales"
           # - text: "① Descripción regional"
           #   href: es/B1_regional.qmd
@@ -57,13 +57,13 @@ website:
             href: en/A1_descriptive_general.qmd
           - text: "2- Disaggregation by cause"
             href: en/A2_causes.qmd
-          - text: "3- Specific causes"
-            href: en/A3_specific_causes.qmd
-          - text: "④ Territorial dimension"
-            href: en/A4_territorial.qmd
-          - text: "⑤ Maximum disaggregation"
-            href: en/A5_maximum_disaggregation.qmd
-          - text: "---"
+          # - text: "3- Specific causes"
+          #   href: en/A3_specific_causes.qmd
+          # - text: "④ Territorial dimension"
+          #   href: en/A4_territorial.qmd
+          # - text: "⑤ Maximum disaggregation"
+          #   href: en/A5_maximum_disaggregation.qmd
+          # - text: "---"
           # - text: "Block B — Regional disparities"
           # - text: "① Regional description"
           #   href: en/B1_regional.qmd
@@ -100,10 +100,10 @@ website:
               href: es/A2_causas.qmd
             - text: "3- Causas específicas"
               href: es/A3_causas_especificas.qmd
-            - text: "④ Dimensión territorial"
-              href: es/A4_territorial.qmd
-            - text: "⑤ Máxima desagregación"
-              href: es/A5_maxima_desagregacion.qmd
+            # - text: "④ Dimensión territorial"
+            #   href: es/A4_territorial.qmd
+            # - text: "⑤ Máxima desagregación"
+            #   href: es/A5_maxima_desagregacion.qmd
         # - section: "Bloque B — Análisis espacial"
         #   contents:
         #     - text: "① Descripción regional"
@@ -132,12 +132,12 @@ website:
               href: en/A1_descriptive_general.qmd
             - text: "2- Causes of death"
               href: en/A2_causes.qmd
-            - text: "3- Specific causes"
-              href: en/A3_specific_causes.qmd
-            - text: "④ Territorial dimension"
-              href: en/A4_territorial.qmd
-            - text: "⑤ Maximum disaggregation"
-              href: en/A5_maximum_disaggregation.qmd
+            # - text: "3- Specific causes"
+            #   href: en/A3_specific_causes.qmd
+            # - text: "④ Territorial dimension"
+            #   href: en/A4_territorial.qmd
+            # - text: "⑤ Maximum disaggregation"
+            #   href: en/A5_maximum_disaggregation.qmd
         # - section: "Block B — Spatial analysis"
         #   contents:
         #     - text: "① Regional description"

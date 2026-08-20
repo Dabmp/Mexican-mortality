@@ -153,7 +153,6 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for:
 ## Data sources
 
 - **INEGI** — Instituto Nacional de Estadística y Geografía (SINAIS)
-- **Secretaría de Salud / DGE** — Dirección General de Epidemiología
 
 ---
 

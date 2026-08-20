@@ -1,6 +1,8 @@
 ---
 title: "② bis · Análisis espacial por Estados"
 subtitle: "Bloque B — Distribución espacial, gradientes regionales y clusters, 2000–2022"
+date: today
+date-format: "MMMM YYYY"
 lang: es
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "⑤ Máxima desagregación"
 subtitle: "Bloque A · Nivel 5 — Articulación salud-territorio: estado × causa específica × sexo"
+date: today
 lang: es
 sidebar: sidebar-es
 ---

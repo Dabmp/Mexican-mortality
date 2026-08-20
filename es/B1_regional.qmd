@@ -1,6 +1,7 @@
 ---
 title: "① Descripción regional"
 subtitle: "Bloque B · Nivel 1 — Panorama de las disparidades regionales de mortalidad en México"
+date: today
 lang: es
 sidebar: sidebar-es
 ---

@@ -1,6 +1,8 @@
 ---
 title: "2- Desagregación por causa de defunción"
 subtitle: "Bloque A · Nivel 2 — Transiciones epidemiológicas en México, 2000–2024"
+# date: today
+# date-format: "MMMM YYYY"
 lang: "es"
 ---
 
@@ -30,7 +32,7 @@ brutas de mortalidad. Aquí añadimos la dimensión causal para explicar esas te
 
 
 ```{r setup-n2, include=FALSE}
- load("data/ratepopbycause.rda")
+ load("data/deces_cor_imp.rda")
 
 library(tidyverse)
 library(scales)
@@ -39,7 +41,73 @@ library(kableExtra)
 library(ggrepel)
 options(ggrepel.max.overlaps = Inf)
 library(patchwork)   # composition de graphiques
-mort <- deces1 |> filter(year > 1989) |> rename(deaths = n_death, cause = CAPITULO)  |>  mutate(year = as.numeric(as.character( year)))
+
+# ── Données ────────
+
+load("data/asmr_nac_cause.rda")
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+#------------------------- ------------------------------
+
+# load("data/deces.rda")
+
+library(tidyverse)
+library(scales)
+library(patchwork)
+#------------------------- ------------------------------
+
+
+cause_labels <- c(
+"01"="Infecciosas",
+"02"="Neoplasias",
+"04"="Endocrinas",
+"06"="Nerviosas",
+"09"="Circulatorias",
+"10"="Respiratorias",
+"11"="Digestivas",
+"14"="Genitourinarias",
+"16"="Perinatales",
+"18"="Síntomas",
+"20"="Externas",
+"22"="COVID-19",
+"Otras" = "Otras causas")
+
+
+ cols <- c(
+   "01"="#3E7D44",   # Infectious
+   "02"="#8DA0CB",   # Neoplasms
+   "04"="#DEA9BB",   # Endocrine
+   "06"="#4F6DB8",   # Nervous
+   "09"="#CE6A6B",   # Circulatory
+   "10"="#2C75B8",   # Respiratory
+   "11"="#E5C494",   # Digestive
+   "14"="#1B9E77",   # Genitourinary
+   "16"="#FDB863",   # Perinatal
+   "18"="#A6A6A6",   # Symptoms
+   "20"="#8CA893",   # External
+   "22"="#A6CEE3",   # COVID
+   "Otras" = "#CFCFCE")
+#------------------------- ------------------------------
+deces <- deces_final %>%
+   # filter(year >= 2000 & year <= 2024) %>%
+   mutate(
+     cause = if_else(CAPITULO %in% names(cause_labels)[names(cause_labels) != "Otras"],
+                     CAPITULO,
+                     "Otras"),
+     cause_label = cause_labels[cause],
+       label_sex = recode(sex,
+                    "1" = "Men",
+                    "2" = "Women")
+   )
+ 
+ #------------------------- ------------------------------
+
+mort <- deces |> 
+   # filter(year > 1989) |> 
+   rename(deaths = n_death)  |>  mutate(year = as.numeric(as.character( year)))
 
 # ── Palette cohérente (définie dans index.qmd, reproduite ici) ───────
 palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
@@ -47,78 +115,104 @@ palette_sexo <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
 #-------------------------plot SMR ------------------------------
 
-
-# Preparar la tabla de mapeo para las etiquetas CAPITULO 
-cause_name <- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
-                 "02" = "2- Tumores (neoplasias)", 
-                 "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
-                 "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
-                 "05" = "5- Trastornos mentales y del comportamiento", 
-                 "06" = "6- Enfermedades del sistema nervioso", 
-                 "07" = "7- Enfermedades de los ojos y sus anexos", 
-                 "08" = "8- Enfermedades del oído y la apófisis mastoides", 
-                 "09" = "9- Enfermedades del sistema circulatorio", 
-                 "10" = "10- Enfermedades del sistema respiratorio", 
-                 "11" = "11- Enfermedades del sistema digestivo", 
-                 "12" = "12- Piel y tejido subcutáneo", 
-                 "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
-                 "14" = "14- Enfermedades del sistema genitourinario", 
-                 "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
-                 "16" = "16- Afecciones originadas en el período perinatal", 
-                 "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
-                 "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
-                 "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
-cap_labels<- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
-                 "02" = "2- Tumores (neoplasias)", 
-                 "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
-                 "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
-                 "05" = "5- Trastornos mentales y del comportamiento", 
-                 "06" = "6- Enfermedades del sistema nervioso", 
-                 "07" = "7- Enfermedades de los ojos y sus anexos", 
-                 "08" = "8- Enfermedades del oído y la apófisis mastoides", 
-                 "09" = "9- Enfermedades del sistema circulatorio", 
-                 "10" = "10- Enfermedades del sistema respiratorio", 
-                 "11" = "11- Enfermedades del sistema digestivo", 
-                 "12" = "12- Piel y tejido subcutáneo", 
-                 "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
-                 "14" = "14- Enfermedades del sistema genitourinario", 
-                 "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
-                 "16" = "16- Afecciones originadas en el período perinatal", 
-                 "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
-                 "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
-                 "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
-
-cols_20 <- c(
-  "#F88080FF", 
-  "#60A040FF",   # muted green
-  "#9060A0FF",   # muted purple
-  "#D08040FF",   # muted brown‑orange
-  "#50A0C0FF",   # muted teal
-  "#B05090FF",   # muted magenta
-  "#409070FF",   # muted forest green
-  "#808080FF" ,  # medium gray (for baseline / total)
-  "#C89028FF", "#11500FFF", "#304898FF", "#604838FF",
-  # "#E8B828FF", 
-  "#F03838FF", "#783838FF", "#B83838FF",
-  "#4078B8FF", "#282858FF", "#F85559FF", "#A8C0F8FF"
+age_levels <- c(
+  "0", "1-4", "5-9", "10-14", "15-19", "20-24",
+  "25-29", "30-34", "35-39", "40-44", "45-49",
+  "50-54", "55-59", "60-64", "65-69", "70-74",
+  "75-79", "80-84", "85-89", "90-94", "95-99", "100+"
 )
-# ── Données ────────
+ deces<- deces |> 
+mutate(
+    age_group = case_when(
+      age == 0 ~ "0",
+      age >= 1 & age <= 4 ~ "1-4",
+      age >= 5 & age <= 9 ~ "5-9",
+      age >= 10 & age <= 14 ~ "10-14",
+      age >= 15 & age <= 19 ~ "15-19",
+      age >= 20 & age <= 24 ~ "20-24",
+      age >= 25 & age <= 29 ~ "25-29",
+      age >= 30 & age <= 34 ~ "30-34",
+      age >= 35 & age <= 39 ~ "35-39",
+      age >= 40 & age <= 44 ~ "40-44",
+      age >= 45 & age <= 49 ~ "45-49",
+      age >= 50 & age <= 54 ~ "50-54",
+      age >= 55 & age <= 59 ~ "55-59",
+      age >= 60 & age <= 64 ~ "60-64",
+      age >= 65 & age <= 69 ~ "65-69",
+      age >= 70 & age <= 74 ~ "70-74",
+      age >= 75 & age <= 79 ~ "75-79",
+      age >= 80 & age <= 84 ~ "80-84",
+      age >= 85 & age <= 89 ~ "85-89",
+      age >= 90 & age <= 94 ~ "90-94",
+      age >= 95 & age <= 99 ~ "95-99",
+      age >= 100 ~ "100+"
+    ),
+    age_group = factor(age_group, levels = age_levels)
+  )
+#  # Preparar la tabla de mapeo para las etiquetas CAPITULO 
+# cause_name <- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
+#                  "02" = "2- Tumores (neoplasias)", 
+#                  "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
+#                  "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
+#                  "05" = "5- Trastornos mentales y del comportamiento", 
+#                  "06" = "6- Enfermedades del sistema nervioso", 
+#                  "07" = "7- Enfermedades de los ojos y sus anexos", 
+#                  "08" = "8- Enfermedades del oído y la apófisis mastoides", 
+#                  "09" = "9- Enfermedades del sistema circulatorio", 
+#                  "10" = "10- Enfermedades del sistema respiratorio", 
+#                  "11" = "11- Enfermedades del sistema digestivo", 
+#                  "12" = "12- Piel y tejido subcutáneo", 
+#                  "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
+#                  "14" = "14- Enfermedades del sistema genitourinario", 
+#                  "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
+#                  "16" = "16- Afecciones originadas en el período perinatal", 
+#                  "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
+#                  "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
+#                  "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
+# cap_labels<- c( "01" = "1- Ciertas enfermedades infecciosas y parasitarias", 
+#                  "02" = "2- Tumores (neoplasias)", 
+#                  "03" = "3- Enfermedades de la sangre y del sistema inmunitario", 
+#                  "04" = "4- Enfermedades endocrinas, nutricionales y metabólicas", 
+#                  "05" = "5- Trastornos mentales y del comportamiento", 
+#                  "06" = "6- Enfermedades del sistema nervioso", 
+#                  "07" = "7- Enfermedades de los ojos y sus anexos", 
+#                  "08" = "8- Enfermedades del oído y la apófisis mastoides", 
+#                  "09" = "9- Enfermedades del sistema circulatorio", 
+#                  "10" = "10- Enfermedades del sistema respiratorio", 
+#                  "11" = "11- Enfermedades del sistema digestivo", 
+#                  "12" = "12- Piel y tejido subcutáneo", 
+#                  "13" = "13- Enfermedades del sistema musculoesquelético y del tejido conectivo",
+#                  "14" = "14- Enfermedades del sistema genitourinario", 
+#                  "15" = "15- Enfermedades del embarazo, el parto y el puerperio", 
+#                  "16" = "16- Afecciones originadas en el período perinatal", 
+#                  "17" = "17- Malformaciones congénitas y anomalías cromosómicas", 
+#                  "18" = "18- Síntomas, signos y hallazgos clínicos y de laboratorio anormales", 
+#                  "20" = "20- Causas externas de morbilidad y mortalidad", "22" = "22- COVID-19" )
 
-load("data/asmr_cause.rda")
+# cols_20 <- c(
+#   "#F88080FF", 
+#   "#60A040FF",   # muted green
+#   "#9060A0FF",   # muted purple
+#   "#D08040FF",   # muted brown‑orange
+#   "#50A0C0FF",   # muted teal
+#   "#B05090FF",   # muted magenta
+#   "#409070FF",   # muted forest green
+#   "#808080FF" ,  # medium gray (for baseline / total)
+#   "#C89028FF", "#11500FFF", "#304898FF", "#604838FF",
+#   # "#E8B828FF", 
+#   "#F03838FF", "#783838FF", "#B83838FF",
+#   "#4078B8FF", "#282858FF", "#F85559FF", "#A8C0F8FF"
+# )
 
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-library(dplyr)
 # ── Agrégations utiles ────────────────────────────────────────────────
 # Par année × cause
 mort_causa <- mort |>
-  group_by(year, cause) |>
+  group_by(year, cause, cause_label) |>
   summarise(deaths = sum(deaths), .groups = "drop")
 
 # Par année × cause × sexe
 mort_causa_sex <- mort |>
-  group_by(year, sex, cause) |>
+  group_by(year, sex, cause, cause_label) |>
   summarise(deaths = sum(deaths), .groups = "drop")
 
 # Part relative de chaque cause par an
@@ -191,14 +285,14 @@ mort_causa %>%
     segment.color = "grey60",
     show.legend = FALSE
   ) +
-  scale_color_manual(values = cols_20[1:11]) +
+  scale_color_manual(values = cols[1:13]) +
   scale_x_continuous(
     breaks = seq(1998, 2024, 4),
     limits = c(1998, 2025)
   ) +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
   labs(
-    title = "Evolución de la mortalidad por las princiaples causas",
+    title = "Evolución de la mortalidad por las principales causas",
     subtitle = "Número de defunciones (miles), México 2000–2023",
     x = NULL,
     y = "Defunciones (miles)",
@@ -217,24 +311,19 @@ mort_causa %>%
 ```{r fig-dist-edad, fig.cap="Distribucion por grupo de edad, 2000–2024"}
 # Área apilada (%)
 
-load("data/deces.rda")
-#
-library(tidyverse)
-library(scales)
-library(patchwork)
 
 # ── 4. Profil par groupe d'âge ────────────────────────────────────────
-top_cap <- deces0024 |>
-  group_by(CAPITULO, cause_name) |>
-  summarise(deaths = sum(deaths), .groups = "drop") |>
+top_cap <- deces |>
+  group_by(CAPITULO, cause) |>
+  summarise(deaths = sum(n_death), .groups = "drop") |>
   slice_max(deaths, n = 10)
 
-p4 <- deces0024 |>
+p4 <- deces |>
   filter(CAPITULO %in% top_cap$CAPITULO) |>
-  group_by(age_group, cause_name) |>
-  summarise(deaths = sum(deaths), .groups = "drop") |>
-  mutate(cause_name = str_wrap(cause_name, 20)) |>
-  ggplot(aes(x = age_group, y = deaths / 1000, fill = cause_name)) +
+  group_by(age_group, cause_label) |>
+  summarise(deaths = sum(n_death), .groups = "drop") |>
+  mutate(cause_name = str_wrap(cause_label, 20)) |>
+  ggplot(aes(x = age_group, y = deaths / 1000, fill = cause_label)) +
   geom_col(position = "stack", alpha = 0.88) +
   scale_fill_viridis_d(option = "turbo") +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
@@ -286,11 +375,11 @@ p4
 # ── 5. Évolution temporelle — top 6 chapitres ─────────────────────────
 top6 <- top_cap |> slice_max(deaths, n = 6) |> pull(CAPITULO)
 
-p6 <- deces0024 |>
+p6 <- deces |>
   filter(CAPITULO %in% top6) |>
-  group_by(year, sex, cause_name) |>
-  summarise(deaths = sum(deaths), .groups = "drop") |>
-  mutate(cause_name = str_wrap(cause_name, 22)) |>
+  group_by(year, sex, cause_label) |>
+  summarise(deaths = sum(n_death), .groups = "drop") |>
+  mutate(cause_name = str_wrap(cause_label, 22)) |>
   ggplot(aes(x = year, y = deaths / 1000,
              color = factor(sex), group = factor(sex))) +
   geom_line(linewidth = 0.9) +
@@ -299,7 +388,7 @@ p6 <- deces0024 |>
                      labels = c("1" = "hombres", "2" = "mujeres")) +
   scale_x_continuous(breaks = c(2000, 2010, 2020, 2024)) +
   scale_y_continuous(labels = label_comma(suffix = " k")) +
-  labs(title = "Evolución de las principales 6 causas por sexo",
+  labs(title = "Evolución de las principales causas por sexo",
        x = NULL, y = "Defunciones (miles)", color = "Sexo") +
   theme_minimal(base_size = 10) +
   theme(plot.title     = element_text(face = "bold", color = "#1a2744"),
@@ -310,13 +399,16 @@ p6 <- deces0024 |>
 p6
 ```
 
-#### Tabla resumen
+<!-- #### Tabla resumen -->
 ```{r tabla-causa-anio}
 mort_causa |>
-  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024)) |>
+  filter(year %in% c(2000, 2005, 2010, 2015, 2019, 2024))|>
+
+         # ,
+         #     cause != "Otras") 
   pivot_wider(names_from = year, values_from = deaths) |>
   arrange(desc(`2024`)) |>
-    mutate(cause = unname(cause_name[cause])) |>
+    # mutate(cause = unname(cause_name[cause])) |>
 
   mutate(across(where(is.numeric), ~ format(.x, big.mark = ","))) |>
   kable(
@@ -343,15 +435,25 @@ mort_causa |>
 <!-- de defunción (tasa estándar) -->
 ```{r fig-stdcausedeath, fig.cap="Evolución de la TME"}
 
-SDR <- asmr_cause %>%
-  filter(year>1999)
+SDR <- asmr_nac_cause |>
+   mutate(
+     cause = if_else(CAPITULO %in% names(cause_labels)[names(cause_labels) != "Otras"],
+                     CAPITULO,
+                     "Otras"),
+          cause_label = cause_labels[cause],
+
+       label_sex = recode(sex,
+                    "1" = "Hombre",
+                    "2" = "Mujer")
+   )
 # install.packages("paletteer")
 library(paletteer)
-# 
-# ggplot(SDR, aes(x = factor(year), y = asmr_100k, fill = cause_name)) +
+# working
+# ggplot(SDR, aes(x = factor(year), y = asmr, fill = cause)) +
 #   geom_bar(stat = "identity", position = "stack", width = 0.7) +
-#   facet_wrap(~ sex_lab) +
-#   scale_fill_manual(values = cols_20[1:length(unique(SDR$cause_name))]) +
+#   facet_wrap(~ label_sex) +
+#   scale_fill_manual(values = cols[1:length(unique(SDR$cause))], 
+#                     labels = cause_labels) +
 #   labs(
 #     title = "Causas de defunción estandarizadas (2000-2024)",
 #     x     = "Años",
@@ -372,7 +474,49 @@ library(paletteer)
 #     legend.spacing.x = unit(0.05, "cm"),
 #     plot.margin      = margin(10, 10, 10, 10)
 #   ) +
-#   guides(fill = guide_legend(nrow = 7, byrow = TRUE))
+#   guides(fill = guide_legend(nrow = 2, byrow = TRUE))
+
+ 
+ df <- SDR %>%
+   group_by( year, sex, cause )%>%
+   summarise(asmr = sum(asmr),
+             .groups = "drop")
+ 
+ 
+ # plot
+ ggplot(df,
+        aes(year,
+            asmr,
+            fill = cause)) +
+   facet_wrap(~sex,
+              ncol = 1) +
+   geom_bar(stat = "identity", position = "stack") +
+   # geom_line(linewidth = 1) +
+   facet_wrap(~sex, ncol = 1) +
+   scale_fill_manual(
+     values = cols,
+     labels = cause_labels
+   ) +
+   labs(
+     # title="Main causes of mortality by sex",
+     # subtitle="Mexico, 2000–2024",
+     x=NULL,
+     y="ASMR per 100,000 population",
+     fill="Cause"
+   ) +
+   theme_classic(base_size = 11)+ theme(
+     # plot.title=element_text(face="bold", size=18),
+     strip.background=element_blank(),
+     # strip.text=element_text(face="bold",
+     #                         size=14),
+     legend.position="right",
+     legend.title=element_text(size=12),
+     panel.border=element_rect(
+       colour="black",
+       fill=NA    ),
+     axis.text=element_text(colour="black"),
+     axis.line=element_line(linewidth=.5)
+   )
 
 ```
 
@@ -401,39 +545,7 @@ library(paletteer)
 <!--       sex == 2 ~ "Women") -->
 <!--   ) -->
 
-<!-- #------------------------------------------------------- -->
-<!-- cols_7 <- c( -->
-<!--   "#C89028FF", "#10580FFF", "#304898FF", "#783838FF", -->
-<!--   "#A8C0F8FF", "#F03838FF", "grey80",  -->
-<!--   "#4078B8FF", "#282858FF" -->
-<!--   # , "#F85559FF" -->
-<!-- ) -->
 
-<!--   cols_20 <- c( -->
-<!--     "#F88080FF",  -->
-<!--     "#E18727",   # muted green -->
-<!--     "#9060A0FF",   # muted purple -->
-<!--     "#FCD1ADFF",   # muted brown‑orange -->
-<!--     "#50A0C0FF",   # muted teal -->
-<!--     "#B05090FF",   # muted magenta -->
-<!--     "#409070FF",   # muted forest green -->
-<!--     "#808080FF" ,  # medium gray (for baseline / total) -->
-<!--     "#766FA7FF",  -->
-<!--     "#FFDC91",  -->
-<!--     "#4A7C59", -->
-<!--     "#304898FF",  -->
-<!--     # "#282858FF",  -->
-<!--     "#E8B828FF",  -->
-<!--     # "#F03838FF",  -->
-<!--     "#68C5BEFF", -->
-<!--     "#4078B8FF",  -->
-<!--     "#C89028FF", -->
-<!--     # "#54845FFF", -->
-<!--     "#A8C0F8FF","#6F99AD",  -->
-<!--     "#BC3C29" -->
-<!--   ) -->
-
-<!-- # label_sex <- c("1" = "Men", "2"= "Women") -->
 <!-- #------------------------------------------------------- -->
 
 <!-- ggplot(top_5_causes_year, aes(x = factor(year), y = asmr_100k, fill = cause_label)) + -->
@@ -459,9 +571,9 @@ library(paletteer)
 # Étape 1 : Top 5 causes par sexe basé sur 2024
 top5_hommes <- SDR |>
   filter(sex == 1, year == 2024) |>
-  arrange(desc(asmr_100k)) |>
+  arrange(desc(asmr)) |>
   slice_head(n = 10) |>
-  select(CAPITULO, cause_name)
+  select(CAPITULO, cause)
 
 # top5_hommes
 
@@ -475,8 +587,8 @@ data_hommes <- SDR |>
 
 # Étape 3 : Pivot
 wide_hommes <- data_hommes |>
-  select(cause_name, year, asmr_100k) |>
-  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  select(cause_label, year, asmr) |>
+  pivot_wider(names_from = year, values_from = asmr) |>
   arrange(desc(`2024`))
 
 # afficer tableau ommes !!!
@@ -485,30 +597,30 @@ wide_hommes <- data_hommes |>
 # Étape 4 : Tableau
 library(knitr)
 library(kableExtra)
-# 
-# format_table <- function(wide_data, caption_txt) {
-#   wide_data |>
-#     mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
-#     kable(
-#       caption   = caption_txt,
-#       col.names = c("Cause", names(wide_data)[-1]),
-#       align     = c("l", rep("r", ncol(wide_data) - 1))
-#     ) |>
-#     kable_styling(
-#       bootstrap_options = c("striped", "hover", "condensed"),
-#       full_width        = FALSE,
-#       font_size         = 13
-#     ) |>
-#     add_header_above(
-#       c(" " = 1,
-#         "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
-#     ) |>
-#     row_spec(1, bold = TRUE, background = "#f0f4f8")
-# }
-# 
-# tbl_hommes <- format_table(wide_hommes, "Top 5 causes de décès — Hommes")
-# 
-# tbl_hommes
+
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Causas", names(wide_data)[-1]),
+      align     = c("l", rep("r", ncol(wide_data) - 1))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 1,
+        "Tasa de mortalidad estandarizada (por 100.000 hab.)" = ncol(wide_data) - 1)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+
+tbl_hommes <- format_table(wide_hommes, "")
+
+tbl_hommes
 
   
 ```
@@ -519,7 +631,7 @@ library(kableExtra)
 # Étape 1 : Top 5 causes par sexe basé sur 2024
 top5_femmes <- SDR |>
   filter(sex == 2, year == 2024) |>
-  arrange(desc(asmr_100k)) |>
+  arrange(desc(asmr)) |>
   slice_head(n = 10) |>
   select(CAPITULO, cause_name)
 
@@ -536,8 +648,8 @@ data_femmes <- SDR |>
 
 # Étape 3 : Pivot
 wide_femmes <- data_femmes |>
-  select(cause_name, year, asmr_100k) |>
-  pivot_wider(names_from = year, values_from = asmr_100k) |>
+  select(cause_label, year, asmr) |>
+  pivot_wider(names_from = year, values_from = asmr) |>
   arrange(desc(`2024`))
 
 # wide_femmes
@@ -545,30 +657,30 @@ wide_femmes <- data_femmes |>
 # Étape 4 : Tableau
 library(knitr)
 library(kableExtra)
-# 
-# format_table <- function(wide_data, caption_txt) {
-#   wide_data |>
-#     mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
-#     kable(
-#       caption   = caption_txt,
-#       col.names = c("Cause", names(wide_data)[-1]),
-#       align     = c("l", rep("r", ncol(wide_data) - 1))
-#     ) |>
-#     kable_styling(
-#       bootstrap_options = c("striped", "hover", "condensed"),
-#       full_width        = FALSE,
-#       font_size         = 13
-#     ) |>
-#     add_header_above(
-#       c(" " = 1,
-#         "Taux de mortalité standardisé (pour 100 000 hab.)" = ncol(wide_data) - 1)
-#     ) |>
-#     row_spec(1, bold = TRUE, background = "#f0f4f8")
-# }
-# 
-# tbl_femmes <- format_table(wide_femmes, "Top 5 causes de décès — Femmes")
-# 
-# tbl_femmes
+
+format_table <- function(wide_data, caption_txt) {
+  wide_data |>
+    mutate(across(where(is.numeric), ~ format(round(.x, 1), big.mark = ","))) |>
+    kable(
+      caption   = caption_txt,
+      col.names = c("Causas", names(wide_data)[-1]),
+      align     = c("l", rep("r", ncol(wide_data) - 1))
+    ) |>
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed"),
+      full_width        = FALSE,
+      font_size         = 13
+    ) |>
+    add_header_above(
+      c(" " = 1,
+        "Tasa de mortalidad estandarizada (por 100.000 hab.)" = ncol(wide_data) - 1)
+    ) |>
+    row_spec(1, bold = TRUE, background = "#f0f4f8")
+}
+
+tbl_femmes <- format_table(wide_femmes, "")
+
+tbl_femmes
 ```
 :::
 

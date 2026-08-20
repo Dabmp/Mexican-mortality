@@ -2,7 +2,7 @@
 
 Multidimensional analysis of mortality in Mexico — a Quarto website presenting a
 systematic, progressive exploration of mortality from 1990 to 2024, built on
-administrative records (INEGI / Secretaría de Salud).
+administrative records (INEGI).
 
 The site is **bilingual** (Spanish / English) and organised in three complementary
 analytical blocks:

@@ -83,28 +83,7 @@ install.packages(c(
 ## Data
 
 The notebooks load data from `.rda` files produced upstream (ASMR and cause-of-death
-aggregations). The expected file names are:
-
-- `asmr_nac.rda` — national ASMR
-- `asmr_cause.rda` — by cause
-- `asmr_sc.rda` — specific causes
-- `ratepopbycause.rda`, `top10_sc.rda`, `deces.rda` / `deces.rds`
-
-> ⚠️ **Important — portable data path.** Several source files currently contain a
-> **hard-coded Windows path**, e.g.
-> `load("H:/Mon Drive/Broni/Projet R Mortality/.../asmr_nac.rda")`.
->
-> These paths are **machine-specific** and will not work for other contributors.
-> To build the site locally, place the `.rda` files under a `data/` directory at the
-> project root and switch each `load(...)` call to the relative form, e.g.:
->
-> ```r
-> load("data/asmr_nac.rda")
-> ```
->
-> The placeholder `load("data/asmr_nac.rda")` lines are already present (commented)
-> in most setup chunks for reference. See [CONTRIBUTING.md](CONTRIBUTING.md) for
-> the recommended approach.
+aggregations). 
 
 ---
 

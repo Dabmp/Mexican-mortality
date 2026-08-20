@@ -44,18 +44,7 @@ install.packages("rnaturalearthdata")
 
 ## 2. Data — portable loading pattern
 
-### 2.1 The problem
-
-Several setup chunks currently load data from a **hard-coded, machine-specific
-Windows path**:
-
-```r
-load("H:/Mon Drive/Broni/Projet R Mortality/BDD/Data_clean/National/20260421 asmr/asmr_nac.rda")
-```
-
-This path is **not portable** and will break the build for anyone else.
-
-### 2.2 The recommended pattern
+### 2.1 The recommended pattern
 
 1. Create a `data/` directory at the project root (it is `.gitignore`-d for large
    files — see below).
@@ -66,8 +55,6 @@ This path is **not portable** and will break the build for anyone else.
    ├── asmr_nac.rda
    ├── asmr_cause.rda
    ├── asmr_sc.rda
-   ├── ratepopbycause.rda
-   ├── top10_sc.rda
    └── deces.rda
    ```
 
@@ -80,7 +67,7 @@ This path is **not portable** and will break the build for anyone else.
    The commented `# load("data/asmr_nac.rda")` lines already present in most setup
    chunks show the intended form — just uncomment and remove the `H:/...` line.
 
-### 2.3 Why `data/` is not committed
+### 2.3 Why `data/` is not committed for the moment
 
 Microdata and pre-computed aggregations can be large or subject to redistribution
 restrictions. Keep `data/` local and document the expected file names in

@@ -44,7 +44,7 @@ library(dplyr)
 library(paletteer)
 # ── Données ────────
 
-load("data/asmr_nac_cause.rda")
+load("data/asmr_cause_corr.rda")
  load("data/deces_cor_imp.rda")
 
 #------------------------- ------------------------------

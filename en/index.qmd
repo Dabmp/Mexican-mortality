@@ -1,7 +1,7 @@
 ---
 title: "Mortality Analysis in Mexico"
 subtitle: "A multidimensional approach: temporality, causes and territory"
-date: today
+# date: today
 # date-format: "MMMM YYYY"
 lang: en
 sidebar: sidebar-en
@@ -26,15 +26,6 @@ palette_sex   <- c("1" = "#2a7a8c", "2" = "#e84855", "Total" = "grey40")
 
 mort <- asmr_nac |> mutate(year = as.integer(year))
 
-# ── Simulated data (demo) ────────────────────────────────────────────
-# set.seed(42)
-# mort <- expand.grid(year = 1990:2024, sex = c("1", "2")) |>
-#   mutate(
-#     deaths = rpois(n(), lambda = 400000 + 8000*(year-1990) +
-#                      ifelse(sex == "1", 50000, 0) +
-#                      ifelse(year %in% 2020:2021, 120000, 0)),
-#     asmr   = deaths / runif(n(), 80e6, 130e6) * 1e5
-#   )
 
 mort_national <- mort |>
   group_by(year, sex) |>
@@ -48,7 +39,7 @@ mort_national <- mort |>
 ## Mortality in Mexico {style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;"}
 
 This site presents a systematic and progressive analysis of mortality in Mexico
-based on administrative records (INEGI / Ministry of Health),
+based on administrative records (INEGI),
 covering the period **1990–2024**.
 The analytical architecture is organised in **three complementary blocks**:
 
@@ -85,24 +76,32 @@ disaggregated by sex, state, and municipality.
 | ① | `year`, `sex` | Global trends, ASMR | [→](A1_descriptive_general.qmd) |
 | ② | `year`, `sex`, `cause` | Epidemiological transitions | [→](A2_causes.qmd) |
 | ③ | `year`, `sex`, `cause_specific` | ICD-10 specific cause breakdown | [→](A3_specific_causes.qmd) |
-| ④ | `year`, `sex`, `state`, `cause` | Regional disparities | [→](A4_territorial.qmd) |
-| ⑤ | `year`, `sex`, `state`, `cause_specific` | Health-territory articulation | [→](A5_maximum_disaggregation.qmd) |
+| ④ | `year`, `sex`, `state`, `cause` | Regional disparities |
+<!-- [→](A4_territorial.qmd) | -->
+| ⑤ | `year`, `sex`, `state`, `cause_specific` | Health-territory articulation | 
+<!-- [→](A5_maximum_disaggregation.qmd) | -->
 
 ### Block B — Spatial analysis
 
 | Level | Main variables | Analytical objective | Page |
 |:---:|:---|:---|:---:|
-| ① | `state`, `cause` | Regional description | [→](B1_regional.qmd) |
-| ② | `state`, `year`, `cause` | Spatial distribution, clusters | [→](B2_spatial_states.qmd) |
-| ③ | `municipality`, `year`, `cause` | Intra-state heterogeneity | [→](B3_spatial_municipalities.qmd) |
+| ① | `state`, `cause` | Regional description |
+<!-- [→](B1_regional.qmd) | -->
+| ② | `state`, `year`, `cause` | Spatial distribution, clusters |
+<!-- [→](B2_spatial_states.qmd) | -->
+| ③ | `municipality`, `year`, `cause` | Intra-state heterogeneity |
+<!-- [→](B3_spatial_municipalities.qmd) | -->
 
 ### Block C — Life expectancy
 
 | Level | Main variables | Analytical objective | Page |
 |:---:|:---|:---|:---:|
-| ① | `year`, `sex` | National overview | [→](C1_life_expectancy.qmd) |
-| ② | `state`, `year`, `sex` | State-level trends | [→](C2_le_states.qmd) |
-| ③ | `municipality`, `sex` | Municipal heterogeneity | [→](C3_le_municipalities.qmd) |
+| ① | `year`, `sex` | National overview | 
+<!-- [→](C1_life_expectancy.qmd) | -->
+| ② | `state`, `year`, `sex` | State-level trends |
+<!-- [→](C2_le_states.qmd) | -->
+| ③ | `municipality`, `sex` | Municipal heterogeneity |
+<!-- [→](C3_le_municipalities.qmd) | -->
 
 ---
 
@@ -143,11 +142,11 @@ ggplot(mort_national,
 
 ## How to navigate this site
 
-1. **Progressive reading** — follow Block A from level ① to ⑤,
+1. **Progressive reading** — follow Block A from level 1 to 5,
    gradually increasing analytical complexity.
 2. **Thematic reading** — go directly to Block B (spatial perspective)
    or Block C (life expectancy) depending on your research question.
-3. **Language switch** — use the **🇲🇽 Español / 🇬🇧 English** menu
+3. **Language switch** — use the **ES Español / EN English** menu
    in the navigation bar to access equivalent content in Spanish.
 
 ::: {style="display:flex; justify-content:flex-end; margin-top:2rem;"}

@@ -1,7 +1,7 @@
 ---
 title: "Análisis de la Mortalidad en México"
 subtitle: "Una aproximación multidimensional: temporalidad, causas y territorio"
-date: today
+# date: today
 # date-format: "MMMM YYYY"
 lang: es
 sidebar: sidebar-es
@@ -49,7 +49,7 @@ mort_nacional <- mort |>
 ## Mortalidad en México {style="color:white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom:0.5rem;"}
 
 Este sitio presenta un análisis sistemático y progresivo de la mortalidad en México
-a partir de registros administrativos (INEGI / Secretaría de Salud), cubriendo
+a partir de registros administrativos (INEGI), cubriendo
 el período **1990–2024**.
 La arquitectura analítica se organiza en **tres bloques complementarios**:
 
@@ -83,27 +83,35 @@ con desagregación por sexo, entidad y municipio.
 
 | Nivel | Variables principales | Objetivo analítico | Página |
 |:---:|:---|:---|:---:|
-| ① | `year`, `sex` | Tendencias globales, ASMR | [→](A1_descriptivo_general.qmd) |
-| ② | `year`, `sex`, `cause` | Transiciones epidemiológicas | [→](A2_causas.qmd) |
-| ③ | `year`, `sex`, `cause_specific` | Refinamiento por causa CIE-10 | [→](A3_causas_especificas.qmd) |
-| ④ | `year`, `sex`, `state`, `cause` | Disparidades regionales | [→](A4_territorial.qmd) |
-| ⑤ | `year`, `sex`, `state`, `cause_specific` | Articulación salud-territorio | [→](A5_maxima_desagregacion.qmd) |
+| ① | `year`, `sex` | Tendencias globales, ASMR |[→](A1_descriptivo_general.qmd) |
+| ② | `year`, `sex`, `cause` | Transiciones epidemiológicas |[→](A2_causas.qmd) |
+| ③ | `year`, `sex`, `cause_specific` | Refinamiento por causa CIE-10 |[→](A3_causas_especificas.qmd) |
+| ④ | `year`, `sex`, `state`, `cause` | Disparidades regionales |
+<!-- [→](A4_territorial.qmd) | -->
+| ⑤ | `year`, `sex`, `state`, `cause_specific` | Articulación salud-territorio | 
+<!-- [→](A5_maxima_desagregacion.qmd) | -->
 
 ### Bloque B — Análisis espacial
 
 | Nivel | Variables principales | Objetivo analítico | Página |
 |:---:|:---|:---|:---:|
-| ① | `state`, `cause` | Descripción regional | [→](B1_regional.qmd) |
-| ② | `state`, `year`, `cause` | Distribución espacial, clústeres | [→](B2_espacial_estados.qmd) |
-| ③ | `municipality`, `year`, `cause` | Heterogeneidad intra-estatal | [→](B3_espacial_municipios.qmd) |
+| ① | `state`, `cause` | Descripción regional | 
+<!-- [→](B1_regional.qmd) | -->
+| ② | `state`, `year`, `cause` | Distribución espacial, clústeres |
+<!-- [→](B2_espacial_estados.qmd) | -->
+| ③ | `municipality`, `year`, `cause` | Heterogeneidad intra-estatal |
+<!-- [→](B3_espacial_municipios.qmd) | -->
 
 ### Bloque C — Esperanza de vida
 
 | Nivel | Variables principales | Objetivo analítico | Página |
 |:---:|:---|:---|:---:|
-| ① | `state`, `sex` | Panorama nacional | [→](C1_esperanza_vida.qmd) |
-| ② | `state`, `year`, `sex` | Evolución por entidad | [→](C2_ev_estados.qmd) |
-| ③ | `municipality`, `sex` | Heterogeneidad municipal | [→](C3_ev_municipios.qmd) |
+| ① | `state`, `sex` | Panorama nacional | 
+<!-- [→](C1_esperanza_vida.qmd) | -->
+| ② | `state`, `year`, `sex` | Evolución por entidad |
+<!-- [→](C2_ev_estados.qmd) | -->
+| ③ | `municipality`, `sex` | Heterogeneidad municipal |
+<!-- [→](C3_ev_municipios.qmd) | -->
 
 ---
 
@@ -117,7 +125,7 @@ ggplot(mort_nacional,
   scale_color_manual(values = palette_sexo,
                      labels = c("1" = "Hombres", "2" = "Mujeres")) +
   scale_x_continuous(breaks = seq(1990, 2024, 4)) +
-  scale_y_continuous(labels = label_comma(suffix = " k")) +
+  scale_y_continuous(labels = label_comma(suffix = "")) +
   labs(
     title    = "Mortalidad total en México",
     subtitle = "Número de defunciones por sexo, 1990–2024",
@@ -132,25 +140,25 @@ ggplot(mort_nacional,
   )
 ```
 
-::: {.callout-note}
+<!-- ::: {.callout-note} -->
 <!-- **Nota sobre los datos**   -->
 <!-- Los valores presentados son **simulados** con fines demostrativos. -->
 <!-- Para el análisis real, reemplazar en el chunk `setup-global` por: -->
 <!-- `load("data/asmr_nac.rda")`. -->
 <!-- Las fuentes recomendadas son INEGI (SINAIS) y la DGE de la SSA. -->
-:::
+<!-- ::: -->
 
 ---
 
 ## Cómo navegar este sitio
 
-1. **Lectura progresiva** — seguir el Bloque A del nivel ① al ⑤, aumentando
+1. **Lectura progresiva** — seguir el Bloque A del nivel 1 al 5, aumentando
    gradualmente la complejidad analítica.
 2. **Lectura temática** — ir directamente al Bloque B (perspectiva espacial)
    o al Bloque C (esperanza de vida) según la pregunta de investigación.
-3. **Cambio de idioma** — utilizar el menú **🇲🇽 Español / 🇬🇧 English**
+3. **Cambio de idioma** — utilizar el menú **ES Español / EN English **
    en la barra de navegación para acceder al contenido equivalente en inglés.
 
 ::: {style="display:flex; justify-content:flex-end; margin-top:2rem;"}
-[→ ① Descripción general](A1_descriptivo_general.qmd){.btn .btn-primary}
+[→ 1- Descripción general](A1_descriptivo_general.qmd){.btn .btn-primary}
 :::
